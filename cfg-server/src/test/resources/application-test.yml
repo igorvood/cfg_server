@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/db_configuration_manager
+    username: ${DB_USERNAME:db_configuration_manager_admin}
+    password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+
+

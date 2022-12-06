@@ -60,8 +60,9 @@ class FillDictRepositoryImpl(
         })
     }
 
-    override fun dictTopicDelete(topicName: String) {
-        jdbcTemplate.update(
+    @Transactional(propagation = Propagation.MANDATORY)
+    override fun dictTopicDelete(topicName: String): Int {
+        return jdbcTemplate.update(
             "delete from dict_abstract_graph_node where node_id in  (select id from dict_topic_node where id = ?)",
             topicName
         )

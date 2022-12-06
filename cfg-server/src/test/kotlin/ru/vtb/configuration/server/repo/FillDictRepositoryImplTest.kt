@@ -3,10 +3,10 @@ package ru.vtb.configuration.server.repo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.repo.dto.FlinkService
-import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
-import ru.vtb.configuration.server.repo.dto.Graph
-import ru.vtb.configuration.server.repo.dto.GraphFlinkServiceProfile
+import ru.vtb.configuration.server.controller.dto.Arrow
+import ru.vtb.configuration.server.controller.dto.FlinkSrvPuml
+import ru.vtb.configuration.server.controller.dto.TopicPuml
+import ru.vtb.configuration.server.repo.dto.*
 import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.test.util.assertTransaction
 import kotlin.test.assertContains
@@ -22,22 +22,24 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     lateinit var dictRepositoryImpl: DictRepositoryImpl
 
     @Autowired
-    lateinit var reportTopicRepositoryImpl:     ReportTopicRepositoryImpl
+    lateinit var reportTopicRepositoryImpl: ReportTopicRepositoryImpl
+
+    @Autowired
+    lateinit var pumlGeneratorRepositoryImpl: PumlGeneratorRepositoryImpl
 
 
-
-
-    val graphId = "test_graph"
-    val serviceId = "test_service"
-    val service = FlinkService(serviceId, "test.main.class")
-    val profileId = "test_profile"
-    val flinkServiceProfile = FlinkServiceProfile(service, profileId)
+    private final val graphId = "test_graph"
+    private final val serviceId = "test_service"
+    private final val service = FlinkService(serviceId, "test.main.class")
+    private final val profileId = "test_profile"
+    private final val flinkServiceProfile = FlinkServiceProfile(service, profileId)
     val graphFlinkServiceProfile = GraphFlinkServiceProfile(
         graphId,
         flinkServiceProfile
     )
     val topicName = "test_topicName"
     val topicOwner = "DKO_COMMAND"
+    val propertyKey = "property.topic.key"
 
     @Test
     fun dictServiceInsertNoTransaction() {
@@ -90,17 +92,54 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     @Transactional
     fun dictTopicInsert() {
-        assertEquals( setOf(), reportTopicRepositoryImpl.unUsedTopics())
-        fillDictRepositoryImpl.dictTopicInsert(graphId, topicName,topicOwner)
-        assertEquals( setOf("test_topicName"), reportTopicRepositoryImpl.unUsedTopics())
+        assertEquals(setOf(), reportTopicRepositoryImpl.unUsedTopics())
+        fillDictRepositoryImpl.dictTopicInsert(graphId, topicName, topicOwner)
+        assertEquals(setOf("test_topicName"), reportTopicRepositoryImpl.unUsedTopics())
     }
 
     @Test
+    fun dictTopicDeleteNoTransactional() {
+        assertTransaction {
+            fillDictRepositoryImpl.dictTopicDelete(topicName)
+        }
+    }
+
+    @Test
+    @Transactional
     fun dictTopicDelete() {
+        dictTopicInsert()
+        val dictTopicDelete = fillDictRepositoryImpl.dictTopicDelete(topicName)
+        assertEquals(1, dictTopicDelete)
+        assertEquals(setOf(), reportTopicRepositoryImpl.unUsedTopics())
     }
 
     @Test
+    fun dictArrowInsertNoTransactional() {
+        assertTransaction {
+            fillDictRepositoryImpl.dictArrowInsert(
+                DirectionEnum.OUT, graphId, serviceId, profileId, topicName,
+                propertyKey
+            )
+        }
+    }
+
+    @Test
+    @Transactional
     fun dictArrowInsert() {
+        dictTopicInsert()
+        dictServiceInsertOk()
+
+        fillDictRepositoryImpl.dictArrowInsert(
+            DirectionEnum.OUT, graphId, serviceId, profileId, topicName,
+            propertyKey
+        )
+
+        val findByGraphId = pumlGeneratorRepositoryImpl.findByGraphId(graphId)
+
+        assertEquals(setOf(
+            Arrow(from= FlinkSrvPuml(name=serviceId, profileId=profileId), to= TopicPuml(name=topicName, isOur=true, producerGrp="producer_default", consumerGrp="consumer_default"))
+        ),findByGraphId)
+
     }
 
     @Test

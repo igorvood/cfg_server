@@ -22,7 +22,7 @@ interface FillDictRepository {
     )
 
     fun dictFlinkPropertyInsert(serviceId: String, profileId: String, propertyDto: PropertyDto)
-    fun dictTopicDelete(topicName: String)
+    fun dictTopicDelete(topicName: String): Int
     fun flinkPropertyDelete(serviceId: String, profileId: String, propId: String)
 
 }

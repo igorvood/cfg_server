@@ -19,10 +19,10 @@ begin
 --             dbms_output.put_line('restore_table ->' || rt.object_name);
             if rt.backup_name is not null then
                 perform disable_constraints(array [rt.object_name]);
-                perform exec_immediate('delete ' || rt.object_name);
-                perform exec_immediate('insert into jp.' || rt.object_name || '(' || rt.list_columns || ')
-                             select ' || rt.list_columns || ' from jp.' || rt.backup_name);
-                perform exec_immediate( 'drop table jp.' || rt.backup_name || ' purge');
+                perform exec_immediate('delete from ' || rt.object_name);
+                perform exec_immediate('insert into ' || rt.object_name || '(' || rt.list_columns || ')
+                             select ' || rt.list_columns || ' from ' || rt.backup_name);
+                perform exec_immediate( 'drop table ' || rt.backup_name );
             end if;
             delete from tst_backedup_table_cache c where c.original_name = rt.object_name;
         end loop;

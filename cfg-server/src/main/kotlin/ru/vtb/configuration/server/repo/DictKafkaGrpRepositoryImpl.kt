@@ -36,8 +36,8 @@ class DictKafkaGrpRepositoryImpl(
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun kafkaPropertyGrpDelete(grpId: String, direction: Direction) {
-        jdbcTemplate.update(
+    override fun kafkaPropertyGrpDelete(grpId: String, direction: Direction): Int {
+        return jdbcTemplate.update(
             """delete from dict_kafka_prop_value where  grp_id = ? and type_prop = ?""",
             grpId,
             direction.name

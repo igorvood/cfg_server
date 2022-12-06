@@ -6,7 +6,7 @@ begin
     for r in (select unnest as table_name
               from unnest(p_table_list))
         loop
-            insert into tst_disabled_constraints_table_cache(table_name) values (r.table_name);
+            delete from tst_disabled_constraints_table_cache where table_name = r.table_name;
             perform modify_constraints(array [r.table_name], 'enable');
         end loop;
 

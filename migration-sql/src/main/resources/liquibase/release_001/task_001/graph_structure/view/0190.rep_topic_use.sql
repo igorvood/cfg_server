@@ -1,5 +1,5 @@
 create or replace view rep_topic_use as
-select
+select distinct
   coalesce(DA_e.GRAPH_ID, DA_b.GRAPH_ID) graph_id,
   tn.ID topic_id,
   case when coalesce(DA_e.GRAPH_ID, DA_b.GRAPH_ID) is not null

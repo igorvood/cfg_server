@@ -36,12 +36,14 @@ begin
           from cc
           where cc.column_comment is null)
       )
-    select STRING_AGG (d.nm, chr(10)) within group (order by d.nm) lst
+    select STRING_AGG (d.nm, chr(10)) ::varchar lst
       from d
     limit  50
     )
   loop
-    raise_application_error(-20000,'NO COMENTS: ' || chr(10) || r.lst);
+    if(r.lst is not null ) then
+    raise 'NO COMENTS: %' , r.lst;
+    end if;
   end loop;
 end;
 $$;

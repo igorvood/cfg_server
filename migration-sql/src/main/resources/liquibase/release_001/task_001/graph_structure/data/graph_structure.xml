@@ -67,6 +67,15 @@
         <sqlFile path="liquibase/release_001/task_001/graph_structure/data/0250.dict_place_holder_data.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
+    <changeSet id="liquibase/release_001/task_001/graph_structure/data/0500.dict_group_data.sql" author="vood" runAlways="true" >
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="liquibase/release_001/task_001/graph_structure/data/0500.dict_group_data.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
+    <changeSet id="liquibase/release_001/task_001/graph_structure/data/0510.dict_service_group_data.sql" author="vood" runAlways="true" >
+        <validCheckSum>any</validCheckSum>
+        <sqlFile path="liquibase/release_001/task_001/graph_structure/data/0510.dict_service_group_data.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
 
     <include file="liquibase/release_001/task_001/graph_structure/data/profiles/profiles_data.xml"/>
 

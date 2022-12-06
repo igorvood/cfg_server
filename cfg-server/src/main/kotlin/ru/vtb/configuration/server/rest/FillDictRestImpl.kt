@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*
 import ru.vtb.configuration.server.controller.intf.FillDictController
 import ru.vtb.configuration.server.repo.dto.DirectionEnum
 import ru.vtb.configuration.server.repo.dto.PropertyDto
-import ru.vtb.configuration.server.repo.dto.TopicPut
+import ru.vtb.configuration.server.controller.dto.TopicPut
 import ru.vtb.configuration.server.rest.intf.FillDictRest
 
 

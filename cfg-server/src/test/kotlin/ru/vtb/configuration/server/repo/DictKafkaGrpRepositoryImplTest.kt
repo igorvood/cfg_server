@@ -16,7 +16,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun kafkaPropertyGrpList() {
         val kafkaPropertyGrpList = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpList()
-        assertEquals(3, kafkaPropertyGrpList.size)
+        assertEquals(5, kafkaPropertyGrpList.size)
     }
 
     @Test

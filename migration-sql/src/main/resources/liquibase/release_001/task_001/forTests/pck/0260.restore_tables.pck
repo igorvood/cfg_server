@@ -5,9 +5,9 @@ declare
 begin
 --     execute immediate 'alter session set ddl_lock_timeout = 30';
     for rt in (
-        select t.name                                                            object_name
+        select t.name::varchar                                                            object_name
              , STRING_AGG(tc.column_name, ', ')  list_columns
-             , back.name                                                         backup_name
+             , back.name::varchar                                                         backup_name
         from pdd_tables t
                  join tst_backedup_table_cache c on c.original_name = t.name
                  left join pdd_tables back on back.name = lower(c.backup_name)
@@ -26,7 +26,7 @@ begin
             end if;
             delete from tst_backedup_table_cache c where c.original_name = rt.object_name;
         end loop;
-    perform enable_constraints();
+    perform enable_constraints_all();
 end;
 $$ language plpgsql
 /

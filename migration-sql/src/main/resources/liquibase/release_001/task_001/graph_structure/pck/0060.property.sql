@@ -1,6 +1,6 @@
 create type property as (
-                                           prop_id varchar(256),
-                                           prop_value varchar(256),
-                                           is_function numeric(1)
-                                       )
+    prop_id varchar(256),
+    prop_value varchar(256),
+    is_function numeric(1)
+)
 /

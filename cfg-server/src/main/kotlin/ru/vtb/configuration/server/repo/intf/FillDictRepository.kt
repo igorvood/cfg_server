@@ -8,9 +8,9 @@ interface FillDictRepository {
 
     fun dictServiceInsert(graphFlinkServiceProfile: GraphFlinkServiceProfile)
 
-    fun dictServiceDelete(serviceId: String, profileId: String)
+    fun dictServiceDelete(serviceId: String, profileId: String): Int
 
-    fun dictTopicInsert(graphId: String, topicName: String)
+    fun dictTopicInsert(graphId: String, topicName: String, owner: String)
 
     fun dictArrowInsert(
         directionEnum: DirectionEnum,

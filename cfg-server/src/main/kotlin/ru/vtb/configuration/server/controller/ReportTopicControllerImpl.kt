@@ -18,7 +18,7 @@ class ReportTopicControllerImpl(
         return reportTopicRepository.usedTopics()
     }
 
-    override fun unUsedTopics(): List<String> {
+    override fun unUsedTopics(): Set<String> {
         return reportTopicRepository.unUsedTopics()
     }
 }

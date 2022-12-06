@@ -67,8 +67,8 @@ class FillDictRestImpl(
 
     @Operation(summary = "Создание топика", tags = ["Заполнение таблиц. Топик"])
     @PutMapping("/topicInsert")
-    override fun dictTopicInsert(graphId: String, topicName: String) {
-        fillDictController.dictTopicInsertList(listOf(TopicPut(graphId, topicName)))
+    override fun dictTopicInsert(graphId: String, topicOwner: String, topicName: String) {
+        fillDictController.dictTopicInsertList(listOf(TopicPut(graphId, topicName)),topicOwner)
     }
 
     @Operation(summary = "удаление топика", tags = ["Заполнение таблиц. Топик"])
@@ -90,9 +90,10 @@ class FillDictRestImpl(
     @PutMapping("/topicInsertListGraph", produces = [MediaType.APPLICATION_JSON_VALUE])
     override fun topicInsertListGraph(
         graphId: String,
+        topicOwner: String,
         @RequestBody topics: Set<String>
     ) {
-        fillDictController.dictTopicInsertList(topics.map { TopicPut(graphId, it) })
+        fillDictController.dictTopicInsertList(topics.map { TopicPut(graphId, it) },topicOwner)
     }
 
 

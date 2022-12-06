@@ -22,9 +22,9 @@ class FillDictControllerImpl(
         checkService.checkAll()
     }
 
-    override fun dictTopicInsertList(topics: List<TopicPut>) {
+    override fun dictTopicInsertList(topics: List<TopicPut>, topicOwner: String) {
         topics.forEach {
-            fillDictRepository.dictTopicInsert(it.graphId, it.topicName)
+            fillDictRepository.dictTopicInsert(it.graphId, it.topicName, topicOwner)
         }
         checkService.checkAll()
     }
@@ -37,11 +37,11 @@ class FillDictControllerImpl(
         fillDictRepository.dictServiceDelete(serviceId, profileId)
     }
 
-    override fun topicInsertListGraphProp(graphId: String, propFile: String) {
+    override fun topicInsertListGraphProp(graphId: String, topicOwner: String, propFile: String) {
         val parsedProperty = parseProperty(propFile, ",")
             .filter { it.name.lowercase(Locale.getDefault()).contains("topic") }
             .map { TopicPut(graphId, it.value) }
-        dictTopicInsertList(parsedProperty)
+        dictTopicInsertList(parsedProperty, topicOwner)
     }
 
     override fun dictArrowInsert(

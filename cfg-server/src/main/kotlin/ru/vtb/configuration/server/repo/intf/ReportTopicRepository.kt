@@ -8,5 +8,5 @@ interface ReportTopicRepository {
 
     fun usedTopics(): List<String>
 
-    fun unUsedTopics(): List<String>
+    fun unUsedTopics(): Set<String>
 }

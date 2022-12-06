@@ -13,13 +13,13 @@ interface FillDictRest {
 
     fun dictServiceInsertPath(graphId: String, serviceId: String, profileId: String, mainClass: String)
 
-    fun dictTopicInsert(graphId: String, topicName: String)
+    fun dictTopicInsert(graphId: String, topicOwner: String, topicName: String)
     fun flinkPropertyInsertByTextEnv(serviceId: String, profileId: String, propString: String)
     fun flinkPropertyInsertSingleProperty(serviceId: String, profileId: String, propId: String, propValue: String)
     fun flinkPropertyInsertList(serviceId: String, profileId: String, props: List<PropertyDto>)
 
     //    fun dictTopicListInsert(topics: List<TopicPut>)
-    fun topicInsertListGraph(graphId: String, topics: Set<String>)
+    fun topicInsertListGraph(graphId: String, topicOwner: String, topics: Set<String>)
     fun dictServiceInsertList(
         graphId: String,
         serviceId: String,

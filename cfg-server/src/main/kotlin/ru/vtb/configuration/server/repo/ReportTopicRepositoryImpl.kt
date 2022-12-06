@@ -27,11 +27,12 @@ class ReportTopicRepositoryImpl(
         ) { rs, _ -> rs.getString(1) }
     }
 
-    override fun unUsedTopics(): List<String> {
+    override fun unUsedTopics(): Set<String> {
         return jdbcTemplate.query(
             """select TOPIC_ID 
                                     from REP_TOPIC_USE
                                     where USED = 0"""
         ) { rs, _ -> rs.getString(1) }
+            .toSet()
     }
 }

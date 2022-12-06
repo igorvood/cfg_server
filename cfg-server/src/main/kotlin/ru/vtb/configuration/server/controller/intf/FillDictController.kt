@@ -7,10 +7,10 @@ import ru.vtb.configuration.server.repo.dto.TopicPut
 interface FillDictController {
 
     fun dictServiceInsert(graphId: String, serviceId: String, profileId: String, mainClass: String)
-    fun dictTopicInsertList(topics: List<TopicPut>)
+    fun dictTopicInsertList(topics: List<TopicPut>, topicOwner: String)
     fun dictServiceDelete(serviceId: String, profileId: String)
 
-    fun topicInsertListGraphProp(graphId: String, propFile: String)
+    fun topicInsertListGraphProp(graphId: String, topicOwner: String, propFile: String)
 
     fun dictArrowInsert(
         directionEnum: DirectionEnum,

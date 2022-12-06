@@ -34,8 +34,9 @@ class FillDictRepositoryImpl(
         })
     }
 
-    override fun dictServiceDelete(serviceId: String, profileId: String) {
-        jdbcTemplate.update(
+    @Transactional(propagation = Propagation.MANDATORY)
+    override fun dictServiceDelete(serviceId: String, profileId: String): Int {
+        return jdbcTemplate.update(
             "delete from dict_abstract_graph_node where node_id in  (select id from dict_service_node where service_id = ? and profile_id = ?)",
             serviceId,
             profileId
@@ -43,13 +44,15 @@ class FillDictRepositoryImpl(
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun dictTopicInsert(graphId: String, topicName: String) {
+    override fun dictTopicInsert(graphId: String, topicName: String, owner: String) {
         jdbcTemplate.execute(PreparedStatementCreator { con ->
             val cs: CallableStatement = con.prepareCall(
-                """select dict_topic_ins_trg(?, ?)"""
+                """select dict_topic_ins_trg(?, ?, ?)"""
             )
             cs.setString(1, graphId)
             cs.setString(2, topicName)
+            cs.setString(3, owner)
+
             cs
         }, PreparedStatementCallback { ps ->
             ps.execute()

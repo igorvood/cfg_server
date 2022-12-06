@@ -136,9 +136,19 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
 
         val findByGraphId = pumlGeneratorRepositoryImpl.findByGraphId(graphId)
 
-        assertEquals(setOf(
-            Arrow(from= FlinkSrvPuml(name=serviceId, profileId=profileId), to= TopicPuml(name=topicName, isOur=true, producerGrp="producer_default", consumerGrp="consumer_default"))
-        ),findByGraphId)
+        assertEquals(
+            setOf(
+                Arrow(
+                    from = FlinkSrvPuml(name = serviceId, profileId = profileId),
+                    to = TopicPuml(
+                        name = topicName,
+                        isOur = true,
+                        producerGrp = "producer_default",
+                        consumerGrp = "consumer_default"
+                    )
+                )
+            ), findByGraphId
+        )
 
     }
 

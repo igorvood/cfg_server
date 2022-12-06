@@ -1,41 +1,7 @@
 DO $$
-    declare
-        cmd varchar;
-    begin
-
-        select typname into cmd from pg_catalog.pg_type where typname = 'cmd_type';
-
-        if (cmd is null ) then
-            execute 'create type cmd_type as( cmd varchar    )';
-        end if;
-exception
-        when NO_DATA_FOUND then
-        execute 'create type cmd_type as( cmd varchar    )';
-end;
-$$;
-/
-DO $$
-    declare
-        r cmd_type%rowtype;
-        cmd varchar;
-    begin
-        for r in
-            select 'drop type tuple'||gs cmd from generate_series(1, 3) as gs
-            loop
-                begin
-                    execute r.cmd;
-                exception when others then
-                    null;
-                end;
-            end loop;
-    end;
-$$;
-/
-
-DO $$
 declare
-    r cmd_type%rowtype;
-    cmd varchar;
+    r record;
+
 begin
   for r in
     with list as

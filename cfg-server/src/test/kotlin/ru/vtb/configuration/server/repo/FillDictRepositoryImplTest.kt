@@ -1,18 +1,14 @@
 package ru.vtb.configuration.server.repo
 
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.transaction.IllegalTransactionStateException
 import ru.vtb.configuration.server.repo.dto.FlinkService
 import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
 import ru.vtb.configuration.server.repo.dto.GraphFlinkServiceProfile
 import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.test.util.assertTransaction
 
-internal class FillDictRepositoryImplTest: AbstractDatasourceTests() {
+internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
 
     @Autowired
     lateinit var fillDictRepositoryImpl: FillDictRepositoryImpl
@@ -27,10 +23,11 @@ internal class FillDictRepositoryImplTest: AbstractDatasourceTests() {
 
     @Test
     fun dictServiceInsert() {
-        assertTransaction{fillDictRepositoryImpl.dictServiceInsert(
-            graphFlinkServiceProfile
-        )}
-
+        assertTransaction {
+            fillDictRepositoryImpl.dictServiceInsert(
+                graphFlinkServiceProfile
+            )
+        }
 
     }
 

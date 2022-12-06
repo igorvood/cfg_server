@@ -2,9 +2,7 @@ package ru.vtb.configuration.server.repo
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.transaction.IllegalTransactionStateException
 import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.controller.dto.Direction
 import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
@@ -16,6 +14,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Autowired
     lateinit var dictKafkaGrpRepositoryImpl: DictKafkaGrpRepositoryImpl
+
     @Test
     fun kafkaPropertyGrpList() {
         val kafkaPropertyGrpList = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpList()
@@ -39,7 +38,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Test
     fun kafkaPropertyGrpDeleteNoTransaction() {
-        assertTransaction{
+        assertTransaction {
             dictKafkaGrpRepositoryImpl.kafkaPropertyGrpDelete(
                 "test_id_1",
                 Direction.prd
@@ -133,7 +132,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun kafkaPropertyGrpAddNoTransaction() {
 
-         assertTransaction{
+        assertTransaction {
             dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd("test_id_100", Direction.prd, "asd")
         }
 

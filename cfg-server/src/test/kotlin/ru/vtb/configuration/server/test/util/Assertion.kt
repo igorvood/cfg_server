@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.assertThrows
 import org.springframework.transaction.IllegalTransactionStateException
 
-inline fun  assertTransaction(executable: () -> Unit): Unit {
+inline fun assertTransaction(executable: () -> Unit): Unit {
     val message = assertThrows<IllegalTransactionStateException> {
         executable()
     }.message
@@ -13,4 +13,4 @@ inline fun  assertTransaction(executable: () -> Unit): Unit {
         "No existing transaction found for transaction marked with propagation 'mandatory'",
         message
     )
-    }
+}

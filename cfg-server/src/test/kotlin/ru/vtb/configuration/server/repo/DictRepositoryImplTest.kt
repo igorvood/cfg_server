@@ -17,28 +17,29 @@ internal class DictRepositoryImplTest : AbstractDatasourceTests() {
 
     val serviceId = "uasp-streaming-mdm-enrichment"
     val mainClass = "ru.vtb.uasp.mdm.enrichment.EnrichmentJob"
+
     @Test
     fun graphList() {
         val graphList = dictRepositoryImpl.graphList()
-            .filter { it.graphId=="rto_graph" }
+            .filter { it.graphId == "rto_graph" }
             .toSet()
-        assertEquals(setOf(Graph("rto_graph")),graphList)
+        assertEquals(setOf(Graph("rto_graph")), graphList)
     }
 
     @Test
     fun serviceList() {
 
         val graphList = dictRepositoryImpl.serviceList()
-            .filter { it.id== serviceId }
+            .filter { it.id == serviceId }
             .toSet()
 
-        assertEquals(setOf(FlinkService(serviceId, mainClass)),graphList)
+        assertEquals(setOf(FlinkService(serviceId, mainClass)), graphList)
     }
 
     @Test
     fun serviceById() {
         val graphList = dictRepositoryImpl.serviceById(serviceId)
-        assertEquals(FlinkService(serviceId, mainClass),graphList)
+        assertEquals(FlinkService(serviceId, mainClass), graphList)
 
     }
 

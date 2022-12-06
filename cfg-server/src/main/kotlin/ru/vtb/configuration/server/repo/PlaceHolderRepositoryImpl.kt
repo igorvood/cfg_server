@@ -13,10 +13,8 @@ class PlaceHolderRepositoryImpl(
     override fun dbPlaceHolders(): Set<DataBasePlaceHolder> {
         return jdbcTemplate.query(
             """select id, DESCRIPTION, DEFAULT_VALUE from DICT_PLACE_HOLDER 
-            """,
-            { rs, _ -> DataBasePlaceHolder(rs.getString(1), rs.getString(2), rs.getString(3)) }
-
-        ).toSet()
+            """
+        ) { rs, _ -> DataBasePlaceHolder(rs.getString(1), rs.getString(2), rs.getString(3)) }.toSet()
     }
 
     override fun placeHolderByService(

@@ -45,16 +45,16 @@ class DictKafkaGrpRepositoryImpl(
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun kafkaPropertyEdit(grpId: String, direction: Direction, propertyRestDto: PropertyDto) {
-        jdbcTemplate.update(
+    override fun kafkaPropertyEdit(grpId: String, direction: Direction, propertyRestDto: PropertyDto): Int {
+        return jdbcTemplate.update(
             """update dict_kafka_prop_value pv set prop_value = ? where grp_id = ? and type_prop = ? and prop_id = ? """,
-            propertyRestDto.name, grpId, direction.name, propertyRestDto.value
+            propertyRestDto.value, grpId, direction.name, propertyRestDto.name
         )
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun kafkaPropertyAdd(grpId: String, direction: Direction, propertyRestDto: PropertyDto) {
-        jdbcTemplate.update(
+    override fun kafkaPropertyAdd(grpId: String, direction: Direction, propertyRestDto: PropertyDto): Int {
+        return jdbcTemplate.update(
             """insert into dict_kafka_prop_value(grp_id, type_prop, prop_id, prop_value) VALUES (?, ?, ?, ?) """,
             grpId, direction.name, propertyRestDto.name, propertyRestDto.value
         )
@@ -62,8 +62,8 @@ class DictKafkaGrpRepositoryImpl(
 
 
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun kafkaPropertyGrpAdd(grpId: String, direction: Direction, description: String) {
-        jdbcTemplate.update(
+    override fun kafkaPropertyGrpAdd(grpId: String, direction: Direction, description: String): Int {
+        return jdbcTemplate.update(
             """insert into dict_kafka_property_grp(id, type_read, description) VALUES (?, ?, ?) """,
             grpId, direction.name, description
         )

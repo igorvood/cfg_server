@@ -13,9 +13,9 @@ interface DictKafkaGrpRepository {
 
     fun kafkaPropertyGrpDelete(grpId: String, direction: Direction): Int
 
-    fun kafkaPropertyGrpAdd(grpId: String, direction: Direction, description: String)
+    fun kafkaPropertyGrpAdd(grpId: String, direction: Direction, description: String): Int
 
-    fun kafkaPropertyEdit(grpId: String, direction: Direction, propertyRestDto: PropertyDto)
+    fun kafkaPropertyEdit(grpId: String, direction: Direction, propertyRestDto: PropertyDto): Int
 
-    fun kafkaPropertyAdd(grpId: String, direction: Direction, propertyRestDto: PropertyDto)
+    fun kafkaPropertyAdd(grpId: String, direction: Direction, propertyRestDto: PropertyDto): Int
 }

@@ -6,6 +6,8 @@
 
 
 
+    <include file="liquibase/release_001/task_001/graph_structure/types/types.xml"/>
+
     <changeSet id="liquibase/release_001/task_001/graph_structure/table" author="vood" runAlways="true">
         <validCheckSum>any</validCheckSum>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/0001.dual.sql" endDelimiter="${sqlBatchDelimiter}"/>
@@ -35,6 +37,8 @@
     <include file="liquibase/release_001/task_001/graph_structure/view/graph_structure.xml"/>
     <include file="liquibase/release_001/task_001/graph_structure/pck/graph_structure.xml"/>
     <include file="liquibase/release_001/task_001/graph_structure/data/graph_structure.xml"/>
+
+
 
 
 </databaseChangeLog>

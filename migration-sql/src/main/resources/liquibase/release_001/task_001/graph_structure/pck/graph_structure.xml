@@ -4,17 +4,6 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="liquibase/release_001/task_001/graph_structure/pck/0050.topic.sql" author="vood" runAlways="true" >
-        <validCheckSum>any</validCheckSum>
-        <sqlFile path="liquibase/release_001/task_001/graph_structure/pck/0050.topic.sql" endDelimiter="${sqlBatchDelimiter}"/>
-    </changeSet>
-
-
-    <changeSet id="liquibase/release_001/task_001/graph_structure/pck/0060.property.sql" author="vood" runAlways="true" >
-        <validCheckSum>any</validCheckSum>
-        <sqlFile path="liquibase/release_001/task_001/graph_structure/pck/0060.property.sql" endDelimiter="${sqlBatchDelimiter}"/>
-    </changeSet>
-
     <changeSet id="liquibase/release_001/task_001/graph_structure/pck/0100.dict_topic_ins_trg.trg" author="vood" runAlways="true" >
         <validCheckSum>any</validCheckSum>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/pck/0100.dict_topic_ins_trg.trg" endDelimiter="${sqlBatchDelimiter}"/>

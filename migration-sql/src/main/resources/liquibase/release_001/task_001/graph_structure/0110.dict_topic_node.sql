@@ -25,7 +25,14 @@ create table dict_topic_node
   cns_type varchar(256) generated always as ('cns') stored,
   constraint dict_topic_node_consumer_fk foreign key (cns_type, consumer_prop_grp_ref) references dict_kafka_property_grp(type_read, id),
   topic_owner_id varchar(256) not null,
-  constraint dict_topic_node_topic_owner_id_fk foreign key (topic_owner_id) references dict_topic_owner(id)
+  constraint dict_topic_node_topic_owner_id_fk foreign key (topic_owner_id) references dict_topic_owner(id),
+  cleanup_policy varchar(16) not null default 'delete',
+  constraint dict_topic_node_cleanup_policy_ck check ( cleanup_policy in ('compact', 'delete') ),
+  retention numeric default 14400000,
+  constraint dict_topic_node_retention_ck check (
+      (cleanup_policy = 'compact' and retention is null)
+      or (cleanup_policy = 'delete' and retention>0 )
+  )
 )
 /
 comment on table dict_topic_node is 'Справочник групп настроек для консьюмера топиков.'

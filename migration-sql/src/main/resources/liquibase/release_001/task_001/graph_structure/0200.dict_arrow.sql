@@ -17,7 +17,8 @@ create table dict_arrow
       then beg_node_id
       else end_node_id end
       ) stored not null,
-  constraint dict_arrow_prop_key_uk unique (flink_srv, property_key)
+  constraint dict_arrow_prop_key_uk unique (flink_srv, property_key),
+  common_name varchar(256) not null default 'Не задан'
 
 )
 /
@@ -37,3 +38,5 @@ comment on column dict_arrow.property_key is 'Ключ для свойства �
 /
 comment on column dict_arrow.flink_srv is 'Имя сервиса.'
 /
+comment on column dict_arrow.common_name is 'Имя сертификата.'
+

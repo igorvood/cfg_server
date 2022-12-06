@@ -13,6 +13,7 @@ class ReportTopicControllerImpl(
         return reportTopicRepository.topicsByStand(standEnum)
 
     }
+
     override fun usedTopics(): Set<String> {
         return reportTopicRepository.usedTopics()
     }

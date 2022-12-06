@@ -1,13 +1,12 @@
 package ru.vtb.configuration.server.repo
 
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-
-import org.junit.jupiter.api.Assertions.*
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
 
-internal class ReportTopicRepositoryImplTest : AbstractDatasourceTests(){
+internal class ReportTopicRepositoryImplTest : AbstractDatasourceTests() {
 
     @Autowired
     lateinit var reportTopicRepositoryImpl: ReportTopicRepositoryImpl

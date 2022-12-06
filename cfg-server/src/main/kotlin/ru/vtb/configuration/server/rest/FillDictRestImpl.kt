@@ -3,10 +3,10 @@ package ru.vtb.configuration.server.rest
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
+import ru.vtb.configuration.server.controller.dto.TopicPut
 import ru.vtb.configuration.server.controller.intf.FillDictController
 import ru.vtb.configuration.server.repo.dto.DirectionEnum
 import ru.vtb.configuration.server.repo.dto.PropertyDto
-import ru.vtb.configuration.server.controller.dto.TopicPut
 import ru.vtb.configuration.server.rest.intf.FillDictRest
 
 
@@ -68,7 +68,7 @@ class FillDictRestImpl(
     @Operation(summary = "Создание топика", tags = ["Заполнение таблиц. Топик"])
     @PutMapping("/topicInsert")
     override fun dictTopicInsert(graphId: String, topicOwner: String, topicName: String) {
-        fillDictController.dictTopicInsertList(listOf(TopicPut(graphId, topicName)),topicOwner)
+        fillDictController.dictTopicInsertList(listOf(TopicPut(graphId, topicName)), topicOwner)
     }
 
     @Operation(summary = "удаление топика", tags = ["Заполнение таблиц. Топик"])
@@ -93,7 +93,7 @@ class FillDictRestImpl(
         topicOwner: String,
         @RequestBody topics: Set<String>
     ) {
-        fillDictController.dictTopicInsertList(topics.map { TopicPut(graphId, it) },topicOwner)
+        fillDictController.dictTopicInsertList(topics.map { TopicPut(graphId, it) }, topicOwner)
     }
 
 

@@ -1,12 +1,12 @@
 package ru.vtb.configuration.server.controller
 
 import org.springframework.stereotype.Service
+import ru.vtb.configuration.server.controller.dto.EnvironmentService
 import ru.vtb.configuration.server.controller.dto.PlaceHolder
 import ru.vtb.configuration.server.controller.intf.ConfigurationGeneratorController
 import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
 import ru.vtb.configuration.server.controller.placeholder.intf.PlaceHoldersResolver
 import ru.vtb.configuration.server.repo.dto.EnvProperty
-import ru.vtb.configuration.server.controller.dto.EnvironmentService
 import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.ConfigurationGeneratorRepository

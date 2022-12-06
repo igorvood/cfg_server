@@ -1,13 +1,13 @@
 package ru.vtb.configuration.server.rest.intf
 
-import ru.vtb.configuration.server.repo.dto.EviromentService
+import ru.vtb.configuration.server.repo.dto.EnvironmentService
 import ru.vtb.configuration.server.repo.dto.StandEnum
 
 interface ConfigurationGeneratorRest {
     fun allServiceProfileByStand(
         serviceId: String,
         stand: StandEnum
-    ): List<EviromentService>
+    ): List<EnvironmentService>
 
     fun generateEnvBody(
         serviceId: String,

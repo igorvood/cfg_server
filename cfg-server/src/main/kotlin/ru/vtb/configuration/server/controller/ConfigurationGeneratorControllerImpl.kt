@@ -6,7 +6,7 @@ import ru.vtb.configuration.server.controller.intf.ConfigurationGeneratorControl
 import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
 import ru.vtb.configuration.server.controller.placeholder.intf.PlaceHoldersResolver
 import ru.vtb.configuration.server.repo.dto.EnvProperty
-import ru.vtb.configuration.server.repo.dto.EviromentService
+import ru.vtb.configuration.server.repo.dto.EnvironmentService
 import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.ConfigurationGeneratorRepository
@@ -64,10 +64,10 @@ PROGRAMARGS=$propertiesEnvStr
         return s
     }
 
-    override fun generateAllServiceProfile(serviceId: String, stand: StandEnum): List<EviromentService> {
+    override fun generateAllServiceProfile(serviceId: String, stand: StandEnum): List<EnvironmentService> {
         val serviceProfile = dictRepository.serviceProfile(serviceId)
         return serviceProfile.map { s ->
-            EviromentService(s, generateEnvBody(s.serviceId.id, s.profileId, stand))
+            EnvironmentService(s, generateEnvBody(s.serviceId.id, s.profileId, stand))
         }
     }
 

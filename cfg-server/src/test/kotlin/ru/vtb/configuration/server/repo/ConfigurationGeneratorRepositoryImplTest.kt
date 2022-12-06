@@ -21,16 +21,33 @@ internal class ConfigurationGeneratorRepositoryImplTest : AbstractDatasourceTest
 
     @Test
     fun propertyByService() {
-                val propertyByService = configurationGeneratorRepositoryImpl.propertyByService(
-                    "service_id_1",
-                    "profile_id_1",
-                    StandEnum.DSO
+        val propertyByService = configurationGeneratorRepositoryImpl.propertyByService(
+            "service_id_1",
+            "profile_id_1",
+            StandEnum.DSO
+        )
+        assertEquals(
+            listOf(
+                EnvProperty(
+                    envPropertyName = "service_topic_name_prop_id_1",
+                    propertyValue = "prop_value_1",
+                    priority = 10,
+                    typeProperty = "topic_name"
+                ),
+                EnvProperty(
+                    envPropertyName = "flink_property_prop_id_1",
+                    propertyValue = "prop_value_1",
+                    priority = 20,
+                    typeProperty = "business"
+                ),
+                EnvProperty(
+                    envPropertyName = "kafka_property_env_prop_name_1",
+                    propertyValue = "property_val_1",
+                    priority = 99,
+                    typeProperty = "kafka"
                 )
-                assertEquals(listOf(
-                    EnvProperty(envPropertyName="service_topic_name_prop_id_1", propertyValue="prop_value_1", priority=10, typeProperty="topic_name"),
-                    EnvProperty(envPropertyName="flink_property_prop_id_1", propertyValue="prop_value_1", priority=20, typeProperty="business"),
-                    EnvProperty(envPropertyName="kafka_property_env_prop_name_1", propertyValue="property_val_1", priority=99, typeProperty="kafka")
-                ), propertyByService)
+            ), propertyByService
+        )
     }
 
 }

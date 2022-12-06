@@ -22,18 +22,20 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
         val kafkaPropertyGrpList = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpList()
             .filter { it.id in listOf("test_id_1", "test_id_2") }
 
-        assertEquals(listOf<KafkaPropertyGrp>(
-            KafkaPropertyGrp(id="test_id_2", typeRead= Direction.cns, description="description_2"),
-            KafkaPropertyGrp(id="test_id_1", typeRead= Direction.prd, description="description_1")
-        ), kafkaPropertyGrpList)
+        assertEquals(
+            listOf<KafkaPropertyGrp>(
+                KafkaPropertyGrp(id = "test_id_2", typeRead = Direction.cns, description = "description_2"),
+                KafkaPropertyGrp(id = "test_id_1", typeRead = Direction.prd, description = "description_1")
+            ), kafkaPropertyGrpList
+        )
     }
 
     @Test
     fun kafkaPropertyGrp() {
         val kafkaPropertyGrpPrd = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_1", Direction.prd)
-        assertEquals(setOf(PropertyDto("retries","1")), kafkaPropertyGrpPrd)
+        assertEquals(setOf(PropertyDto("retries", "1")), kafkaPropertyGrpPrd)
         val kafkaPropertyGrpCns = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_2", Direction.cns)
-        assertEquals(setOf(PropertyDto("connections.max.idle.ms","100")), kafkaPropertyGrpCns)
+        assertEquals(setOf(PropertyDto("connections.max.idle.ms", "100")), kafkaPropertyGrpCns)
     }
 
     @Test
@@ -43,7 +45,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
                 "test_id_1",
                 Direction.prd
             )
-        }            .message
+        }.message
         assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
     }
 
@@ -51,14 +53,14 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
     @Transactional
     fun kafkaPropertyGrpDeleteOK() {
         val kafkaPropertyGrpPrd1 = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_1", Direction.prd)
-        assertEquals(setOf(PropertyDto("retries","1")), kafkaPropertyGrpPrd1)
+        assertEquals(setOf(PropertyDto("retries", "1")), kafkaPropertyGrpPrd1)
 
         val kafkaPropertyGrpDelete = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpDelete(
             "test_id_1",
             Direction.prd
         )
 
-        assertEquals(1,kafkaPropertyGrpDelete)
+        assertEquals(1, kafkaPropertyGrpDelete)
 
         val kafkaPropertyGrpPrd2 = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_1", Direction.prd)
         assertEquals(setOf<PropertyDto>(), kafkaPropertyGrpPrd2)
@@ -70,9 +72,9 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
             dictKafkaGrpRepositoryImpl.kafkaPropertyEdit(
                 "test_id_1",
                 Direction.prd,
-                PropertyDto("sad","asd")
+                PropertyDto("sad", "asd")
             )
-        }            .message
+        }.message
         assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
     }
 
@@ -91,7 +93,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
             newProp
         )
 
-        assertEquals(1,kafkaPropertyGrpDelete)
+        assertEquals(1, kafkaPropertyGrpDelete)
 
         val kafkaPropertyGrpPrd2 = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_1", Direction.prd)
         assertEquals(setOf(newProp), kafkaPropertyGrpPrd2)
@@ -105,7 +107,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
                 Direction.prd,
                 PropertyDto("retries", "1")
             )
-        }            .message
+        }.message
         assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
     }
 
@@ -118,7 +120,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
         assertEquals(setOf<PropertyDto>(), kafkaPropertyGrpPrd1)
 
 
-        dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd(            "test_id_100",            Direction.prd,"asd"        )
+        dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd("test_id_100", Direction.prd, "asd")
 
         val kafkaPropertyGrpDelete = dictKafkaGrpRepositoryImpl.kafkaPropertyAdd(
             "test_id_100",
@@ -126,7 +128,7 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
             element
         )
 
-        assertEquals(1,kafkaPropertyGrpDelete)
+        assertEquals(1, kafkaPropertyGrpDelete)
 
         val kafkaPropertyGrpPrd2 = dictKafkaGrpRepositoryImpl.kafkaPropertyGrp("test_id_100", Direction.prd)
         assertEquals(setOf(element), kafkaPropertyGrpPrd2)
@@ -136,7 +138,8 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
     fun kafkaPropertyGrpAddNoTransaction() {
 
         val message = assertThrows<IllegalTransactionStateException> {
-            dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd(            "test_id_100",            Direction.prd,"asd"        )}            .message
+            dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd("test_id_100", Direction.prd, "asd")
+        }.message
         assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
 
     }
@@ -151,15 +154,23 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
         assertEquals(listOf<KafkaPropertyGrp>(), kafkaPropertyGrpPrd1)
 
 
-        val kafkaPropertyGrpDelete = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd(            "test_id_100",            Direction.prd,"asd"        )
+        val kafkaPropertyGrpDelete = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd("test_id_100", Direction.prd, "asd")
 
 
-        assertEquals(1,kafkaPropertyGrpDelete)
+        assertEquals(1, kafkaPropertyGrpDelete)
 
         val kafkaPropertyGrpPrd2 = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpList()
             .filter { it.id == "test_id_100" }
 
-        assertEquals(listOf<KafkaPropertyGrp>(KafkaPropertyGrp(id="test_id_100", typeRead= Direction.prd, description="asd")), kafkaPropertyGrpPrd2)
+        assertEquals(
+            listOf(
+                KafkaPropertyGrp(
+                    id = "test_id_100",
+                    typeRead = Direction.prd,
+                    description = "asd"
+                )
+            ), kafkaPropertyGrpPrd2
+        )
 
     }
 

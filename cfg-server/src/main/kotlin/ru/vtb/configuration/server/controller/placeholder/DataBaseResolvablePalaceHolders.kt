@@ -14,12 +14,11 @@ class DataBaseResolvablePalaceHolders(
         get() = dictRepository.dbPlaceHolders().map { it.id }.toSet()
 
     override fun valuePlaceHolder(flinkServiceProfile: FlinkServiceProfile, ph: String, stand: StandEnum): String {
-        val placeHolderValue = dictRepository.placeHolderByService(
+        return dictRepository.placeHolderByService(
             flinkServiceProfile.serviceId.id,
             flinkServiceProfile.profileId,
             stand,
             ph
         )
-        return placeHolderValue
     }
 }

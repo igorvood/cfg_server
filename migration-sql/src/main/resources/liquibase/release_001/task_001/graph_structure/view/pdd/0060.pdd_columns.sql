@@ -17,5 +17,4 @@ SELECT
     is_updatable
 FROM
     information_schema.columns
-where table_name='dict_topic_node'
 /

@@ -15,7 +15,7 @@ internal class ReportTopicRepositoryImplTest : AbstractDatasourceTests(){
     @Test
     fun topicsByStand() {
         val topicsByStand = reportTopicRepositoryImpl.topicsByStand(StandEnum.DSO)
-        assertEquals(45, topicsByStand.size)
+        assertEquals(50, topicsByStand.size)
     }
 
     @Test

@@ -7,7 +7,7 @@ interface ReportTopicRepository {
 
     fun topicsByStand(standEnum: StandEnum): List<String>
 
-    fun usedTopics(): List<String>
+    fun usedTopics(): Set<String>
 
     fun unUsedTopics(): Set<String>
 

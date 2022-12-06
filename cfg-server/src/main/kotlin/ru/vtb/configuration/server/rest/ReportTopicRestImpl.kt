@@ -18,7 +18,7 @@ class ReportTopicRestImpl(val reportTopicController: ReportTopicController) : Re
 
     @Operation(summary = "Список используемых топиков", tags = ["Отчеты."])
     @GetMapping("/usedTopics")
-    override fun usedTopics(): List<String> {
+    override fun usedTopics(): Set<String> {
         return reportTopicController.usedTopics()
     }
 

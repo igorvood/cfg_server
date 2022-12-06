@@ -20,27 +20,25 @@ class ReportTopicRepositoryImpl(
         return jdbcTemplate.query(
             """select TOPIC_NAME 
                                     from REP_TOPIC_NAME_BY_STAND
-                                    where USED = 1 and STAND = ?""",
+                                    where is_used = 1 and STAND = ?""",
             { rs, _ -> rs.getString(1) }, standEnum.name
         )
     }
 
-    override fun usedTopics(): List<String> {
-        return jdbcTemplate.query(
-            """select TOPIC_ID 
-                                    from REP_TOPIC_USE
-                                    where USED = 1"""
-        ) { rs, _ -> rs.getString(1) }
+    override fun usedTopics(): Set<String> {
+        return usabilityTopic(1)
     }
 
     override fun unUsedTopics(): Set<String> {
-        return jdbcTemplate.query(
-            """select TOPIC_ID 
-                                    from REP_TOPIC_USE
-                                    where USED = 0"""
-        ) { rs, _ -> rs.getString(1) }
-            .toSet()
+        return usabilityTopic(0)
     }
+
+    private fun usabilityTopic(isUsed: Int) = jdbcTemplate.query(
+        """select TOPIC_ID 
+                                        from rep_topic_name_by_stand
+                                        where is_used = ?""", { rs, _ -> rs.getString(1) }, isUsed
+    )
+        .toSet()
 
 
     override fun repTopics(groupId: String, stand: StandEnum): Set<TopicForReport> {

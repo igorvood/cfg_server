@@ -18,7 +18,6 @@
 
     <changeSet id="liquibase/release_001/task_001/graph_structure/view" author="vood" runAlways="true">
         <validCheckSum>any</validCheckSum>
-        <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0190.rep_topic_use.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0200.rep_topic_name_by_stand.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0204.dict_service_profile.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0205.KAFKA_PROP_VALUE_by_STAND.sql" endDelimiter="${sqlBatchDelimiter}"/>

@@ -15,8 +15,6 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Autowired
     lateinit var dictKafkaGrpRepositoryImpl: DictKafkaGrpRepositoryImpl
-
-
     @Test
     fun kafkaPropertyGrpList() {
         val kafkaPropertyGrpList = dictKafkaGrpRepositoryImpl.kafkaPropertyGrpList()

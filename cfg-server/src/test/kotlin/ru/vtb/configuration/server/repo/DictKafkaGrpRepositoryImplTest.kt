@@ -10,6 +10,7 @@ import ru.vtb.configuration.server.controller.dto.Direction
 import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vtb.configuration.server.repo.dto.PropertyDto
 import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.test.util.assertTransaction
 
 internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
@@ -38,13 +39,12 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Test
     fun kafkaPropertyGrpDeleteNoTransaction() {
-        val message = assertThrows<IllegalTransactionStateException> {
+        assertTransaction{
             dictKafkaGrpRepositoryImpl.kafkaPropertyGrpDelete(
                 "test_id_1",
                 Direction.prd
             )
-        }.message
-        assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
+        }
     }
 
     @Test
@@ -66,14 +66,13 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Test
     fun kafkaPropertyEditNoTransaction() {
-        val message = assertThrows<IllegalTransactionStateException> {
+        assertTransaction {
             dictKafkaGrpRepositoryImpl.kafkaPropertyEdit(
                 "test_id_1",
                 Direction.prd,
                 PropertyDto("sad", "asd")
             )
-        }.message
-        assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
+        }
     }
 
     @Test
@@ -99,14 +98,13 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
 
     @Test
     fun kafkaPropertyAddNoTransaction() {
-        val message = assertThrows<IllegalTransactionStateException> {
+        assertTransaction {
             dictKafkaGrpRepositoryImpl.kafkaPropertyAdd(
                 "test_id_100",
                 Direction.prd,
                 PropertyDto("retries", "1")
             )
-        }.message
-        assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
+        }
     }
 
     @Test
@@ -135,10 +133,9 @@ internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun kafkaPropertyGrpAddNoTransaction() {
 
-        val message = assertThrows<IllegalTransactionStateException> {
+         assertTransaction{
             dictKafkaGrpRepositoryImpl.kafkaPropertyGrpAdd("test_id_100", Direction.prd, "asd")
-        }.message
-        assertEquals("No existing transaction found for transaction marked with propagation 'mandatory'", message)
+        }
 
     }
 

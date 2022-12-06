@@ -131,7 +131,7 @@ class FillDictRepositoryImpl(
         })
 
     }
-
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun flinkPropertyDelete(serviceId: String, profileId: String, propId: String) {
         jdbcTemplate.update(
             "delete from DICT_FLINK_PROP_VALUE where service_id = ? and profile_id = ? and prop_id = ?;",

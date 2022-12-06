@@ -27,6 +27,9 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     @Autowired
     lateinit var pumlGeneratorRepositoryImpl: PumlGeneratorRepositoryImpl
 
+    @Autowired
+    lateinit var configurationGeneratorRepositoryImpl: ConfigurationGeneratorRepositoryImpl
+
 
     private final val graphId = "test_graph"
     private final val serviceId = "test_service"
@@ -40,6 +43,9 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     val topicName = "test_topicName"
     val topicOwner = "DKO_COMMAND"
     val propertyKey = "property.topic.key"
+    val propertyName = "property.name"
+    val propertyValue = "property_value"
+
 
     @Test
     fun dictServiceInsertNoTransaction() {
@@ -153,10 +159,56 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     }
 
     @Test
-    fun dictFlinkPropertyInsert() {
+    fun dictFlinkPropertyInsertNoTransactional() {
+        assertTransaction {
+            fillDictRepositoryImpl.dictFlinkPropertyInsert(
+                serviceId,
+                profileId,
+                PropertyDto(propertyName, propertyValue)
+            )
+        }
     }
 
     @Test
+    @Transactional
+    fun dictFlinkPropertyInsert() {
+        val props: () -> List<EnvProperty> =
+            { configurationGeneratorRepositoryImpl.propertyByService(serviceId, profileId, StandEnum.DSO) }
+
+        assertEquals(listOf(), props())
+        dictServiceInsertOk()
+        fillDictRepositoryImpl.dictFlinkPropertyInsert(
+            serviceId,
+            profileId,
+            PropertyDto(propertyName, propertyValue)
+        )
+
+        assertEquals(
+            listOf(
+                EnvProperty(
+                    envPropertyName = propertyName,
+                    propertyValue = propertyValue,
+                    priority = 20,
+                    typeProperty = "business"
+                )
+            ), props()
+        )
+    }
+
+    @Test
+    fun flinkPropertyDeleteNoTransactional() {
+        assertTransaction {
+            fillDictRepositoryImpl.flinkPropertyDelete(serviceId, profileId, propertyName)
+        }
+    }
+
+    @Test
+    @Transactional
     fun flinkPropertyDelete() {
+        val props: () -> List<EnvProperty> =
+            { configurationGeneratorRepositoryImpl.propertyByService(serviceId, profileId, StandEnum.DSO) }
+        dictFlinkPropertyInsert()
+        fillDictRepositoryImpl.flinkPropertyDelete(serviceId, profileId, propertyName)
+        assertEquals(listOf(), props())
     }
 }

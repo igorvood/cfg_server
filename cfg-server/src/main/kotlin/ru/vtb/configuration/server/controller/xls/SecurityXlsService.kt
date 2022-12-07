@@ -48,16 +48,23 @@ class SecurityXlsService : XlsService<TopicForReport> {
         rowNum: Int,
         data: Collection<TopicForReport>,
     ) {
-        var rowNum1 = rowNum
-
-        data
-            .forEach { tr ->
-
-                val endRn = topicWrite(rowNum1, tr)
-                rowNum1 = endRn
+        fillXSSFSheet(this, data, rowNum)
 
 
-            }
+//        data
+//            .forEach { tr ->
+//                val endRn = topicWrite(rowNum1, tr)
+//                rowNum1 = endRn
+//            }
+    }
+
+    private tailrec fun fillXSSFSheet(xssfSheet: XSSFSheet, data: Collection<TopicForReport>, rowNum: Int): Int {
+        return if (data.isNotEmpty()) {
+            val topicWrite = xssfSheet.topicWrite(rowNum, data.first())
+            return fillXSSFSheet(xssfSheet, data.drop(1), topicWrite)
+        } else rowNum
+
+
     }
 
     private fun XSSFSheet.topicWrite(

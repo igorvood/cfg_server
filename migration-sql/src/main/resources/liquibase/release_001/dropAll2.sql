@@ -26,7 +26,7 @@ begin
                 'drop type '||t.typname||' cascade;' from pg_type t
           LEFT JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
         where  n.nspname = 'db_configuration_manager' and substr(t.typname,1,1)!='_'
-            and t.typname not in ('databasechangelog', 'databasechangeloglock', 'cmd_type')
+            and t.typname not in ('databasechangelog', 'databasechangeloglock' )
         order by t.typname
        )
       )

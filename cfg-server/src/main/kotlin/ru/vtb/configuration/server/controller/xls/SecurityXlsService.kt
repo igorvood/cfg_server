@@ -29,7 +29,7 @@ class SecurityXlsService : XlsService<TopicForReport> {
         createRowHead.createCell(colNum++).setCellValueDefaultStyle("Профиль")
         createRowHead.createCell(colNum++).setCellValueDefaultStyle("READ/WRITE")
         createRowHead.createCell(colNum++).setCellValueDefaultStyle("CN")
-        createRowHead.createCell(colNum++).setCellValueDefaultStyle("Параметры")
+        createRowHead.createCell(colNum).setCellValueDefaultStyle("Параметры")
 
 
         val sortedTopic = data.filter { it.serviceSet.isNotEmpty() }
@@ -49,8 +49,6 @@ class SecurityXlsService : XlsService<TopicForReport> {
         data: Collection<TopicForReport>,
     ) {
         fillXSSFSheet(this, data, rowNum)
-
-
 //        data
 //            .forEach { tr ->
 //                val endRn = topicWrite(rowNum1, tr)
@@ -63,8 +61,6 @@ class SecurityXlsService : XlsService<TopicForReport> {
             val topicWrite = xssfSheet.topicWrite(rowNum, data.first())
             return fillXSSFSheet(xssfSheet, data.drop(1), topicWrite)
         } else rowNum
-
-
     }
 
     private fun XSSFSheet.topicWrite(

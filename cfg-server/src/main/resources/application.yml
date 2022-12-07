@@ -1,8 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-#    url: jdbc:postgresql://d5uasp-pgc002lk.corp.dev.vtb:5432/db_configuration_manager?escapeSyntaxCallMode=${cibase.db.app.procedureCallPolicy}
-    url: jdbc:postgresql://${DB_HOST:d5uasp-pgc002lk.corp.dev.vtb}:${DB_PORT:5432}/${DB_NAME:db_configuration_manager}
+    url: jdbc:postgresql://localhost:5432/db_configuration_manager
     username: ${DB_USERNAME:db_configuration_manager_admin}
     password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
 server:

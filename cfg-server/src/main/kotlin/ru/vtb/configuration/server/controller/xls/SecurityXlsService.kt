@@ -61,12 +61,11 @@ class SecurityXlsService : XlsService<TopicForReport> {
     }
 
     private fun XSSFSheet.topicWrite(
-        rowNum1: Int,
+        beginRowNum: Int,
         tr: TopicForReport
     ): Int {
-        val beginRowNum = rowNum1
         var rn = beginRowNum
-        var topicRow = createRow(rn)
+        val topicRow = createRow(rn)
         topicRow.createCell(0).setCellValueDefaultStyle(tr.topicName)
         topicRow.createCell(1).setCellValueDefaultStyle("Добавить владельца")
         topicRow.createCell(6)
@@ -98,7 +97,6 @@ class SecurityXlsService : XlsService<TopicForReport> {
         this.addMergedRegion(CellRangeAddress(beginRowNum, rn, 6, 6))
 
 
-        val endRn = rn + 1
-        return endRn
+        return rn + 1
     }
 }

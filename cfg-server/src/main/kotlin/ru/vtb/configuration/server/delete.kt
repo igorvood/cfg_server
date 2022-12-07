@@ -5,6 +5,7 @@ import org.apache.poi.ss.util.CellRangeAddress
 import org.apache.poi.xssf.usermodel.XSSFCell
 import org.apache.poi.xssf.usermodel.XSSFCellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import ru.vtb.configuration.server.controller.setCellStyleMy
 import java.io.FileOutputStream
 
 
@@ -46,7 +47,3 @@ fun main1(ar: Array<String>) {
 
 }
 
-fun XSSFCell.setCellStyleMy(XSSFCellStyle: XSSFCellStyle): XSSFCell {
-    this.cellStyle = XSSFCellStyle
-    return this
-}

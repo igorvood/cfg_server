@@ -11,10 +11,8 @@ import java.util.*
 val delimiterScripts = "/"
 val pathSeparator = "/"
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-abstract class AbstractDatasourceTests {
+
+abstract class AbstractDatasourceTests:AbstractTests() {
 
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate

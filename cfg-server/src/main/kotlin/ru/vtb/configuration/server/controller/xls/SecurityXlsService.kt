@@ -2,6 +2,7 @@ package ru.vtb.configuration.server.controller.xls
 
 import org.apache.poi.ss.util.CellRangeAddress
 import org.apache.poi.xssf.usermodel.XSSFCellStyle
+import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.setCellValueDefaultStyle
@@ -31,48 +32,9 @@ class SecurityXlsService : XlsService<TopicForReport> {
         createRowHead.createCell(colNum++).setCellValueDefaultStyle("Параметры")
 
 
-        data
-            .filter { it.serviceSet.isNotEmpty() }
-            //            .filter { it.topicName in listOf("p0__dko_uasp__card_agreement_converted", "p0__dko_uasp__pension_converted") }
+        val sortedTopic = data.filter { it.serviceSet.isNotEmpty() }
             .sortedBy { it.topicName }
-
-            .forEach { tr ->
-
-                val beginRowNum = rowNum
-                var topicRow = createSheet.createRow(rowNum)
-                topicRow.createCell(0).setCellValueDefaultStyle(tr.topicName)
-                topicRow.createCell(1).setCellValueDefaultStyle("Добавить владельца")
-                topicRow.createCell(6)
-                    .setCellValueDefaultStyle("retention: " + tr.retention + "\ncleanup policy: " + tr.cleanupPolicy + "\npartition: " + tr.cntPartition)
-
-                tr.serviceSet
-                    .sortedBy { s -> s.serviceName }
-                    .withIndex()
-                    .forEach { srvInd ->
-                        val index = srvInd.index
-                        val srv = srvInd.value
-                        val srvRow = if (index == 0) topicRow else {
-                            rowNum += 1
-                            createSheet.createRow(rowNum)
-                        }
-                        srvRow.createCell(2).setCellValueDefaultStyle(srv.serviceName)
-                        srvRow.createCell(4).setCellValueDefaultStyle(srv.direction)
-                        srvRow.createCell(5).setCellValueDefaultStyle(srv.cn)
-                        srvRow.createCell(3).setCellValueDefaultStyle("Имя: ${srv.profileId}")
-                        rowNum += 1
-                        val descriptionRow = createSheet.createRow(rowNum)
-                        descriptionRow.createCell(3).setCellValueDefaultStyle("Назначение: ${srv.reportDescription}")
-                        createSheet.addMergedRegion(CellRangeAddress(rowNum - 1, rowNum, 2, 2))
-                        createSheet.addMergedRegion(CellRangeAddress(rowNum - 1, rowNum, 4, 4))
-                        createSheet.addMergedRegion(CellRangeAddress(rowNum - 1, rowNum, 5, 5))
-                    }
-                createSheet.addMergedRegion(CellRangeAddress(beginRowNum, rowNum, 0, 0))
-                createSheet.addMergedRegion(CellRangeAddress(beginRowNum, rowNum, 1, 1))
-                createSheet.addMergedRegion(CellRangeAddress(beginRowNum, rowNum, 6, 6))
-
-                rowNum += 1
-
-            }
+        createSheet.sheetWrite(rowNum, sortedTopic)
 
         val fileOutputStream = FileOutputStream("./test.xlsx")
 
@@ -80,5 +42,63 @@ class SecurityXlsService : XlsService<TopicForReport> {
 
         xssfWorkbook.close()
 
+    }
+
+    private fun XSSFSheet.sheetWrite(
+        rowNum: Int,
+        data: Collection<TopicForReport>,
+    ) {
+        var rowNum1 = rowNum
+
+        data
+            .forEach { tr ->
+
+                val endRn = topicWrite(rowNum1, tr)
+                rowNum1 = endRn
+
+
+            }
+    }
+
+    private fun XSSFSheet.topicWrite(
+        rowNum1: Int,
+        tr: TopicForReport
+    ): Int {
+        val beginRowNum = rowNum1
+        var rn = beginRowNum
+        var topicRow = createRow(rn)
+        topicRow.createCell(0).setCellValueDefaultStyle(tr.topicName)
+        topicRow.createCell(1).setCellValueDefaultStyle("Добавить владельца")
+        topicRow.createCell(6)
+            .setCellValueDefaultStyle("retention: " + tr.retention + "\ncleanup policy: " + tr.cleanupPolicy + "\npartition: " + tr.cntPartition)
+
+        tr.serviceSet
+            .sortedBy { s -> s.serviceName }
+            .withIndex()
+            .forEach { srvInd ->
+                val index = srvInd.index
+                val srv = srvInd.value
+                val srvRow = if (index == 0) topicRow else {
+                    rn += 1
+                    this.createRow(rn)
+                }
+                srvRow.createCell(2).setCellValueDefaultStyle(srv.serviceName)
+                srvRow.createCell(4).setCellValueDefaultStyle(srv.direction)
+                srvRow.createCell(5).setCellValueDefaultStyle(srv.cn)
+                srvRow.createCell(3).setCellValueDefaultStyle("Имя: ${srv.profileId}")
+                rn += 1
+                val descriptionRow = this.createRow(rn)
+                descriptionRow.createCell(3).setCellValueDefaultStyle("Назначение: ${srv.reportDescription}")
+                this.addMergedRegion(CellRangeAddress(rn - 1, rn, 2, 2))
+                this.addMergedRegion(CellRangeAddress(rn - 1, rn, 4, 4))
+                this.addMergedRegion(CellRangeAddress(rn - 1, rn, 5, 5))
+            }
+        this.addMergedRegion(CellRangeAddress(beginRowNum, rn, 0, 0))
+        this.addMergedRegion(CellRangeAddress(beginRowNum, rn, 1, 1))
+        this.addMergedRegion(CellRangeAddress(beginRowNum, rn, 6, 6))
+
+
+        val endRn = rn + 1
+        return endRn
     }
 }

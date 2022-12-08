@@ -25,10 +25,9 @@ class ReportTopicControllerImpl(
         return reportTopicRepository.unUsedTopics()
     }
 
-    override fun repTopics(groupId: String, stand: StandEnum): Set<TopicForReport> {
+    override fun repTopics(groupId: String, stand: StandEnum): ByteArray {
         val repTopics = reportTopicRepository.repTopics(groupId, stand)
-        xls.repTopics(repTopics)
-        return repTopics
+        return  xls.repTopics(repTopics)
     }
 
 

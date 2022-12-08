@@ -18,4 +18,6 @@ interface ConfigurationGeneratorRest {
     fun environmentZip(serviceId: String): ByteArray
 
     fun environmentZipAll(serviceId: String): ByteArray
+
+    fun repTopics(groupId: String): ByteArray
 }

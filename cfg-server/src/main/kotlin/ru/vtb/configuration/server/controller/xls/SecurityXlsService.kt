@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.setCellValueDefaultStyle
 import ru.vtb.configuration.server.controller.style
 import ru.vtb.configuration.server.repo.dto.TopicForReport
-import java.io.FileOutputStream
+import java.io.ByteArrayOutputStream
 
 @Service
 class SecurityXlsService : XlsService<TopicForReport> {
 
-    override fun repTopics(data: Collection<TopicForReport>) {
+    override fun repTopics(data: Collection<TopicForReport>): ByteArray {
         val xssfWorkbook = XSSFWorkbook()
         var rowNum = 0
         var colNum = 0
@@ -36,11 +36,13 @@ class SecurityXlsService : XlsService<TopicForReport> {
             .sortedBy { it.topicName }
         createSheet.sheetWrite(rowNum, sortedTopic)
 
-        val fileOutputStream = FileOutputStream("./test.xlsx")
-
-        xssfWorkbook.write(fileOutputStream)
+//        val fileOutputStream = FileOutputStream("./test.xlsx")
+        val outputStream = ByteArrayOutputStream()
+        xssfWorkbook.write(outputStream)
 
         xssfWorkbook.close()
+
+        return outputStream.toByteArray()
 
     }
 

@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 import ru.vtb.configuration.server.controller.dto.EnvironmentService
 import ru.vtb.configuration.server.controller.intf.ConfigurationGeneratorController
+import ru.vtb.configuration.server.controller.intf.ReportTopicController
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.rest.intf.ConfigurationGeneratorRest
 
 @RestController
 class ConfigurationGeneratorRestImpl(
     val configurationGeneratorController: ConfigurationGeneratorController,
+    val reportTopicController: ReportTopicController
 ) : ConfigurationGeneratorRest {
 
     @Operation(summary = "Настройки по профилю сервиса ", tags = ["Генерация"])
@@ -62,4 +64,12 @@ class ConfigurationGeneratorRestImpl(
         return configurationGeneratorController.environmentZip(serviceId, false)
     }
 
+    @Operation(summary = "Excel отчет по топикам для документации", tags = ["Генерация"])
+    @GetMapping(
+        "/repxlsTopics", produces = [MediaType.APPLICATION_PDF_VALUE]
+    )
+    @ResponseBody
+    override fun repTopics(groupId: String): ByteArray {
+        return reportTopicController.repTopics(groupId, StandEnum.P0)
+    }
 }

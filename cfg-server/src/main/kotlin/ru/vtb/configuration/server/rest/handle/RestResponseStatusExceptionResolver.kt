@@ -34,8 +34,9 @@ class RestResponseStatusExceptionResolver : AbstractHandlerExceptionResolver() {
     }
 
     private tailrec fun getRoot(ex: Throwable):Throwable {
-        return if (ex.cause!=null)
-            getRoot(ex.cause!!)
+        val cause = ex.cause
+        return if (cause !=null)
+            getRoot(cause)
         else ex
     }
 

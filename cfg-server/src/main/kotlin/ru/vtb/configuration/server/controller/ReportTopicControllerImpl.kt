@@ -1,15 +1,11 @@
 package ru.vtb.configuration.server.controller
 
-import org.apache.poi.ss.util.CellRangeAddress
-import org.apache.poi.xssf.usermodel.XSSFCellStyle
-import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.intf.ReportTopicController
 import ru.vtb.configuration.server.controller.xls.XlsService
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.dto.TopicForReport
 import ru.vtb.configuration.server.repo.intf.ReportTopicRepository
-import java.io.FileOutputStream
 
 @Service
 class ReportTopicControllerImpl(

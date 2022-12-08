@@ -5,7 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell
 import org.apache.poi.xssf.usermodel.XSSFCellStyle
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
-inline fun XSSFWorkbook.style(): XSSFCellStyle{
+inline fun XSSFWorkbook.style(): XSSFCellStyle {
     val cellStyle: XSSFCellStyle = this.createCellStyle()
 
     cellStyle.borderTop = BorderStyle.MEDIUM

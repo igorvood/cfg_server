@@ -1,10 +1,11 @@
 package ru.vtb.configuration.server.test.abstraction
 
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.test.context.ActiveProfiles
 import java.io.File
 import java.util.*
 
@@ -12,7 +13,7 @@ val delimiterScripts = "/"
 val pathSeparator = "/"
 
 
-abstract class AbstractDatasourceTests:AbstractTests() {
+abstract class AbstractDatasourceTests : AbstractTests() {
 
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate

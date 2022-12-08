@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
-import org.springframework.stereotype.Component
 import org.springframework.web.servlet.ModelAndView
 import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver
 import javax.servlet.http.HttpServletRequest
@@ -33,9 +32,9 @@ class RestResponseStatusExceptionResolver : AbstractHandlerExceptionResolver() {
         return null
     }
 
-    private tailrec fun getRoot(ex: Throwable):Throwable {
+    private tailrec fun getRoot(ex: Throwable): Throwable {
         val cause = ex.cause
-        return if (cause !=null)
+        return if (cause != null)
             getRoot(cause)
         else ex
     }

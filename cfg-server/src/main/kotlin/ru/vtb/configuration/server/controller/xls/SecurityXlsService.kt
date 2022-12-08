@@ -70,7 +70,7 @@ class SecurityXlsService : XlsService<TopicForReport> {
         var rn = beginRowNum
         val topicRow = createRow(rn)
         topicRow.createCell(0).setCellValueDefaultStyle(tr.topicName)
-        topicRow.createCell(1).setCellValueDefaultStyle("Добавить владельца")
+        topicRow.createCell(1).setCellValueDefaultStyle(tr.owner)
         topicRow.createCell(6)
             .setCellValueDefaultStyle("retention: " + tr.retention + "\ncleanup policy: " + tr.cleanupPolicy + "\npartition: " + tr.cntPartition)
 

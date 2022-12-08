@@ -5,5 +5,8 @@ data class TopicForReport(
     val cntPartition: Int,
     val cleanupPolicy: String,
     val retention: Long,
-    val serviceSet: Set<ServiceForReport>
-)
+    val serviceSet: Set<ServiceForReport>,
+    val owner: String
+) {
+
+}

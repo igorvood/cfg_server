@@ -41,10 +41,23 @@ with_all_topic as(
     from from_t
 ),
 with_all_topic_prop as(
-  select r.stand, r.topic_name, t.graph_id, t.group_id, t.srv_id, t.service_id, t.profile_id, t.srv_report_description, t.dirrection, t.cn, r.cleanup_policy, r.retention,r.cnt_partition
+  select r.stand,
+         r.topic_name,
+         t.graph_id,
+         t.group_id,
+         t.srv_id,
+         t.service_id,
+         t.profile_id,
+         t.srv_report_description,
+         t.dirrection,
+         t.cn,
+         r.cleanup_policy,
+         r.retention,
+         r.cnt_partition,
+         r.topic_owner_for_report
   from with_all_topic t
     join rep_topic_name_by_stand r on t.topic_id = r.topic_id
 )
-select stand, topic_name, graph_id, group_id, srv_id, service_id, profile_id, srv_report_description, dirrection, cn, cleanup_policy, retention, cnt_partition
+select stand, topic_name, graph_id, group_id, srv_id, service_id, profile_id, srv_report_description, dirrection, cn, cleanup_policy, retention, cnt_partition, topic_owner_for_report
 from with_all_topic_prop
 /

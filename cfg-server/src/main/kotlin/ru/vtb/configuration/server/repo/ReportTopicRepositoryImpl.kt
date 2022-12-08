@@ -54,7 +54,8 @@ class ReportTopicRepositoryImpl(
                                                    profile_id,
                                                    srv_report_description,
                                                    dirrection,
-                                                   cn
+                                                   cn,
+                                                   topic_owner_for_report
                                                    from rep_Topics where group_id = ? and stand = ?"""
                     )
                 cs.setString(1, groupId)
@@ -69,6 +70,7 @@ class ReportTopicRepositoryImpl(
                         cleanupPolicy = rs.getString(2),
                         retention = rs.getLong(3),
                         cntPartition = rs.getInt(4),
+                        owner = rs.getString(10),
                     )
                     val setSrv = res.computeIfAbsent(mayBeNeTopic) { mutableSetOf() }
                     setSrv.add(
@@ -91,7 +93,8 @@ class ReportTopicRepositoryImpl(
                             topic.cntPartition,
                             topic.cleanupPolicy,
                             topic.retention,
-                            serviceSet
+                            serviceSet,
+                            topic.owner,
                         )
 
                     }.toSet()
@@ -105,7 +108,8 @@ class ReportTopicRepositoryImpl(
         val topicName: String,
         val cleanupPolicy: String,
         val retention: Long,
-        val cntPartition: Int
+        val cntPartition: Int,
+        val owner: String
     )
 
 }

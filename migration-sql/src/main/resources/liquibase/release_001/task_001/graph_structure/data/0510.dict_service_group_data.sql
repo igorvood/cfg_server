@@ -6,3 +6,7 @@ with g as (
 )
 select grp_id, service_id, profile_id from g
 /
+insert into dict_service_group(group_id, service_id, profile_id)
+select service_id||'_'||dict_service_node.profile_id, service_id, profile_id
+from dict_service_node
+/

@@ -7,5 +7,8 @@ interface PumlGeneratorRepository {
 
     fun findByGraphId(graphId: String): Set<Arrow<out GraphNode, out GraphNode>>
 
+    @Deprecated("Не используется, Удалить")
     fun findByTopic(topicId: String): Set<Arrow<out GraphNode, out GraphNode>>
+
+    fun findByGroupId(groupId: String): Set<Arrow<out GraphNode, out GraphNode>>
 }

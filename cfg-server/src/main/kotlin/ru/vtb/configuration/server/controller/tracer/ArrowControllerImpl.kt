@@ -15,10 +15,10 @@ import ru.vtb.configuration.server.repo.intf.PumlGeneratorRepository
 
 @Service
 class ArrowControllerImpl(val pumlGeneratorRepository: PumlGeneratorRepository) : ArrowController {
-    override fun arrowsByTopic(topicId: String): Set<JsonArrow> {
-        val findByTopic = pumlGeneratorRepository.findByTopic(topicId)
-        val cutArrows = PumlGeneratorControllerImpl.cutArrows(findByTopic, topicId, DirectionEnum.OUT)
-        return cutArrows.map { JsonArrow.of(it.from.toJsonDto(), it.to.toJsonDto()) }.toSet()
+    override fun arrowsByGroupId(GroupId: String): Set<JsonArrow> {
+        val findByTopic = pumlGeneratorRepository.findByGroupId(GroupId)
+//        val cutArrows = PumlGeneratorControllerImpl.cutArrows(findByTopic, GroupId, DirectionEnum.OUT)
+        return findByTopic.map { JsonArrow.of(it.from.toJsonDto(), it.to.toJsonDto()) }.toSet()
     }
 }
 

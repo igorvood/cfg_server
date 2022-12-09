@@ -16,7 +16,7 @@ class PumlGeneratorRepositoryImpl(
     private val jdbcTemplate: JdbcTemplate
 ) : PumlGeneratorRepository {
 
-    val arrowsFunction: (rs: ResultSet, rowNum: Int) -> Arrow<out GraphNode, out GraphNode>? = { rs, _ ->
+    private val arrowsFunction: (rs: ResultSet, rowNum: Int) -> Arrow<out GraphNode, out GraphNode>? = { rs, _ ->
         when (NodeType.valueOf(rs.getString(1))) {
             NodeType.flink_srv -> Arrow(findService(rs.getString(2)), findTopic(rs.getString(4)))
             NodeType.topic -> Arrow(findTopic(rs.getString(2)), findService(rs.getString(4)))
@@ -44,6 +44,17 @@ class PumlGeneratorRepositoryImpl(
                                   ) 
                 """,
             arrowsFunction, topicId, topicId
+        ).toSet()
+    }
+
+    override fun findByGroupId(groupId: String): Set<Arrow<out GraphNode, out GraphNode>> {
+        return jdbcTemplate.query(
+            """
+                select BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID 
+                from rep_arrow_by_grp
+                where group_id = ? 
+                """,
+            arrowsFunction, groupId
         ).toSet()
     }
 

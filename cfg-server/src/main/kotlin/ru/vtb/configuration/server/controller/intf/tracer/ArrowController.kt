@@ -4,5 +4,5 @@ import ru.vtb.configuration.server.controller.dto.tracer.JsonArrow
 
 interface ArrowController {
 
-    fun arrowsByTopic(topicId: String): Set<JsonArrow>
+    fun arrowsByGroupId(GroupId: String): Set<JsonArrow>
 }

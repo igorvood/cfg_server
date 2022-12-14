@@ -74,5 +74,3 @@ where tn.id in (
     'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto'
     );
 /
-commit;
-/

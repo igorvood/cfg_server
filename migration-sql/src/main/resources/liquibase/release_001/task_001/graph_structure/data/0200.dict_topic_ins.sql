@@ -26,6 +26,17 @@ DO $$
         select 'rto_graph', 'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto' from dual union
         select 'rto_graph', 'dev_bevents_card_agreement_enrich_out_uaspdto' from dual union
 
+        select 'rto_graph', 'dev__rto_uasp__case_40__dlq' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_40' from dual union
+        select 'rto_graph', 'dev__rto_uasp__pks' from dual union
+        select 'rto_graph', 'dev_bevents_udds_mdm_rate_case68_uaspdto_dlq' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_2' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_2_dlq' from dual union
+
+        select 'rto_graph', 'dev_bevents_68_after_rate_enrich' from dual union
+        select 'rto_graph', 'dev_multibonus_partners_program' from dual union
+
+
         select 'rto_graph', 'dev_bevents__realtime__case_71__uaspdto' from dual union
         select 'rto_graph', 'dev_bevents_udds_mdm_rate_case68_uaspdto_dlq' from dual union
         select 'rto_graph', 'dev_bevents__batch__ca_regulatory_client_id_of_profile__json_converted' from dual union

@@ -13,6 +13,17 @@ select 'graph_1', 'topic', 'mutator_consumer_2', 'flink_srv', 'Mutator~case_65',
 select 'graph_1', 'topic', 'uasp_mutator_filter_input', 'flink_srv', 'Mutator~case_65', 'some_key9' from DUAL union
 select 'graph_1', 'topic', 'uasp_mutator_filter_input_2', 'flink_srv', 'Mutator~case_65', 'some_key30' from DUAL union
 
+select 'rto_graph', 'topic', 'dev_bevents_68_after_rate_enrich', 'flink_srv', 'uasp-kriaa-bevents-case-2~main', 'enrichOne.MainEnrichProperty$.fromTopic' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents_68_after_rate_enrich', 'flink_srv', 'uasp-kriaa-bevents-case-40~main', 'enrichOne.MainEnrichProperty$.fromTopic' from DUAL union
+select 'rto_graph', 'topic', 'dev_multibonus_partners_program', 'flink_srv', 'uasp-kriaa-bevents-case-40~main', 'multiBonus.MultiBonusEnrichProperty$.fromTopic' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents_68_after_rate_enrich', 'flink_srv', 'uasp-kriaa-bevents-case-68~main', 'enrichOne.MainEnrichProperty$.fromTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-40~main', 'topic', 'dev__rto_uasp__case_40__dlq', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-40~main', 'topic', 'dev__rto_uasp__case_40', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-68~main', 'topic', 'dev__rto_uasp__pks', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-68~main', 'topic', 'dev_bevents_udds_mdm_rate_case68_uaspdto_dlq', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-2~main', 'topic', 'dev__rto_uasp__case_2', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-2~main', 'topic', 'dev__rto_uasp__case_2_dlq', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
+
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__input_converter__mortgage__dlq', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__mdm_enrichment__mdm_cross_link__status__dlq', 'enrichOne.GlobalIdEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__mdm_enrichment__for_additional_enrichment__uaspdto', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union

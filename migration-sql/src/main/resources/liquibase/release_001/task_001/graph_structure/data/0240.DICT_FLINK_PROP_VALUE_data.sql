@@ -3,6 +3,27 @@ DO $$
 
     begin
 INSERT INTO DICT_FLINK_PROP_VALUE (SERVICE_ID, PROFILE_ID, PROP_ID, PROP_VALUE, IS_FUNCTION)
+
+select 'uasp-kriaa-bevents-case-2', 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 0 from dual union
+select 'uasp-kriaa-bevents-case-2', 'main', 'savepoint.pref', 'case-2', 0 from dual union
+select 'uasp-kriaa-bevents-case-2', 'main', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 0 from dual union
+select 'uasp-kriaa-bevents-case-2', 'main', 'stateCheckpointsNumRetained', '8', 0 from dual union
+select 'uasp-kriaa-bevents-case-2', 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 0 from dual union
+select 'uasp-kriaa-bevents-case-2', 'main', 'sync.parallelism', '${PARALLELISM}', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'savepoint.pref', 'case-40', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'stateCheckpointsNumRetained', '8', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 0 from dual union
+select 'uasp-kriaa-bevents-case-40', 'main', 'sync.parallelism', '${PARALLELISM}', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'savepoint.pref', 'case-68', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'stateCheckpointsNumRetained', '8', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 0 from dual union
+select 'uasp-kriaa-bevents-case-68', 'main', 'sync.parallelism', '${PARALLELISM}', 0 from dual union
+
+
 select 'uasp-streaming-mdm-enrichment', 'way4', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'is_mortgage', 0 from dual union
 select 'uasp-streaming-mdm-enrichment', 'way4', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'Boolean', 0 from dual union
 select 'uasp-streaming-mdm-enrichment', 'way4', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.isOptionalEnrichValue', 'true', 0 from dual union

@@ -10,6 +10,10 @@ DO $$
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'way4', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'way4-card-agreement', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
 
+    select 'rto_graph', 'uasp-kriaa-bevents-case-40', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union
+    select 'rto_graph', 'uasp-kriaa-bevents-case-68', 'main', 'ru.vtb.bevent.UaspStreamingCase68' from dual union
+    select 'rto_graph', 'uasp-kriaa-bevents-case-2', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union
+
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'case-68', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'case-68_agrement', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'prof-auth', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union

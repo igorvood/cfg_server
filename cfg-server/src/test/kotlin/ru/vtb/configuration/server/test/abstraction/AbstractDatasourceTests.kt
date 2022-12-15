@@ -18,33 +18,33 @@ abstract class AbstractDatasourceTests : AbstractTests() {
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 
-    val setupClass = "setup.sql"
-    val setupTest = "setup.each.sql"
+    private val setupClass = "setup.sql"
+    private val setupTest = "setup.each.sql"
 
-    val teardownClass = "teardown.sql"
-    val teardownTest = "teardown.each.sql"
+    private val teardownClass = "teardown.sql"
+    private val teardownTest = "teardown.each.sql"
 
-    val javaClass = this::class.java
-    val fullPathToScripts = javaClass.name.replace(".", pathSeparator)
+    private val javaClass = this::class.java
+    private val fullPathToScripts = javaClass.name.replace(".", pathSeparator)
 
     @BeforeAll
-    fun beforeAll() = run {
+    private fun beforeAll() = run {
         afterAll()
         runScriptsFromFile(setupClass)
     }
 
     @AfterAll
-    fun afterAll() = runScriptsFromFile(teardownClass)
+    private fun afterAll() = runScriptsFromFile(teardownClass)
 
 
     @BeforeEach
-    fun beforeEach() = run {
+    private fun beforeEach() = run {
         afterEach()
         runScriptsFromFile(setupTest)
     }
 
     @AfterEach
-    fun afterEach() = runScriptsFromFile(teardownTest)
+    private fun afterEach() = runScriptsFromFile(teardownTest)
 
     private fun runScriptsFromFile(fileName: String) {
         val fullFilename = fullPathToScripts + pathSeparator + fileName

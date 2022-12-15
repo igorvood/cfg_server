@@ -1,6 +1,6 @@
 create table tst_disabled_constraints_table_cache
 (
-    table_name varchar(30) not null,
+    table_name varchar(63) not null,
     constraint tst_disabled_constraints_table_cache_pk primary key (table_name)
 )
 /

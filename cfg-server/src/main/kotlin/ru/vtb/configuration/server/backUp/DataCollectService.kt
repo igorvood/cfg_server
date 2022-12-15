@@ -4,13 +4,14 @@ import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.backUp.dto.ColumnMeta
 import java.math.BigDecimal
+import java.util.ListResourceBundle
 
 @Repository
 class DataCollectService(
     private val dataBackUpRepository: DataBackUpRepository
 ) {
 
-    fun exportData(tableName: Array<String> = arrayOf()): String {
+    fun exportData(tableName: List<String> = listOf()): String {
 
         val metaData = getMeta(tableName)
 
@@ -34,7 +35,7 @@ class DataCollectService(
         return map
     }
 
-    private fun getMeta(tableName: Array<String>) = when (tableName.size) {
+    private fun getMeta(tableName: List<String>) = when (tableName.size) {
         1 -> dataBackUpRepository.metaDataByTable(tableName[0])
         0 -> dataBackUpRepository.metaDataByTable()
         else -> dataBackUpRepository.metaDataByTable()
@@ -64,7 +65,7 @@ class DataCollectService(
     }
 
     @Transactional
-    fun importData(tableNames: Array<String>, generateInsertsQuery: String) {
+    fun importData(tableNames: List<String>, generateInsertsQuery: String) {
         val meta = getMeta(tableNames)
         dataBackUpRepository.cleanTables(meta)
         val sqls = generateInsertsQuery.split("\n")

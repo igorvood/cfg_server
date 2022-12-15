@@ -1,6 +1,7 @@
 package ru.vtb.configuration.server.test.abstraction
 
 import org.springframework.jdbc.core.JdbcTemplate
+import kotlin.test.assertEquals
 
 fun JdbcTemplate.compareTables(tableName1: String, tableName2: String): MutableList<MutableMap<String, Any>> {
     val queryForList = queryForList(
@@ -16,4 +17,10 @@ fun JdbcTemplate.compareTables(tableName1: String, tableName2: String): MutableL
 fun JdbcTemplate.compareTablesWithAsserts(tableName1: String, tableName2: String) {
     val compareTables = this.compareTables(tableName1, tableName2)
     assert(compareTables.isEmpty()) { "Tables $tableName1 and $tableName2 not equals. There diff:\n$compareTables" }
+//    SELECT  count(1) FROM dict_place_holder
+    val tableName1Cnt = this.queryForObject("SELECT   count(1) FROM $tableName1", Int::class.java)
+    val tableName2Cnt = this.queryForObject("SELECT   count(1) FROM $tableName2", Int::class.java)
+
+    assertEquals(tableName1Cnt, tableName2Cnt, "Tables $tableName1 and $tableName2 not equals. There diff count records $tableName1 count $tableName1Cnt, $tableName2 count $tableName1Cnt" )
+
 }

@@ -1,8 +1,8 @@
 create table tst_backedup_table_cache
 (
-    original_name varchar(30),
+    original_name varchar(63),
     --
-    backup_name   varchar(30),
+    backup_name   varchar(63),
     --
     constraint tst_backedup_table_cache_pk primary key (original_name)
 )

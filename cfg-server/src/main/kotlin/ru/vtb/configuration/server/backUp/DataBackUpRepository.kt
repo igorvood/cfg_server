@@ -62,7 +62,7 @@ class DataBackUpRepository(
 
     @Transactional(propagation = Propagation.MANDATORY)
     fun cleanTables(meta: List<TableMeta>) {
-        meta.sortedBy { sortFun(it) }
+        meta.sortedByDescending { sortFun(it) }
             .forEach { jdbcTemplate.update("delete from ${it.tableName}") }
     }
 

@@ -1,7 +1,6 @@
 package ru.vtb.configuration.server.controller.tracer
 
 import org.springframework.stereotype.Service
-import ru.vtb.configuration.server.controller.PumlGeneratorControllerImpl
 import ru.vtb.configuration.server.controller.dto.FlinkSrvPuml
 import ru.vtb.configuration.server.controller.dto.GraphNode
 import ru.vtb.configuration.server.controller.dto.TopicPuml
@@ -10,7 +9,6 @@ import ru.vtb.configuration.server.controller.dto.tracer.GraphNodeJson
 import ru.vtb.configuration.server.controller.dto.tracer.JsonArrow
 import ru.vtb.configuration.server.controller.dto.tracer.TopicJson
 import ru.vtb.configuration.server.controller.intf.tracer.ArrowController
-import ru.vtb.configuration.server.repo.dto.DirectionEnum
 import ru.vtb.configuration.server.repo.intf.PumlGeneratorRepository
 
 @Service

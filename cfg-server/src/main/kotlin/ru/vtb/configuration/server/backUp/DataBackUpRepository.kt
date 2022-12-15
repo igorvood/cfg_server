@@ -56,20 +56,20 @@ class DataBackUpRepository(
         return query ?: listOf()
     }
 
-    fun allTableData(sql: String):List<MutableMap<String, Any>> {
+    fun allTableData(sql: String): List<MutableMap<String, Any>> {
         return jdbcTemplate.queryForList(sql)
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
     fun cleanTables(meta: List<TableMeta>) {
         meta.sortedBy { sortFun(it) }
-            .forEach {  jdbcTemplate.update("delete from ${it.tableName}") }
+            .forEach { jdbcTemplate.update("delete from ${it.tableName}") }
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
     fun runQueries(sqls: List<String>) {
         sqls
-            .forEach {  jdbcTemplate.update(it) }
+            .forEach { jdbcTemplate.update(it) }
     }
 
     private fun sortFun(it: TableMeta) = "${it.lvl}_${it.tableName}"

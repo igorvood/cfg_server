@@ -32,6 +32,7 @@ class FillDictControllerImpl(
 
     override fun dictTopicDelete(topicName: String) {
         fillDictRepository.dictTopicDelete(topicName)
+        checkService.checkAll()
     }
 
     override fun dictServiceDelete(serviceId: String, profileId: String) {

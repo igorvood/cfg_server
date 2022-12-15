@@ -1,5 +1,7 @@
 create or replace view pdd_columns as
 SELECT
+    table_schema,
+    table_name,
     column_name,
     ordinal_position,
     data_type,

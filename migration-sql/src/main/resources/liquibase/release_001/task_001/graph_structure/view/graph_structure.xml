@@ -13,6 +13,8 @@
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0040.pdd_ierarhy_tables.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0050.pdd_tables_dependency.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0060.pdd_columns.sql" endDelimiter="${sqlBatchDelimiter}"/>
+        <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/500.pdd_back_up.sql" endDelimiter="${sqlBatchDelimiter}"/>
+
     </changeSet>
 
 

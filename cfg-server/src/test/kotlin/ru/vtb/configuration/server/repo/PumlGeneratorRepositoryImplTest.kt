@@ -14,7 +14,7 @@ internal class PumlGeneratorRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun findByGraphId() {
         val findByGraphId = pumlGeneratorRepositoryImplTest.findByGraphId("rto_graph")
-        assertEquals(47, findByGraphId.size)
+        assertEquals(57, findByGraphId.size)
     }
 
     @Test
@@ -26,7 +26,7 @@ internal class PumlGeneratorRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun findByGroupId() {
         val findByGraphId = pumlGeneratorRepositoryImplTest.findByGroupId("rto_graph")
-        assertEquals(47, findByGraphId.size)
+        assertEquals(57, findByGraphId.size)
 
     }
 }

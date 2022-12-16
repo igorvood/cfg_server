@@ -18,8 +18,9 @@ internal class DataCollectServiceTest : AbstractDatasourceTests() {
         val generateInsertsQuery = dataCollectService.exportData(listOf("test_1"))
 
         assertEquals(
-            """insert into test_1(default_val, id, num) VALUES (-1, 'id_1', 45);
-insert into test_1(default_val, id, num) VALUES (15, 'id_2', 45);""", generateInsertsQuery
+            """insert into test_1(default_val, id, num) 
+select -1, 'id_1', 45 from dual  union 
+select 15, 'id_2', 45 from dual """, generateInsertsQuery
         )
     }
 

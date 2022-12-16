@@ -10,9 +10,9 @@ class BackupDataRest(val dataCollectService: DataCollectService) {
     @Operation(summary = "Импорт", tags = ["Импорт/экспорт"])
     @GetMapping("/importData")
     fun importData(
-        @RequestBody sql: String,
+        @RequestBody sql: SqlDto,
     ) {
-        dataCollectService.importData(listOf(), sql)
+        dataCollectService.importData(listOf(), sql.sql)
     }
 
 

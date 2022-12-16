@@ -23,15 +23,18 @@ class DataCollectService(
                 val dataTable = dataBackUpRepository.allTableData("""select $columnList from ${table.tableName}""")
                 table to Data(columnsList, columnList, dataTable)
             }
-            .joinToString("\n\n") { td ->
+            .joinToString("\n ~\\~ \n\n") { td ->
                 val table = td.first
                 val dataTable = td.second
-                val s = "insert into ${table.tableName}(${dataTable.colsStr}) \n" +
-                        dataTable.data
-                            .joinToString(" union \n") { cellDataTable ->
-                                generateInsert(table.columns, cellDataTable, table.tableName, dataTable.colsStr)
-                            }
-                s
+
+                if (dataTable.data.isNotEmpty()) {
+                    "insert into ${table.tableName}(${dataTable.colsStr}) \n" +
+                            dataTable.data
+                                .joinToString(" union \n") { cellDataTable ->
+                                    generateInsert(table.columns, cellDataTable, table.tableName, dataTable.colsStr)
+                                }
+                } else ""
+
             }
         return map
     }
@@ -69,7 +72,7 @@ class DataCollectService(
     fun importData(tableNames: List<String>, generateInsertsQuery: String) {
         val meta = getMeta(tableNames)
         dataBackUpRepository.cleanTables(meta)
-        val sqls = generateInsertsQuery.split("\n")
+        val sqls = generateInsertsQuery.split("~\\~")
         dataBackUpRepository.runQueries(sqls)
     }
 

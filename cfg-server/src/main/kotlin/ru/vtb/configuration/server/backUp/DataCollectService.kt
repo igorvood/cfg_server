@@ -1,6 +1,7 @@
 package ru.vtb.configuration.server.backUp
 
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.backUp.dto.ColumnMeta
 import java.math.BigDecimal
@@ -64,7 +65,7 @@ class DataCollectService(
         return """insert into $tableName($colsStr) VALUES ($columnsVal);"""
     }
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun importData(tableNames: List<String>, generateInsertsQuery: String) {
         val meta = getMeta(tableNames)
         dataBackUpRepository.cleanTables(meta)

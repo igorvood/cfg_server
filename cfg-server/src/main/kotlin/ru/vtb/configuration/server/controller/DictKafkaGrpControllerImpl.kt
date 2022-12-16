@@ -14,7 +14,7 @@ import ru.vtb.configuration.server.repo.intf.DictKafkaGrpRepository
 class DictKafkaGrpControllerImpl(
     val dictKafkaGrpRepository: DictKafkaGrpRepository,
     val checkService: CheckRunner
-    ) : DictKafkaGrpController {
+) : DictKafkaGrpController {
 
     override fun kafkaPropertyGrpList(): Set<KafkaPropertyGrp> {
         return dictKafkaGrpRepository.kafkaPropertyGrpList()

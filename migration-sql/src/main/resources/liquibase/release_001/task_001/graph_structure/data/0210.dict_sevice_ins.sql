@@ -4,10 +4,11 @@ DO $$
         v varchar;
     begin
         for tuple2_v in
-    select 'graph_1' GRAPH_ID, 'Additional_enrich' SERVICE_ID, 'case_65' PROFILE_ID, 'MainClass1' MAIN_CLASS from dual union
-    select 'graph_1', 'Filter', 'case_65', 'MainClass2' from dual union
-    select 'graph_1', 'Mutator', 'case_65', 'MainClass3' from dual union
-    select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'way4', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
+--     select 'graph_1' GRAPH_ID, 'Additional_enrich' SERVICE_ID, 'case_65' PROFILE_ID, 'MainClass1' MAIN_CLASS from dual union
+--     select 'graph_1', 'Filter', 'case_65', 'MainClass2' from dual union
+--     select 'graph_1', 'Mutator', 'case_65', 'MainClass3' from dual union
+
+    select 'rto_graph' GRAPH_ID, 'uasp-streaming-mdm-enrichment' SERVICE_ID, 'way4' PROFILE_ID, 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' MAIN_CLASS from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'way4-card-agreement', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
 
     select 'rto_graph', 'uasp-kriaa-bevents-case-40', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union

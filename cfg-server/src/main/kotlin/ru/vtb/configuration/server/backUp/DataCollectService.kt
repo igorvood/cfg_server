@@ -23,14 +23,15 @@ class DataCollectService(
                 val dataTable = dataBackUpRepository.allTableData("""select $columnList from ${table.tableName}""")
                 table to Data(columnsList, columnList, dataTable)
             }
-            .joinToString("\n") { td ->
+            .joinToString("\n\n") { td ->
                 val table = td.first
                 val dataTable = td.second
-
-                dataTable.data
-                    .joinToString("\n") { cellDataTable ->
-                        generateInsert(table.columns, cellDataTable, table.tableName, dataTable.colsStr)
-                    }
+                val s = "insert into ${table.tableName}(${dataTable.colsStr}) \n" +
+                        dataTable.data
+                            .joinToString(" union \n") { cellDataTable ->
+                                generateInsert(table.columns, cellDataTable, table.tableName, dataTable.colsStr)
+                            }
+                s
             }
         return map
     }
@@ -61,7 +62,7 @@ class DataCollectService(
             sd
         }
 
-        return """insert into $tableName($colsStr) VALUES ($columnsVal);"""
+        return """select $columnsVal from dual """
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)

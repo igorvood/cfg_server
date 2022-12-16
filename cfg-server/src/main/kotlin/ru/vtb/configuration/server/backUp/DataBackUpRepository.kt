@@ -35,16 +35,11 @@ class DataBackUpRepository(
                 val res = mutableMapOf<Pair<Int, String>, MutableList<ColumnMeta>>()
 
                 while (rs.next()) {
-
                     val lvl = rs.getInt(1)
                     val tableName = rs.getString(2)
-
                     val t = lvl to tableName
-
                     val columns = res.computeIfAbsent(t) { mutableListOf() }
-
                     columns.add(ColumnMeta(rs.getString(3)))
-
                 }
                 res.entries
                     .map { s -> TableMeta(s.key.first, s.key.second, s.value.sortedBy { it.name }) }

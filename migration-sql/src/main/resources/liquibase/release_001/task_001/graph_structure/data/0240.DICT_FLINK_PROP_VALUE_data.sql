@@ -4,6 +4,16 @@ DO $$
     begin
 INSERT INTO DICT_FLINK_PROP_VALUE (SERVICE_ID, PROFILE_ID, PROP_ID, PROP_VALUE, IS_FUNCTION)
 
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'instance.conf.name', 'way4', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.message.json.path', 'payload', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.message.jsonschema.field', 'contentType', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.read.source.topic.frombeginning', 'n', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.schema.name', 'issuing-operation', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.schema.start.version', '2.3', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.uaspdto.type', 'way4', 0 from dual union
+select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.use.avro.serialization', 'y', 0 from dual union
+
+
 select 'uasp-kriaa-bevents-case-2', 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 0 from dual union
 select 'uasp-kriaa-bevents-case-2', 'main', 'savepoint.pref', 'case-2', 0 from dual union
 select 'uasp-kriaa-bevents-case-2', 'main', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 0 from dual union

@@ -59,6 +59,17 @@ select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth', 'top
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth', 'topic', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from DUAL union
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth', 'topic', 'dev_rto_batch_ca_customer_card_uaspdto__dlq', 'enrichOne.GlobalIdEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union
 
+select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__ca_ha_aggregate__ca__uaspdto', 'flink_srv', 'uasp-streaming-aggregate~aggregate-dko', 'consumer.ca.topic.name'  from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-aggregate~aggregate-dko', 'topic', 'dev_ivr__uasp_realtime__aggregate__uaspdto', 'producer.ha.topic.name'  from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'topic', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto', 'way4.output.topic.name'  from DUAL union
+select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'flink_srv', 'uasp-streaming-aggregate~aggregate-dko', 'consumer.ha.topic.name'  from DUAL union
+select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'way4.input.topic.name'  from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-aggregate~aggregate-dko', 'topic', 'dev_ivr__uasp_realtime__aggregate__filter', 'producer.ha.filter.status.topic.name'  from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'topic', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__dlq', 'way4.dlq.topic.name'  from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-aggregate~aggregate-dko', 'topic', 'dev_ivr__uasp_realtime__aggregate__dlq', 'producer.ha.dlq.topic.name'  from DUAL union
+
+
+
 select 'rto_graph', 'topic', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth-packNM', 'enrichOne.MainEnrichProperty$.fromTopic' from DUAL union
 select 'rto_graph', 'topic', 'dev__dko_uasp__pension_converted', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fromTopic' from DUAL union
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~prof-auth-packNM', 'topic', 'dev_bevents_package_nm_enrich_dlq', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from DUAL union

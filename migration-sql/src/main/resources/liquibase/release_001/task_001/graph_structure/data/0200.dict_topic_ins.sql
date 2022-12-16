@@ -5,6 +5,18 @@ DO $$
   begin
     for tuple2_v in
       with topic as (
+        select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__dlq' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__aggregate__dlq' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__ca_ha_aggregate__ca__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__aggregate__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__aggregate__filter' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json' from dual union
+
+
+
         select 'graph_1' as f1, 'dev_ivr__uasp_realtime__business_rules__uaspdto' as f2 from dual union
         select 'graph_1', 'Filter_producer_1' from dual union
         select 'graph_1', 'Filter_producer_2' from dual union

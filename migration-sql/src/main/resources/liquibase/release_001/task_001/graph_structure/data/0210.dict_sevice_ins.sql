@@ -14,6 +14,10 @@ DO $$
     select 'rto_graph', 'uasp-kriaa-bevents-case-68', 'main', 'ru.vtb.bevent.UaspStreamingCase68' from dual union
     select 'rto_graph', 'uasp-kriaa-bevents-case-2', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union
 
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'way4-convertor', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-aggregate', 'aggregate-dko', 'ru.vtb.uasp.aggregate.UaspStreamingAggregate' from dual union
+
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'case-68', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'case-68_agrement', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'prof-auth', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union

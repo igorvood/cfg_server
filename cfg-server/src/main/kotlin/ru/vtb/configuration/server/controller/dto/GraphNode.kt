@@ -24,7 +24,7 @@ data class TopicPuml(
 
 }
 
-data class FlinkSrvPuml(val name: String, val profileId: String) : GraphNode {
+data class FlinkSrvPuml(val name: String, val profileId: String,val  reportDescription: String) : GraphNode {
     override val alias: String
         get() = replaceForPuml(name + "_" + profileId)
 
@@ -38,7 +38,7 @@ data class FlinkSrvPuml(val name: String, val profileId: String) : GraphNode {
     override fun pamlUmlText(): String {
 //        """${d.serviceId} [label="{<f0> ${d.serviceId} |<f1> ${d.profileId}\n\n\n}" shape=Mrecord];"""
 
-        return """${alias} [label="{<f0> ${pumlName} |<f1> ${pumlProfile}\n\n\n}" shape=Mrecord];"""
+        return """${alias} [label="{<f0> ${pumlName} |<f1> ${pumlProfile}|<f2> ${reportDescription}\n\n\n}" shape=Mrecord];"""
 
 
     }

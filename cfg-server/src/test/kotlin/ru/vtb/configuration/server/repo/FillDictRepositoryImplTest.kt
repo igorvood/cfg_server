@@ -35,6 +35,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     private final val serviceId = "test_service"
     private final val service = FlinkService(serviceId, "test.main.class")
     private final val profileId = "test_profile"
+    private val reportDescription = "Описание не заполнено."
     private final val flinkServiceProfile = FlinkServiceProfile(service, profileId)
     val graphFlinkServiceProfile = GraphFlinkServiceProfile(
         graphId,
@@ -147,7 +148,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
         assertEquals(
             setOf(
                 Arrow(
-                    from = FlinkSrvPuml(name = serviceId, profileId = profileId),
+                    from = FlinkSrvPuml(name = serviceId, profileId = profileId, reportDescription = reportDescription),
                     to = TopicPuml(
                         name = topicName,
                         topicOwnerId = "DKO_COMMAND",
@@ -156,7 +157,8 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
                 )
             ), findByGraphId
         )
-//Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=true, producerGrp=producer_default, consumerGrp=consumer_default))]>,
+//Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile, reportDescription=reportDescription), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>,
+    // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile, reportDescription=Описание не заполнено.), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
 //Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_prop_grp_ref1))]>,
     // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
     }

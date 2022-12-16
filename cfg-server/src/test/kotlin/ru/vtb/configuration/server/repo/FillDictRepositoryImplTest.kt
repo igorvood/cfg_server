@@ -98,9 +98,10 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     @Transactional
     fun dictTopicInsert() {
-        assertEquals(setOf(), reportTopicRepositoryImpl.unUsedTopics())
+        val actual = reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet()
+        assertEquals(setOf(), actual)
         fillDictRepositoryImpl.dictTopicInsert(graphId, topicName, topicOwner)
-        assertEquals(setOf("test_topicName"), reportTopicRepositoryImpl.unUsedTopics())
+        assertEquals(setOf("test_topicName"), reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet())
     }
 
     @Test
@@ -116,7 +117,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
         dictTopicInsert()
         val dictTopicDelete = fillDictRepositoryImpl.dictTopicDelete(topicName)
         assertEquals(1, dictTopicDelete)
-        assertEquals(setOf(), reportTopicRepositoryImpl.unUsedTopics())
+        assertEquals(setOf(), reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet())
     }
 
     @Test

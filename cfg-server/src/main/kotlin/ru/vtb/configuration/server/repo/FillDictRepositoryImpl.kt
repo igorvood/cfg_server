@@ -75,7 +75,8 @@ class FillDictRepositoryImpl(
         serviceId: String,
         profileId: String,
         topicName: String,
-        propertyKey: String
+        propertyKey: String,
+        kafkaPropertyGroup: String,
     ) {
         val beginNode = if (directionEnum == DirectionEnum.IN) {
             topicName
@@ -89,8 +90,8 @@ class FillDictRepositoryImpl(
         jdbcTemplate.execute(PreparedStatementCreator { con ->
             val cs: CallableStatement = con.prepareCall(
                 """
-                insert into DICT_ARROW(GRAPH_ID, BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID, PROPERTY_KEY)
-                values (?, ?, ?, ?, ?, ?)
+                insert into DICT_ARROW(GRAPH_ID, BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID, PROPERTY_KEY, kafka_grp_prop)
+                values (?, ?, ?, ?, ?, ?, ?)
                 """
             )
             cs.setString(1, graphId)
@@ -99,6 +100,8 @@ class FillDictRepositoryImpl(
             cs.setString(4, directionEnum.nodeTypeEnd)
             cs.setString(5, endNode)
             cs.setString(6, propertyKey)
+            cs.setString(7, kafkaPropertyGroup)
+
             cs
         }, PreparedStatementCallback { ps ->
             ps.execute()

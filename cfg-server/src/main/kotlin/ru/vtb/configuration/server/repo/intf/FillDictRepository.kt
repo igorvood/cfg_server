@@ -18,7 +18,8 @@ interface FillDictRepository {
         serviceId: String,
         profileId: String,
         topicName: String,
-        propertyKey: String
+        propertyKey: String,
+        kafkaPropertyGroup: String,
     )
 
     fun dictFlinkPropertyInsert(serviceId: String, profileId: String, propertyDto: PropertyDto)

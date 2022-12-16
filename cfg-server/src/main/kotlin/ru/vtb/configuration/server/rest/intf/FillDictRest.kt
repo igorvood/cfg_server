@@ -40,7 +40,8 @@ interface FillDictRest {
         profileId: String,
         directionEnum: DirectionEnum,
         topicName: String,
-        propertyKey: String
+        propertyKey: String,
+        kafkaPropertyGroup: String,
     )
 
     fun flinkPropertyInsertByTextProp(serviceId: String, profileId: String, propString: String)

@@ -42,6 +42,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
     )
     val topicName = "test_topicName"
     val topicOwner = "DKO_COMMAND"
+    val propertyGroup = "producer_default"
     val propertyKey = "property.topic.key"
     val propertyName = "property.name"
     val propertyValue = "property_value"
@@ -125,7 +126,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
         assertTransaction {
             fillDictRepositoryImpl.dictArrowInsert(
                 DirectionEnum.OUT, graphId, serviceId, profileId, topicName,
-                propertyKey
+                propertyKey, propertyGroup
             )
         }
     }
@@ -138,7 +139,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
 
         fillDictRepositoryImpl.dictArrowInsert(
             DirectionEnum.OUT, graphId, serviceId, profileId, topicName,
-            propertyKey
+            propertyKey, propertyGroup
         )
 
         val findByGraphId = pumlGeneratorRepositoryImpl.findByGraphId(graphId)
@@ -149,14 +150,15 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
                     from = FlinkSrvPuml(name = serviceId, profileId = profileId),
                     to = TopicPuml(
                         name = topicName,
-                        isOur = true,
-                        producerGrp = "producer_default",
-                        consumerGrp = "consumer_default"
+                        topicOwnerId = "DKO_COMMAND",
+                        topicGroup = "producer_default"
                     )
                 )
             ), findByGraphId
         )
-
+//Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=true, producerGrp=producer_default, consumerGrp=consumer_default))]>,
+//Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_prop_grp_ref1))]>,
+    // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
     }
 
     @Test

@@ -18,8 +18,8 @@ class PumlGeneratorRepositoryImpl(
 
     private val arrowsFunction: (rs: ResultSet, rowNum: Int) -> Arrow<out GraphNode, out GraphNode>? = { rs, _ ->
         when (NodeType.valueOf(rs.getString(1))) {
-            NodeType.flink_srv -> Arrow(findService(rs.getString(2)), findTopic(rs.getString(4)))
-            NodeType.topic -> Arrow(findTopic(rs.getString(2)), findService(rs.getString(4)))
+            NodeType.flink_srv -> Arrow(findService(rs.getString(2)), findTopic(rs.getString(4),rs.getString(5)))
+            NodeType.topic -> Arrow(findTopic(rs.getString(2),rs.getString(5)), findService(rs.getString(4)))
         }
 
     }
@@ -27,7 +27,7 @@ class PumlGeneratorRepositoryImpl(
     override fun findByGraphId(graphId: String): Set<Arrow<out GraphNode, out GraphNode>> =
         jdbcTemplate.query(
             """
-            select BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID 
+            select BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID, kafka_grp_prop 
             from DICT_ARROW
             where GRAPH_ID = ?
             """,
@@ -50,7 +50,7 @@ class PumlGeneratorRepositoryImpl(
     override fun findByGroupId(groupId: String): Set<Arrow<out GraphNode, out GraphNode>> {
         return jdbcTemplate.query(
             """
-                select BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID 
+                select BEG_NODE_TYPE, BEG_NODE_ID, END_NODE_TYPE, END_NODE_ID, kafka_grp_prop
                 from rep_arrow_by_grp
                 where group_id = ? 
                 """,
@@ -58,13 +58,13 @@ class PumlGeneratorRepositoryImpl(
         ).toSet()
     }
 
-    private fun findTopic(topicId: String): TopicPuml {
+    private fun findTopic(topicId: String, topicGroup: String): TopicPuml {
         val queryForObject = jdbcTemplate.queryForObject(
-            """select ID, IS_OUR, producer_prop_grp_ref, consumer_prop_grp_ref from dict_topic_node
+            """select ID, topic_owner_id from dict_topic_node
                     where ID = ?
         """, { rs, _ ->
                 TopicPuml(
-                    rs.getString(1), rs.getBoolean(2), rs.getString(3), rs.getString(4)
+                    rs.getString(1), rs.getString(2), topicGroup
                 )
             }, topicId
         )

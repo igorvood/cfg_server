@@ -18,7 +18,8 @@ interface FillDictController {
         serviceId: String,
         profileId: String,
         topicName: String,
-        propertyKey: String
+        propertyKey: String,
+        kafkaPropertyGroup: String,
     )
 
     fun flinkPropertyInsertByTextEnv(serviceId: String, profileId: String, propString: String)

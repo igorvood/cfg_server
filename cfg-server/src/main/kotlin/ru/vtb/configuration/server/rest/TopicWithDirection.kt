@@ -6,7 +6,8 @@ data class TopicWithDirection(
     val directionEnum: DirectionEnum,
 
     val topicName: String,
-    val propertyKey: String
+    val propertyKey: String,
+    val propertyGroup: String
 
 
 )

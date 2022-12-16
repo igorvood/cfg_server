@@ -52,9 +52,10 @@ class FillDictControllerImpl(
         serviceId: String,
         profileId: String,
         topicName: String,
-        propertyKey: String
+        propertyKey: String,
+        kafkaPropertyGroup: String
     ): Unit {
-        fillDictRepository.dictArrowInsert(directionEnum, graphId, serviceId, profileId, topicName, propertyKey)
+        fillDictRepository.dictArrowInsert(directionEnum, graphId, serviceId, profileId, topicName, propertyKey,kafkaPropertyGroup)
         checkService.checkAll()
     }
 

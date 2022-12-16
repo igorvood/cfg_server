@@ -18,8 +18,14 @@ create table dict_arrow
       else end_node_id end
       ) stored not null,
   constraint dict_arrow_prop_key_uk unique (flink_srv, property_key),
-  common_name varchar(256) not null default 'Не задан'
-
+  common_name varchar(256) not null default 'Не задан',
+  kafka_direction varchar(256) generated always as  (
+      case when beg_node_type = 'flink_srv'
+        then 'prd'
+        else 'cns' end
+      ) stored not null,
+  kafka_grp_prop varchar(256) not null,
+  constraint dict_arrow_prop_grp_fk foreign key (kafka_grp_prop, kafka_direction) references dict_kafka_property_grp(id, type_read)
 )
 /
 comment on table dict_arrow is 'Справочник связей сервисов и топиков.'

@@ -58,6 +58,6 @@ internal class PumlGeneratorControllerImplTest {
 
 }
 
-fun topicOf(name: String): TopicPuml = TopicPuml(name, true, "p", "c")
+fun topicOf(name: String): TopicPuml = TopicPuml(name, "true", "p")
 
 fun flinkOf(name: String): FlinkSrvPuml = FlinkSrvPuml(name, "profile")

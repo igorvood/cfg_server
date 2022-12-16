@@ -83,17 +83,17 @@ DO $$
     end loop;
   end;
 $$;
-/
-update dict_topic_node tn set consumer_prop_grp='latest'
-where tn.id in (
-    'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto',
-    'dev_bevents_cft_way4_profile_udds_before_case68_uaspdto',
-    'dev_bevents_streaming_input_convertor_profile_auth_uaspdto',
-    'dev_bevents_card_agreement_enrich_out_uaspdto',
-    'dev_bevents__realtime__input_converter__prof__transactions__uaspdto',
-    'dev_bevents__realtime__case_71__uaspdto',
-    'dev_bevents__realtime__enrichment__prof__contract_num__uaspdto',
-    'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto',
-    'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto'
-    );
+-- /
+-- update dict_topic_node tn set consumer_prop_grp='latest'
+-- where tn.id in (
+--     'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto',
+--     'dev_bevents_cft_way4_profile_udds_before_case68_uaspdto',
+--     'dev_bevents_streaming_input_convertor_profile_auth_uaspdto',
+--     'dev_bevents_card_agreement_enrich_out_uaspdto',
+--     'dev_bevents__realtime__input_converter__prof__transactions__uaspdto',
+--     'dev_bevents__realtime__case_71__uaspdto',
+--     'dev_bevents__realtime__enrichment__prof__contract_num__uaspdto',
+--     'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto',
+--     'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto'
+--     );
 /

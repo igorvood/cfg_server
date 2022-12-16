@@ -7,9 +7,9 @@ sealed interface GraphNode : PumlGenerator {
 
 data class TopicPuml(
     val name: String,
-    val isOur: Boolean,
-    val producerGrp: String,
-    val consumerGrp: String
+    val topicOwnerId: String,
+    val topicGroup: String,
+
 ) : GraphNode {
     override val alias: String
         get() = name.replace("-", "_")
@@ -18,7 +18,7 @@ data class TopicPuml(
         get() = name
 
     override fun pamlUmlText(): String {
-        val color = if (isOur) "Green" else "Red"
+        val color =  "Green"// else "Red"
         return """$alias [label="$alias" shape=box color=$color];"""
     }
 

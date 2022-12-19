@@ -82,6 +82,12 @@ DO $$
         select 'rto_graph', 'dev_bevents_68_after_rate_enrich' from dual union
         select 'rto_graph', 'dev_multibonus_partners_program' from dual union
 
+        select 'rto_graph', 'dev_bevents__realtime__aggregate_first_salary__uaspdto' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__filter_first_salary__filter' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__filter_first_salary__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__business_rules__uaspdto' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__filter__uaspdto__filter' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto' from dual union
 
         select 'rto_graph', 'dev_bevents__realtime__case_71__uaspdto' from dual union
         select 'rto_graph', 'dev_bevents_udds_mdm_rate_case68_uaspdto_dlq' from dual union

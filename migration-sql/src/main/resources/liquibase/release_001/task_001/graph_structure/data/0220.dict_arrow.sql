@@ -74,6 +74,12 @@ select 'rto_graph', 'topic', 'dev__uasp_aprf__pks', 'flink_srv', 'uasp-streaming
 select 'rto_graph', 'topic', 'profile_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-profile', 'profile-transactions.input.topic.name', 'latest' from DUAL union
 select 'rto_graph', 'topic', 'withdraw_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'withdraw-transactions.input.topic.name', 'latest' from DUAL union
 
+select 'rto_graph', 'topic', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'flink_srv', 'uasp-streaming-filter~bevents-filter', 'app.kafka.consumer.topicName', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__business_rules__uaspdto', 'flink_srv', 'uasp-streaming-filter~main-input-filter', 'app.kafka.consumer.topicName', 'latest' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-filter~bevents-filter', 'topic', 'dev_bevents__realtime__filter_first_salary__filter', 'app.kafka.producers.filterTag-error.topicName', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-filter~bevents-filter', 'topic', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'app.kafka.producers.filterTag-success.topicName', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-filter~main-input-filter', 'topic', 'dev_ivr__uasp_realtime__filter__uaspdto__filter', 'app.kafka.producers.filterTag-error.topicName', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-filter~main-input-filter', 'topic', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'app.kafka.producers.filterTag-success.topicName', 'producer_default' from DUAL union
 
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__input_converter__mortgage__dlq', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.toTopic', 'producer_default' from DUAL union
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__mdm_enrichment__mdm_cross_link__status__dlq', 'enrichOne.GlobalIdEnrichProperty$.dlq.FlinkSinkProperties$.toTopic', 'producer_default' from DUAL union

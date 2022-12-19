@@ -23,6 +23,9 @@ DO $$
     select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-withdraw', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
     select 'rto_graph', 'uasp-streaming-model-vector', 'model-vector-bevents', 'ru.vtb.uasp.pilot.model.vector.UaspStreamingModelVector' from dual union
 
+    select 'rto_graph', 'uasp-streaming-filter', 'bevents-filter', 'ru.vtb.uasp.filter.FilterJob' from dual union
+    select 'rto_graph', 'uasp-streaming-filter', 'main-input-filter', 'ru.vtb.uasp.filter.FilterJob' from dual union
+
 
     select 'rto_graph', 'uasp-kriaa-bevents-case-40', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union
     select 'rto_graph', 'uasp-kriaa-bevents-case-68', 'main', 'ru.vtb.bevent.UaspStreamingCase68' from dual union

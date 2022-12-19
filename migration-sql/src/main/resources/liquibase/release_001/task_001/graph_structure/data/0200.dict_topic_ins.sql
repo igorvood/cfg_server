@@ -23,8 +23,42 @@ DO $$
         select 'rto_graph', 'dev_ivr__uasp_realtime__aggregate__uaspdto' from dual union
         select 'rto_graph', 'dev_ivr__uasp_realtime__aggregate__filter' from dual union
         select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json' from dual union
-
-
+        
+        select 'rto_graph', 'CFT2RS_CD_OUT' from dual union
+        select 'rto_graph', 'dev_bevents__batch__ca_first_salary_transactions_dlq' from dual union
+        select 'rto_graph', 'dev_bevents__batch__ca_first_salary_transactions__json' from dual union
+        select 'rto_graph', 'dev_bevents__batch__ca_first_salary_transactions__json_converted' from dual union
+        select 'rto_graph', 'dev__bevents__realtime__aggregate_first_salary__dlq' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__aggregate_first_salary__uaspdto' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__filter_first_salary__uaspdto' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__input_converter__cft__transactions__dlq' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__input_converter__prof__transactions__dlq' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__modelvector_first_salary__dlq' from dual union
+        select 'rto_graph', 'dev_bevents__realtime__modelvector_first_salary__qa' from dual union
+        select 'rto_graph', 'dev_bevents_streaming_input_convertor_profile_auth_dlq' from dual union
+        select 'rto_graph', 'dev_bevents_streaming_input_convertor_profile_auth_json' from dual union
+        select 'rto_graph', 'dev__dko_uasp__card_agreement' from dual union
+        select 'rto_graph', 'dev__dko_uasp__card_agreement_dlq' from dual union
+        select 'rto_graph', 'dev_input_withdraw_tx_dlq' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__dlq' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__model_vector__json' from dual union
+        select 'rto_graph', 'dev_ivr__uasp_realtime__operations__json' from dual union
+        select 'rto_graph', 'dev_rto_batch_ca_deposit_account_case_71_dlq' from dual union
+        select 'rto_graph', 'dev_rto_batch_ca_deposit_account_case_71_json' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_39_vector' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_44' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_48' from dual union
+        select 'rto_graph', 'dev__rto_uasp__case_71' from dual union
+        select 'rto_graph', 'dev__rto_uasp__izost' from dual union
+        select 'rto_graph', 'dev__rto_uasp__pdscp' from dual union
+        select 'rto_graph', 'dev__rto_uasp__ppnsx' from dual union
+        select 'rto_graph', 'dev__rto_uasp__zp' from dual union
+        select 'rto_graph', 'dev__rto_uasp__zzp' from dual union
+        select 'rto_graph', 'dev__uasp_aprf__pks' from dual union
+        select 'rto_graph', 'profile_tx_out' from dual union
+        select 'rto_graph', 'withdraw_tx_out' from dual union
+        
         select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__mortgage__dlq' from dual union
         select 'rto_graph', 'dev_ivr__uasp_realtime__input_converter__mortgage__uaspdto' from dual union
         select 'rto_graph', 'dev_ivr__uasp_realtime__mdm_enrichment__mdm_cross_link__status__dlq' from dual union

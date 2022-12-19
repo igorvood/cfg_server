@@ -11,6 +11,19 @@ DO $$
     select 'rto_graph' GRAPH_ID, 'uasp-streaming-mdm-enrichment' SERVICE_ID, 'way4' PROFILE_ID, 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' MAIN_CLASS from dual union
     select 'rto_graph', 'uasp-streaming-mdm-enrichment', 'way4-card-agreement', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual union
 
+    select 'rto_graph', 'bevents-streaming-aggregate-first-salary', 'aggregate-bevents', 'ru.vtb.bevent.first.salary.aggregate.UaspStreamingAggregateFirstSalary' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-ca-cardfl', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-ca-depositfl', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-ca-first-salary', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-cardfl', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-cft', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-mdm', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-prof-auth', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-profile', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-input-convertor', 'input-convertor-withdraw', 'ru.vtb.uasp.inputconvertor.Convertor' from dual union
+    select 'rto_graph', 'uasp-streaming-model-vector', 'model-vector-bevents', 'ru.vtb.uasp.pilot.model.vector.UaspStreamingModelVector' from dual union
+
+
     select 'rto_graph', 'uasp-kriaa-bevents-case-40', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union
     select 'rto_graph', 'uasp-kriaa-bevents-case-68', 'main', 'ru.vtb.bevent.UaspStreamingCase68' from dual union
     select 'rto_graph', 'uasp-kriaa-bevents-case-2', 'main', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual union

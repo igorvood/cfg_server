@@ -14,24 +14,24 @@ internal class ReportTopicRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun topicsByStand() {
         val topicsByStand = reportTopicRepositoryImpl.topicsByStand(StandEnum.DSO)
-        assertEquals(60, topicsByStand.size)
+        assertEquals(92, topicsByStand.size)
     }
 
     @Test
     fun usedTopics() {
         val topicsByStand = reportTopicRepositoryImpl.usedTopics()
-        assertEquals(52, topicsByStand.size)
+        assertEquals(81, topicsByStand.size)
     }
 
     @Test
     fun unUsedTopics() {
         val topicsByStand = reportTopicRepositoryImpl.unUsedTopics()
-        assertEquals(1, topicsByStand.size)
+        assertEquals(6, topicsByStand.size)
     }
 
     @Test
     fun repTopics() {
         val repTopics = reportTopicRepositoryImpl.repTopics("rto_graph", StandEnum.P0)
-        assertEquals(52, repTopics.size)
+        assertEquals(81, repTopics.size)
     }
 }

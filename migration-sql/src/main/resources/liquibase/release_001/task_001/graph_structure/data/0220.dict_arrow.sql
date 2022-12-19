@@ -36,42 +36,43 @@ select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-2~main', 'topic', 'dev
 select 'rto_graph', 'flink_srv', 'uasp-kriaa-bevents-case-2~main', 'topic', 'dev__rto_uasp__case_2_dlq', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic', 'producer_default' from DUAL union
 
 
-select 'rto_graph', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'topic', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'topic', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'topic', 'dev__dko_uasp__card_agreement_dlq', 'ca-cardfl.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_dlq', 'ca-depositfl.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_json_converted', 'ca-depositfl.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'topic', 'dev_bevents__batch__ca_first_salary_transactions_dlq', 'ca-cft-transactions.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'topic', 'dev_bevents__batch__ca_first_salary_transactions__json_converted', 'ca-cft-transactions.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'topic', 'dev_input_converter_cardfl_refill_uasp', 'cardfl.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'topic', 'dev_input_converter_cardfl_refill_uasp_dlq', 'cardfl.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'topic', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'cft-transactions.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'topic', 'dev_bevents__realtime__input_converter__cft__transactions__dlq', 'cft-transactions.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__dlq', 'mdm.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__uaspdto', 'mdm.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_dlq', 'profile.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'profile.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'topic', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'withdraw-transactions.output.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'topic', 'dev_input_withdraw_tx_dlq', 'withdraw-transactions.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_bevents__realtime__modelvector_first_salary__dlq', 'producer.dlq.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_bevents__realtime__modelvector_first_salary__qa', 'producer.qa.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_ivr__uasp_realtime__model_vector__json', 'producer.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_ivr__uasp_realtime__operations__json', 'producer.short.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__pdscp', 'producer.case29.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__ppnsx', 'producer.ns.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__zp', 'producer.pens.topic.name' from DUAL union
-select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__zzp', 'producer.fs.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'CFT2RS_CD_OUT', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'cft-transactions.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_bevents__batch__ca_first_salary_transactions__json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'ca-cft-transactions.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'ha.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'consumer.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'profile.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev__dko_uasp__card_agreement', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'ca-cardfl.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'mdm.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'ca-depositfl.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'dev__uasp_aprf__pks', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'cardfl.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'profile_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-profile', 'profile-transactions.input.topic.name' from DUAL union
-select 'rto_graph', 'topic', 'withdraw_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'withdraw-transactions.input.topic.name' from DUAL union
+select 'rto_graph', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'topic', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'topic', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'topic', 'dev__dko_uasp__card_agreement_dlq', 'ca-cardfl.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_dlq', 'ca-depositfl.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_json_converted', 'ca-depositfl.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'topic', 'dev_bevents__batch__ca_first_salary_transactions_dlq', 'ca-cft-transactions.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'topic', 'dev_bevents__batch__ca_first_salary_transactions__json_converted', 'ca-cft-transactions.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'topic', 'dev_input_converter_cardfl_refill_uasp', 'cardfl.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'topic', 'dev_input_converter_cardfl_refill_uasp_dlq', 'cardfl.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'topic', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'cft-transactions.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'topic', 'dev_bevents__realtime__input_converter__cft__transactions__dlq', 'cft-transactions.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__dlq', 'mdm.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__uaspdto', 'mdm.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_dlq', 'profile.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'profile.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'topic', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'withdraw-transactions.output.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'topic', 'dev_input_withdraw_tx_dlq', 'withdraw-transactions.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_bevents__realtime__modelvector_first_salary__dlq', 'producer.dlq.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_bevents__realtime__modelvector_first_salary__qa', 'producer.qa.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_ivr__uasp_realtime__model_vector__json', 'producer.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev_ivr__uasp_realtime__operations__json', 'producer.short.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__pdscp', 'producer.case29.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__ppnsx', 'producer.ns.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__zp', 'producer.pens.topic.name', 'producer_default' from DUAL union
+select 'rto_graph', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'topic', 'dev__rto_uasp__zzp', 'producer.fs.topic.name', 'producer_default' from DUAL union
+
+select 'rto_graph', 'topic', 'CFT2RS_CD_OUT', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cft', 'cft-transactions.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents__batch__ca_first_salary_transactions__json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-first-salary', 'ca-cft-transactions.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'flink_srv', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'ha.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'flink_srv', 'uasp-streaming-model-vector~model-vector-bevents', 'consumer.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_bevents_streaming_input_convertor_profile_auth_json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'profile.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev__dko_uasp__card_agreement', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'ca-cardfl.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-mdm', 'mdm.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev_rto_batch_ca_deposit_account_case_71_json', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'ca-depositfl.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'dev__uasp_aprf__pks', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'cardfl.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'profile_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-profile', 'profile-transactions.input.topic.name', 'latest' from DUAL union
+select 'rto_graph', 'topic', 'withdraw_tx_out', 'flink_srv', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'withdraw-transactions.input.topic.name', 'latest' from DUAL union
 
 
 select 'rto_graph', 'flink_srv', 'uasp-streaming-mdm-enrichment~way4', 'topic', 'dev_ivr__uasp_realtime__input_converter__mortgage__dlq', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.toTopic', 'producer_default' from DUAL union

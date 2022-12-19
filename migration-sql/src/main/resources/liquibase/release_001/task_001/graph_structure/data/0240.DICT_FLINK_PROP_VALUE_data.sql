@@ -13,6 +13,14 @@ select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.s
 select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.uaspdto.type', 'way4', 0 from dual union
 select 'uasp-streaming-input-convertor', 'input-convertor-w4-operation', 'way4.use.avro.serialization', 'y', 0 from dual union
 
+select 'uasp-streaming-filter', 'bevents-filter', 'filter.fieldName', 'system-classification', 0 from dual union
+select 'uasp-streaming-filter', 'bevents-filter', 'filter.operandClass', 'String', 0 from dual union
+select 'uasp-streaming-filter', 'bevents-filter', 'filter.operator', 'notNull', 0 from dual union
+select 'uasp-streaming-filter', 'bevents-filter', 'filter.tagPrefix', 'filterTag', 0 from dual union
+select 'uasp-streaming-filter', 'bevents-filter', 'flink.job.service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 0 from dual union
+select 'uasp-streaming-filter', 'bevents-filter', 'flink.job.sync.parallelism', '${PARALLELISM}', 0 from dual union
+
+
 
 select 'bevents-streaming-aggregate-first-salary', 'aggregate-bevents', 'auto.offset.reset', 'latest', 0 from dual union
 select 'bevents-streaming-aggregate-first-salary', 'aggregate-bevents', 'enable.idempotence', 'true', 0 from dual union

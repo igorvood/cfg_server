@@ -1,8 +1,5 @@
 spring:
   liquibase:
     enabled: true
-#    enabled: false
     change-log: liquibase/drop_all_obj/liquibase-drop.xml
     drop-first: true
-#server:
-#  port: 9090

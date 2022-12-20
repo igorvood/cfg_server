@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 
-    <changeSet id="liquibase/release_001/task_001/graph_structure/view/pdd" author="vood" runAlways="true">
+    <changeSet id="liquibase/release_001/task_001/graph_structure/view/pdd" author="vood"  runAlways="false">
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0010.pdd_constrant.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0012.pdd_tables.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/pdd/0020.pdd_constrant_column.sql" endDelimiter="${sqlBatchDelimiter}"/>
@@ -18,8 +18,8 @@
     </changeSet>
 
 
-    <changeSet id="liquibase/release_001/task_001/graph_structure/view" author="vood" runAlways="true">
-        <validCheckSum>any</validCheckSum>
+    <changeSet id="liquibase/release_001/task_001/graph_structure/view" author="vood"  runAlways="false">
+
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0200.rep_topic_name_by_stand.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0204.dict_service_profile.sql" endDelimiter="${sqlBatchDelimiter}"/>
         <sqlFile path="liquibase/release_001/task_001/graph_structure/view/0205.KAFKA_PROP_VALUE_by_STAND.sql" endDelimiter="${sqlBatchDelimiter}"/>

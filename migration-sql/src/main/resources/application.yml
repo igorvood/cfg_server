@@ -1,4 +1,7 @@
 spring:
+  profiles:
+#    active: drop
+    active: migration
   datasource:
     #    driver-class-name: oracle.jdbc.driver.OracleDriver
     driver-class-name: org.postgresql.Driver
@@ -6,10 +9,3 @@ spring:
 #    url: jdbc:postgresql://d5uasp-pgc002lk.corp.dev.vtb:5432/db_configuration_manager
     username: db_configuration_manager_admin
     password: SNgCjskqMY8LqSvNZ_Y
-  liquibase:
-    enabled: true
-#    enabled: false
-    change-log: liquibase/liquibase-outputChangeLog.xml
-    drop-first: true
-#server:
-#  port: 9090

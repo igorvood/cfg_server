@@ -7,6 +7,33 @@ spring:
 server:
   port: ${APPLICATION_PORT:9091}
 
+management:
+  health:
+    db:
+      enabled: true
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+    defaults:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+  server:
+    port: ${MANAGMENT_APPLICATION_PORT:9092}
+#    health:
+#      probes:
+#        enabled: true
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+#    port: 8080
+#    initialDelaySeconds: 3
+#    periodSeconds: 3
 
 logging:
   level:
@@ -16,6 +43,8 @@ springdoc:
   show-actuator: true
   swagger-ui:
     config-url: qwerty
+
+
 #springdoc:
 #  api-docs:
 #    path: /v3/api-docs

@@ -1,3 +1,5 @@
+-- drop schema if exists db_configuration_manager CASCADE
+-- /
 DO $$
 declare
     r record;
@@ -40,4 +42,12 @@ begin
 end;
 $$;
 /
+CREATE SCHEMA IF NOT EXISTS db_configuration_manager
+/
+alter schema db_configuration_manager owner to db_configuration_manager_admin;
+/
+alter role db_configuration_manager_admin set search_path to db_configuration_manager
+/
 
+SET search_path TO db_configuration_manager
+/

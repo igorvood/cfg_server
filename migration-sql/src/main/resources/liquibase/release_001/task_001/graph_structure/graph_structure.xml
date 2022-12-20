@@ -34,8 +34,14 @@
         <sqlFile path="liquibase/release_001/task_001/graph_structure/0510.dict_service_group.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
-    <include file="liquibase/release_001/task_001/graph_structure/view/graph_structure.xml11111"/>
-    <include file="liquibase/release_001/task_001/graph_structure/pck/graph_structure.xml"/>
+    <include file="liquibase/release_001/task_001/graph_structure/view/view.xml"/>
+    <include file="liquibase/release_001/task_001/graph_structure/pck/pck.xml"/>
+
+    <include file="liquibase/release_001/task_001/graph_structure/pck/pck.xml"/>
+
+    <include file="liquibase/release_001/data/release_001_data.xml"/>
+
+
 
 
 </databaseChangeLog>

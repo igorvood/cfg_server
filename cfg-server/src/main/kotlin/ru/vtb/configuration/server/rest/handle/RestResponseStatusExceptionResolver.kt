@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpHeaders
 import org.springframework.http.MediaType
+import org.springframework.stereotype.Component
 import org.springframework.web.servlet.ModelAndView
 import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver
 import javax.servlet.http.HttpServletRequest
@@ -24,7 +25,7 @@ class RestResponseStatusExceptionResolver : AbstractHandlerExceptionResolver() {
 //                message, request, response, handler
 //            )
             response.sendError(1, message.message)
-            return null;//handleIllegalArgument
+            return ModelAndView("error");//handleIllegalArgument
 
         } catch (handlerException: Exception) {
             Companion.logger.warn("Handling of [{}] resulted in Exception", ex.javaClass.name, handlerException)

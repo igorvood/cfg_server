@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    enabled: true
+#    enabled: false
+    change-log: liquibase/tests/for_tests.xml
+    drop-first: true
+#server:
+#  port: 9090

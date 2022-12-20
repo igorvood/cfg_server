@@ -5,7 +5,6 @@ create table dict_kafka_property_grp
   constraint dict_kafka_property_grp_type_prop_ck check ( type_read in ('prd', 'cns') ),
   constraint dict_kafka_property_grp_pk primary key (type_read, id),
   description varchar(512)
-
 )
 /
 comment on table dict_kafka_property_grp is 'Справочник групп настроек для кафки.'

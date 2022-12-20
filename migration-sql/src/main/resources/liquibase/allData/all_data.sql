@@ -968,10 +968,10 @@ select 'producer_default', 'ssl.truststore.password', 'kafkauasppassword', 'NOTE
 select 'producer_default', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'prd' from dual 
- ; 
+;
 
- ; 
-insert into dict_service_group(group_id, profile_id, service_id) 
+;
+insert into dict_service_group(group_id, profile_id, service_id)
 select 'rto_graph', 'aggregate-bevents', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'rto_graph', 'main', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'rto_graph', 'main', 'uasp-kriaa-bevents-case-40' from dual  union 

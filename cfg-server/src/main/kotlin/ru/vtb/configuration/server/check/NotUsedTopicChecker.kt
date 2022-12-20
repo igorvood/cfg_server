@@ -11,7 +11,6 @@ class NotUsedTopicChecker(
 
     private val logger = LoggerFactory.getLogger(NotUsedTopicChecker::class.java)
     override fun check() {
-        reportTopicRepository.unUsedTopics().forEach { logger.warn("'$it' found unused topic ") }
-
+        reportTopicRepository.unUsedTopics().sorted().forEach { logger.warn("'$it' found unused topic ") }
     }
 }

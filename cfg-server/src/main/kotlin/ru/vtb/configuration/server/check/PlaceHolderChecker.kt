@@ -37,8 +37,10 @@ class PlaceHolderChecker(
 
         val phFunNotInFact = phFun.minus(factPhR)
 
-        phFunNotInFact.forEach {
-            logger.warn("'$it' found function without place holders ")
+        phFunNotInFact
+            .sorted()
+            .forEach {
+            logger.warn("'$it' found unused placeholder")
         }
 
         val factNotInPhFun = factPhR.minus(phFun).sorted()

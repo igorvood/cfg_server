@@ -16,6 +16,7 @@ class DataCollectService(
         val metaData = getMeta(tableName)
 
         val map = metaData
+            .sortedBy { it.lvl.toString()+"_"+it.tableName }
             .map { table ->
                 val columnsList = table.columns
 
@@ -23,7 +24,7 @@ class DataCollectService(
                 val dataTable = dataBackUpRepository.allTableData("""select $columnList from ${table.tableName}""")
                 table to Data(columnsList, columnList, dataTable)
             }
-            .joinToString("\n ~\\~ \n\n") { td ->
+            .joinToString(";\n\n") { td ->
                 val table = td.first
                 val dataTable = td.second
 

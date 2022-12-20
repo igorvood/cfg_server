@@ -2,6 +2,7 @@ spring:
   profiles:
 #    active: drop
     active: migration
+#    active: reinst
   datasource:
     #    driver-class-name: oracle.jdbc.driver.OracleDriver
     driver-class-name: org.postgresql.Driver

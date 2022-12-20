@@ -107,7 +107,15 @@ class FillDictRestImpl(
         topicName: String,
         propertyKey: String,
         kafkaPropertyGroup: String
-    ) = fillDictController.dictArrowInsert(directionEnum, graphId, serviceId, profileId, topicName, propertyKey,kafkaPropertyGroup)
+    ) = fillDictController.dictArrowInsert(
+        directionEnum,
+        graphId,
+        serviceId,
+        profileId,
+        topicName,
+        propertyKey,
+        kafkaPropertyGroup
+    )
 
     @Operation(summary = "Создание связи топиков и сервиса, списком", tags = ["Заполнение таблиц. Связи"])
     @PutMapping("/dictArrowInsertList", produces = [MediaType.APPLICATION_JSON_VALUE])

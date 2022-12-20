@@ -10,7 +10,7 @@ data class TopicPuml(
     val topicOwnerId: String,
     val topicGroup: String,
 
-) : GraphNode {
+    ) : GraphNode {
     override val alias: String
         get() = name.replace("-", "_")
 
@@ -18,13 +18,13 @@ data class TopicPuml(
         get() = name
 
     override fun pamlUmlText(): String {
-        val color =  "Green"// else "Red"
+        val color = "Green"// else "Red"
         return """$alias [label="$alias" shape=box color=$color];"""
     }
 
 }
 
-data class FlinkSrvPuml(val name: String, val profileId: String,val  reportDescription: String) : GraphNode {
+data class FlinkSrvPuml(val name: String, val profileId: String, val reportDescription: String) : GraphNode {
     override val alias: String
         get() = replaceForPuml(name + "_" + profileId)
 

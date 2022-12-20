@@ -16,7 +16,7 @@ class DataCollectService(
         val metaData = getMeta(tableName)
 
         val map = metaData
-            .sortedBy { it.lvl.toString()+"_"+it.tableName }
+            .sortedBy { it.lvl.toString() + "_" + it.tableName }
             .map { table ->
                 val columnsList = table.columns
 

@@ -55,7 +55,15 @@ class FillDictControllerImpl(
         propertyKey: String,
         kafkaPropertyGroup: String
     ): Unit {
-        fillDictRepository.dictArrowInsert(directionEnum, graphId, serviceId, profileId, topicName, propertyKey,kafkaPropertyGroup)
+        fillDictRepository.dictArrowInsert(
+            directionEnum,
+            graphId,
+            serviceId,
+            profileId,
+            topicName,
+            propertyKey,
+            kafkaPropertyGroup
+        )
         checkService.checkAll()
     }
 

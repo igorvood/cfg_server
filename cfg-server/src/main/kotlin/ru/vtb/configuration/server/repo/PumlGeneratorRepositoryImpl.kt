@@ -18,8 +18,8 @@ class PumlGeneratorRepositoryImpl(
 
     private val arrowsFunction: (rs: ResultSet, rowNum: Int) -> Arrow<out GraphNode, out GraphNode>? = { rs, _ ->
         when (NodeType.valueOf(rs.getString(1))) {
-            NodeType.flink_srv -> Arrow(findService(rs.getString(2)), findTopic(rs.getString(4),rs.getString(5)))
-            NodeType.topic -> Arrow(findTopic(rs.getString(2),rs.getString(5)), findService(rs.getString(4)))
+            NodeType.flink_srv -> Arrow(findService(rs.getString(2)), findTopic(rs.getString(4), rs.getString(5)))
+            NodeType.topic -> Arrow(findTopic(rs.getString(2), rs.getString(5)), findService(rs.getString(4)))
         }
 
     }

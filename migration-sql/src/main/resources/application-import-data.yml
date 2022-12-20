@@ -1,4 +1,4 @@
 spring:
   liquibase:
     enabled: true
-    change-log: liquibase/liquibase-migration.xml
+    change-log: liquibase/release_001/data/data.xml

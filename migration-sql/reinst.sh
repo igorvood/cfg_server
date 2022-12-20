@@ -21,7 +21,8 @@ else
   exit 1
 fi
 
-java -jar -Dspring.profiles.active=migration ./target/migration-sql-1.0.2.jar
+java -jar ./target/migration-sql-1.0.2.jar
+#java -jar -Dspring.profiles.active=migration ./target/migration-sql-1.0.2.jar > 3_migration.log
 
 if [ $? -eq 0 ]
 then

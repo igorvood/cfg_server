@@ -8,5 +8,5 @@ select nsp.nspname,
        pc.*
 from pg_catalog.pg_class pc
          JOIN pg_catalog.pg_namespace nsp ON nsp.oid = pc.relnamespace
-where nspname='public' and pc.relkind in ('r', 'v')
+where nspname='db_configuration_manager' and pc.relkind in ('r', 'v')
 /

@@ -22,7 +22,7 @@ class DataBackUpRepository(
             PreparedStatementCreator { con ->
                 val cs: CallableStatement =
                     con.prepareCall(
-                        """select lvl, table_name, column_name 
+                        """select lvl, table_name, column_name, table_comment, column_comment 
                             from pdd_back_up 
                             where table_name = ? or ? is null """
                     )
@@ -32,17 +32,17 @@ class DataBackUpRepository(
             },
             ResultSetExtractor { rs: ResultSet ->
 
-                val res = mutableMapOf<Pair<Int, String>, MutableList<ColumnMeta>>()
+                val res = mutableMapOf<TableMetaTemp, MutableList<ColumnMeta>>()
 
                 while (rs.next()) {
                     val lvl = rs.getInt(1)
                     val tableName = rs.getString(2)
-                    val t = lvl to tableName
+                    val t = TableMetaTemp(lvl , tableName, rs.getString(4))
                     val columns = res.computeIfAbsent(t) { mutableListOf() }
-                    columns.add(ColumnMeta(rs.getString(3)))
+                    columns.add(ColumnMeta(rs.getString(3), rs.getString(5)))
                 }
                 res.entries
-                    .map { s -> TableMeta(s.key.first, s.key.second, s.value.sortedBy { it.name }) }
+                    .map { s -> TableMeta(s.key.lvl, s.key.tableName,s.key.tableComment, s.value.sortedBy { it.name }) }
                     .sortedBy { sortFun(it) }
                     .distinct()
 
@@ -68,5 +68,10 @@ class DataBackUpRepository(
     }
 
     private fun sortFun(it: TableMeta) = "${it.lvl}_${it.tableName}"
+
+    private data class TableMetaTemp(   val lvl: Int,
+                                        val tableName: String,
+                                        val tableComment: String,
+    )
 
 }

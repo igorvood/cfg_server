@@ -22,5 +22,5 @@ SELECT
     is_updatable
 FROM information_schema.columns c
     join pg_class t on t.relname = c.table_name
-    join pg_catalog.pg_description d on d.objsubid = c.ordinal_position and d.objoid = t.oid
+    left join pg_catalog.pg_description d on d.objsubid = c.ordinal_position and d.objoid = t.oid
 /

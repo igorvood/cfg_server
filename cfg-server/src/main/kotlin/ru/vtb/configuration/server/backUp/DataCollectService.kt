@@ -43,9 +43,12 @@ class DataCollectService(
     private fun getMeta(tableName: List<String>) = when (tableName.size) {
         1 -> dataBackUpRepository.metaDataByTable(tableName[0])
         0 -> dataBackUpRepository.metaDataByTable()
-        else -> dataBackUpRepository.metaDataByTable()
-            .filter { t -> tableName.contains(t.tableName) }
+        else -> tableName
+            .flatMap { dataBackUpRepository.metaDataByTable(it) }
             .sortedBy { "${it.lvl}_${it.tableName}" }
+
+//            .filter { t -> tableName.contains(t.tableName) }
+//            .sortedBy { "${it.lvl}_${it.tableName}" }
     }
 
     private fun generateInsert(

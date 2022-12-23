@@ -48,10 +48,7 @@ begin
 end;
 $$;
 /
-
-SELECT *
-FROM information_schema.columns pc
-where table_name = 'all_placeholder'
+SELECT * FROM information_schema.columns pc where table_name = 'all_placeholder'
 ;
 
 SELECT obj_description(pc.oid), relkind, *

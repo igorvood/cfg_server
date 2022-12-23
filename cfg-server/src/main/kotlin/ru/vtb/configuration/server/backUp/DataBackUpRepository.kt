@@ -38,11 +38,11 @@ class DataBackUpRepository(
                     val lvl = rs.getInt(1)
                     val tableName = rs.getString(2)
                     val tableComment = rs.getString(4)
-                    val t = TableMetaTemp(lvl , tableName, tableComment)
+                    val t = TableMetaTemp(lvl, tableName, tableComment)
                     val columns = res.computeIfAbsent(t) { mutableListOf() }
-//                    val columnComment = rs.getString(5)
+                    val columnComment = rs.getString(5) ?: ""
                     val name = rs.getString(3)
-                    columns.add(ColumnMeta(name))
+                    columns.add(ColumnMeta(name, columnComment))
                 }
                 res.entries
                     .map { s -> TableMeta(s.key.lvl, s.key.tableName,s.key.tableComment, s.value.sortedBy { it.name }) }

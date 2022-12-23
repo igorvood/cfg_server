@@ -7,22 +7,22 @@ spring:
 server:
   port: ${APPLICATION_PORT:9091}
 
-management:
-  health:
-    db:
-      enabled: true
-    readinessstate:
-      enabled: true
-    livenessstate:
-      enabled: true
-    defaults:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  server:
-    port: ${MANAGMENT_APPLICATION_PORT:9092}
+#management:
+#  health:
+#    db:
+#      enabled: true
+#    readinessstate:
+#      enabled: true
+#    livenessstate:
+#      enabled: true
+#    defaults:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  server:
+#    port: ${MANAGMENT_APPLICATION_PORT:9092}
 
 logging:
   level:
@@ -32,8 +32,6 @@ springdoc:
   show-actuator: true
   swagger-ui:
     config-url: qwerty
+    url: c
 
 
-#springdoc:
-#  api-docs:
-#    path: /v3/api-docs

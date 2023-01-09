@@ -16,13 +16,13 @@ class ArrowControllerImpl(val pumlGeneratorRepository: PumlGeneratorRepository) 
     override fun arrowsByGroupId(GroupId: String): Set<JsonArrow> {
         val findByTopic = pumlGeneratorRepository.findByGroupId(GroupId)
 //        val cutArrows = PumlGeneratorControllerImpl.cutArrows(findByTopic, GroupId, DirectionEnum.OUT)
-        return findByTopic.map { JsonArrow.of(it.from.toJsonDto(), it.to.toJsonDto()) }.toSet()
+        return findByTopic.map { JsonArrow(it.from.toJsonDto(), it.to.toJsonDto()) }.toSet()
     }
 }
 
 fun GraphNode.toJsonDto(): GraphNodeJson {
     return when (val graphNode = this) {
-        is TopicPuml -> TopicJson(graphNode.name)
-        is FlinkSrvPuml -> FlinkSrvJson(graphNode.name, graphNode.profileId)
+        is TopicPuml -> TopicJson(name = graphNode.name)
+        is FlinkSrvPuml -> FlinkSrvJson(name = graphNode.name, profileId = graphNode.profileId)
     }
 }

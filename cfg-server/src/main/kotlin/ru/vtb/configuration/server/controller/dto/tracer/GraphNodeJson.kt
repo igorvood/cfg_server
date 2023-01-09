@@ -3,7 +3,6 @@ package ru.vtb.configuration.server.controller.dto.tracer
 sealed interface GraphNodeJson
 
 data class TopicJson(
-
     val name: String,
     val type: String = "TopicJson",
 ) : GraphNodeJson

@@ -46,9 +46,6 @@ class DataCollectService(
         else -> tableName
             .flatMap { dataBackUpRepository.metaDataByTable(it) }
             .sortedBy { "${it.lvl}_${it.tableName}" }
-
-//            .filter { t -> tableName.contains(t.tableName) }
-//            .sortedBy { "${it.lvl}_${it.tableName}" }
     }
 
     private fun generateInsert(

@@ -154,7 +154,7 @@ select 'rto_graph', 'issuing-operation', 'topic' from dual  union
 select 'rto_graph', 'uasp-streaming-unp-convertor~way4-issuing-operation', 'flink_srv' from dual  union
 select 'rto_graph', 'dev__rto_uasp__case_39_old', 'topic' from dual  union
 select 'rto_graph', 'dev__rto_uasp__case_51', 'topic' from dual
-    ~\~
+;
 
 insert into dict_group(description, id)
 select 'rto_graph', 'rto_graph' from dual  union
@@ -186,7 +186,7 @@ select 'uasp-streaming-mdm-enrichment_prof-tx-case-71', 'uasp-streaming-mdm-enri
 select 'uasp-streaming-mdm-enrichment_way4', 'uasp-streaming-mdm-enrichment_way4' from dual  union
 select 'uasp-streaming-mdm-enrichment_way4-card-agreement', 'uasp-streaming-mdm-enrichment_way4-card-agreement' from dual  union
 select 'uasp-streaming-model-vector_model-vector-bevents', 'uasp-streaming-model-vector_model-vector-bevents' from dual
-    ~\~
+;
 
 insert into dict_kafka_prop(prop_id, type_prop)
 select 'auto.offset.reset', 'cns' from dual  union
@@ -229,7 +229,7 @@ select 'value.serializer', 'prd' from dual  union
 select 'key.serializer', 'prd' from dual  union
 select 'value.deserializer', 'prd' from dual  union
 select 'key.deserializer', 'prd' from dual
-    ~\~
+;
 
 insert into dict_kafka_property_grp(description, id, type_read)
 select 'Самый простой и минималистичный продюсер', 'producer_default', 'prd' from dual  union
@@ -237,7 +237,7 @@ select 'Загрузка всех сообщений топика с самог�
 select 'загрузка сообщений начиная с офсета, который запомнила кафка', 'latest', 'cns' from dual  union
 select 'Внешняя кафка GF для UNP convertor, загрузка сообщений начиная с офсета, который запомнила кафка', 'gf_latest', 'cns' from dual  union
 select 'Самый идемпотентный продюсер', 'producer_idempotence', 'prd' from dual
-    ~\~
+;
 
 insert into dict_place_holder(default_value, description, id)
 select '${BOOTSTRAP_SERVERS}', 'BOOTSTRAP_SERVERS', 'BOOTSTRAP_SERVERS' from dual  union
@@ -295,7 +295,7 @@ select '${RR_GF_IFWAYN_KEYSTORE_LOCATION}', 'REAL_GF_IFWAYN_KEYSTORE_LOCATION', 
 select '${RR_GF_IFWAYN_SSL_TRUSTSTORE_PASSWORD}', 'REAL_GF_IFWAYN_SSL_TRUSTSTORE_PASSWORD', 'RR_GF_IFWAYN_SSL_TRUSTSTORE_PASSWORD' from dual  union
 select '${RR_GF_IFWAYN_SSL_KEYSTORE_PASSWORD}', 'REAL_GF_IFWAYN_SSL_KEYSTORE_PASSWORD', 'RR_GF_IFWAYN_SSL_KEYSTORE_PASSWORD' from dual  union
 select '${RR_GF_IFWAYN_TRUSTSTORE_LOCATION}', 'REAL_GF_IFWAYN_TRUSTSTORE_LOCATION', 'RR_GF_IFWAYN_TRUSTSTORE_LOCATION' from dual
-    ~\~
+;
 
 insert into dict_service(id, main_class)
 select 'bevents-streaming-aggregate-first-salary', 'ru.vtb.bevent.first.salary.aggregate.UaspStreamingAggregateFirstSalary' from dual  union
@@ -308,15 +308,15 @@ select 'uasp-streaming-input-convertor', 'ru.vtb.uasp.inputconvertor.Convertor' 
 select 'uasp-streaming-mdm-enrichment', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual  union
 select 'uasp-streaming-model-vector', 'ru.vtb.uasp.pilot.model.vector.UaspStreamingModelVector' from dual  union
 select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual
-    ~\~
+;
 
 insert into dict_topic_owner(description_for_report, id, is_our)
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual
-    ~\~
+;
 
 insert into meta_property_function(description, id)
 select 'SERVICE_NAME', 'SERVICE_NAME' from dual
-    ~\~
+;
 
 insert into meta_stand(cnt_partition, description, id, is_local, is_prod, replacment_for_topic_name)
 select 8, 'IFT', 'IFT', 0, 0, 'ift_' from dual  union
@@ -326,7 +326,7 @@ select 8, 'NOTEBOOK', 'NOTEBOOK', 1, 0, 'dev_' from dual  union
 select 8, 'NT', 'NT', 0, 0, 'nt_' from dual  union
 select 8, 'NOTEBOOK_DSO', 'NOTEBOOK_DSO', 1, 0, 'dev_' from dual  union
 select 8, 'DSO', 'DSO', 0, 0, 'dev_' from dual
-    ~\~
+;
 
 insert into dict_arrow(beg_node_id, beg_node_type, common_name, end_node_id, end_node_type, graph_id, kafka_grp_prop, property_key)
 select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.topic.name' from dual  union
@@ -469,7 +469,7 @@ select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не з
 select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_71', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case71.FlinkSinkProperties$.toTopic' from dual  union
 select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_48', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case48.FlinkSinkProperties$.toTopic' from dual  union
 select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_51', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case51.FlinkSinkProperties$.toTopic' from dual
-    ~\~
+;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop)
 select 'earliest', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'cns' from dual  union
@@ -541,7 +541,7 @@ select 'producer_idempotence', 'enable.idempotence', 'true', 'prd' from dual  un
 select 'producer_idempotence', 'acks', 'all', 'prd' from dual  union
 select 'producer_idempotence', 'retries', '1', 'prd' from dual  union
 select 'producer_idempotence', 'transaction.timeout.ms', '1800000', 'prd' from dual
-    ~\~
+;
 
 insert into dict_service_node(profile_id, report_description, service_id)
 select 'aggregate-bevents', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union
@@ -585,7 +585,7 @@ select 'unp-convertor-prof-auth', 'Описание не заполнено.', '
 select 'way4-account-balance', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union
 select 'unp-w4-issuing-card', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union
 select 'way4-issuing-operation', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual
-    ~\~
+;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id)
 select 'delete', 'CFT2RS_CD_OUT', 14400000, 'DKO_COMMAND' from dual  union
@@ -702,7 +702,7 @@ select 'delete', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_card__js
 select 'delete', 'issuing-operation', 14400000, 'DKO_COMMAND' from dual  union
 select 'delete', 'dev__rto_uasp__case_39_old', 14400000, 'DKO_COMMAND' from dual  union
 select 'delete', 'dev__rto_uasp__case_51', 14400000, 'DKO_COMMAND' from dual
-    ~\~
+;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id)
 select 0, 'aggregate-bevents', 'auto.offset.reset', 'latest', 'bevents-streaming-aggregate-first-salary' from dual  union
@@ -1096,7 +1096,7 @@ select 0, 'model-vector-bevents', 'producer.pens.FlinkSinkProperties$.kafkaProdu
 select 0, 'model-vector-bevents', 'producer.pos.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union
 select 0, 'model-vector-bevents', 'producer.posNew.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union
 select 0, 'model-vector-bevents', 'producer.qa.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual
-    ~\~
+;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop)
 select 'latest', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'DSO', 'cns' from dual  union
@@ -1198,10 +1198,8 @@ select 'gf_latest', 'ssl.truststore.password', '${RR_GF_IFWAYN_SSL_TRUSTSTORE_PA
 select 'gf_latest', 'ssl.truststore.location', '${P0_GF_IFWAYN_TRUSTSTORE_LOCATION}', 'P0', 'cns' from dual  union
 select 'gf_latest', 'ssl.keystore.location', '${P0_GF_IFWAYN_KEYSTORE_LOCATION}', 'P0', 'cns' from dual  union
 select 'gf_latest', 'bootstrap.servers', '${IFT_GF_IFWAYN_BOOTSTRAP_SERVERS}', 'IFT', 'cns' from dual
-    ~\~
+;
 
-
-~\~
 
 insert into dict_service_group(group_id, profile_id, service_id)
 select 'rto_graph', 'aggregate-bevents', 'bevents-streaming-aggregate-first-salary' from dual  union
@@ -1260,4 +1258,4 @@ select 'uasp-streaming-mdm-enrichment_prof-tx-case-71', 'prof-tx-case-71', 'uasp
 select 'uasp-streaming-mdm-enrichment_way4', 'way4', 'uasp-streaming-mdm-enrichment' from dual  union
 select 'uasp-streaming-mdm-enrichment_way4-card-agreement', 'way4-card-agreement', 'uasp-streaming-mdm-enrichment' from dual  union
 select 'uasp-streaming-model-vector_model-vector-bevents', 'model-vector-bevents', 'uasp-streaming-model-vector' from dual
-    ~\~
+;

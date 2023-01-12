@@ -338,8 +338,6 @@ select 8, 'DSO', 'DSO', 0, 0, 'dev_' from dual
  ~\~ 
 
 insert into dict_arrow(beg_node_id, beg_node_type, common_name, end_node_id, end_node_type, graph_id, kafka_grp_prop, property_key) 
-select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.topic.name' from dual  union 
-select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'output.topic.name' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_40', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
@@ -366,6 +364,7 @@ select 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 
 select 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'Не задан', 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'topic', 'rto_graph', 'producer_default', 'profile.output.topic.name' from dual  union 
 select 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__dlq', 'topic', 'rto_graph', 'producer_default', 'way4.dlq.topic.name' from dual  union 
 select 'dev__dko_uasp__card_agreement_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~case-68_agrement', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.CommonEnrichProperty$.fromTopic' from dual  union 
+select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'output.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto', 'topic', 'rto_graph', 'producer_default', 'way4.output.topic.name' from dual  union 
 select 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'topic', 'rto_graph', 'producer_default', 'withdraw-transactions.output.topic.name' from dual  union 
 select 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', 'Не задан', 'dev_input_withdraw_tx_dlq', 'topic', 'rto_graph', 'producer_default', 'withdraw-transactions.dlq.topic.name' from dual  union 
@@ -409,13 +408,13 @@ select 'dev_bevents_cft_way4_profile_udds_before_case68_uaspdto', 'topic', 'Не
 select 'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'topic', 'Не задан', 'uasp-streaming-filter~bevents-filter', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'dev_bevents__realtime__case_71__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~profile-tx-step1', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
-select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'rto_graph', 'latest', 'ha.topic.name' from dual  union 
 select 'dev_bevents__realtime__enrichment__prof__contract_num__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~profile-tx-step2', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents__realtime__input_converter__prof__transactions__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-tx-case-71', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents_streaming_input_convertor_profile_auth_json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'rto_graph', 'latest', 'profile.input.topic.name' from dual  union 
 select 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'flink_srv', 'rto_graph', 'latest', 'ca-cardfl.input.topic.name' from dual  union 
 select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__zzp', 'topic', 'rto_graph', 'producer_idempotence', 'producer.fs.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'rto_graph', 'latest', 'ha.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.GlobalIdEnrichProperty$.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~way4-card-agreement', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.CommonEnrichProperty$.fromTopic' from dual  union 
 select 'dev__dko_uasp__pension_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth-packNM', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.CommonEnrichProperty$.fromTopic' from dual  union 
@@ -489,7 +488,8 @@ select 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', '
 select 'uasp-streaming-mutator~rateMutate', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.toTopic' from dual  union 
 select 'dev_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto__dlq', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-success.toTopic' from dual 
+select 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-success.toTopic' from dual  union 
+select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual 
  ~\~ 
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
@@ -734,24 +734,21 @@ select 'delete', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 
  ~\~ 
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
-select 0, 'aggregate-bevents', 'auto.offset.reset', 'latest', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'enable.idempotence', 'true', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'fetch.max.wait.ms', '1000', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'fetch.min.bytes', '5', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'group.id', 'group_id_first_salary', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'kafka.producer.pool.size', '8', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a02.fromFieldName', 'multibonus_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a02.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a02.toFieldName', 'multibonus_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a02.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.fieldsList.a4.fromFieldName', 'mdmid', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl,case_44.drl,case_56.drl,case_57.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level0', 'source_account.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level1', 'level1.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level2', 'level2.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'max.in.flight.requests.per.connection', '5', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.fieldsList.a4.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'aggregate-bevents', 'max.parallelism', '${PARALLELISM}', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'session.timeout.ms', '72000000', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.fieldsList.a4.isOptionalEnrichValue', 'mdmid_cardfl', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'aggregate-bevents', 'state.checkpoints.num-retained', '1', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'stream.checkpoint.time.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'stream.checkpoint.timeout.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 0, 'aggregate-bevents', 'transaction.timeout.ms', '1800000', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 0, 'main', 'savepoint.pref', 'case-2', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 0, 'main', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-2' from dual  union 
@@ -800,6 +797,7 @@ select 0, 'input-convertor-profile', 'instance.conf.name', 'profile-transactions
 select 0, 'input-convertor-profile', 'profile-transactions.read.source.topic.frombeginning', 'n', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-profile', 'profile-transactions.savepoint.pref', 'Input-Profile', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-filter' from dual  union 
+select 0, 'aggregate-bevents', 'service.serviceProfile', '${PROFILE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'input-convertor-profile', 'profile-transactions.uaspdto.type', 'profile', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-profile', 'profile-transactions.use.avro.serialization', 'y', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-w4-operation', 'instance.conf.name', 'way4', 'uasp-streaming-input-convertor' from dual  union 
@@ -831,7 +829,7 @@ select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.inputDataFormat', 'UaspDto
 select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'case-68', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.fieldsList.a4.toFieldName', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'card_type_cd', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -843,7 +841,6 @@ select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.keySelectorMain.i
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapKey', 'hash_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'case-68_agrement', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.fromFieldName', 'mask_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -915,17 +912,15 @@ select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId',
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.mapKey', 'card_number_sha_256', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.mapType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'prof-auth', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldName', 'package_nm', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.isOptionalEnrichValue', 'false', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.toFieldName', 'package_nm', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.inputDataFormat', 'UaspDtoFormat', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'prof-auth-packNM', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a1.fromFieldName', 'contract_num', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -939,7 +934,6 @@ select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'profile-tx-step1', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.globalEnrichFields.fromFieldName', 'global_id', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.globalEnrichFields.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -949,7 +943,6 @@ select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'profile-tx-step2', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'product_nm', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -969,7 +962,6 @@ select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.keySelectorMain.is
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapKey', 'tcmt_account_num', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'prof-tx-case-71', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'is_mortgage', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'Boolean', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -986,7 +978,6 @@ select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat', 'UaspDtoF
 select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'way4', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldName', 'mask_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1056,7 +1047,6 @@ select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.keySelectorMai
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapKey', 'customer_id_and_masked_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.keySelectorMain.mapType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 0, 'way4-card-agreement', 'service.name', '${PROFILE_NAME}_${SERVICE_NAME}_${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'model-vector-bevents', 'mv.enable.qa.stream', 'false', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'model-vector-bevents', 'mv.max.parallelism', '8', 'uasp-streaming-model-vector' from dual  union 
@@ -1160,7 +1150,37 @@ select 0, 'mainInput', 'rulles.flink.job.checkpoint.service.serviceVersion', '${
 select 0, 'uddsRate', 'rulles.flink.job.checkpoint.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mutator' from dual  union 
 select 0, 'uddsRate', 'rulles.flink.job.checkpoint.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mutator' from dual  union 
 select 0, 'rateMutate', 'rulles.flink.job.checkpoint.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mutator' from dual  union 
-select 0, 'rateMutate', 'rulles.flink.job.checkpoint.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mutator' from dual 
+select 0, 'rateMutate', 'rulles.flink.job.checkpoint.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mutator' from dual  union 
+select 0, 'aggregate-bevents', 'service.serviceName', '${SERVICE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents', 'service.serviceVersion', '${SERVICE_VERSION}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents', 'name.state.first.salary.aggregates', '${SERVICE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'case-68', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step1', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step2', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-tx-case-71', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step1', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step2', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-tx-case-71', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step1', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step2', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-tx-case-71', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual 
  ~\~ 
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
@@ -1266,7 +1286,11 @@ select 'gf_latest', 'bootstrap.servers', '${IFT_GF_IFWAYN_BOOTSTRAP_SERVERS}', '
 select 'producer_default', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'prd' from dual  union 
 select 'earliest', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'cns' from dual  union 
 select 'gf_latest', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'cns' from dual 
+select 'latest', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'cns' from dual  union 
+select 'gf_latest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
+select 'producer_default', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'prd' from dual  union 
+select 'latest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
+select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual 
  ~\~ 
 
 

@@ -14,7 +14,7 @@ import ru.vtb.configuration.server.rest.intf.tracer.ArrowRest
 class ArrowRestImpl(val arrowController: ArrowController) : ArrowRest {
 
     @Operation(summary = "Получить связи для трекинга", tags = ["Связи"])
-    @GetMapping("/arrows/byGroup/{groupId}")
+    @GetMapping("/tracking/arrows/{groupId}")
     override fun arrowsByGroup(@PathVariable groupId: String): Set<JsonArrow> {
         return arrowController.arrowsByGroupId(groupId)
     }

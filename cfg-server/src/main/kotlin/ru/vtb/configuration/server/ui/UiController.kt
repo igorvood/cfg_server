@@ -1,6 +1,5 @@
 package ru.vtb.configuration.server.ui
 
-import org.springframework.jdbc.core.JdbcOperations
 import org.springframework.stereotype.Controller
 import ru.vtb.configuration.server.backUp.DataBackUpRepository
 import ru.vtb.configuration.server.backUp.dto.TableMeta

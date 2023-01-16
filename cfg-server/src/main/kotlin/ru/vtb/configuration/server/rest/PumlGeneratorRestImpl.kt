@@ -4,7 +4,6 @@ import io.swagger.v3.oas.annotations.Operation
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.vtb.configuration.server.controller.intf.PumlGeneratorController
-import ru.vtb.configuration.server.repo.dto.DirectionEnum
 import ru.vtb.configuration.server.rest.intf.PumlGeneratorRest
 
 @RestController

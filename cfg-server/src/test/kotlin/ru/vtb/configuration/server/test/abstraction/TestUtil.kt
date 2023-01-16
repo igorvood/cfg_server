@@ -21,6 +21,10 @@ fun JdbcTemplate.compareTablesWithAsserts(tableName1: String, tableName2: String
     val tableName1Cnt = this.queryForObject("SELECT   count(1) FROM $tableName1", Int::class.java)
     val tableName2Cnt = this.queryForObject("SELECT   count(1) FROM $tableName2", Int::class.java)
 
-    assertEquals(tableName1Cnt, tableName2Cnt, "Tables $tableName1 and $tableName2 not equals. There diff count records $tableName1 count $tableName1Cnt, $tableName2 count $tableName1Cnt" )
+    assertEquals(
+        tableName1Cnt,
+        tableName2Cnt,
+        "Tables $tableName1 and $tableName2 not equals. There diff count records $tableName1 count $tableName1Cnt, $tableName2 count $tableName1Cnt"
+    )
 
 }

@@ -5,12 +5,12 @@ import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 import java.lang.reflect.Method
 
-class TransactionTestBeanPostProcessor: BeanPostProcessor {
+class TransactionTestBeanPostProcessor : BeanPostProcessor {
 
-    val transactionalMethods =mutableMapOf<String, Array<Method>>()
+    val transactionalMethods = mutableMapOf<String, Array<Method>>()
 
 
-    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any?  {
+    override fun postProcessBeforeInitialization(bean: Any, beanName: String): Any? {
         val beanClass = bean.javaClass
 
         val annotatedMethods = beanClass.methods

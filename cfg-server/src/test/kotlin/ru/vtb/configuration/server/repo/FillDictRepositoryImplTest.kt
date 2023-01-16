@@ -103,7 +103,10 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
         val actual = reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet()
         assertEquals(setOf(), actual)
         fillDictRepositoryImpl.dictTopicInsert(graphId, topicName, topicOwner)
-        assertEquals(setOf("test_topicName"), reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet())
+        assertEquals(
+            setOf("test_topicName"),
+            reportTopicRepositoryImpl.unUsedTopics().filter { it == topicName }.toSet()
+        )
     }
 
     @Test
@@ -158,9 +161,9 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
             ), findByGraphId
         )
 //Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile, reportDescription=reportDescription), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>,
-    // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile, reportDescription=Описание не заполнено.), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
+        // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile, reportDescription=Описание не заполнено.), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
 //Expected <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_prop_grp_ref1))]>,
-    // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
+        // actual <[Arrow(from=FlinkSrvPuml(name=test_service, profileId=test_profile), to=TopicPuml(name=test_topicName, topicOwnerId=DKO_COMMAND, topicGroup=producer_default))]>.
     }
 
     @Test

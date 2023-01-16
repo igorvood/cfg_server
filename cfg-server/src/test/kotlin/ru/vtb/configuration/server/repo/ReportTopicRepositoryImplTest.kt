@@ -1,6 +1,5 @@
 package ru.vtb.configuration.server.repo
 
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.StandEnum

@@ -45,7 +45,13 @@ class DataBackUpRepository(
                     columns.add(ColumnMeta(name, columnComment))
                 }
                 res.entries
-                    .map { s -> TableMeta(s.key.lvl, s.key.tableName,s.key.tableComment, s.value.sortedBy { it.name }) }
+                    .map { s ->
+                        TableMeta(
+                            s.key.lvl,
+                            s.key.tableName,
+                            s.key.tableComment,
+                            s.value.sortedBy { it.name })
+                    }
                     .sortedBy { sortFun(it) }
                     .distinct()
 
@@ -72,9 +78,10 @@ class DataBackUpRepository(
 
     private fun sortFun(it: TableMeta) = "${it.lvl}_${it.tableName}"
 
-    private data class TableMetaTemp(   val lvl: Int,
-                                        val tableName: String,
-                                        val tableComment: String,
+    private data class TableMetaTemp(
+        val lvl: Int,
+        val tableName: String,
+        val tableComment: String,
     )
 
 }

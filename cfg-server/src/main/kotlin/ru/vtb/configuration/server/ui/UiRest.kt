@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController
 import ru.vtb.configuration.server.backUp.dto.TableMeta
 
 @RestController
-class UiRest(private  val uiController:UiController) {
+class UiRest(private val uiController: UiController) {
 
     @Operation(summary = "Мета информация по таблицам", tags = ["UI"])
     @GetMapping("/tablesMeta")

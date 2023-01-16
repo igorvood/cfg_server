@@ -6,5 +6,4 @@ interface PumlGeneratorRest {
 
     fun plantUMLNew(graphId: String): String
 
-    fun generatePumlByTopic(topicId: String, directionEnum: DirectionEnum): String
 }

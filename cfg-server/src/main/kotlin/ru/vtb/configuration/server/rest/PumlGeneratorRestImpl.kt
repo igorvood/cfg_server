@@ -31,8 +31,4 @@ class PumlGeneratorRestImpl(
         return pumlGeneratorController.generatePumlByGraphId(graphId)
     }
 
-    @Operation(summary = "Формирует puml отталкиваясь от имени топика", tags = ["plantUML"])
-    @GetMapping("/generatePumlByTopic")
-    override fun generatePumlByTopic(topicId: String, directionEnum: DirectionEnum): String =
-        pumlGeneratorController.generatePumlByTopic(topicId, directionEnum)
 }

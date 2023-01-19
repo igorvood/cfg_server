@@ -1278,7 +1278,14 @@ select 'latest', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'cns' from dual  
 select 'gf_latest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
 select 'producer_default', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'prd' from dual  union 
 select 'latest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual ;
+select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
+select 'producer_idempotence', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'prd' from dual ;
 
 ;
 

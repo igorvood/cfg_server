@@ -161,7 +161,16 @@ select 'rto_graph', 'uasp-streaming-mutator~rateMutate', 'flink_srv' from dual  
 select 'rto_graph', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto__dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev_ivr__uasp_realtime__bussiness_rules__uaspdto__dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto_dlq', 'topic' from dual  union 
-select 'rto_graph', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 'topic' from dual ;
+select 'rto_graph', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 'topic' from dual  union 
+select 'cc-block', 'uasp-streaming-beg-card-block~cc-card-block', 'flink_srv' from dual  union 
+select 'cc-block', 'dev__rto_uasp__blcard', 'topic' from dual  union 
+select 'cc-block', 'dev__dko_uasp__pension', 'topic' from dual  union 
+select 'cc-block', 'dev_uasp_ccpp_card_block_dlq', 'topic' from dual  union 
+select 'cc-block', 'dev_uasp_ccpp_card_block', 'topic' from dual  union 
+select 'pin-change', 'dev_uasp_ccpp_card_pin_change', 'topic' from dual  union 
+select 'pin-change', 'dev_uasp_ccpp_card_pin_change_dlq', 'topic' from dual  union 
+select 'pin-change', 'dev__rto_uasp__izmpin', 'topic' from dual  union 
+select 'pin-change', 'uasp-streaming-beg-pincode-change~pin-change', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'rto_graph', 'rto_graph' from dual  union 
@@ -232,16 +241,15 @@ select 'ssl.keystore.password', 'prd' from dual  union
 select 'ssl.truststore.location', 'prd' from dual  union 
 select 'ssl.truststore.password', 'prd' from dual  union 
 select 'value.serializer', 'prd' from dual  union 
-select 'key.serializer', 'prd' from dual  union 
-select 'value.deserializer', 'prd' from dual  union 
-select 'key.deserializer', 'prd' from dual ;
+select 'key.serializer', 'prd' from dual ;
 
 insert into dict_kafka_property_grp(description, id, type_read) 
 select 'Самый простой и минималистичный продюсер', 'producer_default', 'prd' from dual  union 
 select 'Загрузка всех сообщений топика с самого начала', 'earliest', 'cns' from dual  union 
 select 'загрузка сообщений начиная с офсета, который запомнила кафка', 'latest', 'cns' from dual  union 
 select 'Внешняя кафка GF для UNP convertor, загрузка сообщений начиная с офсета, который запомнила кафка', 'gf_latest', 'cns' from dual  union 
-select 'Самый идемпотентный продюсер', 'producer_idempotence', 'prd' from dual ;
+select 'Самый идемпотентный продюсер', 'producer_idempotence', 'prd' from dual  union 
+select 'cc-card-block consumer grp', 'uasp-streaming-beg-card-block', 'cns' from dual ;
 
 insert into dict_place_holder(default_value, description, id) 
 select '${BOOTSTRAP_SERVERS}', 'BOOTSTRAP_SERVERS', 'BOOTSTRAP_SERVERS' from dual  union 
@@ -311,7 +319,9 @@ select 'uasp-streaming-input-convertor', 'ru.vtb.uasp.inputconvertor.Convertor' 
 select 'uasp-streaming-mdm-enrichment', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual  union 
 select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual  union 
 select 'uasp-streaming-mutator', 'ru.vtb.uasp.mutator.DroolsBusinessRullesJob' from dual  union 
-select 'uasp-streaming-model-vector', 'ru.vtb.uasp.vector.UaspStreamingModelVector' from dual ;
+select 'uasp-streaming-model-vector', 'ru.vtb.uasp.vector.UaspStreamingModelVector' from dual  union 
+select 'uasp-streaming-beg-card-block', 'ru.vtb.uasp.beg.card.block.App' from dual  union 
+select 'uasp-streaming-beg-pincode-change', 'ru.vtb.uasp.beg.pincode.change.App' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -329,6 +339,7 @@ select 8, 'NOTEBOOK_DSO', 'NOTEBOOK_DSO', 1, 0, 'dev_' from dual  union
 select 8, 'DSO', 'DSO', 0, 0, 'dev_' from dual ;
 
 insert into dict_arrow(beg_node_id, beg_node_type, common_name, end_node_id, end_node_type, graph_id, kafka_grp_prop, property_key) 
+select 'uasp-streaming-beg-pincode-change~pin-change', 'flink_srv', 'Не задан', 'dev__rto_uasp__izmpin', 'topic', 'pin-change', 'producer_idempotence', 'uasp-streaming-beg-pincode-change.toTopic.name' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_40', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
@@ -386,6 +397,12 @@ select 'uasp-streaming-mdm-enrichment~way4', 'flink_srv', 'Не задан', 'de
 select 'uasp-streaming-mdm-enrichment~way4-card-agreement', 'flink_srv', 'Не задан', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~way4-card-agreement', 'flink_srv', 'Не задан', 'dev_bevents_card_agreement_enrich_way4_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~way4-card-agreement', 'flink_srv', 'Не задан', 'dev_rto_batch_ca_customer_card_uaspdto__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_48', 'topic', 'rto_graph', 'producer_default', 'producer.case48.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_71', 'topic', 'rto_graph', 'producer_default', 'producer.case71.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_51', 'topic', 'rto_graph', 'producer_default', 'producer.case51.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_39_vector', 'topic', 'rto_graph', 'producer_default', 'producer.posNew.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__zzp', 'topic', 'rto_graph', 'producer_default', 'producer.fs.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-beg-pincode-change~pin-change', 'flink_srv', 'Не задан', 'dev_uasp_ccpp_card_pin_change_dlq', 'topic', 'pin-change', 'producer_idempotence', 'uasp-streaming-beg-pincode-change.dlq.toTopic.name' from dual  union 
 select 'CFT2RS_CD_OUT', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-cft', 'flink_srv', 'rto_graph', 'latest', 'cft-transactions.input.topic.name' from dual  union 
 select 'dev_bevents_68_after_rate_enrich', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents_68_after_rate_enrich', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
@@ -402,7 +419,6 @@ select 'dev_bevents__realtime__input_converter__prof__transactions__uaspdto', 't
 select 'dev_bevents_streaming_input_convertor_profile_auth_json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'rto_graph', 'latest', 'profile.input.topic.name' from dual  union 
 select 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'flink_srv', 'rto_graph', 'latest', 'ca-cardfl.input.topic.name' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__zzp', 'topic', 'rto_graph', 'producer_idempotence', 'producer.fs.FlinkSinkProperties$.toTopic' from dual  union 
 select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'rto_graph', 'latest', 'ha.fromTopic' from dual  union 
 select 'dev_bevents_card_agreement_enrich_out_uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth-packNM', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.GlobalIdEnrichProperty$.fromTopic' from dual  union 
@@ -434,8 +450,13 @@ select 'dev__cft2rs_uasp__chvsns', 'topic', 'Не задан', 'uasp-streaming-u
 select 'uasp-streaming-unp-convertor~unp-convertor-cft', 'flink_srv', 'Не задан', 'CFT2RS_CD_OUT', 'topic', 'rto_graph', 'producer_default', 'output.topic.name' from dual  union 
 select 'uasp-streaming-unp-convertor~unp-convertor-main-input', 'flink_srv', 'Не задан', 'p0_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'way4-main.output.topic.name' from dual  union 
 select 'p0_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~unp-convertor-main-input', 'flink_srv', 'rto_graph', 'latest', 'way4-main.input.topic.name' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__pdscp', 'topic', 'rto_graph', 'producer_default', 'producer.case29.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__zp', 'topic', 'rto_graph', 'producer_default', 'producer.pens.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__ppnsx', 'topic', 'rto_graph', 'producer_default', 'producer.ns.FlinkSinkProperties$.toTopic' from dual  union 
 select 'dev__wpr_profile-uasp__tran', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~unp-convertor-profile', 'flink_srv', 'rto_graph', 'latest', 'profile-transactions.input.topic.name' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__modelvector_first_salary__qa', 'topic', 'rto_graph', 'producer_default', 'producer.qa.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~unp-convertor-profile', 'flink_srv', 'Не задан', 'profile_tx_out', 'topic', 'rto_graph', 'producer_default', 'profile-transactions.output.topic.name' from dual  union 
+select 'dev_uasp_ccpp_card_pin_change', 'topic', 'Не задан', 'uasp-streaming-beg-pincode-change~pin-change', 'flink_srv', 'pin-change', 'latest', 'app.input.topic.name' from dual  union 
 select 'dev_feature_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~unp-convertor-way4', 'flink_srv', 'rto_graph', 'latest', 'way4-transactions.input.topic.name' from dual  union 
 select 'uasp-streaming-unp-convertor~unp-convertor-way4', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'topic', 'rto_graph', 'producer_default', 'way4-transactions.output.topic.name' from dual  union 
 select 'uasp-streaming-unp-convertor~unp-convertor-withdraw', 'flink_srv', 'Не задан', 'withdraw_tx_out', 'topic', 'rto_graph', 'producer_default', 'withdraw-transactions.output.topic.name' from dual  union 
@@ -452,21 +473,14 @@ select 'issuing-card', 'topic', 'Не задан', 'uasp-streaming-unp-convertor
 select 'issuing-operation', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~way4-issuing-operation', 'flink_srv', 'rto_graph', 'gf_latest', 'way4-issuing-operation.input.topic.name' from dual  union 
 select 'uasp-streaming-unp-convertor~way4-issuing-operation', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'way4-issuing-operation.output.topic.name' from dual  union 
 select 'dev_bevents__realtime__filter_first_salary__uaspdto', 'topic', 'Не задан', 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__pdscp', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case29.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__zp', 'topic', 'rto_graph', 'producer_idempotence', 'producer.pens.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__ppnsx', 'topic', 'rto_graph', 'producer_idempotence', 'producer.ns.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__modelvector_first_salary__qa', 'topic', 'rto_graph', 'producer_idempotence', 'producer.qa.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_39_vector', 'topic', 'rto_graph', 'producer_idempotence', 'producer.posNew.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__pks', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case69.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_44', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case44.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_39_old', 'topic', 'rto_graph', 'producer_idempotence', 'producer.pos.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__izost', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case8.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_71', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case71.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_48', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case48.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_51', 'topic', 'rto_graph', 'producer_idempotence', 'producer.case51.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__modelvector_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'producer.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__pks', 'topic', 'rto_graph', 'producer_default', 'producer.case69.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_39_old', 'topic', 'rto_graph', 'producer_default', 'producer.pos.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producer.filterTag-success.toTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__business_rules__uaspdto', 'topic', 'Не задан', 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__filter__uaspdto__filter', 'topic', 'rto_graph', 'producer_default', 'kafka.producer.filterTag-error.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_44', 'topic', 'rto_graph', 'producer_default', 'producer.case44.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev__rto_uasp__izost', 'topic', 'rto_graph', 'producer_default', 'producer.case8.FlinkSinkProperties$.toTopic' from dual  union 
 select 'dev_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mutator~mainInput', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'uasp-streaming-mutator~mainInput', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__business_rules__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-success.toTopic' from dual  union 
 select 'uasp-streaming-mutator~mainInput', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__bussiness_rules__uaspdto__dlq', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.toTopic' from dual  union 
@@ -480,7 +494,6 @@ select 'dev_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic', 'Не з�
 select 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto__dlq', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mutator~case-48-concatenate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producers.filterErrorTag-success.toTopic' from dual  union 
 select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
-select 'uasp-streaming-model-vector~model-vector-bevents', 'flink_srv', 'Не задан', 'dev_bevents__realtime__modelvector_first_salary__dlq', 'topic', 'rto_graph', 'producer_idempotence', 'producer.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~profile-tx-step2', 'flink_srv', 'Не задан', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
@@ -544,15 +557,14 @@ select 'producer_idempotence', 'ssl.truststore.location', '${TRUSTSTORE_LOCATION
 select 'producer_idempotence', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'prd' from dual  union 
 select 'producer_idempotence', 'ssl.truststore.type', 'PKCS12', 'prd' from dual  union 
 select 'producer_idempotence', 'transactional.id', '${PROFILE}', 'prd' from dual  union 
-select 'producer_idempotence', 'key.deserializer', 'org.apache.kafka.common.serialization.StringDeserializer', 'prd' from dual  union 
-select 'producer_idempotence', 'value.deserializer', 'org.apache.kafka.common.serialization.ByteArrayDeserializer', 'prd' from dual  union 
 select 'producer_idempotence', 'key.serializer', 'org.apache.kafka.common.serialization.ByteArraySerializer', 'prd' from dual  union 
 select 'producer_idempotence', 'max.block.ms', '90000', 'prd' from dual  union 
 select 'producer_idempotence', 'enable.idempotence', 'true', 'prd' from dual  union 
 select 'producer_idempotence', 'acks', 'all', 'prd' from dual  union 
 select 'producer_idempotence', 'retries', '1', 'prd' from dual  union 
 select 'producer_idempotence', 'transaction.timeout.ms', '1800000', 'prd' from dual  union 
-select 'producer_idempotence', 'value.serializer', 'org.apache.kafka.common.serialization.ByteArraySerializer', 'prd' from dual ;
+select 'producer_idempotence', 'value.serializer', 'org.apache.kafka.common.serialization.ByteArraySerializer', 'prd' from dual  union 
+select 'latest', 'group.id', '${SERVICE_NAME}_${PROFILE_NAME}', 'cns' from dual ;
 
 insert into dict_service_node(profile_id, report_description, service_id) 
 select 'aggregate-bevents', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -599,7 +611,9 @@ select 'way4-issuing-operation', 'Описание не заполнено.', 'u
 select 'mainInput', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'case-48-concatenate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
-select 'rateMutate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual ;
+select 'rateMutate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
+select 'cc-card-block', 'Описание не заполнено.', 'uasp-streaming-beg-card-block' from dual  union 
+select 'pin-change', 'Описание не заполнено.', 'uasp-streaming-beg-pincode-change' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'CFT2RS_CD_OUT', 14400000, 'DKO_COMMAND' from dual  union 
@@ -719,7 +733,14 @@ select 'delete', 'dev__rto_uasp__case_51', 14400000, 'DKO_COMMAND' from dual  un
 select 'delete', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto__dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_ivr__uasp_realtime__bussiness_rules__uaspdto__dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto_dlq', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 14400000, 'DKO_COMMAND' from dual ;
+select 'delete', 'dev_bevents__realtime__enrichment_prepare_transactions__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__blcard', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__dko_uasp__pension', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_block_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_block', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_pin_change', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_pin_change_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__izmpin', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a02.fromFieldName', 'multibonus_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1077,33 +1098,7 @@ select 0, 'main-input-filter', 'filter.fieldName', 'system-uasp-way-classificati
 select 0, 'model-vector-bevents', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'model-vector-bevents', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'model-vector-bevents', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case29.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case44.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case48.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case51.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case69.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case71.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case8.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.fs.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.ns.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.pens.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.pos.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.posNew.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.qa.FlinkSinkProperties$.producerSemantic', 'EXACTLY_ONCE', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case29.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case44.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'main-input-filter', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-filter' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case48.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case51.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case69.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case71.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.case8.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.fs.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.ns.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.pens.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.pos.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.posNew.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
-select 0, 'model-vector-bevents', 'producer.qa.FlinkSinkProperties$.kafkaProducerPoolSize', '32', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-filter' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-filter' from dual  union 
 select 0, 'main-input-filter', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-filter' from dual  union 
@@ -1175,75 +1170,60 @@ insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id
 select 'latest', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'latest', 'ssl.key.password', '${IFT_KAFKA_SSL_KEY_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'latest', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'latest', 'ssl.key.password', '${NT_KAFKA_SSL_KEY_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'latest', 'ssl.key.password', '${P0_KAFKA_SSL_KEY_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'latest', 'ssl.key.password', '${REAL_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', '${DSO_KAFKA_SSL_KEYSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', '${IFT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', '${NT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', '${P0_KAFKA_SSL_KEYSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'latest', 'ssl.keystore.password', '${REAL_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', '${IFT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'latest', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'latest', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', '${IFT_KAFKA_SSL_KEY_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', '${NT_KAFKA_SSL_KEY_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', '${P0_KAFKA_SSL_KEY_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'earliest', 'ssl.key.password', '${REAL_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', '${DSO_KAFKA_SSL_KEYSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', '${IFT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', '${NT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', '${P0_KAFKA_SSL_KEYSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'earliest', 'ssl.keystore.password', '${REAL_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', '${IFT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
-select 'earliest', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'earliest', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'producer_default', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', '${IFT_KAFKA_SSL_KEY_PASSWORD}', 'IFT', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_default', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', '${NT_KAFKA_SSL_KEY_PASSWORD}', 'NT', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', '${P0_KAFKA_SSL_KEY_PASSWORD}', 'P0', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', '${REAL_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_default', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK_DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', '${DSO_KAFKA_SSL_KEYSTORE_PASSWORD}', 'DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', '${IFT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'IFT', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_default', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', '${NT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'NT', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', '${P0_KAFKA_SSL_KEYSTORE_PASSWORD}', 'P0', 'prd' from dual  union 
 select 'producer_default', 'ssl.keystore.password', '${REAL_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_default', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK_DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${IFT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'IFT', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_default', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK_DSO', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'prd' from dual  union 
 select 'producer_default', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'prd' from dual  union 
@@ -1285,7 +1265,19 @@ select 'producer_idempotence', 'ssl.keystore.password', 'kafkauasppassword', 'NO
 select 'producer_idempotence', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'prd' from dual  union 
 select 'producer_idempotence', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'prd' from dual  union 
 select 'producer_idempotence', 'security.protocol', 'PLAINTEXT', 'NOTEBOOK', 'prd' from dual  union 
-select 'producer_idempotence', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'prd' from dual ;
+select 'producer_idempotence', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.key.password', '${IFT_KAFKA_SSL_KEY_PASSWORD}', 'IFT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.key.password', '${NT_KAFKA_SSL_KEY_PASSWORD}', 'NT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.key.password', '${P0_KAFKA_SSL_KEY_PASSWORD}', 'P0', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.key.password', '${REAL_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.password', '${IFT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'IFT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.password', '${NT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'NT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.password', '${P0_KAFKA_SSL_KEYSTORE_PASSWORD}', 'P0', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.keystore.password', '${REAL_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.password', '${IFT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'IFT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'prd' from dual  union 
+select 'producer_idempotence', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'prd' from dual ;
 
 ;
 

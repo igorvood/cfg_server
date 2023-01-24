@@ -9,8 +9,15 @@ class TableMetaController(private val dataBackUpRepository: IDataBackUpRepositor
 
     fun tablesList(): Set<TableUiDto> {
         val metaDataByTable = dataBackUpRepository.metaDataByTable()
-
         return metaDataByTable.map { TableUiDto(it.tableName , it.tableComment) }.toSet()
+    }
+
+    fun tableData(tableName: String): EditableTableDataDto {
+        val (lvl, tableId,tableComment ,columns ) = dataBackUpRepository.metaDataByTable(tableName)[0]
+        val columnList = columns.joinToString(", ") { it.name }
+        val tableData = dataBackUpRepository.allTableData("""select $columnList from ${tableName}""")
+
+        return EditableTableDataDto(columns, tableData)
 
     }
 }

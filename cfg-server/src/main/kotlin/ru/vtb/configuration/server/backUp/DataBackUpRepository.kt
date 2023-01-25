@@ -11,13 +11,23 @@ import ru.vtb.configuration.server.backUp.dto.TableMeta
 import java.sql.CallableStatement
 import java.sql.ResultSet
 
+interface IDataBackUpRepository {
+    fun metaDataByTable(inTableName: String? = null): List<TableMeta>
+    fun allTableData(sql: String): List<MutableMap<String, Any>>
+
+    fun cleanTables(meta: List<TableMeta>)
+    fun runQueries(sqls: List<String>)
+    fun sortFun(it: TableMeta): String
+
+}
+
 @Repository
 class DataBackUpRepository(
     private val jdbcTemplate: JdbcOperations
-) {
+) : IDataBackUpRepository {
 
     // TODO: 15.12.2022 Эти данные не меняются, сюда надо прикрутить кеш и запрос делать из кеша
-    fun metaDataByTable(inTableName: String? = null): List<TableMeta> {
+    override fun metaDataByTable(inTableName: String?): List<TableMeta> {
         val query = jdbcTemplate.query(
             PreparedStatementCreator { con ->
                 val cs: CallableStatement =
@@ -60,28 +70,27 @@ class DataBackUpRepository(
         return query ?: listOf()
     }
 
-    fun allTableData(sql: String): List<MutableMap<String, Any>> {
+    override fun allTableData(sql: String): List<MutableMap<String, Any>> {
         return jdbcTemplate.queryForList(sql)
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    fun cleanTables(meta: List<TableMeta>) {
+    override fun cleanTables(meta: List<TableMeta>) {
         meta.sortedByDescending { sortFun(it) }
             .forEach { jdbcTemplate.update("delete from ${it.tableName}") }
     }
 
     @Transactional(propagation = Propagation.MANDATORY)
-    fun runQueries(sqls: List<String>) {
+    override fun runQueries(sqls: List<String>) {
         sqls
             .forEach { jdbcTemplate.update(it) }
     }
 
-    private fun sortFun(it: TableMeta) = "${it.lvl}_${it.tableName}"
+    override fun sortFun(it: TableMeta) = "${it.lvl}_${it.tableName}"
 
     private data class TableMetaTemp(
         val lvl: Int,
         val tableName: String,
         val tableComment: String,
     )
-
 }

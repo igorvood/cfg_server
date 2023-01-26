@@ -22,7 +22,7 @@ class TableMetaController(private val dataBackUpRepository: IDataBackUpRepositor
 
             }
 
-        return EditableTableDataDto(columns.sortedBy { !it.isInPrimaryKey }, tableData)
+        return EditableTableDataDto(columns.sortedBy { !it.isInPrimaryKey }, tableData, tableId, tableComment)
 
     }
 

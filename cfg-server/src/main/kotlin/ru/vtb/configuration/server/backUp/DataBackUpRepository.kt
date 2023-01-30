@@ -32,7 +32,7 @@ class DataBackUpRepository(
             PreparedStatementCreator { con ->
                 val cs: CallableStatement =
                     con.prepareCall(
-                        """select lvl, table_name, column_name, table_comment, column_comment 
+                        """select lvl, table_name, column_name, table_comment, column_comment, is_in_pk 
                             from pdd_back_up 
                             where table_name = ? or ? is null """
                     )
@@ -51,8 +51,9 @@ class DataBackUpRepository(
                     val t = TableMetaTemp(lvl, tableName, tableComment)
                     val columns = res.computeIfAbsent(t) { mutableListOf() }
                     val columnComment = rs.getString(5) ?: ""
+                    val isInPrimaryKey = rs.getBoolean(6)
                     val name = rs.getString(3)
-                    columns.add(ColumnMeta(name, columnComment))
+                    columns.add(ColumnMeta(name, columnComment, isInPrimaryKey))
                 }
                 res.entries
                     .map { s ->

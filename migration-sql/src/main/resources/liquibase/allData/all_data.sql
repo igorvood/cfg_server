@@ -106,7 +106,6 @@ select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 
 select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-profile', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv' from dual  union 
-select 'rto_graph', 'uasp-streaming-input-convertor~way4-convertor', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~case-68_agrement', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv' from dual  union 
@@ -619,7 +618,6 @@ select 'input-convertor-prof-auth', 'Описание не заполнено.',
 select 'input-convertor-profile', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-withdraw', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
-select 'way4-convertor', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'case-68', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1407,7 +1405,6 @@ select 'rto_graph', 'input-convertor-prof-auth', 'uasp-streaming-input-convertor
 select 'rto_graph', 'input-convertor-profile', 'uasp-streaming-input-convertor' from dual  union 
 select 'rto_graph', 'input-convertor-w4-operation', 'uasp-streaming-input-convertor' from dual  union 
 select 'rto_graph', 'input-convertor-withdraw', 'uasp-streaming-input-convertor' from dual  union 
-select 'rto_graph', 'way4-convertor', 'uasp-streaming-input-convertor' from dual  union 
 select 'rto_graph', 'case-68', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'rto_graph', 'case-68_agrement', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'rto_graph', 'prof-auth', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1435,7 +1432,6 @@ select 'uasp-streaming-input-convertor_input-convertor-prof-auth', 'input-conver
 select 'uasp-streaming-input-convertor_input-convertor-profile', 'input-convertor-profile', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-input-convertor_input-convertor-w4-operation', 'input-convertor-w4-operation', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-input-convertor_input-convertor-withdraw', 'input-convertor-withdraw', 'uasp-streaming-input-convertor' from dual  union 
-select 'uasp-streaming-input-convertor_way4-convertor', 'way4-convertor', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-mdm-enrichment_case-68', 'case-68', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'uasp-streaming-mdm-enrichment_case-68_agrement', 'case-68_agrement', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'uasp-streaming-mdm-enrichment_prof-auth', 'prof-auth', 'uasp-streaming-mdm-enrichment' from dual  union 

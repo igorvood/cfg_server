@@ -185,7 +185,18 @@ select 'rto_graph', 'dev__dko_uasp__pension', 'topic' from dual  union
 select 'rto_graph', 'dev__boop_uasp__uss__loyalty_profile_changes', 'topic' from dual  union 
 select 'rto_graph', 'dev__boop_uasp__uss__loyalty_profile_changes_dlq', 'topic' from dual  union 
 select 'rto_graph', 'uasp-streaming-input-convertor~loyalty', 'flink_srv' from dual  union 
-select 'rto_graph', 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic' from dual ;
+select 'rto_graph', 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~cardfl', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~case68', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~way4-main', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~profile-transactions', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~way4-transactions', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~unp_w4_issuing_card', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~withdraw-transactions', 'flink_srv' from dual  union 
+select 'rto-graph', 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'rto_graph', 'rto_graph' from dual  union 
@@ -331,12 +342,12 @@ select 'uasp-streaming-aggregate', 'ru.vtb.uasp.aggregate.UaspStreamingAggregate
 select 'uasp-streaming-filter', 'ru.vtb.uasp.filter.FilterJob' from dual  union 
 select 'uasp-streaming-input-convertor', 'ru.vtb.uasp.inputconvertor.Convertor' from dual  union 
 select 'uasp-streaming-mdm-enrichment', 'ru.vtb.uasp.mdm.enrichment.EnrichmentJob' from dual  union 
-select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual  union 
 select 'uasp-streaming-mutator', 'ru.vtb.uasp.mutator.DroolsBusinessRullesJob' from dual  union 
 select 'uasp-streaming-model-vector', 'ru.vtb.uasp.vector.UaspStreamingModelVector' from dual  union 
 select 'uasp-kriaa-bevents-case-86', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-case-55', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
-select 'uasp-streaming-json-validator', 'ru.vtb.uasp.streaming.json.validator.App' from dual ;
+select 'uasp-streaming-json-validator', 'ru.vtb.uasp.streaming.json.validator.App' from dual  union 
+select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -629,18 +640,6 @@ select 'way4', 'Описание не заполнено.', 'uasp-streaming-mdm-
 select 'way4-card-agreement', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'model-vector-bevents', 'Описание не заполнено.', 'uasp-streaming-model-vector' from dual  union 
 select 'input-convertor-udds', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
-select 'unp-convertor-aggregate-ca', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-case68', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-cft', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-main-input', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-profile', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-way4', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-withdraw', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-cardfl', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-convertor-prof-auth', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'way4-account-balance', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'unp-w4-issuing-card', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'way4-issuing-operation', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'mainInput', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'case-48-concatenate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
@@ -650,7 +649,18 @@ select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-
 select 'json-validator', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'customer-profile-full', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-package', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
-select 'loyalty', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual ;
+select 'loyalty', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
+select 'aggregate-ca', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cardfl', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'case68', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'way4-main', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'profile-auth', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'profile-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'way4-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'w4-account-balance', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'unp_w4_issuing_card', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'withdraw-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cft-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'CFT2RS_CD_OUT', 14400000, 'DKO_COMMAND' from dual  union 
@@ -831,6 +841,20 @@ select 0, 'input-convertor-udds', 'service.serviceName', '${SERVICE_NAME}', 'uas
 select 0, 'input-convertor-udds', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-udds', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-udds', 'uaspdto.type', 'udds', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'cft-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cft-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cft-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cft-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cft-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cft-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-filter' from dual  union 
 select 0, 'aggregate-bevents', 'service.serviceProfile', '${PROFILE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'input-convertor-w4-operation', 'card.number.sha256.salt', '${DSO_CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
@@ -883,6 +907,15 @@ select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a03.toField
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a04.fromFieldName', 'pos_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 0, 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-40' from dual  union 
+select 0, 'way4-main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-main', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-main', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'way4-main', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-auth', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-auth', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-auth', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a04.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a04.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a04.toFieldName', 'pos_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1012,6 +1045,7 @@ select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat', 'UaspDtoF
 select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-auth', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'way4', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldName', 'mask_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a01.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1085,8 +1119,11 @@ select 0, 'model-vector-bevents', 'mv.max.parallelism', '${PARALLELISM}', 'uasp-
 select 0, 'way4-card-agreement', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a03.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a03.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'aggregate-ca', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a03.toFieldName', 'pension_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'aggregate-ca', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'json-validator', 'validation.schema.name', 'validation-schema.json', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'aggregate-ca', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'card.number.sha256.salt', '${DSO_CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'model-vector-bevents', 'mv.state.checkpoints.num-retained', '4', 'uasp-streaming-model-vector' from dual  union 
@@ -1100,35 +1137,13 @@ select 0, 'input-convertor-ca-cardfl', 'read.source.topic.frombeginning', 'false
 select 0, 'input-convertor-ca-cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
-select 0, 'unp-convertor-aggregate-ca', 'instance.conf.name', 'aggregate-ca', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-aggregate-ca', 'aggregate-ca.savepoint.pref', 'UNP_CA', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-case68', 'instance.conf.name', 'case68', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-case68', 'case68.savepoint.pref', 'UNP_C68', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-cft', 'instance.conf.name', 'udds', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-cft', 'udds.uaspdto.type', 'udds', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-cft', 'udds.use.avro.serialization', 'y', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-case-86' from dual  union 
-select 0, 'unp-convertor-main-input', 'instance.conf.name', 'way4-main', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-main-input', 'way4-main.savepoint.pref', 'UNP_MI', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 0, 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-68' from dual  union 
-select 0, 'unp-convertor-profile', 'instance.conf.name', 'profile-transactions', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-profile', 'profile-transactions.savepoint.pref', 'UNP_PROFILE', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 0, 'input-convertor-profile', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
-select 0, 'unp-convertor-way4', 'instance.conf.name', 'way4-transactions', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-way4', 'way4-transactions.savepoint.pref', 'UNP_WAY4', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'aggregate-ca', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'uaspdto.type', 'ca-cardfl', 'uasp-streaming-input-convertor' from dual  union 
-select 0, 'unp-convertor-cardfl', 'instance.conf.name', 'cardfl', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-cardfl', 'cardfl.savepoint.pref', 'UNP_CARDFL', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-prof-auth', 'instance.conf.name', 'profile-auth', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-convertor-prof-auth', 'profile-auth.savepoint.pref', 'UNP_PROFILE_AUTH', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'way4-account-balance', 'instance.conf.name', 'w4-account-balance', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'way4-account-balance', 'w4-account-balance.savepoint.pref', 'UNP_BALANCE', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-w4-issuing-card', 'instance.conf.name', 'unp-w4-issuing-card', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'unp-w4-issuing-card', 'unp-w4-issuing-card.savepoint.pref', 'unp_w4_issuing_card', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'way4-issuing-operation', 'instance.conf.name', 'way4-issuing-operation', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'way4-issuing-operation', 'way4-issuing-operation.savepoint.pref', 'UNP_ISSUING_OPERATION', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'card.number.sha256.salt', '${DSO_CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'read.source.topic.frombeginning', 'true', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1138,10 +1153,25 @@ select 0, 'main-input-filter', 'filter.operandClass', 'String', 'uasp-streaming-
 select 0, 'main-input-filter', 'filter.operator', 'notNull', 'uasp-streaming-filter' from dual  union 
 select 0, 'input-convertor-cardfl', 'uaspdto.type', 'cardfl', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'main-input-filter', 'flink.job.sync.parallelism', '${PARALLELISM}', 'uasp-streaming-filter' from dual  union 
+select 0, 'aggregate-ca', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'main-input-filter', 'filter.fieldName', 'system-uasp-way-classification', 'uasp-streaming-filter' from dual  union 
 select 0, 'model-vector-bevents', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'model-vector-bevents', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 0, 'model-vector-bevents', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-model-vector' from dual  union 
+select 0, 'aggregate-ca', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'cardfl', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-auth', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-auth', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'main-input-filter', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-filter' from dual  union 
 select 0, 'input-convertor-mdm', 'card.number.sha256.salt', '${DSO_CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-mdm', 'read.source.topic.frombeginning', 'true', 'uasp-streaming-input-convertor' from dual  union 
@@ -1149,6 +1179,15 @@ select 0, 'input-convertor-mdm', 'service.serviceName', '${SERVICE_NAME}', 'uasp
 select 0, 'input-convertor-mdm', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-mdm', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-mdm', 'uaspdto.type', 'mdm', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'withdraw-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'w4-account-balance', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'case68', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'case68', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-filter' from dual  union 
 select 0, 'bevents-filter', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-filter' from dual  union 
 select 0, 'main-input-filter', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-filter' from dual  union 
@@ -1270,7 +1309,15 @@ select 0, 'input-convertor-prof-auth', 'read.source.topic.frombeginning', 'false
 select 0, 'input-convertor-prof-auth', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-prof-auth', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-prof-auth', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
-select 0, 'input-convertor-prof-auth', 'uaspdto.type', 'profile-auth', 'uasp-streaming-input-convertor' from dual ;
+select 0, 'input-convertor-prof-auth', 'uaspdto.type', 'profile-auth', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'case68', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'case68', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'case68', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'case68', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'profile-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'latest', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'DSO', 'cns' from dual  union 

@@ -24,5 +24,13 @@
         <sqlFile path="liquibase/release_002/0050.add_table_comments.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
+    <changeSet id="liquibase/release_002/0060.dict_service_group.sql" author="vood"  runAlways="false">
+        <sqlFile path="liquibase/release_002/0060.dict_service_group.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
+    <changeSet id="liquibase/release_002/0070.create_default_service_group.trg" author="vood"  runAlways="false">
+        <sqlFile path="liquibase/release_002/0070.create_default_service_group.trg" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
 
 </databaseChangeLog>

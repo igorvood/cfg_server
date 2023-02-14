@@ -157,7 +157,6 @@ select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-udds', 'flin
 select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-input-convertor~loyalty', 'flink_srv' from dual  union 
-select 'rto_graph', 'uasp-streaming-json-validator~json-validator', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~case-68_agrement', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-mdm-enrichment~prof-auth', 'flink_srv' from dual  union 
@@ -196,7 +195,31 @@ select 'rto_graph', 'uasp-streaming-unp-convertor~way4-main', 'flink_srv' from d
 select 'rto_graph', 'uasp-streaming-unp-convertor~way4-transactions', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~withdraw-transactions', 'flink_srv' from dual  union 
 select 'rto_graph', 'UNP_PROFILE_AUTH', 'topic' from dual  union 
-select 'rto_graph', 'withdraw_tx_out', 'topic' from dual ;
+select 'rto_graph', 'withdraw_tx_out', 'topic' from dual  union 
+select 'rto_graph', 'dev__rto_uasp__blcard', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_block_dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_pin_change', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_pin_change_dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_block', 'topic' from dual  union 
+select 'rto_graph', 'dev_rto_uasp_actc', 'topic' from dual  union 
+select 'rto_graph', 'dev__rto_uasp__izmpin', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_activate', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ccpp_card_activate_dlq', 'topic' from dual  union 
+select 'rto_graph', 'uasp-streaming-beg-card-block~credit-card', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-cc-activation~credit-card', 'flink_srv' from dual  union 
+select 'rto_graph', 'dev__rto_uasp__case_70_dlq', 'topic' from dual  union 
+select 'rto_graph', 'p0__rto_uasp__case_70', 'topic' from dual  union 
+select 'rto_graph', 'uasp-kriaa-bevents-case-70~main', 'flink_srv' from dual  union 
+select 'rto_graph', 'dev__mssa_uasp_applic_valid_ack', 'topic' from dual  union 
+select 'rto_graph', 'dev__mscl_uasp_applic_valid_ack', 'topic' from dual  union 
+select 'rto_graph', 'dev__mscl_uasp_applic', 'topic' from dual  union 
+select 'rto_graph', 'dev__mssa_uasp_applic', 'topic' from dual  union 
+select 'rto_graph', 'dev__mssa_uasp_applic_valid', 'topic' from dual  union 
+select 'rto_graph', 'dev__mscl_uasp_applic_valid', 'topic' from dual  union 
+select 'rto_graph', 'uasp-streaming-json-validator~kn', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-json-validator~uz', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-json-validator~insurance', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
@@ -347,7 +370,11 @@ select 'uasp-streaming-input-convertor', 'ru.vtb.uasp.inputconvertor.Convertor' 
 select 'uasp-streaming-mutator', 'ru.vtb.uasp.mutator.DroolsBusinessRullesJob' from dual  union 
 select 'uasp-kriaa-bevents-case-68', 'ru.vtb.bevent.UaspStreamingCase68' from dual  union 
 select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual  union 
-select 'uasp-kriaa-bevents-case-2', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
+select 'uasp-kriaa-bevents-case-2', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
+select 'uasp-streaming-beg-card-block', 'ru.vtb.uasp.beg.card.block.App' from dual  union 
+select 'uasp-streaming-beg-pincode-change', 'ru.vtb.uasp.beg.pincode.change.App' from dual  union 
+select 'uasp-streaming-cc-activation', 'ru.vtb.uasp.App' from dual  union 
+select 'uasp-kriaa-bevents-case-70', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -417,7 +444,6 @@ select 'dev__pp_fl_uasp__opyp', 'topic', 'Не задан', 'uasp-kriaa-bevents-
 select 'dev_rto_batch_ca_deposit_account_case_71_json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-ca-depositfl', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev_rto_batch_ca_deposit_account_case_71_json_converted', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~prof-tx-case-71', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.CommonEnrichProperty$.fromTopic' from dual  union 
 select 'dev_rto_batch_ca_personal_manager_json', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.PersonalManagerEnrichProperty$.fromTopic' from dual  union 
-select 'dev_sstr_uasp_pay_inf', 'topic', 'Не задан', 'uasp-streaming-json-validator~json-validator', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev_sstr_uasp_piods', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-86~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev__trns_uasp__up', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~unp-convertor-withdraw', 'flink_srv', 'rto_graph', 'latest', 'withdraw-transactions.input.topic.name' from dual  union 
 select 'dev__uasp_aprf__pks', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-cardfl', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
@@ -474,8 +500,6 @@ select 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', '
 select 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', 'Не задан', 'dev_input_withdraw_tx_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~loyalty', 'flink_srv', 'Не задан', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'topic', 'rto_graph', 'producer_default', 'output.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~loyalty', 'flink_srv', 'Не задан', 'dev__boop_uasp__uss__loyalty_profile_changes_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
-select 'uasp-streaming-json-validator~json-validator', 'flink_srv', 'Не задан', 'dev_sstr_uasp_pay_inf_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual  union 
-select 'uasp-streaming-json-validator~json-validator', 'flink_srv', 'Не задан', 'dev_sstr_uasp_pay_inf_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv', 'Не задан', 'dev_bevents_cft_way4_profile_udds_before_case68_uaspdto', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv', 'Не задан', 'dev_bevents_udds_mdm_rate_case68_uaspdto_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~case-68', 'flink_srv', 'Не задан', 'dev_input_converter_cardfl_refill_uasp_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
@@ -540,7 +564,48 @@ select 'uasp-streaming-unp-convertor~unp-w4-issuing-card', 'flink_srv', 'Не з
 select 'uasp-streaming-unp-convertor~way4-account-balance', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_account_balance__json', 'topic', 'rto_graph', 'producer_default', 'w4-account-balance.output.topic.name' from dual  union 
 select 'uasp-streaming-unp-convertor~way4-issuing-operation', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'way4-issuing-operation.output.topic.name' from dual  union 
 select 'withdraw_tx_out', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
-select 'dev_bevents__batch__ca_first_salary_transactions__json_converted', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual ;
+select 'dev_bevents__batch__ca_first_salary_transactions__json_converted', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'APRF_STATIC_PUB', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~cardfl', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~cardfl', 'flink_srv', 'Не задан', 'dev__uasp_aprf__pks', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_prepare_transactions__uaspdto', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~case68', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~case68', 'flink_srv', 'Не задан', 'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv', 'Не задан', 'CFT2RS_CD_OUT', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev__cft2rs_uasp__chvsns', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~way4-main', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~way4-main', 'flink_srv', 'Не задан', 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev__wpr_profile-uasp__auth', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv', 'Не задан', 'dev_bevents_streaming_input_convertor_profile_auth_json', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev__wpr_profile-uasp__tran', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~profile-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'dev_feature_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~way4-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~way4-transactions', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev__trns_uasp__up', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~withdraw-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~withdraw-transactions', 'flink_srv', 'Не задан', 'withdraw_tx_out', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'issuing-account-balance', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_account_balance__json', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-beg-card-block~credit-card', 'flink_srv', 'Не задан', 'dev__rto_uasp__blcard', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'dev__dko_uasp__pension', 'topic', 'Не задан', 'uasp-streaming-beg-card-block~credit-card', 'flink_srv', 'rto_graph', 'latest', 'pension.fromTopic' from dual  union 
+select 'uasp-streaming-beg-card-block~credit-card', 'flink_srv', 'Не задан', 'dev_uasp_ccpp_card_block_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev_uasp_ccpp_card_block', 'topic', 'Не задан', 'uasp-streaming-beg-card-block~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv', 'Не задан', 'dev_uasp_ccpp_card_pin_change_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev__dko_uasp__pension', 'topic', 'Не задан', 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv', 'rto_graph', 'latest', 'pension.fromTopic' from dual  union 
+select 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv', 'Не задан', 'dev__rto_uasp__izmpin', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'dev_uasp_ccpp_card_pin_change', 'topic', 'Не задан', 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'dev_uasp_ccpp_card_activate', 'topic', 'Не задан', 'uasp-streaming-cc-activation~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-streaming-cc-activation~credit-card', 'flink_srv', 'Не задан', 'dev_rto_uasp_actc', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'uasp-streaming-cc-activation~credit-card', 'flink_srv', 'Не задан', 'dev_uasp_ccpp_card_activate_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-70~main', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-kriaa-bevents-case-70~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_70_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-case-70~main', 'flink_srv', 'Не задан', 'p0__rto_uasp__case_70', 'topic', 'rto_graph', 'producer_default', 'producer.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-streaming-json-validator~insurance', 'flink_srv', 'Не задан', 'dev_sstr_uasp_pay_inf_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual  union 
+select 'uasp-streaming-json-validator~insurance', 'flink_srv', 'Не задан', 'dev_sstr_uasp_pay_inf_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'dev_sstr_uasp_pay_inf', 'topic', 'Не задан', 'uasp-streaming-json-validator~insurance', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'dev__mscl_uasp_applic', 'topic', 'Не задан', 'uasp-streaming-json-validator~kn', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-streaming-json-validator~kn', 'flink_srv', 'Не задан', 'dev__mscl_uasp_applic_valid_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual  union 
+select 'uasp-streaming-json-validator~kn', 'flink_srv', 'Не задан', 'dev__mscl_uasp_applic_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'dev__mssa_uasp_applic', 'topic', 'Не задан', 'uasp-streaming-json-validator~uz', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-streaming-json-validator~uz', 'flink_srv', 'Не задан', 'dev__mssa_uasp_applic_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'uasp-streaming-json-validator~uz', 'flink_srv', 'Не задан', 'dev__mssa_uasp_applic_valid_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
 select 'earliest', 'auto.offset.reset', 'earliest', 'cns' from dual  union 
@@ -636,7 +701,6 @@ select 'input-convertor-profile', 'Описание не заполнено.', '
 select 'input-convertor-udds', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-withdraw', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
-select 'json-validator', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'loyalty', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-40' from dual  union 
@@ -661,7 +725,14 @@ select 'way4', 'Описание не заполнено.', 'uasp-streaming-mdm-
 select 'way4-card-agreement', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'way4-main', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'way4-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'withdraw-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual ;
+select 'withdraw-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-beg-card-block' from dual  union 
+select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-beg-pincode-change' from dual  union 
+select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-cc-activation' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 'kn', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
+select 'uz', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
+select 'insurance', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
@@ -800,7 +871,24 @@ select 'delete', 'p0_ivr_uasp_realtime_way4_main_input_issuing_operation__json',
 select 'delete', 'p0_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'profile_tx_out', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'UNP_PROFILE_AUTH', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'withdraw_tx_out', 14400000, 'DKO_COMMAND' from dual ;
+select 'delete', 'withdraw_tx_out', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__blcard', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_block_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_pin_change', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_pin_change_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_block', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_rto_uasp_actc', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__izmpin', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_activate', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ccpp_card_activate_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__case_70_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'p0__rto_uasp__case_70', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mssa_uasp_applic_valid_ack', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mscl_uasp_applic_valid_ack', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mscl_uasp_applic', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mssa_uasp_applic', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mssa_uasp_applic_valid', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__mscl_uasp_applic_valid', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
 select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl,case_44.drl,case_56.drl,case_57.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -970,10 +1058,6 @@ select 0, 'input-convertor-withdraw', 'service.serviceName', '${SERVICE_NAME}', 
 select 0, 'input-convertor-withdraw', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'uaspdto.type', 'withdraw', 'uasp-streaming-input-convertor' from dual  union 
-select 0, 'json-validator', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
-select 0, 'json-validator', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
-select 0, 'json-validator', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
-select 0, 'json-validator', 'validation.schema.name', 'validation-schema.json', 'uasp-streaming-json-validator' from dual  union 
 select 0, 'loyalty', 'card.number.sha256.salt', '${DSO_CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'loyalty', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'loyalty', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1318,7 +1402,29 @@ select 0, 'withdraw-transactions', 'service.serviceName', '${SERVICE_NAME}', 'ua
 select 0, 'withdraw-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'withdraw-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'withdraw-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
-select 0, 'withdraw-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual ;
+select 0, 'withdraw-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'credit-card', 'flink.job.service.serviceName', 'uasp-streaming-beg-card-block', 'uasp-streaming-beg-card-block' from dual  union 
+select 0, 'credit-card', 'flink.job.service.serviceProfile', 'credit-card"', 'uasp-streaming-beg-card-block' from dual  union 
+select 0, 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'windows.size.time.minutes', '2', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'main', 'max.parallelism', '8', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 0, 'kn', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'uz', 'validation.schema.name', 'uz-schema.json', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'kn', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'uz', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'uz', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'kn', 'validation.schema.name', 'kn-schema.json', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'uz', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'kn', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'insurance', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'insurance', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'insurance', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'insurance', 'validation.schema.name', 'insurance-schema.json', 'uasp-streaming-json-validator' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 

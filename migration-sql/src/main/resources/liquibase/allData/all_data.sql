@@ -207,7 +207,13 @@ select 'rto_graph', 'dev__mssa_uasp_applic_valid', 'topic' from dual  union
 select 'rto_graph', 'dev__mscl_uasp_applic_valid', 'topic' from dual  union 
 select 'rto_graph', 'uasp-streaming-json-validator~kn', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-json-validator~uz', 'flink_srv' from dual  union 
-select 'rto_graph', 'uasp-streaming-json-validator~insurance', 'flink_srv' from dual ;
+select 'rto_graph', 'uasp-streaming-json-validator~insurance', 'flink_srv' from dual  union 
+select 'rto_graph', 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv' from dual  union 
+select 'rto_graph', 'streaming.smart_replication_change_request_tbcvsofk_default', 'topic' from dual  union 
+select 'rto_graph', 'dev_cft2rl_uasp_loan_details', 'topic' from dual  union 
+select 'rto_graph', 'dev__rto_uasp__case_84', 'topic' from dual  union 
+select 'rto_graph', 'uasp-kriaa-bevents-case-84~main', 'flink_srv' from dual  union 
+select 'rto_graph', 'dev__rto_uasp__case_84_dlq', 'topic' from dual ;
 
 insert into dict_group(description, id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
@@ -362,7 +368,8 @@ select 'uasp-kriaa-bevents-case-2', 'ru.vtb.uasp.packacge.PackageServiceJob' fro
 select 'uasp-streaming-beg-card-block', 'ru.vtb.uasp.beg.card.block.App' from dual  union 
 select 'uasp-streaming-beg-pincode-change', 'ru.vtb.uasp.beg.pincode.change.App' from dual  union 
 select 'uasp-streaming-cc-activation', 'ru.vtb.uasp.App' from dual  union 
-select 'uasp-kriaa-bevents-case-70', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
+select 'uasp-kriaa-bevents-case-70', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
+select 'uasp-kriaa-bevents-case-84', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -568,7 +575,16 @@ select 'uasp-streaming-json-validator~kn', 'flink_srv', 'Не задан', 'dev_
 select 'uasp-streaming-json-validator~kn', 'flink_srv', 'Не задан', 'dev__mscl_uasp_applic_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
 select 'dev__mssa_uasp_applic', 'topic', 'Не задан', 'uasp-streaming-json-validator~uz', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'uasp-streaming-json-validator~uz', 'flink_srv', 'Не задан', 'dev__mssa_uasp_applic_valid', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
-select 'uasp-streaming-json-validator~uz', 'flink_srv', 'Не задан', 'dev__mssa_uasp_applic_valid_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual ;
+select 'uasp-streaming-json-validator~uz', 'flink_srv', 'Не задан', 'dev__mssa_uasp_applic_valid_ack', 'topic', 'rto_graph', 'producer_default', 'ack.toTopic' from dual  union 
+select 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'Не задан', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'output.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'rto_graph', 'latest', 'ha.fromTopic' from dual  union 
+select 'streaming.smart_replication_change_request_tbcvsofk_default', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.ChangeRecordEnrichProperty$.fromTopic' from dual  union 
+select 'dev_cft2rl_uasp_loan_details', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
+select 'dev__dko_uasp__pension', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'rto_graph', 'earliest', 'packageNm.PackageNmEnrichProperty$.fromTopic' from dual  union 
+select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_84_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_84', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'dev__uasp_aprf__pks', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.PackageFlEnrichProperty$.fromTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
 select 'earliest', 'auto.offset.reset', 'earliest', 'cns' from dual  union 
@@ -695,7 +711,9 @@ select 'credit-card', 'Описание не заполнено.', 'uasp-streami
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'kn', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'uz', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
-select 'insurance', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual ;
+select 'insurance', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
+select 'aggregate-bevents-56-57', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-84' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
@@ -851,10 +869,13 @@ select 'delete', 'dev__mscl_uasp_applic_valid_ack', 14400000, 'DKO_COMMAND' from
 select 'delete', 'dev__mscl_uasp_applic', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__mssa_uasp_applic', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__mssa_uasp_applic_valid', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev__mscl_uasp_applic_valid', 14400000, 'DKO_COMMAND' from dual ;
+select 'delete', 'dev__mscl_uasp_applic_valid', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'streaming.smart_replication_change_request_tbcvsofk_default', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_cft2rl_uasp_loan_details', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__case_84', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__rto_uasp__case_84_dlq', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
-select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl,case_44.drl,case_56.drl,case_57.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level0', 'source_account.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level1', 'level1.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 0, 'aggregate-bevents', 'list.of.business.rule.level2', 'level2.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -1387,7 +1408,28 @@ select 0, 'kn', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-
 select 0, 'insurance', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
 select 0, 'insurance', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
 select 0, 'insurance', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
-select 0, 'insurance', 'validation.schema.name', 'insurance-schema.json', 'uasp-streaming-json-validator' from dual ;
+select 0, 'insurance', 'validation.schema.name', 'insurance-schema.json', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'list.of.business.rule.level0', 'source_account.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'list.of.business.rule.level1', 'level1.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'list.of.business.rule.level2', 'level2.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'max.parallelism', '${PARALLELISM}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'name.state.first.salary.aggregates', '${SERVICE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'service.serviceName', '${SERVICE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'service.serviceProfile', '${PROFILE_NAME}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'service.serviceVersion', '${SERVICE_VERSION}', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'state.checkpoints.num-retained', '1', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'stream.checkpoint.time.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'list.of.business.rule', 'case_44.drl,case_56.drl,case_57.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents-56-57', 'stream.checkpoint.timeout.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 0, 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'credit-card', 'test.run', 'true', 'uasp-streaming-cc-activation' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 

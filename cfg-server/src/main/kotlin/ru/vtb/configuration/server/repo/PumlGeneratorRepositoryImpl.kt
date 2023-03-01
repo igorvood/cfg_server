@@ -72,7 +72,7 @@ class PumlGeneratorRepositoryImpl(
     }
 
     private fun findService(serviceId: String): FlinkSrvPuml {
-        val queryForObject = jdbcTemplate.queryForObject(
+        val queryForObject = jdbcTemplate.query(
             """select service_id, profile_id, report_description
                     from dict_service_node
                     where ID = ?
@@ -80,7 +80,8 @@ class PumlGeneratorRepositoryImpl(
                 FlinkSrvPuml(rs.getString(1), rs.getString(2), rs.getString(3))
             }, serviceId
         )
-        return queryForObject!!
+        check(queryForObject.size == 1){"Unable to find service $serviceId "}
+        return queryForObject[0]
     }
 
 

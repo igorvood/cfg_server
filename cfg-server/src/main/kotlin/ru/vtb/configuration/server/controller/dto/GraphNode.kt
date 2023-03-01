@@ -12,7 +12,9 @@ data class TopicPuml(
 
     ) : GraphNode {
     override val alias: String
-        get() = name.replace("-", "_")
+        get() = name
+            .replace("-", "_")
+            .replace(".", "_")
 
     override val id: String
         get() = name

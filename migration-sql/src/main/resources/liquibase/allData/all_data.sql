@@ -213,7 +213,8 @@ select 'rto_graph', 'streaming.smart_replication_change_request_tbcvsofk_default
 select 'rto_graph', 'dev_cft2rl_uasp_loan_details', 'topic' from dual  union 
 select 'rto_graph', 'dev__rto_uasp__case_84', 'topic' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-84~main', 'flink_srv' from dual  union 
-select 'rto_graph', 'dev__rto_uasp__case_84_dlq', 'topic' from dual ;
+select 'rto_graph', 'dev__rto_uasp__case_84_dlq', 'topic' from dual  union 
+select 'rto_graph', 'uasp-kriaa-bevents-monitor~test', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
@@ -369,7 +370,8 @@ select 'uasp-streaming-beg-card-block', 'ru.vtb.uasp.beg.card.block.App' from du
 select 'uasp-streaming-beg-pincode-change', 'ru.vtb.uasp.beg.pincode.change.App' from dual  union 
 select 'uasp-streaming-cc-activation', 'ru.vtb.uasp.App' from dual  union 
 select 'uasp-kriaa-bevents-case-70', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
-select 'uasp-kriaa-bevents-case-84', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
+select 'uasp-kriaa-bevents-case-84', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
+select 'uasp-kriaa-bevents-monitor', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -584,7 +586,8 @@ select 'dev_cft2rl_uasp_loan_details', 'topic', 'Не задан', 'uasp-kriaa-b
 select 'dev__dko_uasp__pension', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'rto_graph', 'earliest', 'packageNm.PackageNmEnrichProperty$.fromTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_84_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_84', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'dev__uasp_aprf__pks', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.PackageFlEnrichProperty$.fromTopic' from dual ;
+select 'dev__uasp_aprf__pks', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.PackageFlEnrichProperty$.fromTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'uasp-kriaa-bevents-monitor~test', 'flink_srv', 'rto_graph', 'earliest', 'enrichOne.fromTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
 select 'earliest', 'auto.offset.reset', 'earliest', 'cns' from dual  union 
@@ -713,7 +716,8 @@ select 'kn', 'Описание не заполнено.', 'uasp-streaming-json-v
 select 'uz', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'insurance', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'aggregate-bevents-56-57', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union 
-select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-84' from dual ;
+select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 'test', 'Описание не заполнено.', 'uasp-kriaa-bevents-monitor' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1429,7 +1433,22 @@ select 0, 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-case-84' from dua
 select 0, 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 0, 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 0, 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-84' from dual  union 
-select 0, 'credit-card', 'test.run', 'true', 'uasp-streaming-cc-activation' from dual ;
+select 0, 'credit-card', 'test.run', 'true', 'uasp-streaming-cc-activation' from dual  union 
+select 0, 'test', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-monitor' from dual  union 
+select 0, 'test', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-monitor' from dual  union 
+select 0, 'test', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-monitor' from dual  union 
+select 0, 'test', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-monitor' from dual  union 
+select 0, 'customer-profile-full', 'dlq.JsMaskedPath$.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-ca-cardfl', 'dlq.JsMaskedPath$.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-ca-depositfl', 'dlq.JsMaskedPath$.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.dlq1.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step1', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'profile-tx-step2', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 

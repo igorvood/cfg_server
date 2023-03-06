@@ -9,6 +9,8 @@ import org.springframework.core.io.Resource
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
+import ru.vtb.configuration.server.controller.intf.PumlGeneratorController
+import ru.vtb.configuration.server.rest.intf.PumlGeneratorRest
 import ru.vtb.configuration.server.ui.controler.TableMetaController
 import ru.vtb.configuration.server.ui.dto.SvgDto
 import java.io.ByteArrayOutputStream
@@ -18,7 +20,9 @@ import java.nio.charset.Charset
 @RestController
 @CrossOrigin
 class UiRestPuml(private val uiController: UiController,
-                 private val tableMetaController: TableMetaController
+                 private val tableMetaController: TableMetaController,
+                 private val pumlGeneratorController: PumlGeneratorController
+
 ) {
     @Value("classpath:tmp.puml")
     lateinit var resourceFile: Resource
@@ -26,18 +30,23 @@ class UiRestPuml(private val uiController: UiController,
     @Operation(summary = "puml", tags = ["UI"])
     @GetMapping("/pumlSVG")
     fun puml(): SvgDto {
-        val readText = resourceFile.file.readText()
-
-
+        val generatePumlByGraphId = pumlGeneratorController.generatePumlByGraphId("rto_graph")
         val os  = ByteArrayOutputStream()
-
-        val reader = SourceStringReader(source);
+        val reader = SourceStringReader(generatePumlByGraphId);
         val generateImage = reader.generateImage(os, FileFormatOption(FileFormat.SVG))
         os.close()
-
         val svgData = String(os.toByteArray(), Charset.forName("UTF-8"))
-
         return SvgDto(svgData)
+
+
+
+//        val readText = resourceFile.file.readText()
+//        val os  = ByteArrayOutputStream()
+//        val reader = SourceStringReader(source);
+//        val generateImage = reader.generateImage(os, FileFormatOption(FileFormat.SVG))
+//        os.close()
+//        val svgData = String(os.toByteArray(), Charset.forName("UTF-8"))
+//        return SvgDto(svgData)
     }
 
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
 import ru.vtb.configuration.server.controller.placeholder.intf.HolderResolver
 
-@Service
+//@Service
 class PlaceHolderChecker(
     val holderResolvers: List<HolderResolver>,
     private val jdbcTemplate: JdbcOperations

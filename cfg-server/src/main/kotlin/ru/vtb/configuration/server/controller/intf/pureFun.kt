@@ -31,13 +31,14 @@ tailrec fun replaceDifficultPlaceHolders(
         if (filter1.size==1)
         {
             val filter = filter1.first()
-            val replace = propertyValue.replace("\${" + filter.placeHolderName + "}", filter.placeHolderValue)
+            val replace = propertyValue.replace("""${"$"}{${filter.placeHolderName}}""", filter.placeHolderValue)
             if (replace == propertyValue)
                 propertyValue
             else
                 replaceDifficultPlaceHolders(replace, placeHolders)
         } else {
-            throw java.lang.IllegalArgumentException("Unable to replace placeholder ${extractNamesPlaceholder[0]}, it is not registered in table dict_place_holder")
+//            вдруг такого плейсхолдера не найдено. по умолчанию считается что этот плейсхолдер зарегистрирован в базе
+            """${"$"}{${extractNamesPlaceholder[0]}}"""
         }
 
 

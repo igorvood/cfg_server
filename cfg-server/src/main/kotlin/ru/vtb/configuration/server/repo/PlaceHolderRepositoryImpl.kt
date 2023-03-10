@@ -36,7 +36,8 @@ class PlaceHolderRepositoryImpl(
 
         return when (queryForObject.size) {
             1 -> queryForObject[0]
-            else -> throw java.lang.IllegalArgumentException("Unable to find placeHolderName $placeHolderName for serviceId $serviceId, profileId $profileId,  stand $stand")
+            else -> """${placeHolderName[0]}"""
+//                throw java.lang.IllegalArgumentException("Unable to find placeHolderName $placeHolderName for serviceId $serviceId, profileId $profileId,  stand $stand")
         }
     }
 

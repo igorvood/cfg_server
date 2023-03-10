@@ -27,12 +27,22 @@ tailrec fun replaceDifficultPlaceHolders(
     return if (extractNamesPlaceholder.isEmpty())
         propertyValue
     else {
-        val filter = placeHolders.filter { it.placeHolderName == extractNamesPlaceholder.get(0) }.first()
-        val replace = propertyValue.replace("\${" + filter.placeHolderName + "}", filter.placeHolderValue)
-        if (replace == propertyValue)
-            propertyValue
-        else
-            replaceDifficultPlaceHolders(replace, placeHolders)
+        val filter1 = placeHolders.filter { it.placeHolderName == extractNamesPlaceholder[0] }
+        if (filter1.size==1)
+        {
+            val filter = filter1.first()
+            val replace = propertyValue.replace("\${" + filter.placeHolderName + "}", filter.placeHolderValue)
+            if (replace == propertyValue)
+                propertyValue
+            else
+                replaceDifficultPlaceHolders(replace, placeHolders)
+        } else {
+            throw java.lang.IllegalArgumentException("Unable to replace placeholder ${extractNamesPlaceholder[0]}, it is not registered in table dict_place_holder")
+        }
+
+
+
+
     }
 
 

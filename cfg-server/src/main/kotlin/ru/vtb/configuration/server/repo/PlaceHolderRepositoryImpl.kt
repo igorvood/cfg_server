@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository
 import ru.vtb.configuration.server.repo.dto.DataBasePlaceHolder
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.PlaceHolderRepository
+import java.util.Optional
 
 @Repository
 class PlaceHolderRepositoryImpl(
@@ -24,15 +25,19 @@ class PlaceHolderRepositoryImpl(
         placeHolderName: String
     ): String {
 
-        val queryForObject = jdbcTemplate.queryForObject(
+        val queryForObject = jdbcTemplate.query(
             """
             select PLACEHOLDER_VALUE from RESOLVABLE_PLACEHOLDER
             where SERVICE_ID = ? and PROFILE_ID = ? and STAND = ? and PLACEHOLDER_ID = ?
         """, { rs, r ->
                 rs.getString(1)
             }, serviceId, profileId, stand.name, placeHolderName
-        )!!
-        return queryForObject
+        )
+
+        return when (queryForObject.size) {
+            1 -> queryForObject[0]
+            else -> throw java.lang.IllegalArgumentException("Unable to find placeHolderName $placeHolderName for serviceId $serviceId, profileId $profileId,  stand $stand")
+        }
     }
 
 }

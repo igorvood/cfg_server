@@ -14,7 +14,7 @@ class PlaceHolderChecker(
 
     private val logger = LoggerFactory.getLogger(PlaceHolderChecker::class.java)
     override fun check() {
-        val classAndPlaceholders = holderResolvers.associate { it.javaClass to it.placeHolderName }
+        val classAndPlaceholders = holderResolvers.associate { it.javaClass to it.placeHolderName() }
         val revert = classAndPlaceholders
             .entries
             .flatMap { e -> e.value.map { e.key to it } }
@@ -29,7 +29,7 @@ class PlaceHolderChecker(
         require(revert.isEmpty()) { revert }
 
 
-        val phFun = holderResolvers.flatMap { it.placeHolderName }
+        val phFun = holderResolvers.flatMap { it.placeHolderName() }
         val factPh =
             jdbcTemplate.query("""select distinct PROP_VALUE from all_PLACEHOLDER""", { rs, _ -> rs.getString(1) })
 

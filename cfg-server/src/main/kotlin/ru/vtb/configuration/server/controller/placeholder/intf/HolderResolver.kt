@@ -5,7 +5,7 @@ import ru.vtb.configuration.server.repo.dto.StandEnum
 
 interface HolderResolver {
 
-    val placeHolderName: Set<String>
+    fun placeHolderName(): Set<String>
 
     fun valuePlaceHolder(flinkServiceProfile: FlinkServiceProfile, ph: String, stand: StandEnum): String
 }

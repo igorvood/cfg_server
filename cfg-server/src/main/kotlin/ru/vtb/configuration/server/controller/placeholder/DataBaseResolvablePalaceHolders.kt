@@ -10,8 +10,8 @@ import ru.vtb.configuration.server.repo.intf.PlaceHolderRepository
 class DataBaseResolvablePalaceHolders(
     private val dictRepository: PlaceHolderRepository
 ) : HolderResolver {
-    override val placeHolderName: Set<String>
-        get() = dictRepository.dbPlaceHolders().map { it.id }.toSet()
+    override fun placeHolderName(): Set<String>
+         = dictRepository.dbPlaceHolders().map { it.id }.toSet()
 
     override fun valuePlaceHolder(flinkServiceProfile: FlinkServiceProfile, ph: String, stand: StandEnum): String {
         return dictRepository.placeHolderByService(

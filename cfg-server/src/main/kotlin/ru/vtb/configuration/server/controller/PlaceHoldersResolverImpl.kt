@@ -15,7 +15,7 @@ class PlaceHoldersResolverImpl(
     holderResolvers: List<HolderResolver>
 ) : PlaceHoldersResolver {
 
-    private val holdersFuns = holderResolvers.flatMap { f -> f.placeHolderName.map { n -> n to f } }.toMap()
+    private val holdersFuns = holderResolvers.flatMap { f -> f.placeHolderName().map { n -> n to f } }.toMap()
     override fun placeHolders(
         property: List<EnvProperty>,
         flinkServiceProfile: FlinkServiceProfile,

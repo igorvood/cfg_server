@@ -36,4 +36,9 @@
         <sqlFile path="liquibase/release_002/0080.constraint_on_delete.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
+    <changeSet id="liquibase/release_002/0090.resolvable_placeholder.sql" author="vood"  runAlways="false">
+        <sqlFile path="liquibase/release_002/0090.resolvable_placeholder.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
+
 </databaseChangeLog>

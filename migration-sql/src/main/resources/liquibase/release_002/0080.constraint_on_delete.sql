@@ -23,6 +23,11 @@ alter table dict_service_node drop constraint dict_service_node_node_type_fk
 alter table dict_service_node add constraint dict_service_node_node_type_fk
     foreign key (node_type, id) references dict_abstract_graph_node (node_type, node_id) on delete cascade  deferrable INITIALLY deferred
 /
+alter table dict_service_node drop constraint dict_service_node_service_id_fk
+/
+alter table dict_service_node add constraint dict_service_node_service_id_fk
+    foreign key (service_id) references dict_service(id) on delete cascade  deferrable INITIALLY deferred
+/
 alter table dict_topic_node drop constraint dict_topic_node_topic_owner_id_fk
 /
 alter table dict_topic_node add constraint dict_topic_node_topic_owner_id_fk

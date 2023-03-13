@@ -51,6 +51,8 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
 
     @Test
     fun dictServiceInsertNoTransaction() {
+
+
         assertTransaction {
             fillDictRepositoryImpl.dictServiceInsert(
                 graphFlinkServiceProfile

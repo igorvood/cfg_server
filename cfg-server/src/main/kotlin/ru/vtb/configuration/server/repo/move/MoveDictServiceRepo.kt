@@ -2,11 +2,15 @@ package ru.vtb.configuration.server.repo.move
 
 import org.springframework.jdbc.core.JdbcOperations
 import org.springframework.stereotype.Repository
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
 
 @Repository
 class MoveDictServiceRepo(
     private val jdbcOperations: JdbcOperations
 ) : IMoveDictServiceRepo {
+
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun srvArrowsMove(
         newId: String,
         newProfile: String,
@@ -25,6 +29,7 @@ class MoveDictServiceRepo(
     )
 
 
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun abstractServiceMove(
         newId: String,
         newProfile: String,
@@ -37,6 +42,7 @@ class MoveDictServiceRepo(
         "$id~$profile",
     )
 
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun flinkPropValueMove(
         newId: String,
         newProfile: String,
@@ -50,6 +56,7 @@ class MoveDictServiceRepo(
         profile,
     )
 
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun serviceGroupMove(
         newId: String,
         newProfile: String,
@@ -63,6 +70,7 @@ class MoveDictServiceRepo(
         profile,
     )
 
+    @Transactional(propagation = Propagation.MANDATORY)
     override fun serviceNodeMove(
         newId: String,
         newProfile: String,

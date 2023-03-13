@@ -7,12 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.EnvProperty
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.ConfigurationGeneratorRepository
+import ru.vtb.configuration.server.rest.update.IUpdateDictServiceRest
 import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
 
 internal class MoveDictServiceControllerTest: AbstractDatasourceTests() {
 
     @Autowired
-    lateinit var iMoveDictServiceController: IMoveDictServiceController
+    lateinit var iUpdateDictServiceRest: IUpdateDictServiceRest
 
     @Autowired
     lateinit var configurationGeneratorRepository: ConfigurationGeneratorRepository
@@ -25,7 +26,7 @@ internal class MoveDictServiceControllerTest: AbstractDatasourceTests() {
         val propertyByServiceExpected = configurationGeneratorRepository.propertyByService(serviceId, profileId, StandEnum.P0)
 
         val newProfile = profileId + "_1"
-        iMoveDictServiceController.renameProfile(serviceId
+        iUpdateDictServiceRest.moveDictService(serviceId
             ,profileId,newProfile
         )
 

@@ -84,4 +84,13 @@ class MoveDictServiceRepo(
         profile,
     )
 
+    @Transactional(propagation = Propagation.MANDATORY)
+    override fun placeHolderByServiceMove(newId: String, newProfile: String, id: String, profile: String): Int =
+     jdbcOperations.update(
+    """update dict_place_holder_by_service dsn set service_id =? , profile_id = ? where service_id =? and profile_id =? """,
+    newId,
+    newProfile,
+    id,
+    profile,
+    )
 }

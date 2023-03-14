@@ -51,4 +51,12 @@ internal class MoveDictServiceRepoTest: AbstractDatasourceTests() {
             iMoveDictServiceRepo.serviceNodeMove(              "1","2","3", "4")
         }
     }
+
+    @Test
+    fun placeHolderByServiceMove() {
+        assertTransaction {
+            iMoveDictServiceRepo.placeHolderByServiceMove(              "1","2","3", "4")
+        }
+    }
+
 }

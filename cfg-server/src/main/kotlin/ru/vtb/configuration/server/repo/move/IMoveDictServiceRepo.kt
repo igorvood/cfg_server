@@ -35,4 +35,13 @@ interface IMoveDictServiceRepo {
         id: String,
         profile: String
     ): Int
+
+
+    fun placeHolderByServiceMove(
+        newId: String,
+        newProfile: String,
+        id: String,
+        profile: String
+    ): Int
+
 }

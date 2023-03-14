@@ -22,7 +22,8 @@ class MoveDictServiceController(val iMoveDictServiceRepo: IMoveDictServiceRepo) 
                 iMoveDictServiceRepo.serviceGroupMove(id, newProfile, id, profile) +
                 iMoveDictServiceRepo.flinkPropValueMove(id, newProfile, id, profile) +
                 iMoveDictServiceRepo.abstractServiceMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.srvArrowsMove(id, newProfile, id, profile)
+                iMoveDictServiceRepo.srvArrowsMove(id, newProfile, id, profile) +
+                iMoveDictServiceRepo.placeHolderByServiceMove(id, newProfile, id, profile)
     }
 
 }

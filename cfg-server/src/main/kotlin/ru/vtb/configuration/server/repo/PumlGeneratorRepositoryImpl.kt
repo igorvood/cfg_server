@@ -80,7 +80,7 @@ class PumlGeneratorRepositoryImpl(
                 FlinkSrvPuml(rs.getString(1), rs.getString(2), rs.getString(3))
             }, serviceId
         )
-        check(queryForObject.size == 1){"Unable to find service $serviceId "}
+        check(queryForObject.size == 1) { "Unable to find service $serviceId " }
         return queryForObject[0]
     }
 

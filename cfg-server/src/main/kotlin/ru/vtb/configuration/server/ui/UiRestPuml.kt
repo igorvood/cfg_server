@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import ru.vtb.configuration.server.controller.intf.PumlGeneratorController
-import ru.vtb.configuration.server.rest.intf.PumlGeneratorRest
 import ru.vtb.configuration.server.ui.controler.TableMetaController
 import ru.vtb.configuration.server.ui.dto.SvgDto
 import java.io.ByteArrayOutputStream
@@ -19,9 +18,10 @@ import java.nio.charset.Charset
 
 @RestController
 @CrossOrigin
-class UiRestPuml(private val uiController: UiController,
-                 private val tableMetaController: TableMetaController,
-                 private val pumlGeneratorController: PumlGeneratorController
+class UiRestPuml(
+    private val uiController: UiController,
+    private val tableMetaController: TableMetaController,
+    private val pumlGeneratorController: PumlGeneratorController
 
 ) {
     @Value("classpath:tmp.puml")
@@ -31,13 +31,12 @@ class UiRestPuml(private val uiController: UiController,
     @GetMapping("/pumlSVG")
     fun puml(): SvgDto {
         val generatePumlByGraphId = pumlGeneratorController.generatePumlByGraphId("rto_graph")
-        val os  = ByteArrayOutputStream()
+        val os = ByteArrayOutputStream()
         val reader = SourceStringReader(generatePumlByGraphId);
         val generateImage = reader.generateImage(os, FileFormatOption(FileFormat.SVG))
         os.close()
         val svgData = String(os.toByteArray(), Charset.forName("UTF-8"))
         return SvgDto(svgData)
-
 
 
 //        val readText = resourceFile.file.readText()
@@ -50,8 +49,7 @@ class UiRestPuml(private val uiController: UiController,
     }
 
 
-
-    companion object{
+    companion object {
 
         val source = """@startuml
 Bob -> Alice : hello

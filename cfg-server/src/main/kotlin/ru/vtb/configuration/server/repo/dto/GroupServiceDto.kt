@@ -1,5 +1,6 @@
 package ru.vtb.configuration.server.repo.dto
 
-data class GroupServiceDto (val id: String,
-                            val description: String,
+data class GroupServiceDto(
+    val id: String,
+    val description: String,
 )

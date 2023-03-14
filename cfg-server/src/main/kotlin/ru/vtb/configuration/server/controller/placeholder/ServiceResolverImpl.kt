@@ -7,8 +7,7 @@ import ru.vtb.configuration.server.repo.dto.StandEnum
 
 @Service
 class ServiceResolverImpl : HolderResolver {
-    override fun placeHolderName(): Set<String>
-         = setOf("SERVICE_NAME")
+    override fun placeHolderName(): Set<String> = setOf("SERVICE_NAME")
 
     override fun valuePlaceHolder(flinkServiceProfile: FlinkServiceProfile, ph: String, stand: StandEnum): String =
         flinkServiceProfile.serviceId.id

@@ -6,9 +6,11 @@ import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.repo.move.IMoveDictServiceRepo
 
 interface IMoveDictServiceController {
-    fun renameProfile(id: String,
-                      profile: String,
-                      newProfile: String,): Int
+    fun renameProfile(
+        id: String,
+        profile: String,
+        newProfile: String,
+    ): Int
 
 }
 

@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository
 import ru.vtb.configuration.server.repo.dto.DataBasePlaceHolder
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.PlaceHolderRepository
-import java.util.Optional
 
 @Repository
 class PlaceHolderRepositoryImpl(

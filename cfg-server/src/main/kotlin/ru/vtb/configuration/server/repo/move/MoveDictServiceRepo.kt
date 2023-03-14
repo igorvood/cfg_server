@@ -21,7 +21,7 @@ class MoveDictServiceRepo(
 
         "$newId~$newProfile",
         "$id~$profile",
-    ) +         jdbcOperations.update(
+    ) + jdbcOperations.update(
         """update dict_arrow dsg set end_node_id = ? where end_node_id = ? and end_node_type = 'flink_srv'""",
 
         "$newId~$newProfile",
@@ -86,11 +86,11 @@ class MoveDictServiceRepo(
 
     @Transactional(propagation = Propagation.MANDATORY)
     override fun placeHolderByServiceMove(newId: String, newProfile: String, id: String, profile: String): Int =
-     jdbcOperations.update(
-    """update dict_place_holder_by_service dsn set service_id =? , profile_id = ? where service_id =? and profile_id =? """,
-    newId,
-    newProfile,
-    id,
-    profile,
-    )
+        jdbcOperations.update(
+            """update dict_place_holder_by_service dsn set service_id =? , profile_id = ? where service_id =? and profile_id =? """,
+            newId,
+            newProfile,
+            id,
+            profile,
+        )
 }

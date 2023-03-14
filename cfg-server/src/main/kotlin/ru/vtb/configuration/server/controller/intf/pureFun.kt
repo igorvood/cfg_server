@@ -28,8 +28,7 @@ tailrec fun replaceDifficultPlaceHolders(
         propertyValue
     else {
         val filter1 = placeHolders.filter { it.placeHolderName == extractNamesPlaceholder[0] }
-        if (filter1.size==1)
-        {
+        if (filter1.size == 1) {
             val filter = filter1.first()
             val replace = propertyValue.replace("""${"$"}{${filter.placeHolderName}}""", filter.placeHolderValue)
             if (replace == propertyValue)
@@ -40,8 +39,6 @@ tailrec fun replaceDifficultPlaceHolders(
 //            вдруг такого плейсхолдера не найдено. по умолчанию считается что этот плейсхолдер зарегистрирован в базе
             """${"$"}{${extractNamesPlaceholder[0]}}"""
         }
-
-
 
 
     }

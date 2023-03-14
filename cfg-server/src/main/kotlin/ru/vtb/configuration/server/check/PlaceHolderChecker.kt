@@ -2,7 +2,6 @@ package ru.vtb.configuration.server.check
 
 import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcOperations
-import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
 import ru.vtb.configuration.server.controller.placeholder.intf.HolderResolver
 

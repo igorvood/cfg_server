@@ -9,7 +9,7 @@ import ru.vtb.configuration.server.repo.intf.DictGroupRepository
 @RestController
 @CrossOrigin
 class DictGroupRest(
-    private val dictGroupRepository:DictGroupRepository
+    private val dictGroupRepository: DictGroupRepository
 ) {
     @Operation(summary = "Получить связи для трекинга", tags = ["Связи"])
     @GetMapping("/tracking/group")

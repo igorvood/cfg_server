@@ -37,7 +37,5 @@ internal class MoveDictServiceControllerTest : AbstractDatasourceTests() {
         val minus = propertyByServiceExpected.minus(propertyByServiceActual.toSet())
         Assertions.assertEquals(listOf<EnvProperty>(), minus) { minus.joinToString("\n") { it.toString() } }
         Assertions.assertEquals(listOf<EnvProperty>(), propertyByServiceActual.minus(propertyByServiceExpected.toSet()))
-
-
     }
 }

@@ -218,7 +218,6 @@ select 'rto_graph', 'uasp-streaming-mutator~rateMutate', 'flink_srv' from dual  
 select 'rto_graph', 'uasp-streaming-mutator~uddsRate', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-rto-bcps-card-emission-digital~uasp-streaming-rto-bcps-card-emission-digital', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-rto-bcps-status-change~ uasp-streaming-rto-bcps-status-change', 'flink_srv' from dual  union 
-select 'rto_graph', 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~cardfl', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~case68', 'flink_srv' from dual  union 
@@ -269,13 +268,17 @@ select 'rto_graph', 'dev_rto_uasp_usapns__dlq', 'topic' from dual  union
 select 'rto_graph', 'dev_ss_uasp_svc', 'topic' from dual  union 
 select 'rto_graph', 'dev_rto_uasp_svc', 'topic' from dual  union 
 select 'rto_graph', 'dev_rto_uasp_svc_dlq', 'topic' from dual  union 
-select 'rto_graph', 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-rto-37~uasp-streaming-rto-37', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-rto-15~uasp-streaming-rto-15', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-rto-status-execution-goal~uasp-streaming-rto-status-execution-goal', 'flink_srv' from dual  union 
 select 'rto_graph', 'dev__rto_uasp__case_70', 'topic' from dual  union 
 select 'rto_graph', 'dev_rto_batch_ca_personal_manager_json_dlq', 'topic' from dual  union 
-select 'rto_graph', 'dev_rto_batch_ca_personal_manager_json_converted', 'topic' from dual ;
+select 'rto_graph', 'dev_rto_batch_ca_personal_manager_json_converted', 'topic' from dual  union 
+select 'rto_graph', 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv' from dual  union 
+select 'rto_graph', 'dev__uasp__rto__zoc', 'topic' from dual  union 
+select 'rto_graph', 'dev_bevents__realtime__refunds-notifier__dlq', 'topic' from dual  union 
+select 'rto_graph', 'uasp-streaming-refunds-event-notifier~main', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
@@ -355,7 +358,8 @@ select 'uasp-streaming-rto-mortgage-approval_uasp-streaming-rto-mortgage-approva
 select 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-37_uasp-streaming-rto-37', 'uasp-streaming-rto-37_uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-15_uasp-streaming-rto-15', 'uasp-streaming-rto-15_uasp-streaming-rto-15' from dual  union 
-select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal' from dual ;
+select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-refunds-event-notifier_main', 'uasp-streaming-refunds-event-notifier_main' from dual ;
 
 insert into dict_kafka_prop(prop_id, type_prop) 
 select 'acks', 'prd' from dual  union 
@@ -507,7 +511,8 @@ select 'uasp-streaming-rto-open-deposit', 'ru.vtb.uasp.App' from dual  union
 select 'uasp-streaming-rto-status-execution-goal', 'ru.vtb.uasp.App' from dual  union 
 select 'uasp-streaming-rto-zoc', 'ru.vtb.uasp.App' from dual  union 
 select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual  union 
-select 'uasp-streaming-rto-bcps-status-change', 'ru.vtb.uasp.App' from dual ;
+select 'uasp-streaming-rto-bcps-status-change', 'ru.vtb.uasp.App' from dual  union 
+select 'uasp-streaming-refunds-event-notifier', 'ru.vtb.uasp.refunds.RefundsNotifierApp' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -721,8 +726,6 @@ select 'uasp-streaming-rto-bcps-card-emission-digital~uasp-streaming-rto-bcps-ca
 select 'uasp-streaming-rto-bcps-card-emission-digital~uasp-streaming-rto-bcps-card-emission-digital', 'flink_srv', 'Не задан', 'dev_uasp_bcps_ced_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'uasp-streaming-rto-ofvs~uasp-streaming-rto-ofvs', 'flink_srv', 'Не задан', 'dev__rto_uasp__ofvs', 'topic', 'ofvs', 'producer_default', 'toTopic' from dual  union 
 select 'uasp-streaming-rto-ofvs~uasp-streaming-rto-ofvs', 'flink_srv', 'Не задан', 'dev__rto_uasp__ofvs__dlq', 'topic', 'ofvs', 'producer_default', 'dlq.toTopic' from dual  union 
-select 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'Не задан', 'dev__uasp__enrichment__zoc', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
-select 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'Не задан', 'dev__uasp__rto__zoc__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'withdraw_tx_out', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-withdraw', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~way4-main', 'flink_srv', 'Не задан', 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv', 'Не задан', 'CFT2RS_CD_OUT', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
@@ -772,8 +775,6 @@ select 'dev__ipo_uasp__od', 'topic', 'Не задан', 'uasp-streaming-rto-mort
 select 'uasp-streaming-rto-mortgage-approval~uasp-streaming-rto-mortgage-approval', 'flink_srv', 'Не задан', 'dev__rto_uasp_ipood', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval~uasp-streaming-rto-mortgage-approval', 'flink_srv', 'Не задан', 'dev__dlq__ipo_uasp__od', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'dev_ss_uasp_pzns', 'topic', 'Не задан', 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
-select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'Не задан', 'dev_rto_uasp_pzns', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
-select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'Не задан', 'dev_rto_uasp_pzns_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'dev_ss_uasp_ons', 'topic', 'Не задан', 'uasp-streaming-rto-37~uasp-streaming-rto-37', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'uasp-streaming-rto-37~uasp-streaming-rto-37', 'flink_srv', 'Не задан', 'dev_rto_uasp_ons', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
 select 'uasp-streaming-rto-37~uasp-streaming-rto-37', 'flink_srv', 'Не задан', 'dev_rto_uasp_ons__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
@@ -787,7 +788,14 @@ select 'uasp-streaming-input-convertor~input-convertor-profile', 'flink_srv', '�
 select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~mdm-profile', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'rto_graph', 'latest', 'ha.fromTopic' from dual  union 
 select 'uasp-streaming-mdm-enrichment~profile-tx-step2', 'flink_srv', 'Не задан', 'dev_bevents_card_agreement_enrich_out_uaspdto', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'dev__wpr_profile-uasp__auth', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual ;
+select 'dev__wpr_profile-uasp__auth', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
+select 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'Не задан', 'dev__uasp__rto__zoc', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'Не задан', 'dev__uasp__rto__zoc__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'Не задан', 'dev_rto_uasp_pzv', 'topic', 'rto_graph', 'producer_default', 'toTopic' from dual  union 
+select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'Не задан', 'dev_rto_uasp_pzns_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'Не задан', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
+select 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'Не задан', 'dev_bevents__realtime__refunds-notifier__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
 select 'earliest', 'auto.offset.reset', 'earliest', 'cns' from dual  union 
@@ -952,7 +960,6 @@ select 'rateMutate', 'Описание не заполнено.', 'uasp-streamin
 select 'test', 'Описание не заполнено.', 'uasp-kriaa-bevents-monitor' from dual  union 
 select 'uasp-streaming-rto-bcps-card-emission-digital', 'Описание не заполнено.', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 'uasp-streaming-rto-ofvs', 'Описание не заполнено.', 'uasp-streaming-rto-ofvs' from dual  union 
-select 'uasp-streaming-rto-zoc', 'Описание не заполнено.', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uddsRate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'unp_w4_issuing_card', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uz', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
@@ -972,10 +979,12 @@ select 'uasp-streaming-rto-bcps-card-emission-digital-mock-test', 'Описан�
 select 'uasp-streaming-rto-open-deposit', 'Описание не заполнено.', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-closing-deposit', 'Описание не заполнено.', 'uasp-streaming-rto-closing-deposit' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval', 'Описание не заполнено.', 'uasp-streaming-rto-mortgage-approval' from dual  union 
-select 'uasp-streaming-rto-attempt-close-part2', 'Описание не заполнено.', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-37', 'Описание не заполнено.', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-15', 'Описание не заполнено.', 'uasp-streaming-rto-15' from dual  union 
-select 'uasp-streaming-rto-status-execution-goal', 'Описание не заполнено.', 'uasp-streaming-rto-status-execution-goal' from dual ;
+select 'uasp-streaming-rto-status-execution-goal', 'Описание не заполнено.', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-rto-zoc', 'Описание не заполнено.', 'uasp-streaming-rto-zoc' from dual  union 
+select 'uasp-streaming-rto-attempt-close-part2', 'Описание не заполнено.', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-streaming-refunds-event-notifier' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1177,7 +1186,9 @@ select 'delete', 'dev_rto_uasp_svc', 14400000, 'DKO_COMMAND' from dual  union
 select 'delete', 'dev_rto_uasp_svc_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__rto_uasp__case_70', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_rto_batch_ca_personal_manager_json_dlq', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev_rto_batch_ca_personal_manager_json_converted', 14400000, 'DKO_COMMAND' from dual ;
+select 'delete', 'dev_rto_batch_ca_personal_manager_json_converted', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp__rto__zoc', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_bevents__realtime__refunds-notifier__dlq', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
 select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -1250,6 +1261,7 @@ select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.fieldsList.a4.toFieldName'
 select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.inputDataFormat', 'UaspDtoFormat', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'enrichOne.CommonEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
 select 0, 'case-68', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1261,6 +1273,7 @@ select 0, 'case68', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming
 select 0, 'case68', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'case68', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'case68', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'card_type_cd', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1296,17 +1309,21 @@ select 0, 'credit-card', 'portfolio.token.endpoint', 'https://epa-am-if-lb.test.
 select 0, 'credit-card', 'portfolio.token.secret', '***', 'uasp-streaming-cc-activation' from dual  union 
 select 0, 'credit-card', 'portfolio.tyk.key', '***', 'uasp-streaming-cc-activation' from dual  union 
 select 0, 'credit-card', 'test.run', 'true', 'uasp-streaming-cc-activation' from dual  union 
+select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-zoc' from dual  union 
 select 0, 'customer-package', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-package', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-package', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-package', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-package', 'uaspdto.type', 'customer-package', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 0, 'customer-profile-full', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'case-68_agrement', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'customer-profile-full', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-profile-full', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-profile-full', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-profile-full', 'uaspdto.type', 'customer-profile-full', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1359,6 +1376,7 @@ select 0, 'input-convertor-w4-operation', 'service.serviceName', '${SERVICE_NAME
 select 0, 'input-convertor-w4-operation', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-w4-operation', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-w4-operation', 'uaspdto.type', 'way4', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'main', 'savepoint.pref', 'uasp-streaming-refunds-event-notifier', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 0, 'input-convertor-withdraw', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-withdraw', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1372,6 +1390,7 @@ select 0, 'kn', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-stream
 select 0, 'kn', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
 select 0, 'kn', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
 select 0, 'kn', 'validation.schema.name', 'kn-schema.json', 'uasp-streaming-json-validator' from dual  union 
+select 0, 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 0, 'loyalty', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'loyalty', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'loyalty', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1428,6 +1447,7 @@ select 0, 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case
 select 0, 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-56' from dual  union 
 select 0, 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 0, 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 0, 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 0, 'main', 'timeZoneOffset', '3', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 0, 'main', 'windows.size.time.minutes', '2', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 0, 'mainInput', 'rulles.drools.list', 'way4-case-2_2.drl,way4-case-2_3.drl,way4-case-2_4.drl,way4-case-2_10.drl,way4-case-5_2.drl,way4-case-5_3.drl,way4-case-11_2.drl', 'uasp-streaming-mutator' from dual  union 
@@ -1540,6 +1560,8 @@ select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.fieldsList.a03.to
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.inputDataFormat', 'UaspDtoFormat', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-refunds-event-notifier' from dual  union 
+select 0, 'main', 'sync.parallelism', '8', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 0, 'prof-auth-packNM', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-auth-packNM', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1557,6 +1579,7 @@ select 0, 'profile-transactions', 'service.serviceProfile', '${PROFILE_NAME}', '
 select 0, 'profile-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'profile-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 0, 'profile-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 0, 'main', 'appOperationTTlMilliseconds', '7200000', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a1.fromFieldName', 'contract_num', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a1.isOptionalEnrichValue', 'false', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1607,6 +1630,7 @@ select 0, 'prof-tx-case-71', 'service.serviceName', '${SERVICE_NAME}', 'uasp-str
 select 0, 'prof-tx-case-71', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'uasp-streaming-rto-15', 'disable.validation', 'false', 'uasp-streaming-rto-15' from dual  union 
 select 0, 'rateMutate', 'rulles.drools.list', 'exchange_currency_fields.drl', 'uasp-streaming-mutator' from dual  union 
 select 0, 'rateMutate', 'rulles.filter.fieldName', 'sys-BussinesRulles-error', 'uasp-streaming-mutator' from dual  union 
 select 0, 'rateMutate', 'rulles.filter.operandClass', 'String', 'uasp-streaming-mutator' from dual  union 
@@ -1625,9 +1649,6 @@ select 0, 'uasp-streaming-rto-bcps-card-emission-digital', 'flink.job.service.se
 select 0, 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-ofvs' from dual  union 
 select 0, 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-ofvs' from dual  union 
 select 0, 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-ofvs' from dual  union 
-select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
-select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
-select 0, 'uasp-streaming-rto-zoc', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-zoc' from dual  union 
 select 0, 'uddsRate', 'rulles.drools.list', 'currency-rate-for-uddt.drl', 'uasp-streaming-mutator' from dual  union 
 select 0, 'uddsRate', 'rulles.filter.fieldName', 'sys-BussinesRulles-error', 'uasp-streaming-mutator' from dual  union 
 select 0, 'uddsRate', 'rulles.filter.operandClass', 'String', 'uasp-streaming-mutator' from dual  union 
@@ -1771,6 +1792,9 @@ select 0, 'input-convertor-prof-auth', 'card.number.sha256.salt', '${CARD_NUMBER
 select 0, 'input-convertor-udds', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-86' from dual  union 
 select 0, 'customer-profile-full', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.card.plastic.expire', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.counterpartyPaymentDetails.party.accountInfo.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'customer-package', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1879,9 +1903,8 @@ select 0, 'uasp-streaming-rto-open-deposit', 'flink.job.service.serviceVersion',
 select 0, 'uasp-streaming-rto-mortgage-approval', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
 select 0, 'uasp-streaming-rto-mortgage-approval', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
 select 0, 'uasp-streaming-rto-mortgage-approval', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
-select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
-select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
-select 0, 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.requestedAmount.transaction.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.processing.baseAmount.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'uasp-streaming-rto-37', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-37' from dual  union 
 select 0, 'uasp-streaming-rto-37', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-37' from dual  union 
 select 0, 'uasp-streaming-rto-37', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-37' from dual  union 
@@ -1891,8 +1914,7 @@ select 0, 'uasp-streaming-rto-15', 'flink.job.service.serviceVersion', '${SERVIC
 select 0, 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 0, 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 0, 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
-select 0, 'uasp-streaming-rto-attempt-close-part2', 'restart.attempts', '50', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
-select 0, 'uasp-streaming-rto-attempt-close-part2', 'restart.delay', '5000', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.processing.feeAmount.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'uasp-streaming-rto-37', 'restart.attempts', '50', 'uasp-streaming-rto-37' from dual  union 
 select 0, 'uasp-streaming-rto-37', 'restart.delay', '5000', 'uasp-streaming-rto-37' from dual  union 
 select 0, 'uasp-streaming-rto-15', 'restart.attempts', '50', 'uasp-streaming-rto-15' from dual  union 
@@ -2063,22 +2085,23 @@ select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWO
 select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${IFT_KAFKA_SSL_KEY_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${NT_KAFKA_SSL_KEY_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${P0_KAFKA_SSL_KEY_PASSWORD}', 'P0', 'cns' from dual  union 
-select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${REAL_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.key.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.location', 'C:\\Work\\secret\\kafka-trust.pfx', 'NOTEBOOK', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${DSO_KAFKA_SSL_KEYSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${IFT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${NT_KAFKA_SSL_KEYSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${P0_KAFKA_SSL_KEYSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
-select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${REAL_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
+select 'earliest_DATA_PLATFORM', 'ssl.keystore.password', '${DP_KAFKA_SSL_KEYSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
+select 'earliest_DATA_PLATFORM', 'ssl.key.password', '${DP_KAFKA_SSL_KEY_PASSWORD}', 'REAL', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.location', 'C:\\Work\\secret\\APD00.13.01-USBP-kafka-cluster-uasp.pfx', 'NOTEBOOK', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'DSO', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', '${IFT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'IFT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', '${NT_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'NT', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', '${P0_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'P0', 'cns' from dual  union 
 select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', '${REAL_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'REAL', 'cns' from dual  union 
-select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual ;
+select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', 'kafkauasppassword', 'NOTEBOOK', 'cns' from dual  union 
+select 'earliest_DATA_PLATFORM', 'ssl.keystore.location', '${DP_KAFKA_KEYSTORE_LOCATION}', 'REAL', 'cns' from dual ;
 
 insert into dict_place_holder_by_service(place_holder_id, profile_id, service_id, stand_id, value) 
 select 'PARALLELISM', 'test', 'uasp-kriaa-bevents-monitor', 'REAL', '1' from dual  union 
@@ -2205,7 +2228,6 @@ select 'uasp-streaming-mutator_rateMutate', 'rateMutate', 'uasp-streaming-mutato
 select 'uasp-kriaa-bevents-monitor_test', 'test', 'uasp-kriaa-bevents-monitor' from dual  union 
 select 'uasp-streaming-rto-bcps-card-emission-digital_uasp-streaming-rto-bcps-card-emission-digital', 'uasp-streaming-rto-bcps-card-emission-digital', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 'uasp-streaming-rto-ofvs_uasp-streaming-rto-ofvs', 'uasp-streaming-rto-ofvs', 'uasp-streaming-rto-ofvs' from dual  union 
-select 'uasp-streaming-rto-zoc_uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-mutator_uddsRate', 'uddsRate', 'uasp-streaming-mutator' from dual  union 
 select 'uasp-streaming-unp-convertor_unp_w4_issuing_card', 'unp_w4_issuing_card', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-json-validator_uz', 'uz', 'uasp-streaming-json-validator' from dual  union 
@@ -2223,7 +2245,9 @@ select 'uasp-streaming-rto-bcps-card-emission-digital_uasp-streaming-rto-bcps-ca
 select 'uasp-streaming-rto-open-deposit_uasp-streaming-rto-open-deposit', 'uasp-streaming-rto-open-deposit', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-closing-deposit_uasp-streaming-rto-closing-deposit', 'uasp-streaming-rto-closing-deposit', 'uasp-streaming-rto-closing-deposit' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval_uasp-streaming-rto-mortgage-approval', 'uasp-streaming-rto-mortgage-approval', 'uasp-streaming-rto-mortgage-approval' from dual  union 
-select 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-37_uasp-streaming-rto-37', 'uasp-streaming-rto-37', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-15_uasp-streaming-rto-15', 'uasp-streaming-rto-15', 'uasp-streaming-rto-15' from dual  union 
-select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal' from dual ;
+select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-rto-zoc_uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc' from dual  union 
+select 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 'uasp-streaming-refunds-event-notifier_main', 'main', 'uasp-streaming-refunds-event-notifier' from dual ;

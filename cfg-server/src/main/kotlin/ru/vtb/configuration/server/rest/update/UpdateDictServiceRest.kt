@@ -9,7 +9,7 @@ import ru.vtb.configuration.server.controller.move.IMoveDictServiceController
 interface IUpdateDictServiceRest {
 
     fun moveDictService(
-        id: String,
+        serviceId: String,
         profile: String,
         newProfile: String,
     ): Int

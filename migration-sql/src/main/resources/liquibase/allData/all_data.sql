@@ -278,7 +278,13 @@ select 'rto_graph', 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv'
 select 'rto_graph', 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv' from dual  union 
 select 'rto_graph', 'dev__uasp__rto__zoc', 'topic' from dual  union 
 select 'rto_graph', 'dev_bevents__realtime__refunds-notifier__dlq', 'topic' from dual  union 
-select 'rto_graph', 'uasp-streaming-refunds-event-notifier~main', 'flink_srv' from dual ;
+select 'rto_graph', 'uasp-streaming-refunds-event-notifier~main', 'flink_srv' from dual  union 
+select 'rto_graph', 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 'topic' from dual  union 
+select 'rto_graph', 'dev_bevents__realtime__enrichment_first_salary_transactions_dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev_bevents__uasp_realtime__outer_cbr_rate__status', 'topic' from dual  union 
+select 'rto_graph', 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 'topic' from dual  union 
+select 'rto_graph', 'uasp-streaming-currency-enrichment~case68', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv' from dual ;
 
 insert into dict_group(description, id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
@@ -359,7 +365,9 @@ select 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-
 select 'uasp-streaming-rto-37_uasp-streaming-rto-37', 'uasp-streaming-rto-37_uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-15_uasp-streaming-rto-15', 'uasp-streaming-rto-15_uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal' from dual  union 
-select 'uasp-streaming-refunds-event-notifier_main', 'uasp-streaming-refunds-event-notifier_main' from dual ;
+select 'uasp-streaming-refunds-event-notifier_main', 'uasp-streaming-refunds-event-notifier_main' from dual  union 
+select 'uasp-streaming-currency-enrichment_case68', 'uasp-streaming-currency-enrichment_case68' from dual  union 
+select 'uasp-streaming-currency-enrichment_first-salary', 'uasp-streaming-currency-enrichment_first-salary' from dual ;
 
 insert into dict_kafka_prop(prop_id, type_prop) 
 select 'acks', 'prd' from dual  union 
@@ -512,7 +520,8 @@ select 'uasp-streaming-rto-status-execution-goal', 'ru.vtb.uasp.App' from dual  
 select 'uasp-streaming-rto-zoc', 'ru.vtb.uasp.App' from dual  union 
 select 'uasp-streaming-unp-convertor', 'ru.vtb.uasp.unp.convertor.UnpConvertor' from dual  union 
 select 'uasp-streaming-rto-bcps-status-change', 'ru.vtb.uasp.App' from dual  union 
-select 'uasp-streaming-refunds-event-notifier', 'ru.vtb.uasp.refunds.RefundsNotifierApp' from dual ;
+select 'uasp-streaming-refunds-event-notifier', 'ru.vtb.uasp.refunds.RefundsNotifierApp' from dual  union 
+select 'uasp-streaming-currency-enrichment', 'ru.vtb.uasp.streaming.currency.CurrencyEnrichmentApp' from dual ;
 
 insert into dict_topic_owner(description_for_report, id, is_our) 
 select 'Интеграция: ссылка на ПМИ', 'DKO_COMMAND', 1 from dual ;
@@ -795,7 +804,17 @@ select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-
 select 'uasp-streaming-rto-attempt-close-part2~uasp-streaming-rto-attempt-close-part2', 'flink_srv', 'Не задан', 'dev_rto_uasp_pzns_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'Не задан', 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'Не задан', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
-select 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'Не задан', 'dev_bevents__realtime__refunds-notifier__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual ;
+select 'uasp-streaming-refunds-event-notifier~main', 'flink_srv', 'Не задан', 'dev_bevents__realtime__refunds-notifier__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev_bevents_udds_mdm_rate_case68_uaspdto', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'rto_graph', 'latest', 'uasp.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'rto_graph', 'latest', 'currency.fromTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'Не задан', 'dev_bevents_68_after_rate_enrich', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'Не задан', 'dev_bevents__uasp_realtime__outer_cbr_rate__status', 'topic', 'rto_graph', 'producer_default', 'rate.toTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_first_salary_transactions_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'dev_bevents__realtime__enrichment_prepare_transactions__uaspdto', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'rto_graph', 'latest', 'uasp.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'rto_graph', 'latest', 'currency.fromTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 'topic', 'rto_graph', 'producer_default', 'rate.toTopic' from dual  union 
+select 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_first_salary_transactions_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual ;
 
 insert into dict_kafka_prop_value(grp_id, prop_id, prop_value, type_prop) 
 select 'earliest', 'auto.offset.reset', 'earliest', 'cns' from dual  union 
@@ -984,7 +1003,9 @@ select 'uasp-streaming-rto-15', 'Описание не заполнено.', 'ua
 select 'uasp-streaming-rto-status-execution-goal', 'Описание не заполнено.', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-zoc', 'Описание не заполнено.', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-rto-attempt-close-part2', 'Описание не заполнено.', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
-select 'main', 'Описание не заполнено.', 'uasp-streaming-refunds-event-notifier' from dual ;
+select 'main', 'Описание не заполнено.', 'uasp-streaming-refunds-event-notifier' from dual  union 
+select 'case68', 'Описание не заполнено.', 'uasp-streaming-currency-enrichment' from dual  union 
+select 'first-salary', 'Описание не заполнено.', 'uasp-streaming-currency-enrichment' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1188,7 +1209,11 @@ select 'delete', 'dev__rto_uasp__case_70', 14400000, 'DKO_COMMAND' from dual  un
 select 'delete', 'dev_rto_batch_ca_personal_manager_json_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_rto_batch_ca_personal_manager_json_converted', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp__rto__zoc', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev_bevents__realtime__refunds-notifier__dlq', 14400000, 'DKO_COMMAND' from dual ;
+select 'delete', 'dev_bevents__realtime__refunds-notifier__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_bevents__realtime__enrichment_first_salary_transactions_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_bevents__uasp_realtime__outer_cbr_rate__status', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(is_function, profile_id, prop_id, prop_value, service_id) 
 select 0, 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -1329,21 +1354,26 @@ select 0, 'input-convertor-ca-cardfl', 'service.serviceName', '${SERVICE_NAME}',
 select 0, 'input-convertor-ca-cardfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'uaspdto.type', 'ca-cardfl', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'uaspdto.type', 'ca-depositfl', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'input-convertor-ca-first-salary', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-first-salary', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-first-salary', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-first-salary', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-first-salary', 'uaspdto.type', 'ca-first-salary', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'input-convertor-cardfl', 'read.source.topic.frombeginning', 'true', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cardfl', 'uaspdto.type', 'cardfl', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'input-convertor-cft', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cft', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cft', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1591,6 +1621,7 @@ select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.globalEnrichFie
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat', 'UaspDtoFormat', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step1', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1603,11 +1634,13 @@ select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.globalEnrichFie
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.inputDataFormat', 'UaspDtoFormat', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'enrichOne.GlobalIdEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
 select 0, 'profile-tx-step2', 'savepoint.pref', 'mdm_enrichment', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'profile-tx-step2', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-filter' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'product_nm', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1617,6 +1650,7 @@ select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a2.from
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a2.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a2.toFieldName', 'product_rate', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a3.fromFieldName', 'period', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case68', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-currency-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a3.fromFieldType', 'Int', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a3.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a3.toFieldName', 'period', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1730,6 +1764,7 @@ select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a11
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a11.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a11.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a11.toFieldName', 'salary_project_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case68', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-currency-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a12.fromFieldName', 'salary_account_scheme_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a12.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 0, 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.fieldsList.a12.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1795,6 +1830,7 @@ select 0, 'customer-profile-full', 'sync.parallelism', '${PARALLELISM}', 'uasp-s
 select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.card.plastic.expire', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.counterpartyPaymentDetails.party.accountInfo.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mutator' from dual  union 
 select 0, 'customer-package', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-cardfl', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-ca-depositfl', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1802,7 +1838,12 @@ select 0, 'input-convertor-ca-first-salary', 'sync.parallelism', '${PARALLELISM}
 select 0, 'input-convertor-cardfl', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-cft', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 0, 'input-convertor-mdm', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 0, 'uasp-streaming-rto-bcps-card-emission-digital', 'portfolio.ssl.enabled', 'false', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case-48-concatenate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 0, 'uasp-streaming-rto-bcps-card-emission-digital', 'restart.attempts', '50', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 0, 'uasp-streaming-rto-bcps-card-emission-digital', 'restart.delay', '5000', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 0, 'input-convertor-prof-auth', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1920,7 +1961,76 @@ select 0, 'uasp-streaming-rto-37', 'restart.delay', '5000', 'uasp-streaming-rto-
 select 0, 'uasp-streaming-rto-15', 'restart.attempts', '50', 'uasp-streaming-rto-15' from dual  union 
 select 0, 'uasp-streaming-rto-15', 'restart.delay', '5000', 'uasp-streaming-rto-15' from dual  union 
 select 0, 'uasp-streaming-rto-status-execution-goal', 'restart.attempts', '50', 'uasp-streaming-rto-status-execution-goal' from dual  union 
-select 0, 'uasp-streaming-rto-status-execution-goal', 'restart.delay', '5000', 'uasp-streaming-rto-status-execution-goal' from dual ;
+select 0, 'uasp-streaming-rto-status-execution-goal', 'restart.delay', '5000', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-filter' from dual  union 
+select 0, 'main-input-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case68', 'savepoint.pref', 'uasp-streaming-currency-enrichment', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'sync.parallelism', '8', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mutator' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'way4-card-agreement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mutator' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
+select 0, 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case68', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 0, 'case68', 'currency.alphaCode.fieldName', 'exchange_currency', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'currency.date.fieldName', 'exchange_dttm', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'national.currency', 'RUR', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'national.rate', '1', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'national.scale', '1', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'depth.ofDay', '14', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'depth.count', '14', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'system.code', '1557_UASP', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'recipt.currency.price.fieldName', 'currency_price', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'case68', 'recipt.currency.scale.fieldName', 'currency_scale', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'savepoint.pref', 'uasp-streaming-currency-enrichment', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'sync.parallelism', '8', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'currency.alphaCode.fieldName', 'exchange_currency', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'currency.date.fieldName', 'exchange_dttm', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'national.currency', 'RUR', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'national.rate', '1', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'national.scale', '1', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'depth.ofDay', '14', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'depth.count', '14', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'system.code', '1557_UASP', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'recipt.currency.price.fieldName', 'currency_price', 'uasp-streaming-currency-enrichment' from dual  union 
+select 0, 'first-salary', 'recipt.currency.scale.fieldName', 'currency_scale', 'uasp-streaming-currency-enrichment' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
@@ -2250,4 +2360,6 @@ select 'uasp-streaming-rto-15_uasp-streaming-rto-15', 'uasp-streaming-rto-15', '
 select 'uasp-streaming-rto-status-execution-goal_uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-zoc_uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-rto-attempt-close-part2_uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
-select 'uasp-streaming-refunds-event-notifier_main', 'main', 'uasp-streaming-refunds-event-notifier' from dual ;
+select 'uasp-streaming-refunds-event-notifier_main', 'main', 'uasp-streaming-refunds-event-notifier' from dual  union 
+select 'uasp-streaming-currency-enrichment_case68', 'case68', 'uasp-streaming-currency-enrichment' from dual  union 
+select 'uasp-streaming-currency-enrichment_first-salary', 'first-salary', 'uasp-streaming-currency-enrichment' from dual ;

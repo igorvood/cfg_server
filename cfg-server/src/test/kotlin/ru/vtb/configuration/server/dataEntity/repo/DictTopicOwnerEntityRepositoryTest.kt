@@ -2,35 +2,37 @@ package ru.vtb.configuration.server.dataEntity.repo
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.context.ApplicationContext
+import org.springframework.test.annotation.Rollback
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 import java.math.BigInteger
-import javax.persistence.EntityManager
-import javax.persistence.PersistenceContext
 
 
-@SpringBootTest
-internal class DictTopicOwnerEntityRepositoryTest {
+internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
 
     @Autowired
-    lateinit var dictTopicOwnerEntityRepository:DictTopicOwnerEntityRepository
+    lateinit var applicationContext: ApplicationContext
 
-    @PersistenceContext // or even @Autowired
-    lateinit var entityManager: EntityManager
+
+    @Autowired
+    lateinit var dictTopicOwnerEntityRepository: DictTopicOwnerEntityRepository
+
+//    @PersistenceContext // or even @Autowired
+//    lateinit var entityManager: EntityManager
 
     @Test
     @Transactional
     fun findById() {
 
 
-
         val findById = dictTopicOwnerEntityRepository.findById("DKO_COMMAND").get()
-        findById.isOur= BigInteger.valueOf(0)
+        findById.isOur = BigInteger.valueOf(0)
         val save = dictTopicOwnerEntityRepository.save(findById)
 
-        entityManager.persist(findById)
+
         println(findById)
     }
 
@@ -49,5 +51,19 @@ internal class DictTopicOwnerEntityRepositoryTest {
         val findById = dictTopicOwnerEntityRepository.findById("id1")
 
         println(save)
+    }
+
+    @Test
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Rollback(false)
+    fun update() {
+        val id = "DKO_COMMAND"
+//        val findById = dictTopicOwnerEntityRepository.findById(id).get()
+
+        dictTopicOwnerEntityRepository.update(
+            id, id + "asd"
+//            ,DictTopicOwnerEntity("asd",BigInteger.ZERO,"asd")
+        )
+
     }
 }

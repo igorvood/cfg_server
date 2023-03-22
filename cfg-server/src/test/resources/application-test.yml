@@ -5,4 +5,9 @@ spring:
     username: ${DB_USERNAME:db_configuration_manager_admin}
     password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
 
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+    ru: DEBUG
 

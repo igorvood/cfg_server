@@ -1,4 +1,4 @@
-package ru.vtb.configuration.server.test.abstraction
+package ru.vtb.configuration.server.abstraction
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach

@@ -6,7 +6,17 @@ import java.math.BigInteger;
 @Entity
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 public class DictTopicOwnerEntity {
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    public DictTopicOwnerEntity() {
+    }
+
+    public DictTopicOwnerEntity(String id, BigInteger isOur, String descriptionForReport) {
+        this.id = id;
+        this.isOur = isOur;
+        this.descriptionForReport = descriptionForReport;
+    }
+
+    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private String id;

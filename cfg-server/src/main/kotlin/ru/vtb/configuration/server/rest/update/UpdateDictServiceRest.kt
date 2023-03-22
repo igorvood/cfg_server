@@ -9,7 +9,7 @@ import ru.vtb.configuration.server.controller.move.IMoveDictServiceController
 interface IUpdateDictServiceRest {
 
     fun moveDictService(
-        id: String,
+        serviceId: String,
         profile: String,
         newProfile: String,
     ): Int
@@ -22,11 +22,11 @@ class UpdateDictServiceRest(private val iMoveDictServiceController: IMoveDictSer
     @Operation(summary = "Переименовать профиль. Возвращает кол-во проапдейченных записей.", tags = ["Служебные."])
     @PostMapping("/moveDictService", produces = [MediaType.APPLICATION_JSON_VALUE])
     override fun moveDictService(
-        id: String,
+        serviceId: String,
         profile: String,
         newProfile: String,
     ): Int {
-        return iMoveDictServiceController.renameProfile(id, profile, newProfile)
+        return iMoveDictServiceController.renameProfile(serviceId, profile, newProfile)
 
     }
 }

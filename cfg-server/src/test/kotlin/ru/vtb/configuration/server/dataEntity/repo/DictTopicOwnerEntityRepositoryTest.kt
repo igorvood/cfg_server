@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 import java.math.BigInteger
+import kotlin.test.assertEquals
 
 
 internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
@@ -57,13 +58,14 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Rollback(false)
     fun update() {
-        val id = "DKO_COMMAND"
+        val id = "qwerty"
 //        val findById = dictTopicOwnerEntityRepository.findById(id).get()
 
-        dictTopicOwnerEntityRepository.update(
+        val update = dictTopicOwnerEntityRepository.update(
             id, id + "asd"
 //            ,DictTopicOwnerEntity("asd",BigInteger.ZERO,"asd")
         )
 
+        assertEquals(1, update)
     }
 }

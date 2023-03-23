@@ -18,19 +18,18 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
 
 
     @Test
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun findById() {
-        val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
-        findById.isOur = BigInteger.valueOf(0)
-        val save = dictTopicOwnerEntityRepository.save(findById)
+        withTransactional {
+            val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
+            findById.isOur = BigInteger.valueOf(0)
+            val save = dictTopicOwnerEntityRepository.save(findById)
+        }
     }
 
     @Test
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Rollback(false)
     fun save() {
-
-
         val apply = DictTopicOwnerEntity().apply {
             id = "id1"
             isOur = BigInteger.valueOf(1)
@@ -47,8 +46,6 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     @Transactional
     @Rollback(false)
     fun update() {
-
-
         val id = "qwerty"
 //        val id = "DKO_COMMAND"
 

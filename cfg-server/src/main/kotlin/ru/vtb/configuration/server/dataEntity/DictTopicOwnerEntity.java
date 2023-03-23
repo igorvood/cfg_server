@@ -2,21 +2,11 @@ package ru.vtb.configuration.server.dataEntity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.Collection;
 
 @Entity
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 public class DictTopicOwnerEntity {
-
-    public DictTopicOwnerEntity() {
-    }
-
-    public DictTopicOwnerEntity(String id, BigInteger isOur, String descriptionForReport) {
-        this.id = id;
-        this.isOur = isOur;
-        this.descriptionForReport = descriptionForReport;
-    }
-
-    //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private String id;
@@ -26,6 +16,8 @@ public class DictTopicOwnerEntity {
     @Basic
     @Column(name = "description_for_report")
     private String descriptionForReport;
+    @OneToMany(mappedBy = "dictTopicOwnerByTopicOwnerId")
+    private Collection<DictTopicNodeEntity> dictTopicNodesById;
 
     public String getId() {
         return id;
@@ -68,9 +60,14 @@ public class DictTopicOwnerEntity {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (isOur != null ? isOur.hashCode() : 0);
-        result = 31 * result + (descriptionForReport != null ? descriptionForReport.hashCode() : 0);
-        return result;
+        return this.getClass().getName().hashCode();
+    }
+
+    public Collection<DictTopicNodeEntity> getDictTopicNodesById() {
+        return dictTopicNodesById;
+    }
+
+    public void setDictTopicNodesById(Collection<DictTopicNodeEntity> dictTopicNodesById) {
+        this.dictTopicNodesById = dictTopicNodesById;
     }
 }

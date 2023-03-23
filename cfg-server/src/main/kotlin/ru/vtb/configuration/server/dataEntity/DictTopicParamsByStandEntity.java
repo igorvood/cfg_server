@@ -1,12 +1,13 @@
 package ru.vtb.configuration.server.dataEntity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "dict_topic_params_by_stand", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictTopicParamsByStandEntityPK.class)
-public class DictTopicParamsByStandEntity {
+public class DictTopicParamsByStandEntity  {
     @Id
     @Column(name = "node_id")
     private String nodeId;
@@ -22,9 +23,6 @@ public class DictTopicParamsByStandEntity {
     @ManyToOne
     @JoinColumn(name = "node_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private DictTopicNodeEntity dictTopicNodeByNodeId;
-    @ManyToOne
-    @JoinColumn(name = "node_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private DictTopicNodeEntity dictTopicNodeByNodeId_0;
 
     public String getNodeId() {
         return nodeId;
@@ -86,11 +84,4 @@ public class DictTopicParamsByStandEntity {
         this.dictTopicNodeByNodeId = dictTopicNodeByNodeId;
     }
 
-    public DictTopicNodeEntity getDictTopicNodeByNodeId_0() {
-        return dictTopicNodeByNodeId_0;
-    }
-
-    public void setDictTopicNodeByNodeId_0(DictTopicNodeEntity dictTopicNodeByNodeId_0) {
-        this.dictTopicNodeByNodeId_0 = dictTopicNodeByNodeId_0;
-    }
 }

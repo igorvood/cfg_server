@@ -27,8 +27,8 @@ public class DictTopicNodeEntity {
     private DictTopicOwnerEntity dictTopicOwnerByTopicOwnerId;
     @OneToMany(mappedBy = "dictTopicNodeByNodeId")
     private Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById;
-    @OneToMany(mappedBy = "dictTopicNodeByNodeId_0")
-    private Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById_0;
+//    @OneToMany(mappedBy = "dictTopicNodeByNodeId_0")
+//    private Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById_0;
 
     public String getId() {
         return id;
@@ -108,11 +108,11 @@ public class DictTopicNodeEntity {
         this.dictTopicParamsByStandsById = dictTopicParamsByStandsById;
     }
 
-    public Collection<DictTopicParamsByStandEntity> getDictTopicParamsByStandsById_0() {
-        return dictTopicParamsByStandsById_0;
-    }
-
-    public void setDictTopicParamsByStandsById_0(Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById_0) {
-        this.dictTopicParamsByStandsById_0 = dictTopicParamsByStandsById_0;
-    }
+//    public Collection<DictTopicParamsByStandEntity> getDictTopicParamsByStandsById_0() {
+//        return dictTopicParamsByStandsById_0;
+//    }
+//
+//    public void setDictTopicParamsByStandsById_0(Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById_0) {
+//        this.dictTopicParamsByStandsById_0 = dictTopicParamsByStandsById_0;
+//    }
 }

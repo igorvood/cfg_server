@@ -21,24 +21,24 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     @Autowired
     lateinit var dictTopicOwnerEntityRepository: DictTopicOwnerEntityRepository
 
-//    @PersistenceContext // or even @Autowired
-//    lateinit var entityManager: EntityManager
+
+    @Transactional
+    @Rollback(false)
+    fun <R>withTransactional(block: ()->R): R = block.invoke()
+
 
     @Test
-    @Transactional
     fun findById() {
-
-
-        val findById = dictTopicOwnerEntityRepository.findById("DKO_COMMAND").get()
-        findById.isOur = BigInteger.valueOf(0)
-        val save = dictTopicOwnerEntityRepository.save(findById)
-
-
-        println(findById)
+        withTransactional {
+            val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
+            findById.isOur = BigInteger.valueOf(0)
+            val save = dictTopicOwnerEntityRepository.save(findById)
+        }
     }
 
     @Test
     @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Rollback(false)
     fun save() {
 
 
@@ -51,7 +51,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
 
         val findById = dictTopicOwnerEntityRepository.findById("id1")
 
-        println(save)
+        assertEquals(apply, findById.get())
     }
 
     @Test
@@ -59,7 +59,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     @Rollback(false)
     fun update() {
         val id = "qwerty"
-//        val findById = dictTopicOwnerEntityRepository.findById(id).get()
+//        val id = "DKO_COMMAND"
 
         val update = dictTopicOwnerEntityRepository.update(
             id, id + "asd"

@@ -3,12 +3,11 @@ package ru.vtb.configuration.server.dataEntity.repo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
-import java.math.BigInteger
 
-internal class DictTopicParamsByStandEntityRepositoryTest : AbstractDatasourceTests() {
+internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
     @Autowired
-    lateinit var dictTopicParamsByStandEntityRepository: DictTopicParamsByStandEntityRepository
+    lateinit var dictTopicNodeEntityRepository: DictTopicNodeEntityRepository
 
 
     @Test

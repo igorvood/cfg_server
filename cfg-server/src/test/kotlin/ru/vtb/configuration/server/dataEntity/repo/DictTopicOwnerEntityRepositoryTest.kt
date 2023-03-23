@@ -2,7 +2,6 @@ package ru.vtb.configuration.server.dataEntity.repo
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.ApplicationContext
 import org.springframework.test.annotation.Rollback
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -15,25 +14,15 @@ import kotlin.test.assertEquals
 internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
 
     @Autowired
-    lateinit var applicationContext: ApplicationContext
-
-
-    @Autowired
     lateinit var dictTopicOwnerEntityRepository: DictTopicOwnerEntityRepository
 
 
-    @Transactional
-    @Rollback(false)
-    fun <R>withTransactional(block: ()->R): R = block.invoke()
-
-
     @Test
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun findById() {
-        withTransactional {
-            val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
-            findById.isOur = BigInteger.valueOf(0)
-            val save = dictTopicOwnerEntityRepository.save(findById)
-        }
+        val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
+        findById.isOur = BigInteger.valueOf(0)
+        val save = dictTopicOwnerEntityRepository.save(findById)
     }
 
     @Test
@@ -55,9 +44,11 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     }
 
     @Test
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Transactional
     @Rollback(false)
     fun update() {
+
+
         val id = "qwerty"
 //        val id = "DKO_COMMAND"
 
@@ -67,5 +58,8 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
         )
 
         assertEquals(1, update)
+
     }
+
+
 }

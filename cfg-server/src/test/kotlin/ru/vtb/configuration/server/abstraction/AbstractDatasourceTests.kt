@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.test.annotation.Rollback
+import org.springframework.transaction.annotation.Transactional
 import java.io.File
 import java.util.*
 
@@ -55,6 +57,5 @@ abstract class AbstractDatasourceTests : AbstractTests() {
         file.bufferedReader().readLines().joinToString("\n").split(delimiterScripts)
             .forEach { sql -> jdbcTemplate.execute(sql) }
     }
-
 
 }

@@ -4,6 +4,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/db_configuration_manager
     username: ${DB_USERNAME:db_configuration_manager_admin}
     password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
 
 logging:
   level:

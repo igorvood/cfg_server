@@ -25,7 +25,7 @@ public class DictTopicNodeEntity {
     @ManyToOne
     @JoinColumn(name = "topic_owner_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private DictTopicOwnerEntity dictTopicOwnerByTopicOwnerId;
-    @OneToMany(mappedBy = "dictTopicNodeByNodeId")
+    @OneToMany(mappedBy = "dictTopicNodeByNodeId", fetch = FetchType.EAGER)
     private Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById;
 //    @OneToMany(mappedBy = "dictTopicNodeByNodeId_0")
 //    private Collection<DictTopicParamsByStandEntity> dictTopicParamsByStandsById_0;

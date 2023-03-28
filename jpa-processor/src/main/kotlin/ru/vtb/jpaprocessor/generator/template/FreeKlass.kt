@@ -1,31 +1,18 @@
-package ru.vtb.jpaprocessor.generator.template;
+package ru.vtb.jpaprocessor.generator.template
 
-import ru.vtb.jpaprocessor.generator.model.OrIsNullClass;
+import ru.vtb.jpaprocessor.generator.model.OrIsNullClass
+import ru.vtb.jpaprocessor.generator.model.OrIsNullField
+import java.util.stream.Collectors
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class FreeKlass {
-    private final OrIsNullClass orIsNullSearchInterface;
-
-    public FreeKlass(OrIsNullClass orIsNullSearchInterface) {
-        this.orIsNullSearchInterface = orIsNullSearchInterface;
-    }
-
-    public String getPackageName() {
-        return orIsNullSearchInterface.packageName();
-    }
-
-    public String getFullname() {
-        return orIsNullSearchInterface.name();
-    }
-    public String getShortname() {
-        return orIsNullSearchInterface.shortName();
-    }
-
-    public List<FreeField> getFields() {
-        return orIsNullSearchInterface.fields().stream()
-                .map(f -> new FreeField(f))
-                .collect(Collectors.toList());
-    }
+class FreeKlass(private val orIsNullSearchInterface: OrIsNullClass?) {
+    val packageName: String
+        get() = orIsNullSearchInterface!!.packageName()
+    val fullname: String
+        get() = orIsNullSearchInterface!!.name()
+    val shortname: String
+        get() = orIsNullSearchInterface!!.shortName()
+    val fields: List<FreeField>
+        get() = orIsNullSearchInterface!!.fields().stream()
+                .map { f: OrIsNullField -> FreeField(f) }
+                .collect(Collectors.toList())
 }

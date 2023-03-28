@@ -1,28 +1,15 @@
-package ru.vtb.jpaprocessor.generator.template;
+package ru.vtb.jpaprocessor.generator.template
 
+import ru.vtb.jpaprocessor.generator.model.OrIsNullField
+import java.util.*
 
-import ru.vtb.jpaprocessor.generator.model.OrIsNullField;
-
-public class FreeField {
-    private final OrIsNullField orIsNullfield;
-
-    public FreeField(OrIsNullField orIsNullField) {
-        this.orIsNullfield = orIsNullField;
-    }
-
-    public String getName() {
-        return orIsNullfield.name();
-    }
-
-    public String getType() {
-        return orIsNullfield.type();
-    }
-
-    public FreeKlass getKlass() {
-        return new FreeKlass(orIsNullfield.betterClass());
-    }
-
-    public String getGetter() {
-        return "get" + getName().toUpperCase().charAt(0) + getName().substring(1);
-    }
+class FreeField(private val orIsNullfield: OrIsNullField) {
+    val name: String
+        get() = orIsNullfield.name()
+    val type: String
+        get() = orIsNullfield.type()
+    val klass: FreeKlass
+        get() = FreeKlass(orIsNullfield.betterClass())
+    val getter: String
+        get() = "get" + name.uppercase(Locale.getDefault())[0] + name.substring(1)
 }

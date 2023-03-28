@@ -1,26 +1,19 @@
-package ru.vtb.jpaprocessor.generator.model;
+package ru.vtb.jpaprocessor.generator.model
 
-import javax.lang.model.element.Element;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.stream.Collectors
+import javax.lang.model.element.Element
 
-public class AnnotatedOrIsNullClass implements OrIsNullClass {
-    private final Element element;
-
-    public AnnotatedOrIsNullClass(Element element) {
-        this.element = element;
+class AnnotatedOrIsNullClass(private val element: Element) : OrIsNullClass {
+    override fun name(): String {
+        return element.asType().toString()
     }
 
-    @Override
-    public String name() {
-        return element.asType().toString();
+    override fun fields(): List<OrIsNullField> {
+        return element.enclosedElements.stream()
+                .filter { e: Element -> e.kind.isField }
+                .map { element: Element -> AnnotatedOrIsNullField(element) }
+                .collect(Collectors.toList())
     }
 
-    @Override
-    public List<OrIsNullField> fields() {
-        return element.getEnclosedElements().stream()
-                .filter(e -> e.getKind().isField())
-                .map(AnnotatedOrIsNullField::new)
-                .collect(Collectors.toList());
-    }
+
 }

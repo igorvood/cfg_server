@@ -1,32 +1,22 @@
-package ru.vtb.jpaprocessor.generator.model;
+package ru.vtb.jpaprocessor.generator.model
 
-import javax.lang.model.element.Element;
+import javax.lang.model.element.Element
 
-public class AnnotatedOrIsNullField implements OrIsNullField {
-    private final Element element;
-
-    public AnnotatedOrIsNullField(Element element) {
-        this.element = element;
+class AnnotatedOrIsNullField(private val element: Element) : OrIsNullField {
+    override fun name(): String {
+        return element.simpleName.toString()
     }
 
-    @Override
-    public String name() {
-        return element.getSimpleName().toString();
+    override fun type(): String {
+        return element.asType().toString()
     }
 
-    @Override
-    public String type() {
-        return element.asType().toString();
+    override fun betterClass(): OrIsNullClass? {
+        return if (element.asType().kind.isPrimitive) {
+            null
+        } else AnnotatedOrIsNullClass(element)
     }
 
-    public OrIsNullClass betterClass() {
-        if (element.asType().getKind().isPrimitive()) {
-            return null;
-        }
-        return new AnnotatedOrIsNullClass(element);
-    }
-
-    public OrIsNullClass getKlassType() {
-        return betterClass();
-    }
+    val klassType: OrIsNullClass?
+        get() = betterClass()
 }

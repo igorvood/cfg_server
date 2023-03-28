@@ -1,7 +1,7 @@
-package ru.vtb.jpaprocessor.generator.model;
+package ru.vtb.jpaprocessor.generator.model
 
-public interface OrIsNullField {
-    String name();
-    String type();
-    OrIsNullClass betterClass();
+interface OrIsNullField {
+    fun name(): String
+    fun type(): String
+    fun betterClass(): OrIsNullClass?
 }

@@ -1,37 +1,26 @@
-package ru.vtb.jpaprocessor.generator.model;
+package ru.vtb.jpaprocessor.generator.model
 
+import ru.vtb.jpaprocessor.annotation.OrIsNullQuery
+import javax.lang.model.element.Element
+import javax.lang.model.type.ExecutableType
+import javax.lang.model.util.Types
 
-import ru.vtb.jpaprocessor.annotation.OrIsNullQuery;
-
-import javax.lang.model.element.Element;
-import javax.lang.model.type.ExecutableType;
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.util.Types;
-
-public class AnnotatedOrIsNullSearchMethod implements OrIsNullSearchMethod {
-    private final Element queryMethod;
-    private final Types typeUtils;
-
-    public AnnotatedOrIsNullSearchMethod(Element queryMethod, final Types typeUtils) {
-        this.queryMethod = queryMethod;
-        this.typeUtils = typeUtils;
+class AnnotatedOrIsNullSearchMethod(private val queryMethod: Element, private val typeUtils: Types) : OrIsNullSearchMethod {
+    override fun name(): String {
+        return queryMethod.simpleName.toString()
     }
 
-    public String name() {
-        return queryMethod.getSimpleName().toString();
+    override fun entity(): OrIsNullClass {
+        return AnnotatedEntity(queryMethod)
     }
 
-    public OrIsNullClass entity() {
-        return new AnnotatedEntity(queryMethod);
+    override fun filter(): OrIsNullClass {
+        val queryMethod = queryMethod.asType() as ExecutableType
+        val queryMethodParameter = queryMethod.parameterTypes.iterator().next()
+        return AnnotatedOrIsNullClass(typeUtils.asElement(queryMethodParameter))
     }
 
-    public OrIsNullClass filter() {
-        final var queryMethod = (ExecutableType) this.queryMethod.asType();
-        final TypeMirror queryMethodParameter = queryMethod.getParameterTypes().iterator().next();
-        return new AnnotatedOrIsNullClass(typeUtils.asElement(queryMethodParameter));
-    }
-
-    public String query() {
-        return queryMethod.getAnnotation(OrIsNullQuery.class).value();
+    override fun query(): String {
+        return queryMethod.getAnnotation(OrIsNullQuery::class.java).value
     }
 }

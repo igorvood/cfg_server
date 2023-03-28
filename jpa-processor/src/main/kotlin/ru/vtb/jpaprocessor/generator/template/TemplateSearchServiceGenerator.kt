@@ -1,59 +1,50 @@
-package ru.vtb.jpaprocessor.generator.template;
+package ru.vtb.jpaprocessor.generator.template
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateExceptionHandler;
-import ru.vtb.jpaprocessor.generator.model.OrIsNullClass;
-import ru.vtb.jpaprocessor.generator.model.OrIsNullSearchMethod;
+import freemarker.template.Configuration
+import freemarker.template.Template
+import freemarker.template.TemplateException
+import freemarker.template.TemplateExceptionHandler
+import ru.vtb.jpaprocessor.generator.model.OrIsNullClass
+import ru.vtb.jpaprocessor.generator.model.OrIsNullSearchMethod
+import java.io.IOException
+import java.io.OutputStreamWriter
+import java.io.Writer
+import java.util.stream.Collectors
+import javax.annotation.processing.Filer
 
-import javax.annotation.processing.Filer;
-import javax.tools.JavaFileObject;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+class TemplateSearchServiceGenerator(
+        private val orIsNullSearchInterface: OrIsNullClass, private val methods: List<OrIsNullSearchMethod>
+) {
+    private var temp: Template? = null
 
-public class TemplateSearchServiceGenerator {
-
-    private final OrIsNullClass orIsNullSearchInterface;
-    private final List<OrIsNullSearchMethod> methods;
-    private final Template temp;
-
-    public TemplateSearchServiceGenerator(
-            OrIsNullClass orIsNullSearchInterface
-            , List<OrIsNullSearchMethod> methods
-    ) {
-        this.orIsNullSearchInterface = orIsNullSearchInterface;
-        this.methods = methods;
-        Configuration cfg = new Configuration(Configuration.VERSION_2_3_23);
+    init {
+        val cfg = Configuration(Configuration.VERSION_2_3_23)
         try {
-            cfg.setClassForTemplateLoading(this.getClass(), "/");
-            cfg.setDefaultEncoding("UTF-8");
-            cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-            cfg.setLogTemplateExceptions(false);
-            temp = cfg.getTemplate("service.ftpl");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            cfg.setClassForTemplateLoading(this.javaClass, "/")
+            cfg.defaultEncoding = "UTF-8"
+            cfg.templateExceptionHandler = TemplateExceptionHandler.RETHROW_HANDLER
+            cfg.logTemplateExceptions = false
+            temp = cfg.getTemplate("service.ftpl")
+        } catch (e: IOException) {
+            throw RuntimeException(e)
         }
     }
 
-    public void toFiler(Filer filer) {
-            Map<String, Object> root = new HashMap<>();
-            root.put("packageName", orIsNullSearchInterface.packageName());
-            root.put("klass", new FreeKlass(orIsNullSearchInterface));
-            root.put("methods", methods.stream().map(FreeMethod::new)
-                    .collect(Collectors.toList()));
+    fun toFiler(filer: Filer) {
+        val root: MutableMap<String, Any> = HashMap()
+        root["packageName"] = orIsNullSearchInterface.packageName()
+        root["klass"] = FreeKlass(orIsNullSearchInterface)
+        root["methods"] = methods.stream().map { method: OrIsNullSearchMethod? -> FreeMethod(method) }
+                .collect(Collectors.toList())
         try {
-            final JavaFileObject sourceFile = filer.createSourceFile(orIsNullSearchInterface.name() + "Impl");
-            Writer out = new OutputStreamWriter(sourceFile.openOutputStream());
-            temp.process(root, out);
-            out.close();
-        } catch (TemplateException | IOException e) {
-            throw new RuntimeException(e);
+            val sourceFile = filer.createSourceFile(orIsNullSearchInterface.name() + "Impl")
+            val out: Writer = OutputStreamWriter(sourceFile.openOutputStream())
+            temp!!.process(root, out)
+            out.close()
+        } catch (e: TemplateException) {
+            throw RuntimeException(e)
+        } catch (e: IOException) {
+            throw RuntimeException(e)
         }
     }
 }

@@ -1,20 +1,17 @@
-package ru.vtb.jpaprocessor.generator.model;
+package ru.vtb.jpaprocessor.generator.model
 
-import java.util.List;
+interface OrIsNullClass {
+    fun name(): String
 
-public interface OrIsNullClass {
-    String name();
-
-    default String shortName() {
-        final var dotIdx = name().lastIndexOf('.');
-        return name().substring(dotIdx + 1);
+    fun shortName(): String {
+        val dotIdx = name().lastIndexOf('.')
+        return name().substring(dotIdx + 1)
     }
 
-    default String packageName() {
-        final var dotIdx = name().lastIndexOf('.');
-        return name().substring(0, dotIdx);
-
+    fun packageName(): String {
+        val dotIdx = name().lastIndexOf('.')
+        return name().substring(0, dotIdx)
     }
 
-    List<OrIsNullField> fields();
+    fun fields(): List<OrIsNullField>
 }

@@ -130,6 +130,7 @@
             <groupId>ru.vtb.dko</groupId>
             <artifactId>jpa-processor</artifactId>
             <version>1.0.2</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

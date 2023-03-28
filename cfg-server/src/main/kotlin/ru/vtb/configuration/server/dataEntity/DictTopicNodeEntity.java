@@ -1,11 +1,14 @@
 package ru.vtb.configuration.server.dataEntity;
 
+import ru.vtb.jpaprocessor.annotation.GenerateJpa;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.util.Collection;
 
 @Entity
 @Table(name = "dict_topic_node", schema = "db_configuration_manager", catalog = "db_configuration_manager")
+@GenerateJpa
 public class DictTopicNodeEntity {
     @Id
     @Column(name = "id")

@@ -13,6 +13,7 @@ import javax.lang.model.element.TypeElement
 
 @SupportedAnnotationTypes("com.evilcorp.orisnull.annotation.OrIsNullRepository")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
+@Deprecated("")
 class OrIsNullProcessor : AbstractProcessor() {
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {

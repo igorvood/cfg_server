@@ -155,7 +155,7 @@
                     </generatedSourcesDirectory>
                     <annotationProcessors>
                         <annotationProcessor>
-                            ru.vtb.jpaprocessor.processor.OrIsNullProcessor
+                            ru.vtb.jpaprocessor.processor.JpaGenerateAnnotationProcessor
                         </annotationProcessor>
                     </annotationProcessors>
                 </configuration>

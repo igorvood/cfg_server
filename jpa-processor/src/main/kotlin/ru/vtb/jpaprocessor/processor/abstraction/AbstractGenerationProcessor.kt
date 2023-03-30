@@ -14,6 +14,10 @@ abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedCla
         super.init(processingEnv)
     }
 
+    protected fun log(kind: Diagnostic.Kind,  msg: CharSequence?){
+        processingEnv.messager.printMessage(kind, "${this.javaClass.canonicalName}: $msg")
+    }
+
     abstract fun generatedClassInfo(typeElement: TypeElement): GeneratedClass
 
     abstract fun textGenerator(generatedClassData: GeneratedClass): String
@@ -30,7 +34,7 @@ abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedCla
                     .createSourceFile(generatedClass.fullGeneratedName())
                     .let { OutputStreamWriter(it.openOutputStream()) }
 
-                processingEnv.messager.printMessage(
+                log(
                     Diagnostic.Kind.MANDATORY_WARNING,
                     "Generate class ${generatedClass.generatedClassName()} by class ${generatedClass.annotatedClass.name()}"
                 )

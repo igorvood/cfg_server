@@ -4,7 +4,7 @@ import ru.vtb.jpaprocessor.annotation.GenerateJpa
 import java.util.stream.Collectors
 import javax.lang.model.element.Element
 
-class AnnotatedClass(private val element: Element) : IAnnotatedClass {
+class AnnotatedClass(element: Element) : IAnnotatedClass(element) {
     override fun name(): String {
         return element.asType().toString()
     }

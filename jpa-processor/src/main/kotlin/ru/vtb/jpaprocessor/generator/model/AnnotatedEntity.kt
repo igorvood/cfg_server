@@ -4,9 +4,9 @@ import ru.vtb.jpaprocessor.annotation.GenerateJpa
 import javax.lang.model.element.Element
 import javax.lang.model.type.ExecutableType
 
-class AnnotatedEntity(private val queryMethod: Element) : IAnnotatedClass {
+class AnnotatedEntity(element: Element) : IAnnotatedClass(element) {
     override fun name(): String {
-        val method = queryMethod.asType() as ExecutableType
+        val method = element.asType() as ExecutableType
         val returnTypeName = method.returnType.toString()
         return returnTypeName.replace("^.*<(.*)>".toRegex(), "$1")
     }

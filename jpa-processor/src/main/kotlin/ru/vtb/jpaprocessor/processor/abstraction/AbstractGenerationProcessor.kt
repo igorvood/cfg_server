@@ -19,10 +19,12 @@ abstract class AbstractGenerationProcessor<GeneratedClass : IGeneratedClass> : A
     abstract fun textGenerator(generatedClassData: GeneratedClass): String
 
     override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        annotations
-            .flatMap { orIsNullAnnotation -> roundEnv.getElementsAnnotatedWith(orIsNullAnnotation) }
+        val flatMap = annotations
+            .flatMap { annotation -> roundEnv.getElementsAnnotatedWith(annotation) }
+        val filterIsInstance = flatMap
             .filterIsInstance<TypeElement>()
-            .firstOrNull()?.let { generateBy ->
+        filterIsInstance
+            .map { generateBy ->
                 val generatedClass = generatedClassInfo(generateBy)
                 val out = processingEnv.filer
                     .createSourceFile(generatedClass.fullGeneratedName())

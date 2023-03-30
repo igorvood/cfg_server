@@ -22,6 +22,7 @@ class AnnotatedOrIsNullSearchMethod(private val queryMethod: Element, private va
     }
 
     override fun query(): String {
-        return queryMethod.getAnnotation(OrIsNullQuery::class.java).value
+        val annotation = queryMethod.getAnnotation(OrIsNullQuery::class.java)
+        return annotation.value
     }
 }

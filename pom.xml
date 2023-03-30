@@ -25,5 +25,13 @@
         <kotlin.version>1.6.10</kotlin.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>2.2.3</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>

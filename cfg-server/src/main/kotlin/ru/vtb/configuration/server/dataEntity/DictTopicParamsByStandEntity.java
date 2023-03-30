@@ -1,12 +1,12 @@
 package ru.vtb.configuration.server.dataEntity;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "dict_topic_params_by_stand", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictTopicParamsByStandEntityPK.class)
+//@GenerateJpa
 public class DictTopicParamsByStandEntity  {
     @Id
     @Column(name = "node_id")

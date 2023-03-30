@@ -1,6 +1,6 @@
 package ru.vtb.jpaprocessor.generator.model
 
-interface OrIsNullClass {
+interface IAnnotatedClass/*<Annotation>*/ {
     fun name(): String
 
     fun shortName(): String {

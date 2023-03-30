@@ -11,12 +11,12 @@ class AnnotatedOrIsNullField(private val element: Element) : OrIsNullField {
         return element.asType().toString()
     }
 
-    override fun betterClass(): OrIsNullClass? {
+    override fun betterClass(): IAnnotatedClass? {
         return if (element.asType().kind.isPrimitive) {
             null
-        } else AnnotatedOrIsNullClass(element)
+        } else AnnotatedClass(element)
     }
 
-    val klassType: OrIsNullClass?
+    val klassType: IAnnotatedClass?
         get() = betterClass()
 }

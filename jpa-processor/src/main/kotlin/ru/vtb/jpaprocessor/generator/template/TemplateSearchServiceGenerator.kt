@@ -4,7 +4,7 @@ import freemarker.template.Configuration
 import freemarker.template.Template
 import freemarker.template.TemplateException
 import freemarker.template.TemplateExceptionHandler
-import ru.vtb.jpaprocessor.generator.model.OrIsNullClass
+import ru.vtb.jpaprocessor.generator.model.IAnnotatedClass
 import ru.vtb.jpaprocessor.generator.model.OrIsNullSearchMethod
 import java.io.IOException
 import java.io.OutputStreamWriter
@@ -13,7 +13,7 @@ import java.util.stream.Collectors
 import javax.annotation.processing.Filer
 
 class TemplateSearchServiceGenerator(
-        private val orIsNullSearchInterface: OrIsNullClass, private val methods: List<OrIsNullSearchMethod>
+    private val orIsNullSearchInterface: IAnnotatedClass, private val methods: List<OrIsNullSearchMethod>
 ) {
     private var temp: Template? = null
 

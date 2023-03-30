@@ -1,8 +1,8 @@
 package ru.vtb.jpaprocessor.processor
 
-import ru.vtb.jpaprocessor.generator.model.AnnotatedOrIsNullClass
+import ru.vtb.jpaprocessor.generator.model.AnnotatedClass
 import ru.vtb.jpaprocessor.generator.model.AnnotatedOrIsNullSearchMethod
-import ru.vtb.jpaprocessor.generator.model.OrIsNullClass
+import ru.vtb.jpaprocessor.generator.model.IAnnotatedClass
 import ru.vtb.jpaprocessor.generator.template.TemplateSearchServiceGenerator
 import java.util.stream.Collectors
 import javax.annotation.processing.*
@@ -21,27 +21,27 @@ class OrIsNullProcessor : AbstractProcessor() {
     }
 
     override fun process(annotations: Set<TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        for (orIsNullAnnotation in annotations) {
-            val annotatedInterfaces = roundEnv.getElementsAnnotatedWith(orIsNullAnnotation)
-            for (orIsNullRepository in annotatedInterfaces) {
-                val orIsNullInterface: OrIsNullClass = AnnotatedOrIsNullClass(orIsNullRepository)
-                val methods = orIsNullRepository
-                        .enclosedElements
-                        .stream()
-                        .filter { e: Element -> e.kind == ElementKind.METHOD }
-                        .map { queryMethodCandidate: Element? ->
-                            AnnotatedOrIsNullSearchMethod(
-                                    queryMethodCandidate!!, processingEnv.typeUtils
-                            )
-                        }
-                        .collect(Collectors.toList())
-                val searchGenerator = TemplateSearchServiceGenerator(
-                        orIsNullInterface,
-                        methods
-                )
-                searchGenerator.toFiler(processingEnv.filer)
-            }
-        }
+//        for (orIsNullAnnotation in annotations) {
+//            val annotatedInterfaces = roundEnv.getElementsAnnotatedWith(orIsNullAnnotation)
+//            for (orIsNullRepository in annotatedInterfaces) {
+//                val orIsNullInterface: IAnnotatedClass = AnnotatedClass(orIsNullRepository)
+//                val methods = orIsNullRepository
+//                        .enclosedElements
+//                        .stream()
+//                        .filter { e: Element -> e.kind == ElementKind.METHOD }
+//                        .map { queryMethodCandidate: Element? ->
+//                            AnnotatedOrIsNullSearchMethod(
+//                                    queryMethodCandidate!!, processingEnv.typeUtils
+//                            )
+//                        }
+//                        .collect(Collectors.toList())
+//                val searchGenerator = TemplateSearchServiceGenerator(
+//                        orIsNullInterface,
+//                        methods
+//                )
+//                searchGenerator.toFiler(processingEnv.filer)
+//            }
+//        }
         return true
     }
 }

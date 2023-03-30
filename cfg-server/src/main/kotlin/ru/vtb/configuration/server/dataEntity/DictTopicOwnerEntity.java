@@ -1,7 +1,6 @@
 package ru.vtb.configuration.server.dataEntity;
 
 import ru.vtb.jpaprocessor.annotation.GenerateJpa;
-import ru.vtb.jpaprocessor.annotation.GenerateJpaJava;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -10,7 +9,6 @@ import java.util.Collection;
 @Entity
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @GenerateJpa
-@GenerateJpaJava
 public class DictTopicOwnerEntity {
     @Id
     @Column(name = "id")

@@ -2,6 +2,7 @@ package ru.vtb.jpaprocessor.processor
 
 import ru.vtb.jpaprocessor.annotation.GenerateJpa
 import ru.vtb.jpaprocessor.generator.model.AnnotatedClass
+import ru.vtb.jpaprocessor.generator.model.GeneratedJpaRepositoryClass
 import java.io.OutputStreamWriter
 import java.io.Writer
 import javax.annotation.processing.*
@@ -32,8 +33,8 @@ class JpaGenerateAnnotationProcessor : AbstractProcessor() {
             .filterIsInstance<TypeElement>()
         val flatMap = flatMap1
             .firstOrNull()?.let { generateBy ->
-
                 val annotatedClass = AnnotatedClass(generateBy)
+                val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(annotatedClass)
                 val generatedClassName =annotatedClass.shortName()+"GeneratedRepository"
                 val generatedPackageName = "${annotatedClass.packageName()}.generated"
                 processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, "Generate class $generatedClassName by class ${annotatedClass.name()}")
@@ -41,7 +42,7 @@ class JpaGenerateAnnotationProcessor : AbstractProcessor() {
 
                 val sourceFile = filer.createSourceFile("$generatedPackageName.$generatedClassName")
                 val out: Writer = OutputStreamWriter(sourceFile.openOutputStream())
-                out.write(generateText(generatedPackageName, generatedClassName, annotatedClass))
+                out.write(generateText(generatedJpaRepositoryClass))
                 out.close()
             }
 
@@ -49,16 +50,16 @@ class JpaGenerateAnnotationProcessor : AbstractProcessor() {
     }
 
 
-    private fun generateText(generatedPackageName: String,
-                             generatedClassName: String,
-                             annotatedClass: AnnotatedClass): String{
-        val code ="""package ${generatedPackageName};
+    private fun generateText(
+        generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
+        ): String{
+        val code ="""package ${generatedJpaRepositoryClass.generatedPackageName};
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface $generatedClassName extends JpaRepository<${annotatedClass.name()}, String> {
+public interface ${generatedJpaRepositoryClass.generatedClassName} extends JpaRepository<${generatedJpaRepositoryClass.annotatedClass.name()}, String> {
 }
 """
 return code

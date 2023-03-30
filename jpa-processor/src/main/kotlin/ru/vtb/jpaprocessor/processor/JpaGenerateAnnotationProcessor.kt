@@ -17,7 +17,7 @@ class JpaGenerateAnnotationProcessor :
         GeneratedJpaRepositoryClass(AnnotatedEntityClass(typeElement))
 
     override fun textGenerator(generatedClassData: GeneratedJpaRepositoryClass): String {
-        val calculateIdClass = generatedClassData.annotatedClass.calculateIdClass().getOrElse {
+        val calculateIdClass = generatedClassData.annotatedClass.calculateIdClass(processingEnv).getOrElse {
             processingEnv.messager.printMessage(
                 Diagnostic.Kind.ERROR,
                 it.message

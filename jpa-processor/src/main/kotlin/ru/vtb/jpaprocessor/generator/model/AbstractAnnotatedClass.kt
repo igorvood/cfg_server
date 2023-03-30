@@ -16,6 +16,6 @@ abstract class AbstractAnnotatedClass(val element: Element)/*<Annotation>*/ {
         val dotIdx = name().lastIndexOf('.')
         return name().substring(0, dotIdx)
     }
-    inline fun <reified A: Annotation> annotatedBy()  : List<OrIsNullField> = fields().filter { f -> f.annotation<A>().isPresent }
+//    inline fun <reified A: Annotation> annotatedBy()  : List<OrIsNullField> = fields().filter { f -> f.annotation<A>().isPresent }
 
 }

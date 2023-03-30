@@ -1,7 +1,7 @@
 package ru.vtb.jpaprocessor.generator.model
 
 import java.lang.instrument.IllegalClassFormatException
-import java.util.*
+import javax.annotation.processing.ProcessingEnvironment
 import javax.lang.model.element.Element
 import javax.persistence.Id
 import javax.persistence.IdClass
@@ -18,17 +18,21 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
 
     }
 
-    fun calculateIdClass(): Result<String> =
+    fun calculateIdClass(processingEnv: ProcessingEnvironment): Result<String> =
         kotlin.runCatching {
-            Optional.ofNullable(element.getAnnotation(IdClass::class.java))
-                .map { val java = it.value.java
-                    val canonicalName = java.canonicalName
-                    canonicalName
+            element.annotation<IdClass>(processingEnv)
+                .map { idAnnoTat->
+//                    val annotationValue = element.annotationValue<IdClass>(processingEnv, "value")
+//                    val value = idAnnoTat.value
+//                    val java = value.java
+//                    val canonicalName = java.canonicalName
+//                    canonicalName
+                    element.annotationValue<IdClass>(processingEnv, "value").toString()
                 }
                 .orElseGet {
                     val withIdFileds = fields()
                         .map { f ->
-                            f to f.annotation<Id>()
+                            f to f.annotation<Id>(processingEnv)
                         }
                         .filter { it.second.isPresent }
                         .map { it.first }

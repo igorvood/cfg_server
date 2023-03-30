@@ -2,7 +2,7 @@ package ru.vtb.jpaprocessor.generator.model
 
 interface OrIsNullSearchMethod {
     fun name(): String
-    fun entity(): IAnnotatedClass
-    fun filter(): IAnnotatedClass
+    fun entity(): AbstractAnnotatedClass
+    fun filter(): AbstractAnnotatedClass
     fun query(): String
 }

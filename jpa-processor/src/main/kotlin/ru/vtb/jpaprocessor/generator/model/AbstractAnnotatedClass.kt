@@ -2,7 +2,7 @@ package ru.vtb.jpaprocessor.generator.model
 
 import javax.lang.model.element.Element
 
-abstract class IAnnotatedClass(val element: Element)/*<Annotation>*/ {
+abstract class AbstractAnnotatedClass(val element: Element)/*<Annotation>*/ {
     abstract fun name(): String
 
     abstract fun fields(): List<OrIsNullField>

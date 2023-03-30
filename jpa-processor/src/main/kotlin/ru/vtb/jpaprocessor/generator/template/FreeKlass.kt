@@ -1,10 +1,10 @@
 package ru.vtb.jpaprocessor.generator.template
 
-import ru.vtb.jpaprocessor.generator.model.IAnnotatedClass
+import ru.vtb.jpaprocessor.generator.model.AbstractAnnotatedClass
 import ru.vtb.jpaprocessor.generator.model.OrIsNullField
 import java.util.stream.Collectors
 
-class FreeKlass(private val orIsNullSearchInterface: IAnnotatedClass?) {
+class FreeKlass(private val orIsNullSearchInterface: AbstractAnnotatedClass?) {
     val packageName: String
         get() = orIsNullSearchInterface!!.packageName()
     val fullname: String

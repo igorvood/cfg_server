@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity;
 
 @Repository
-public interface DictTopicOwnerEntityImpl extends JpaRepository<DictTopicNodeEntity, String> {
+public interface DictTopicOwnerEntityImpl1 extends JpaRepository<DictTopicNodeEntity, String> {
 }

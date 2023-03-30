@@ -1,6 +1,5 @@
 package ru.vtb.jpaprocessor.processor
 
-import ru.vtb.jpaprocessor.annotation.GenerateJpa
 import ru.vtb.jpaprocessor.generator.model.AnnotatedClass
 import ru.vtb.jpaprocessor.generator.model.GeneratedJpaRepositoryClass
 import ru.vtb.jpaprocessor.processor.abstraction.AbstractGenerationProcessor

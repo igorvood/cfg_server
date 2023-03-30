@@ -4,14 +4,12 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.PreparedStatementCallback
 import org.springframework.jdbc.core.PreparedStatementCreator
 import org.springframework.stereotype.Repository
-import ru.vtb.configuration.server.dataEntity.repo.generated.DictTopicOwnerEntityImpl
 import java.sql.CallableStatement
 
 
 @Repository
 class ExampleProcedureRunImpl(
     private val jdbcTemplate: JdbcTemplate,
-    private val DictTopicOwnerEntityImpl: DictTopicOwnerEntityImpl
     ) : ExampleProcedureRun {
 
     override fun rundict_service_ins_trg(

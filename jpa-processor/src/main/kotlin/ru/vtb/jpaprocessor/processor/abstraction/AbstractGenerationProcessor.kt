@@ -17,16 +17,16 @@ abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass : IAnnotated
         super.init(processingEnv)
     }
 
-    abstract fun generatedClass(typeElement: TypeElement): GeneratedClass
+    abstract fun generatedClassInfo(typeElement: TypeElement): GeneratedClass
 
-    abstract fun generateText1(GeneratedClass: GeneratedClass): String
+    abstract fun textGenerator(generatedClassData: GeneratedClass): String
 
     override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
         annotations
             .flatMap { orIsNullAnnotation -> roundEnv.getElementsAnnotatedWith(orIsNullAnnotation) }
             .filterIsInstance<TypeElement>()
             .firstOrNull()?.let { generateBy ->
-                val generatedClass = generatedClass(generateBy)
+                val generatedClass = generatedClassInfo(generateBy)
                 val out = processingEnv.filer
                     .createSourceFile(generatedClass.fullGeneratedName())
                     .let { OutputStreamWriter(it.openOutputStream()) }
@@ -36,7 +36,7 @@ abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass : IAnnotated
                     "Generate class ${generatedClass.generatedClassName()} by class ${generatedClass.annotatedClass.name()}"
                 )
 
-                out.write(generateText1(generatedClass))
+                out.write(textGenerator(generatedClass))
                 out.close()
             }
         return true

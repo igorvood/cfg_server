@@ -13,17 +13,17 @@ import javax.lang.model.element.TypeElement
 class JpaGenerateAnnotationProcessor :
     AbstractGenerationProcessor<GenerateJpa, AnnotatedClass, GeneratedJpaRepositoryClass>() {
 
-    override fun generatedClass(typeElement: TypeElement): GeneratedJpaRepositoryClass =
+    override fun generatedClassInfo(typeElement: TypeElement): GeneratedJpaRepositoryClass =
         GeneratedJpaRepositoryClass(AnnotatedClass(typeElement))
 
-    override fun generateText1(GeneratedClass: GeneratedJpaRepositoryClass): String =
-        """package ${GeneratedClass.generatedPackageName()};
+    override fun textGenerator(generatedClassData: GeneratedJpaRepositoryClass): String =
+        """package ${generatedClassData.generatedPackageName()};
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ${GeneratedClass.generatedClassName()} extends JpaRepository<${GeneratedClass.annotatedClass.name()}, String> {
+public interface ${generatedClassData.generatedClassName()} extends JpaRepository<${generatedClassData.annotatedClass.name()}, String> {
 }
 """
 

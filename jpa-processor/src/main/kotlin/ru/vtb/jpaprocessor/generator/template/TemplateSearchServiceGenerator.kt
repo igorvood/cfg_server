@@ -35,7 +35,7 @@ class TemplateSearchServiceGenerator(
         root["packageName"] = orIsNullSearchInterface.packageName()
         root["klass"] = FreeKlass(orIsNullSearchInterface)
         root["methods"] = methods.stream().map { method: OrIsNullSearchMethod? -> FreeMethod(method) }
-                .collect(Collectors.toList())
+            .collect(Collectors.toList())
         try {
             val sourceFile = filer.createSourceFile(orIsNullSearchInterface.name() + "Impl")
             val out: Writer = OutputStreamWriter(sourceFile.openOutputStream())

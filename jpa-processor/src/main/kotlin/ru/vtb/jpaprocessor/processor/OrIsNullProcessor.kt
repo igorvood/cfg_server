@@ -1,14 +1,7 @@
 package ru.vtb.jpaprocessor.processor
 
-import ru.vtb.jpaprocessor.generator.model.AnnotatedClass
-import ru.vtb.jpaprocessor.generator.model.AnnotatedOrIsNullSearchMethod
-import ru.vtb.jpaprocessor.generator.model.IAnnotatedClass
-import ru.vtb.jpaprocessor.generator.template.TemplateSearchServiceGenerator
-import java.util.stream.Collectors
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
-import javax.lang.model.element.Element
-import javax.lang.model.element.ElementKind
 import javax.lang.model.element.TypeElement
 
 @SupportedAnnotationTypes("com.evilcorp.orisnull.annotation.OrIsNullRepository")

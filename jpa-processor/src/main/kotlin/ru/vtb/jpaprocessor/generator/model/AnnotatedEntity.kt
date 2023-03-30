@@ -1,6 +1,5 @@
 package ru.vtb.jpaprocessor.generator.model
 
-import ru.vtb.jpaprocessor.annotation.GenerateJpa
 import javax.lang.model.element.Element
 import javax.lang.model.type.ExecutableType
 

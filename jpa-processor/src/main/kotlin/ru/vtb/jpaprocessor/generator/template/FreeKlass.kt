@@ -13,6 +13,6 @@ class FreeKlass(private val orIsNullSearchInterface: IAnnotatedClass?) {
         get() = orIsNullSearchInterface!!.shortName()
     val fields: List<FreeField>
         get() = orIsNullSearchInterface!!.fields().stream()
-                .map { f: OrIsNullField -> FreeField(f) }
-                .collect(Collectors.toList())
+            .map { f: OrIsNullField -> FreeField(f) }
+            .collect(Collectors.toList())
 }

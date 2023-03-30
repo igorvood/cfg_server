@@ -5,7 +5,8 @@ import javax.lang.model.element.Element
 import javax.lang.model.type.ExecutableType
 import javax.lang.model.util.Types
 
-class AnnotatedOrIsNullSearchMethod(private val queryMethod: Element, private val typeUtils: Types) : OrIsNullSearchMethod {
+class AnnotatedOrIsNullSearchMethod(private val queryMethod: Element, private val typeUtils: Types) :
+    OrIsNullSearchMethod {
     override fun name(): String {
         return queryMethod.simpleName.toString()
     }

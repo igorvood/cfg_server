@@ -9,9 +9,7 @@ import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass : IAnnotatedClass, GeneratedClass : IGeneratedClass> :
-    AbstractProcessor() {
-
+abstract class AbstractGenerationProcessor<GeneratedClass : IGeneratedClass> :    AbstractProcessor() {
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {
         super.init(processingEnv)

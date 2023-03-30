@@ -11,7 +11,7 @@ import javax.lang.model.element.TypeElement
 @SupportedAnnotationTypes("ru.vtb.jpaprocessor.annotation.GenerateJpa")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 class JpaGenerateAnnotationProcessor :
-    AbstractGenerationProcessor<GenerateJpa, AnnotatedClass, GeneratedJpaRepositoryClass>() {
+    AbstractGenerationProcessor<GeneratedJpaRepositoryClass>() {
 
     override fun generatedClassInfo(typeElement: TypeElement): GeneratedJpaRepositoryClass =
         GeneratedJpaRepositoryClass(AnnotatedClass(typeElement))

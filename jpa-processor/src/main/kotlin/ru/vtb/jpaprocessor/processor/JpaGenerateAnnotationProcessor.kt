@@ -14,43 +14,18 @@ import javax.tools.Diagnostic
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 class JpaGenerateAnnotationProcessor : AbstractGenerationProcessor<GenerateJpa, AnnotatedClass, GeneratedJpaRepositoryClass>() {
 
-    override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        val flatMap1 = annotations
-            .flatMap { orIsNullAnnotation -> roundEnv.getElementsAnnotatedWith(orIsNullAnnotation) }
-            .filterIsInstance<TypeElement>()
-        val flatMap = flatMap1
-            .firstOrNull()?.let { generateBy ->
-                val annotatedClass = AnnotatedClass(generateBy)
-                val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(annotatedClass)
+    override fun generatedClass(typeElement: TypeElement): GeneratedJpaRepositoryClass =         GeneratedJpaRepositoryClass(AnnotatedClass(typeElement))
 
-                val out = processingEnv.filer
-                    .createSourceFile(generatedJpaRepositoryClass.fullGeneratedName())
-                    .let { OutputStreamWriter(it.openOutputStream()) }
-
-
-
-                out.write(generateText(generatedJpaRepositoryClass))
-                out.close()
-            }
-
-        return true
-    }
-
-
-    private fun generateText(
-        generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
-        ): String{
-        processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, "Generate class ${generatedJpaRepositoryClass.generatedClassName()} by class ${generatedJpaRepositoryClass.annotatedClass.name()}")
-        val code ="""package ${generatedJpaRepositoryClass.generatedPackageName()};
+    override fun generateText1(GeneratedClass: GeneratedJpaRepositoryClass): String          =
+        """package ${GeneratedClass.generatedPackageName()};
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ${generatedJpaRepositoryClass.generatedClassName()} extends JpaRepository<${generatedJpaRepositoryClass.annotatedClass.name()}, String> {
+public interface ${GeneratedClass.generatedClassName()} extends JpaRepository<${GeneratedClass.annotatedClass.name()}, String> {
 }
 """
-return code
-    }
+
 
 }

@@ -8,39 +8,34 @@ import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
+import javax.tools.Diagnostic
 
-abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass: IAnnotatedClass, out GeneratedClass: IGeneratedClass>: AbstractProcessor() {
+abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass: IAnnotatedClass, GeneratedClass: IGeneratedClass>: AbstractProcessor() {
 
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {
         super.init(processingEnv)
     }
+    abstract fun generatedClass(typeElement: TypeElement): GeneratedClass
 
-    fun generateText1(GeneratedClass: IGeneratedClass): String{
-        TODO()
-    }
+    abstract fun generateText1(GeneratedClass: GeneratedClass): String
 
-    fun process1(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
-        val flatMap1 = annotations
+    override fun process(annotations: MutableSet<out TypeElement>, roundEnv: RoundEnvironment): Boolean {
+        annotations
             .flatMap { orIsNullAnnotation -> roundEnv.getElementsAnnotatedWith(orIsNullAnnotation) }
             .filterIsInstance<TypeElement>()
             .firstOrNull()?.let { generateBy ->
-                val annotatedClass = ru.vtb.jpaprocessor.generator.model.AnnotatedClass(generateBy)
-                val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(annotatedClass)
-
+                val generatedClass = generatedClass(generateBy)
                 val out = processingEnv.filer
-                    .createSourceFile(generatedJpaRepositoryClass.fullGeneratedName())
+                    .createSourceFile(generatedClass.fullGeneratedName())
                     .let { OutputStreamWriter(it.openOutputStream()) }
 
+                processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, "Generate class ${generatedClass.generatedClassName()} by class ${generatedClass.annotatedClass.name()}")
 
-
-                out.write(generateText1(generatedJpaRepositoryClass))
+                out.write(generateText1(generatedClass))
                 out.close()
             }
-
-
-        TODO()
-
+        return true
     }
 
 }

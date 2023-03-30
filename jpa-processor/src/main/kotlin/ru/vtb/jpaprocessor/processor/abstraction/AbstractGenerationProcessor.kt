@@ -1,12 +1,13 @@
 package ru.vtb.jpaprocessor.processor.abstraction
 
 import ru.vtb.jpaprocessor.generator.model.IAnnotatedClass
+import ru.vtb.jpaprocessor.generator.model.IGeneratedClass
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
 
-abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass: IAnnotatedClass>: AbstractProcessor() {
+abstract class AbstractGenerationProcessor<ANNO, out AnnotatedClass: IAnnotatedClass, out GeneratedClass: IGeneratedClass>: AbstractProcessor() {
 
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {

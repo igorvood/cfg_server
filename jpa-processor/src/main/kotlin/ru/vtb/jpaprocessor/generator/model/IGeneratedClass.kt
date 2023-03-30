@@ -1,6 +1,6 @@
 package ru.vtb.jpaprocessor.generator.model
 
-interface GeneratedClass {
+interface IGeneratedClass {
 
     fun generatedClassName(): String
 

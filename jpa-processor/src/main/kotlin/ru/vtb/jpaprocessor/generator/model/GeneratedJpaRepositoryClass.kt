@@ -1,6 +1,6 @@
 package ru.vtb.jpaprocessor.generator.model
 
-data class GeneratedJpaRepositoryClass(val annotatedClass: AnnotatedClass) : GeneratedClass{
+data class GeneratedJpaRepositoryClass(val annotatedClass: AnnotatedClass) : IGeneratedClass{
     override fun generatedClassName(): String = annotatedClass.shortName()+"GeneratedRepository"
 
     override fun generatedPackageName(): String ="${annotatedClass.packageName()}.generated"

@@ -35,13 +35,13 @@ class JpaGenerateAnnotationProcessor : AbstractProcessor() {
             .firstOrNull()?.let { generateBy ->
                 val annotatedClass = AnnotatedClass(generateBy)
                 val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(annotatedClass)
-                val generatedClassName =annotatedClass.shortName()+"GeneratedRepository"
-                val generatedPackageName = "${annotatedClass.packageName()}.generated"
-                processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, "Generate class $generatedClassName by class ${annotatedClass.name()}")
-                val filer = processingEnv.filer
 
-                val sourceFile = filer.createSourceFile("$generatedPackageName.$generatedClassName")
-                val out: Writer = OutputStreamWriter(sourceFile.openOutputStream())
+                val out = processingEnv.filer
+                    .createSourceFile(generatedJpaRepositoryClass.fullGeneratedName)
+                    .let { OutputStreamWriter(it.openOutputStream()) }
+
+
+
                 out.write(generateText(generatedJpaRepositoryClass))
                 out.close()
             }
@@ -53,6 +53,7 @@ class JpaGenerateAnnotationProcessor : AbstractProcessor() {
     private fun generateText(
         generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
         ): String{
+        processingEnv.messager.printMessage(Diagnostic.Kind.MANDATORY_WARNING, "Generate class ${generatedJpaRepositoryClass.generatedClassName} by class ${generatedJpaRepositoryClass.annotatedClass.name()}")
         val code ="""package ${generatedJpaRepositoryClass.generatedPackageName};
 
 import org.springframework.data.jpa.repository.JpaRepository;

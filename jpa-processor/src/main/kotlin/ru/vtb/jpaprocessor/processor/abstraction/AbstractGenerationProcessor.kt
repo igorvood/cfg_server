@@ -14,7 +14,7 @@ abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedCla
         super.init(processingEnv)
     }
 
-    protected fun log(kind: Diagnostic.Kind,  msg: CharSequence?){
+    protected fun log(kind: Diagnostic.Kind, msg: CharSequence?) {
         processingEnv.messager.printMessage(kind, "${this.javaClass.canonicalName}: $msg")
     }
 

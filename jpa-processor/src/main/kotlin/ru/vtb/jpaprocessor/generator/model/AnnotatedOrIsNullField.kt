@@ -1,9 +1,6 @@
 package ru.vtb.jpaprocessor.generator.model
 
-import java.util.Optional
-import javax.lang.model.element.AnnotationMirror
 import javax.lang.model.element.Element
-import javax.lang.model.type.DeclaredType
 
 class AnnotatedOrIsNullField(override val element: Element) : OrIsNullField {
     override fun name(): String {
@@ -14,7 +11,7 @@ class AnnotatedOrIsNullField(override val element: Element) : OrIsNullField {
         return element.asType().toString()
     }
 
-//    override fun annotation(): MutableList<out AnnotationMirror> {
+    //    override fun annotation(): MutableList<out AnnotationMirror> {
 //        element.getAnnotation()
 //
 //        val annotationMirrors = element.annotationMirrors

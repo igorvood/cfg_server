@@ -21,7 +21,7 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
     fun calculateIdClass(processingEnv: ProcessingEnvironment): Result<String> =
         kotlin.runCatching {
             element.annotation<IdClass>(processingEnv)
-                .map { idAnnoTat->
+                .map { idAnnoTat ->
 //                    val annotationValue = element.annotationValue<IdClass>(processingEnv, "value")
 //                    val value = idAnnoTat.value
 //                    val java = value.java

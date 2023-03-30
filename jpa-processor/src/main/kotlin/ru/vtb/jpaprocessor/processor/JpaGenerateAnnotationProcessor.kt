@@ -18,7 +18,7 @@ class JpaGenerateAnnotationProcessor :
 
     override fun textGenerator(generatedClassData: GeneratedJpaRepositoryClass): String {
         val calculateIdClass = generatedClassData.annotatedClass.calculateIdClass(processingEnv).getOrElse {
-            log(                Diagnostic.Kind.ERROR,it.message)
+            log(Diagnostic.Kind.ERROR, it.message)
             ""
         }
 

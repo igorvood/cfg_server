@@ -18,7 +18,7 @@ class AnnotatedOrIsNullSearchMethod(private val queryMethod: Element, private va
     override fun filter(): AbstractAnnotatedClass {
         val queryMethod = queryMethod.asType() as ExecutableType
         val queryMethodParameter = queryMethod.parameterTypes.iterator().next()
-        return AnnotatedClass(typeUtils.asElement(queryMethodParameter))
+        return AnnotatedEntityClass(typeUtils.asElement(queryMethodParameter))
     }
 
     override fun query(): String {

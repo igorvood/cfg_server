@@ -3,7 +3,7 @@ package ru.vtb.jpaprocessor.generator.model
 import java.util.stream.Collectors
 import javax.lang.model.element.Element
 
-class AnnotatedClass(element: Element) : AbstractAnnotatedClass(element) {
+class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
     override fun name(): String {
         return element.asType().toString()
     }

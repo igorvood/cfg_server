@@ -1,6 +1,6 @@
 package ru.vtb.jpaprocessor.processor
 
-import ru.vtb.jpaprocessor.generator.model.AnnotatedClass
+import ru.vtb.jpaprocessor.generator.model.AnnotatedEntityClass
 import ru.vtb.jpaprocessor.generator.model.GeneratedJpaRepositoryClass
 import ru.vtb.jpaprocessor.processor.abstraction.AbstractGenerationProcessor
 import javax.annotation.processing.*
@@ -13,7 +13,7 @@ class JpaGenerateAnnotationProcessor :
     AbstractGenerationProcessor<GeneratedJpaRepositoryClass>() {
 
     override fun generatedClassInfo(typeElement: TypeElement): GeneratedJpaRepositoryClass =
-        GeneratedJpaRepositoryClass(AnnotatedClass(typeElement))
+        GeneratedJpaRepositoryClass(AnnotatedEntityClass(typeElement))
 
     override fun textGenerator(generatedClassData: GeneratedJpaRepositoryClass): String =
         """package ${generatedClassData.generatedPackageName()};

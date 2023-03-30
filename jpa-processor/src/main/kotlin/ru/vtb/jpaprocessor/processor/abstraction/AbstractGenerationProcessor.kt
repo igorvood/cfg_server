@@ -8,7 +8,7 @@ import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedClass> : AbstractProcessor() {
+abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedClass<*>> : AbstractProcessor() {
     @Synchronized
     override fun init(processingEnv: ProcessingEnvironment) {
         super.init(processingEnv)

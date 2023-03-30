@@ -14,7 +14,7 @@ class AnnotatedOrIsNullField(private val element: Element) : OrIsNullField {
     override fun betterClass(): AbstractAnnotatedClass? {
         return if (element.asType().kind.isPrimitive) {
             null
-        } else AnnotatedClass(element)
+        } else AnnotatedEntityClass(element)
     }
 
     val klassType: AbstractAnnotatedClass?

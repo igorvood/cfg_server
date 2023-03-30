@@ -23,6 +23,7 @@ class JpaGenerateAnnotationProcessor :
         }
 
         return """package ${generatedClassData.generatedPackageName()};
+            
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.Modifying;

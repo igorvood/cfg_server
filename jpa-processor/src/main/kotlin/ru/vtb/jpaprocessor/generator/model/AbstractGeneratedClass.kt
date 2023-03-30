@@ -1,6 +1,6 @@
 package ru.vtb.jpaprocessor.generator.model
 
-abstract class IGeneratedClass(val annotatedClass: IAnnotatedClass) {
+abstract class AbstractGeneratedClass(val annotatedClass: IAnnotatedClass) {
 
     abstract fun generatedClassName(): String
 

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 
 @Repository
+@Deprecated("Use generated repo")
 interface DictTopicOwnerEntityRepository : JpaRepository<DictTopicOwnerEntity, String> {
 
     @Modifying(flushAutomatically = true)

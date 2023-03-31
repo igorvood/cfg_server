@@ -4,11 +4,12 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
+import ru.vtb.configuration.server.dataEntity.generated.DictTopicNodeEntityGeneratedRepository
 
 internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
     @Autowired
-    lateinit var dictTopicNodeEntityRepository: DictTopicNodeEntityRepository
+    lateinit var dictTopicNodeEntityRepository: DictTopicNodeEntityGeneratedRepository
 
 
     @Test

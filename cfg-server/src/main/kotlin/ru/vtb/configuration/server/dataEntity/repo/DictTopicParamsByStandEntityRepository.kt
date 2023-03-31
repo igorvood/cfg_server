@@ -1,9 +1,0 @@
-package ru.vtb.configuration.server.dataEntity.repo
-
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
-import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
-import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
-
-@Repository
-interface DictTopicParamsByStandEntityRepository : JpaRepository<DictTopicParamsByStandEntity, DictTopicParamsByStandEntityPK>

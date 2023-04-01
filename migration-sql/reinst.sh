@@ -41,3 +41,14 @@ else
   echo "Failure: test" >&2
   exit 1
 fi
+
+java -jar -Dspring.profiles.active=insert-data ./target/migration-sql-1.0.2.jar
+#> 5_insert-data.log
+
+if [ $? -eq 0 ]
+then
+  echo "Success: insert-data."
+else
+  echo "Failure: insert-data" >&2
+  exit 1
+fi

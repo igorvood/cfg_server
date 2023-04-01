@@ -14,7 +14,7 @@ public class DictTopicNodeEntity {
     @Column(name = "id")
     private String id;
     @Basic
-    @Column(name = "node_type")
+    @Column(name = "node_type", updatable = false)
     private String nodeType;
     @Basic
     @Column(name = "topic_owner_id")

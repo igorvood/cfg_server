@@ -20,7 +20,7 @@ internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
     @Test
     fun findById() {
         withTransactional {
-            val findById = dictTopicNodeEntityRepository.findById("dev_input_withdraw_tx_dlq")
+            val findById = dictTopicNodeEntityRepository.findById("APRF_STATIC_PUB")
 
             assert(findById.isPresent)
 
@@ -28,7 +28,9 @@ internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
             val dictTopicNodeEntity: DictTopicNodeEntity = findById.get()
 
-            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
+
+//            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
+            dictTopicNodeEntity.retention=BigInteger.valueOf(19)
             val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity().apply {
                 nodeId = dictTopicNodeEntity.id
                 standId = "DSO"

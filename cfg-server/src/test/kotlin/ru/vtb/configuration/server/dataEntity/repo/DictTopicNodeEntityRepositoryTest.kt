@@ -3,14 +3,19 @@ package ru.vtb.configuration.server.dataEntity.repo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.generated.DictTopicNodeEntityGeneratedRepository
+import ru.vtb.configuration.server.dataEntity.generated.DictTopicParamsByStandEntityGeneratedRepository
+import java.math.BigInteger
 
 internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
     @Autowired
     lateinit var dictTopicNodeEntityRepository: DictTopicNodeEntityGeneratedRepository
 
+    @Autowired
+    lateinit var dictTopicParamsByStandEntityGeneratedRepository: DictTopicParamsByStandEntityGeneratedRepository
 
     @Test
     fun findById() {
@@ -21,11 +26,20 @@ internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
             println(findById)
 
-            val get = findById.get()
+            val dictTopicNodeEntity: DictTopicNodeEntity = findById.get()
 
-            get.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
-            get.dictTopicParamsByStandsById.add(DictTopicParamsByStandEntity())
-            dictTopicNodeEntityRepository.save(get)
+            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
+            val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity().apply {
+                nodeId = dictTopicNodeEntity.id
+                standId = "DSO"
+                cntPartition = BigInteger.valueOf(18)
+                topicName = dictTopicNodeEntity.id
+//                dictTopicNodeByNodeId = null
+            }
+//            dictTopicNodeEntity.dictTopicParamsByStandsById.add(dictTopicParamsByStandEntity)
+            dictTopicNodeEntityRepository.save(dictTopicNodeEntity)
+
+            dictTopicParamsByStandEntityGeneratedRepository.save(dictTopicParamsByStandEntity)
         }
         println(1)
 //        withTransactional {

@@ -26,11 +26,6 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
         kotlin.runCatching {
             element.annotation<IdClass>(processingEnv)
                 .map { idAnnoTat ->
-//                    val annotationValue = element.annotationValue<IdClass>(processingEnv, "value")
-//                    val value = idAnnoTat.value
-//                    val java = value.java
-//                    val canonicalName = java.canonicalName
-//                    canonicalName
                     element.annotationValue<IdClass>(processingEnv, "value").toString()
                 }
                 .orElseGet {
@@ -46,35 +41,5 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
                     } else throw IllegalClassFormatException("Unable to find identifier for class ${name()} . Entity must be annotated IdClass or have only one field annotated Id")
                 }
         }
-
-//    fun calculateIdClass():String{
-//
-//        val map = Optional.ofNullable(element.getAnnotation(IdClass::class.java))
-//            .map { it.value.java.canonicalName }
-//            .orElseGet {
-//                val fields = fields()
-//                val annotated = fields
-//                    .filter {field ->
-//                        val annotation = field.annotation()
-//                        val idOnly = annotation
-//                            .map { ann -> ann.annotationType }
-//                            .filter { p ->
-//                                val annotation1 = p.getAnnotationsByType(Id::class.java)
-//                                annotation1.isNotEmpty()
-//                            }
-//                        idOnly.size == 1
-//
-//                    }
-//
-//                val s = if (annotated.size == 1) {
-//                    annotated.first().type()
-//                } else throw IllegalClassFormatException("Unable to find identifyer class. Entity must be annotated IdClass or have only one field annotated Id")
-//                s
-//
-//            }
-//
-//        return map
-//    }
-
 
 }

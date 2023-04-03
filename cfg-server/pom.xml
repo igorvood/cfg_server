@@ -130,8 +130,15 @@
             <groupId>ru.vtb.dko</groupId>
             <artifactId>jpa-processor</artifactId>
             <version>1.0.2</version>
+<!--            <scope>compile</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>ru.vtb.dko</groupId>
+            <artifactId>jpa-annotation-processor-kotlin</artifactId>
+            <version>1.0.2</version>
             <scope>compile</scope>
         </dependency>
+
         <dependency>
             <groupId>ru.vtb.dko</groupId>
             <artifactId>common-lib</artifactId>
@@ -159,11 +166,10 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
-
-
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources/
                     </generatedSourcesDirectory>
                     <annotationProcessors>
+<!--                        <annotationProcessor>ru.vtb.jpaprocessor.kotlin.FileGenerator</annotationProcessor>-->
                         <annotationProcessor>
                             ru.vtb.jpaprocessor.processor.JpaGenerateAnnotationProcessor
                         </annotationProcessor>
@@ -189,6 +195,27 @@
                             <goal>test-compile</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <id>kapt</id>
+                        <goals>
+                            <goal>kapt</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/java</sourceDir>
+                            </sourceDirs>
+                            <annotationProcessorPaths>
+                                <annotationProcessorPath>
+                                    <groupId>ru.vtb.dko</groupId>
+                                    <artifactId>jpa-annotation-processor-kotlin</artifactId>
+                                    <version>1.0.2</version>
+
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+
                 </executions>
                 <configuration>
                     <sourceDirs>

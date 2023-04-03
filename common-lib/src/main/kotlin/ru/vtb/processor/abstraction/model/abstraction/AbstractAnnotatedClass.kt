@@ -1,4 +1,4 @@
-package ru.vtb.processor.abstraction.model
+package ru.vtb.processor.abstraction.model.abstraction
 
 import javax.lang.model.element.Element
 

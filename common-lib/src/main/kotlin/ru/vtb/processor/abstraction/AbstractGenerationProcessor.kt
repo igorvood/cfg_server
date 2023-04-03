@@ -1,6 +1,6 @@
 package ru.vtb.processor.abstraction
 
-import ru.vtb.processor.abstraction.model.AbstractGeneratedClass
+import ru.vtb.processor.abstraction.model.abstraction.AbstractGeneratedClass
 import java.io.OutputStreamWriter
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.ProcessingEnvironment

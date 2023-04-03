@@ -6,6 +6,8 @@
         <module>migration-sql</module>
         <module>cfg-server</module>
         <module>jpa-processor</module>
+        <module>jpa-annotation-processor-kotlin</module>
+        <module>common-lib</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

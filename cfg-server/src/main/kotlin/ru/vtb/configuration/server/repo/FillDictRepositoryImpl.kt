@@ -118,15 +118,14 @@ class FillDictRepositoryImpl(
         jdbcTemplate.execute(PreparedStatementCreator { con ->
             val cs: CallableStatement = con.prepareCall(
                 """
-                insert into DICT_FLINK_PROP_VALUE(SERVICE_ID, PROFILE_ID, PROP_ID, PROP_VALUE, IS_FUNCTION)
-                values (?, ?, ?, ?, ?)
+                insert into DICT_FLINK_PROP_VALUE(SERVICE_ID, PROFILE_ID, PROP_ID, PROP_VALUE)
+                values (?, ?, ?, ?)
                 """
             )
             cs.setString(1, serviceId)
             cs.setString(2, profileId)
             cs.setString(3, propertyDto.name)
             cs.setString(4, propertyDto.value)
-            cs.setInt(5, 0)
             cs
         }, PreparedStatementCallback { ps ->
             ps.execute()

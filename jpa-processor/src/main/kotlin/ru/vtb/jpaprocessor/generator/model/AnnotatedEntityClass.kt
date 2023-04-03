@@ -1,5 +1,9 @@
 package ru.vtb.jpaprocessor.generator.model
 
+import ru.vtb.processor.abstraction.model.AbstractAnnotatedClass
+import ru.vtb.processor.abstraction.model.OrIsNullField
+import ru.vtb.processor.abstraction.model.annotation
+import ru.vtb.processor.abstraction.model.annotationValue
 import java.lang.instrument.IllegalClassFormatException
 import javax.annotation.processing.ProcessingEnvironment
 import javax.lang.model.element.Element

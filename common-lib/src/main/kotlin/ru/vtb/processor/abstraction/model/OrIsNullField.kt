@@ -1,4 +1,4 @@
-package ru.vtb.jpaprocessor.generator.model
+package ru.vtb.processor.abstraction.model
 
 import java.util.*
 import javax.annotation.processing.ProcessingEnvironment

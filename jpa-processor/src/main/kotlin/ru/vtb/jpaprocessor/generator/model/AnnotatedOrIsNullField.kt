@@ -1,5 +1,7 @@
 package ru.vtb.jpaprocessor.generator.model
 
+import ru.vtb.processor.abstraction.model.AbstractAnnotatedClass
+import ru.vtb.processor.abstraction.model.OrIsNullField
 import javax.lang.model.element.Element
 
 class AnnotatedOrIsNullField(override val element: Element) : OrIsNullField {

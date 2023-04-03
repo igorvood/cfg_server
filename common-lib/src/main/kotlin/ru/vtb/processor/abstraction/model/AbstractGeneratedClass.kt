@@ -1,4 +1,4 @@
-package ru.vtb.jpaprocessor.generator.model
+package ru.vtb.processor.abstraction.model
 
 abstract class AbstractGeneratedClass<out AnnotatedClass : AbstractAnnotatedClass>(val annotatedClass: AnnotatedClass) {
 

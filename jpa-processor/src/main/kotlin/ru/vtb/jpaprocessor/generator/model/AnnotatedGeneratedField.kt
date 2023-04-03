@@ -1,10 +1,10 @@
 package ru.vtb.jpaprocessor.generator.model
 
 import ru.vtb.processor.abstraction.model.AbstractAnnotatedClass
-import ru.vtb.processor.abstraction.model.OrIsNullField
+import ru.vtb.processor.abstraction.model.IGeneratedField
 import javax.lang.model.element.Element
 
-class AnnotatedOrIsNullField(override val element: Element) : OrIsNullField {
+class AnnotatedGeneratedField(override val element: Element) : IGeneratedField {
     override fun name(): String {
         return element.simpleName.toString()
     }

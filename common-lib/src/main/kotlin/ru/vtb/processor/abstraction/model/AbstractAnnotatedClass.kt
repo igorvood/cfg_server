@@ -5,7 +5,7 @@ import javax.lang.model.element.Element
 abstract class AbstractAnnotatedClass(val element: Element)/*<Annotation>*/ {
     abstract fun name(): String
 
-    abstract fun fields(): List<OrIsNullField>
+    abstract fun fields(): List<IGeneratedField>
 
     fun shortName(): String {
         val dotIdx = name().lastIndexOf('.')

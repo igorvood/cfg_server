@@ -1,7 +1,7 @@
 package ru.vtb.jpaprocessor.generator.model
 
 import ru.vtb.processor.abstraction.model.AbstractAnnotatedClass
-import ru.vtb.processor.abstraction.model.OrIsNullField
+import ru.vtb.processor.abstraction.model.IGeneratedField
 import ru.vtb.processor.abstraction.model.annotation
 import ru.vtb.processor.abstraction.model.annotationValue
 import java.lang.instrument.IllegalClassFormatException
@@ -15,10 +15,10 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
         return element.asType().toString()
     }
 
-    override fun fields(): List<OrIsNullField> {
+    override fun fields(): List<IGeneratedField> {
         return element.enclosedElements
             .filter { e: Element -> e.kind.isField }
-            .map { element: Element -> AnnotatedOrIsNullField(element) }
+            .map { element: Element -> AnnotatedGeneratedField(element) }
 
     }
 

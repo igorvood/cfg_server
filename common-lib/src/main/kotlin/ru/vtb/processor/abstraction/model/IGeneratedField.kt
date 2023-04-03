@@ -4,7 +4,7 @@ import java.util.*
 import javax.annotation.processing.ProcessingEnvironment
 import javax.lang.model.element.Element
 
-interface OrIsNullField {
+interface IGeneratedField {
 
     val element: Element
     fun name(): String
@@ -12,7 +12,7 @@ interface OrIsNullField {
     fun betterClass(): AbstractAnnotatedClass?
 }
 
-inline fun <reified ANNO : Annotation> OrIsNullField.annotation(processingEnv: ProcessingEnvironment): Optional<ANNO> =
+inline fun <reified ANNO : Annotation> IGeneratedField.annotation(processingEnv: ProcessingEnvironment): Optional<ANNO> =
     element.annotation(processingEnv)
 
 

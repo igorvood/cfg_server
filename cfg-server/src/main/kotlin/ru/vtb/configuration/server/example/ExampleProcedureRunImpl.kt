@@ -10,7 +10,6 @@ import java.sql.CallableStatement
 @Repository
 class ExampleProcedureRunImpl(
     private val jdbcTemplate: JdbcTemplate,
-
     ) : ExampleProcedureRun {
 
     override fun rundict_service_ins_trg(

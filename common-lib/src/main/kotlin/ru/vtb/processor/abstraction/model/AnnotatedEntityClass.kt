@@ -6,6 +6,7 @@ import ru.vtb.processor.abstraction.model.abstraction.annotation
 import ru.vtb.processor.abstraction.model.abstraction.annotationValue
 import java.lang.instrument.IllegalClassFormatException
 import javax.annotation.processing.ProcessingEnvironment
+import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.Element
 import javax.persistence.Id
 import javax.persistence.IdClass

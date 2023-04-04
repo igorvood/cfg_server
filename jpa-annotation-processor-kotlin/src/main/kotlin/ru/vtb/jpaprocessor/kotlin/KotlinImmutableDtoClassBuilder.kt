@@ -2,6 +2,7 @@ package ru.vtb.jpaprocessor.kotlin
 
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.annotation
+import javax.annotation.processing.ProcessingEnvironment
 import javax.persistence.Column
 
 
@@ -15,13 +16,14 @@ import javax.persistence.Column
 class KotlinImmutableDtoClassBuilder(
     className: String,
     packageName: String,
-    generatedJpaRepositoryClass: GeneratedJpaRepositoryClass
+    generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
+    roundEnvironment: ProcessingEnvironment
 ) {
 
-    private fun mapType(type: String): String{
-     return   if (type=="java.lang.String") {
+    private fun String.mapKotlinType(): String{
+     return   if (this=="java.lang.String") {
             "String"
-        } else type
+        } else this
 
     }
 
@@ -33,7 +35,7 @@ class KotlinImmutableDtoClassBuilder(
         .filter { it.element.annotation<Column>().isPresent }
 
     private val listFieldsConstructor = filteredFields
-        .joinToString(",\n") { f -> "val " + f.name() + " : " + mapType(f.type()) }
+        .joinToString(",\n") { f -> "val " + f.name() + " : " + f.type().mapKotlinType() }
 
     private val listFieldsToMutableFun = filteredFields
         .joinToString("\n") { f -> "this@apply.${f.name()} = this@toMutable.${f.name()}" }
@@ -53,12 +55,9 @@ package $packageName.genRest
 
 import $packageName.$className
 import io.swagger.v3.oas.annotations.Operation
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RestController
 import ru.vtb.configuration.server.dataEntity.generated.$repositoryClassName
 import $packageName.genRest.toImmutable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.*
 
 
 data class $immutableClassName (
@@ -74,20 +73,24 @@ $mutableToImmutableFun
 private val restConText=    """
 @RestController
 class ${className}GeneratedRestApi(
-    val $repositoryClassName: ${className}GeneratedRepository
+    val $repositoryClassName: $repositoryClassName
 ) {
 
     @Operation(summary = "$className findAll", tags = ["Генерированное API"])
     @GetMapping("/${className}/findAll")
-    fun findAll() = ${className}GeneratedRepository.findAll().map { it.toImmutable() }
+    fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
 
     @Operation(summary = "$className save", tags = ["Генерированное API"])
     @PutMapping("/$className/save")
-    fun save(data: $immutableClassName) = ${className}GeneratedRepository.save(data.toMutable()).toImmutable()
+    fun save(data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
 
+    @Operation(summary = "$className deleteById", tags = ["Генерированное API"])
+    @DeleteMapping("/$className/deleteById")
+    fun deleteById(id: ${generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment).getOrElse { "Unable to calculate primary key" }.mapKotlinType()}) = $repositoryClassName.deleteById(id)
 
 }
 """
+
     fun getContent(): String =  contentTemplate+restConText
 
 }

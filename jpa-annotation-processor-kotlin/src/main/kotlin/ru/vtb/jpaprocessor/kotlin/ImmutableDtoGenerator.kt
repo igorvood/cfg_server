@@ -25,23 +25,28 @@ class ImmutableDtoGenerator: AbstractProcessor() {
         return SourceVersion.latest()
     }
 
-    override fun process(set: MutableSet<out TypeElement>?, roundEnvironment: RoundEnvironment?): Boolean {
+    override fun process(set: MutableSet<out TypeElement>, roundEnvironment: RoundEnvironment): Boolean {
 
-        roundEnvironment?.
-        getElementsAnnotatedWith(GenerateJpa::class.java)?.
+        roundEnvironment.
+        getElementsAnnotatedWith(GenerateJpa::class.java).
         forEach {
             val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(AnnotatedEntityClass(it))
 
             val className = it.simpleName.toString()
                 val pack = processingEnv.elementUtils.getPackageOf(it).toString()
-                generateClass(className, pack, generatedJpaRepositoryClass)
+                generateClass(className, pack, generatedJpaRepositoryClass, processingEnv)
             }
         return true
     }
 
-    private fun generateClass(className: String, pack: String, generatedJpaRepositoryClass: GeneratedJpaRepositoryClass){
+    private fun generateClass(
+        className: String,
+        pack: String,
+        generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
+        processingEnv: ProcessingEnvironment
+    ){
         val fileName = "Generated_$className"
-        val fileContent = KotlinImmutableDtoClassBuilder(className, pack, generatedJpaRepositoryClass).getContent()
+        val fileContent = KotlinImmutableDtoClassBuilder(className, pack, generatedJpaRepositoryClass, processingEnv).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]
         val file = File(kaptKotlinGeneratedDir, "$fileName.kt")

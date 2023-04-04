@@ -3,11 +3,9 @@ package ru.vtb.configuration.server.delete
 
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import io.swagger.v3.oas.annotations.Operation
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
-import org.springframework.web.bind.annotation.RestController
-import ru.vtb.configuration.server.dataEntity.genRest.DictTopicParamsByStandEntityImmutable
+import org.springframework.web.bind.annotation.*
+import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
+
 
 import ru.vtb.configuration.server.dataEntity.generated.DictTopicParamsByStandEntityGeneratedRepository
 
@@ -42,6 +40,10 @@ class DictTopicParamsByStandEntityGeneratedRestApi(
     @PutMapping("/DictTopicParamsByStandEntity/save")
     fun save(data: DictTopicParamsByStandEntityImmutable) = DictTopicParamsByStandEntityGeneratedRepository.save(data.toMutable())
 
+
+    @Operation(summary = "DictTopicParamsByStandEntity deleteById", tags = ["Генерированное API"])
+    @DeleteMapping("/DictTopicParamsByStandEntity/deleteById")
+    fun deleteById(data: DictTopicParamsByStandEntityPK) = DictTopicParamsByStandEntityGeneratedRepository.deleteById(data)
 
 
 

@@ -12,8 +12,8 @@ import javax.lang.model.element.TypeElement
 
 @AutoService(Processor::class) // For registering the service
 @SupportedSourceVersion(SourceVersion.RELEASE_8) // to support Java 8
-@SupportedOptions(FileGenerator.KAPT_KOTLIN_GENERATED_OPTION_NAME)
-class FileGenerator: AbstractProcessor() {
+@SupportedOptions(ImmutableDtoGenerator.KAPT_KOTLIN_GENERATED_OPTION_NAME)
+class ImmutableDtoGenerator: AbstractProcessor() {
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(GenerateJpa::class.java.name)
@@ -35,8 +35,9 @@ class FileGenerator: AbstractProcessor() {
     }
 
     private fun generateClass(className: String, pack: String){
-        val fileName = "Generated_$className"
-        val fileContent = KotlinClassBuilder(fileName,pack).getContent()
+        val genClassName = className + "Immutable"
+        val fileName = "Generated_$genClassName"
+        val fileContent = KotlinClassBuilder(genClassName,pack).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]
         val file = File(kaptKotlinGeneratedDir, "$fileName.kt")

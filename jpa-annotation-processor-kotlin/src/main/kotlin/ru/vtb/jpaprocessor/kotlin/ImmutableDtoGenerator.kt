@@ -2,6 +2,8 @@ package ru.vtb.jpaprocessor.kotlin
 
 
 import com.google.auto.service.AutoService
+import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
+import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.annotation.GenerateJpa
 //import io.navendra.annotation.GreetingGenerator
 //import ru.vtb.jpaprocessor.kotlin.KotlinClassBuilder
@@ -25,19 +27,22 @@ class ImmutableDtoGenerator: AbstractProcessor() {
 
     override fun process(set: MutableSet<out TypeElement>?, roundEnvironment: RoundEnvironment?): Boolean {
 
-        roundEnvironment?.getElementsAnnotatedWith(GenerateJpa::class.java)
-            ?.forEach {
-                val className = it.simpleName.toString()
+        roundEnvironment?.
+        getElementsAnnotatedWith(GenerateJpa::class.java)?.
+        forEach {
+            val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(AnnotatedEntityClass(it))
+
+            val className = it.simpleName.toString()
                 val pack = processingEnv.elementUtils.getPackageOf(it).toString()
-                generateClass(className, pack)
+                generateClass(className, pack, generatedJpaRepositoryClass)
             }
         return true
     }
 
-    private fun generateClass(className: String, pack: String){
+    private fun generateClass(className: String, pack: String, generatedJpaRepositoryClass: GeneratedJpaRepositoryClass){
         val genClassName = className + "Immutable"
         val fileName = "Generated_$genClassName"
-        val fileContent = KotlinClassBuilder(genClassName,pack).getContent()
+        val fileContent = KotlinClassBuilder(genClassName,pack, generatedJpaRepositoryClass).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]
         val file = File(kaptKotlinGeneratedDir, "$fileName.kt")

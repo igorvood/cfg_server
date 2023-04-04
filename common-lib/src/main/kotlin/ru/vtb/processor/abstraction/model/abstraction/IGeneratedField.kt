@@ -12,11 +12,11 @@ interface IGeneratedField {
     fun betterClass(): AbstractAnnotatedClass?
 }
 
-inline fun <reified ANNO : Annotation> IGeneratedField.annotation(processingEnv: ProcessingEnvironment): Optional<ANNO> =
-    element.annotation(processingEnv)
+inline fun <reified ANNO : Annotation> IGeneratedField.annotation(): Optional<ANNO> =
+    element.annotation()
 
 
-inline fun <reified ANNO : Annotation> Element.annotation(processingEnv: ProcessingEnvironment): Optional<ANNO> {
+inline fun <reified ANNO : Annotation> Element.annotation(): Optional<ANNO> {
 //    val actionType = processingEnv.getElementUtils().getTypeElement(ANNO::class.java.name).asType()
 //    val filter = this.annotationMirrors
 //        .filter { it.annotationType.equals(actionType) }

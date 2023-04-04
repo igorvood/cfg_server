@@ -24,14 +24,14 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
 
     fun calculateIdClass(processingEnv: ProcessingEnvironment): Result<String> =
         kotlin.runCatching {
-            element.annotation<IdClass>(processingEnv)
+            element.annotation<IdClass>()
                 .map { idAnnoTat ->
                     element.annotationValue<IdClass>(processingEnv, "value").toString()
                 }
                 .orElseGet {
                     val withIdFileds = fields()
                         .map { f ->
-                            f to f.annotation<Id>(processingEnv)
+                            f to f.annotation<Id>()
                         }
                         .filter { it.second.isPresent }
                         .map { it.first }

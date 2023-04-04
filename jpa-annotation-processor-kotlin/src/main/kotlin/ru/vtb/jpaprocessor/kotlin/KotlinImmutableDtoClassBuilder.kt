@@ -34,6 +34,9 @@ class KotlinImmutableDtoClassBuilder(
     private val listFieldsApply = filteredFields
         .joinToString("\n") { f -> "this@apply.${f.name()} = this@${immutableClassName}.${f.name()}" }
 
+    private val listFieldsToImmutable = filteredFields
+        .joinToString(",") { f -> "this.${f.name()}" }
+
 
 
     private val contentTemplate = """
@@ -46,13 +49,9 @@ $listFieldsConstructor
   $listFieldsApply
   }
 }
+
+fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)
 """
-
-    fun getContent(): String {
-
-        return contentTemplate
-
-    }
-
+    fun getContent(): String =  contentTemplate
 
 }

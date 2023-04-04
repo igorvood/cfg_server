@@ -41,7 +41,7 @@ class ImmutableDtoGenerator: AbstractProcessor() {
 
     private fun generateClass(className: String, pack: String, generatedJpaRepositoryClass: GeneratedJpaRepositoryClass){
         val fileName = "Generated_$className"
-        val fileContent = KotlinClassBuilder(className, pack, generatedJpaRepositoryClass).getContent()
+        val fileContent = KotlinImmutableDtoClassBuilder(className, pack, generatedJpaRepositoryClass).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]
         val file = File(kaptKotlinGeneratedDir, "$fileName.kt")

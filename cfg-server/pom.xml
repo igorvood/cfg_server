@@ -202,8 +202,8 @@
                         </goals>
                         <configuration>
                             <sourceDirs>
-                                <sourceDir>src/main/kotlin</sourceDir>
-                                <sourceDir>src/main/java</sourceDir>
+<!--                                <sourceDir>src/main/kotlin</sourceDir>-->
+<!--                                <sourceDir>src/main/java</sourceDir>-->
                             </sourceDirs>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
@@ -220,6 +220,7 @@
                 <configuration>
                     <sourceDirs>
                         <source>${project.build.directory}/generated-sources/</source>
+                        <sourceDir>src/main/kotlin</sourceDir>
                     </sourceDirs>
                     <args>
                         <arg>-Xjsr305=strict</arg>

@@ -3,9 +3,6 @@ package ru.vtb.jpaprocessor.kotlin
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.annotation
 import javax.persistence.Column
-import javax.persistence.IdClass
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
 
 /**
  * Custom Kotlin Class Builder which returns file content string
@@ -15,13 +12,14 @@ import javax.persistence.ManyToOne
  */
 class KotlinClassBuilder(
     className: String,
-    packageName:String,
-    generatedJpaRepositoryClass: GeneratedJpaRepositoryClass){
+    packageName: String,
+    generatedJpaRepositoryClass: GeneratedJpaRepositoryClass
+) {
 
-val  asd=   generatedJpaRepositoryClass.annotatedClass.fields()
-    .filter { it.element.annotation<Column>().isPresent }
-    .map { f -> "val "+f.name()+" : "+f.type() }
-    .joinToString(",\n")
+    val asd = generatedJpaRepositoryClass.annotatedClass.fields()
+        .filter { it.element.annotation<Column>().isPresent }
+        .map { f -> "val " + f.name() + " : " + f.type() }
+        .joinToString(",\n")
 
     private val contentTemplate = """
 package $packageName
@@ -31,7 +29,7 @@ $asd
 )
 """
 
-    fun getContent() : String{
+    fun getContent(): String {
 
         return contentTemplate
 

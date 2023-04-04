@@ -31,12 +31,17 @@ class KotlinImmutableDtoClassBuilder(
     private val listFieldsConstructor = filteredFields
         .joinToString(",\n") { f -> "val " + f.name() + " : " + mapType(f.type()) }
 
-    private val listFieldsApply = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = this@${immutableClassName}.${f.name()}" }
+    private val listFieldsToMutableFun = filteredFields
+        .joinToString("\n") { f -> "this@apply.${f.name()} = this@toMutable.${f.name()}" }
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
 
+
+    private val mutableToImmutableFun = """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
+    private val immutableToMutableFun = """fun $immutableClassName.toMutable() = ${className}().apply { 
+$listFieldsToMutableFun
+  }"""
 
 
     private val contentTemplate = """
@@ -51,13 +56,10 @@ import $packageName.genRest.toImmutable
 
 data class $immutableClassName (
 $listFieldsConstructor
-){
- val toMutable = ${className}().apply { 
-  $listFieldsApply
-  }
-}
+)
+$immutableToMutableFun
 
-fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)
+$mutableToImmutableFun
 
 
 """

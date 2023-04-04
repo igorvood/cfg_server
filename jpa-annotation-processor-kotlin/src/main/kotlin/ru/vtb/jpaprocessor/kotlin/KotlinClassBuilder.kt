@@ -16,17 +16,36 @@ class KotlinClassBuilder(
     generatedJpaRepositoryClass: GeneratedJpaRepositoryClass
 ) {
 
-    val asd = generatedJpaRepositoryClass.annotatedClass.fields()
+    private fun mapType(type: String): String{
+     return   if (type=="java.lang.String") {
+            "String"
+        } else type
+
+    }
+
+    private val immutableClassName = """${className}Immutable"""
+
+    private val filteredFields = generatedJpaRepositoryClass.annotatedClass.fields()
         .filter { it.element.annotation<Column>().isPresent }
-        .map { f -> "val " + f.name() + " : " + f.type() }
-        .joinToString(",\n")
+
+    private val listFieldsConstructor = filteredFields
+        .joinToString(",\n") { f -> "val " + f.name() + " : " + mapType(f.type()) }
+
+    private val listFieldsApply = filteredFields
+        .joinToString("\n") { f -> "this@apply.${f.name()} = this@${immutableClassName}.${f.name()}" }
+
+
 
     private val contentTemplate = """
 package $packageName
 
-data class $className (
-$asd
-)
+data class $immutableClassName (
+$listFieldsConstructor
+){
+ val toMutable = ${className}().apply { 
+  $listFieldsApply
+  }
+}
 """
 
     fun getContent(): String {

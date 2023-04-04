@@ -40,7 +40,14 @@ class KotlinImmutableDtoClassBuilder(
 
 
     private val contentTemplate = """
-package $packageName
+package $packageName.genRest
+
+import $packageName.$className
+import io.swagger.v3.oas.annotations.Operation
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RestController
+import ru.vtb.configuration.server.dataEntity.generated.${className}GeneratedRepository
+import $packageName.genRest.toImmutable
 
 data class $immutableClassName (
 $listFieldsConstructor
@@ -51,7 +58,22 @@ $listFieldsConstructor
 }
 
 fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)
+
+
 """
-    fun getContent(): String =  contentTemplate
+
+val restConText=    """
+@RestController
+class ${className}GeneratedRestApi(
+    val ${className}GeneratedRepository: ${className}GeneratedRepository
+) {
+
+    @Operation(summary = "$className findAll", tags = ["Генерированное API"])
+    @GetMapping("/${className}/findAll")
+    fun findAll() = ${className}GeneratedRepository.findAll().map { it.toImmutable() }
+
+}
+"""
+    fun getContent(): String =  contentTemplate+restConText
 
 }

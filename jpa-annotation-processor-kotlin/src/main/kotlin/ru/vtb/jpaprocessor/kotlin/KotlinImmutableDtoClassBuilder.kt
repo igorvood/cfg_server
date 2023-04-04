@@ -76,15 +76,15 @@ class ${className}GeneratedRestApi(
     val $repositoryClassName: $repositoryClassName
 ) {
 
-    @Operation(summary = "$className findAll", tags = ["Генерированное API"])
+    @Operation(summary = "$className Найти все", tags = ["Генерированное API"])
     @GetMapping("/${className}/findAll")
     fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
 
-    @Operation(summary = "$className save", tags = ["Генерированное API"])
+    @Operation(summary = "$className Сохранить", tags = ["Генерированное API"])
     @PutMapping("/$className/save")
     fun save(data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
 
-    @Operation(summary = "$className deleteById", tags = ["Генерированное API"])
+    @Operation(summary = "$className Удалить по идентификатору", tags = ["Генерированное API"])
     @DeleteMapping("/$className/deleteById")
     fun deleteById(id: ${generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment).getOrElse { "Unable to calculate primary key" }.mapKotlinType()}) = $repositoryClassName.deleteById(id)
 

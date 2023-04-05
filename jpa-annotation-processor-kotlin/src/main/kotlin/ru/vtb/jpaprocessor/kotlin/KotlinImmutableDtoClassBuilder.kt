@@ -65,6 +65,9 @@ import ru.vtb.configuration.server.dataEntity.generated.$repositoryClassName
 import $packageName.genRest.toImmutable
 import org.springframework.web.bind.annotation.*
 import org.springframework.data.repository.*
+import org.springframework.transaction.annotation.Propagation
+import org.springframework.transaction.annotation.Transactional
+
 
 
 data class $immutableClassName (
@@ -92,17 +95,20 @@ $mutableToImmutableFun
     
         @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
         @PutMapping("/$className/save")
-        fun save(data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
+        @Transactional(propagation = Propagation.REQUIRES_NEW)
+        fun save(@RequestBody data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
     
         @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
         @DeleteMapping("/$className/deleteById")
-        fun deleteById(id: $primaryKeyType) = $repositoryClassName.deleteById(id)
+        @Transactional(propagation = Propagation.REQUIRES_NEW)
+        fun deleteById(@RequestBody id: $primaryKeyType) = $repositoryClassName.deleteById(id)
         
         @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
         @PostMapping("/$className/editEntity")
+        @Transactional(propagation = Propagation.REQUIRES_NEW)
         fun editEntity(
-            primaryKey: $primaryKeyType,
-            newData: $immutableClassName
+            @RequestBody primaryKey: $primaryKeyType,
+            @RequestBody newData: $immutableClassName
         ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
             $repositoryClassName.save(
                 oldData.apply {

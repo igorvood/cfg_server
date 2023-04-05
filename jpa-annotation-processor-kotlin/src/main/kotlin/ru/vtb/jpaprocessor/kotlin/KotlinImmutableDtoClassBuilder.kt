@@ -46,7 +46,8 @@ class KotlinImmutableDtoClassBuilder(
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
-
+    private val listFieldsForEdit = filteredFields
+        .joinToString("\n") { f -> "this@apply.${f.name()} = newData.${f.name()}" }
 
     private val mutableToImmutableFun =
         """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
@@ -63,6 +64,7 @@ import io.swagger.v3.oas.annotations.Operation
 import ru.vtb.configuration.server.dataEntity.generated.$repositoryClassName
 import $packageName.genRest.toImmutable
 import org.springframework.web.bind.annotation.*
+import org.springframework.data.repository.*
 
 
 data class $immutableClassName (
@@ -74,31 +76,43 @@ $mutableToImmutableFun
 
 
 """
+    private val primaryKeyType = generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
+        .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
 
-    private val restConText = if (genRest) """
-@RestController
-class ${className}GeneratedRestApi(
-    val $repositoryClassName: $repositoryClassName
-) {
-
-    @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
-    @GetMapping("/${className}/findAll")
-    fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
-
-    @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
-    @PutMapping("/$className/save")
-    fun save(data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
-
-    @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
-    @DeleteMapping("/$className/deleteById")
-    fun deleteById(id: ${
-        generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
-            .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
-    }) = $repositoryClassName.deleteById(id)
-
-}
-"""
-    else ""
+    private val restConText = if (genRest) {
+        """
+    @RestController
+    class ${className}GeneratedRestApi(
+        val $repositoryClassName: $repositoryClassName
+    ) {
+    
+        @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
+        @GetMapping("/${className}/findAll")
+        fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
+    
+        @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
+        @PutMapping("/$className/save")
+        fun save(data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
+    
+        @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
+        @DeleteMapping("/$className/deleteById")
+        fun deleteById(id: $primaryKeyType) = $repositoryClassName.deleteById(id)
+        
+        @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
+        @PostMapping("/$className/editEntity")
+        fun editEntity(
+            primaryKey: $primaryKeyType,
+            newData: $immutableClassName
+        ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
+            $repositoryClassName.save(
+                oldData.apply {
+                    $listFieldsForEdit
+                }).toImmutable()
+        }
+    
+    }
+    """
+    } else ""
 
     fun getContent(): String = contentTemplate + restConText
 

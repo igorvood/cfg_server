@@ -26,9 +26,9 @@ class KotlinImmutableDtoClassBuilder(
 
     private val generateJpaValue = generatedJpaRepositoryClass.annotatedClass.element.annotation<GenerateJpa>().get()
 
-    val tableComment = generateJpaValue.tableComment
+    private val tableComment = generateJpaValue.tableComment
 
-    val genRest = generateJpaValue.genRest
+    private val genRest = generateJpaValue.genRest
 
 
     private val repositoryClassName = """${className}GeneratedRepository"""

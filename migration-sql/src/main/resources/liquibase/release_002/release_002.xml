@@ -40,5 +40,10 @@
         <sqlFile path="liquibase/release_002/0090.resolvable_placeholder.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
+    <changeSet id="liquibase/release_002/0100.dict_flink_prop_value.sql" author="vood"  runAlways="false">
+        <sqlFile path="liquibase/release_002/0100.dict_flink_prop_value.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
+
 
 </databaseChangeLog>

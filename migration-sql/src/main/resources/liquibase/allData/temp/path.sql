@@ -21,7 +21,4 @@ WITH RECURSIVE temp1 ( node ,paretn_id, PATH, LEVEL ) AS (
     union
     select T2."node", T2."paretn_id", CAST ( temp1.PATH ||'->'|| T2."node" AS VARCHAR(32000)) ,LEVEL + 1
     FROM parent_nodes T2 INNER JOIN temp1 ON( temp1.node= T2."paretn_id")      )
-select * from temp1
-where PATH like '%dev_ss_uasp_svc%'
--- and node like '%~%'
-ORDER BY PATH LIMIT 10000
+select * from temp1 ORDER BY PATH LIMIT 10000

@@ -7,7 +7,7 @@ import ru.vtb.configuration.server.repo.move.IMoveDictServiceRepo
 
 interface IMoveDictServiceController {
     fun renameProfile(
-        id: String,
+        serviceId: String,
         profile: String,
         newProfile: String,
     ): Int
@@ -18,14 +18,18 @@ interface IMoveDictServiceController {
 class MoveDictServiceController(val iMoveDictServiceRepo: IMoveDictServiceRepo) : IMoveDictServiceController {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    override fun renameProfile(id: String, profile: String, newProfile: String): Int {
+    override fun renameProfile(serviceId: String, profile: String, newProfile: String): Int {
+        val listOf: List<(newServiceId: String, newProfile: String, serviceId: String, profile: String) -> Int> =
+            listOf(
+                iMoveDictServiceRepo::serviceNodeMove,
+                iMoveDictServiceRepo::serviceGroupMove,
+                iMoveDictServiceRepo::flinkPropValueMove,
+                iMoveDictServiceRepo::abstractServiceMove,
+                iMoveDictServiceRepo::srvArrowsMove,
+                iMoveDictServiceRepo::placeHolderByServiceMove,
+            )
 
-        return iMoveDictServiceRepo.serviceNodeMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.serviceGroupMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.flinkPropValueMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.abstractServiceMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.srvArrowsMove(id, newProfile, id, profile) +
-                iMoveDictServiceRepo.placeHolderByServiceMove(id, newProfile, id, profile)
+        return listOf.sumOf { it(serviceId, newProfile, serviceId, profile) }
     }
 
 }

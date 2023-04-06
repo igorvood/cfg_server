@@ -95,7 +95,9 @@ PROGRAMARGS=$propertiesEnvStr
                     val zipPath = stand.name + "/" + fileName
                     val zipEntry = ZipEntry(zipPath)
                     zipOut.putNextEntry(zipEntry);
-                    zipOut.write(env.body.toByteArray(), 0, env.body.length)
+                    val bodyText = env.body
+                    val toByteArray = bodyText.toByteArray()
+                    zipOut.write(toByteArray, 0, toByteArray.size)
                     zipPath
                 }
                 fileNamesByStand

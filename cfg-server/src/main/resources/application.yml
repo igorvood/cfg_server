@@ -4,8 +4,24 @@ spring:
     url: jdbc:postgresql://localhost:5432/db_configuration_manager
     username: ${DB_USERNAME:db_configuration_manager_admin}
     password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+#    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 10
+        order_updates: true
+        order_inserts: true
+#  spring.jpa.properties.hibernate.jdbc.batch_size=4
+#  spring.jpa.properties.hibernate.order_inserts=true
+#  spring.jpa.properties.hibernate.order_updates=true
+
 server:
   port: ${APPLICATION_PORT:9091}
+
 
 #management:
 #  health:
@@ -26,6 +42,8 @@ server:
 
 logging:
   level:
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type: TRACE
     ru: info
 
 springdoc:

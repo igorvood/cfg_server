@@ -3,7 +3,7 @@ package ru.vtb.configuration.server.repo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 
 internal class ReportTopicRepositoryImplTest : AbstractDatasourceTests() {
 

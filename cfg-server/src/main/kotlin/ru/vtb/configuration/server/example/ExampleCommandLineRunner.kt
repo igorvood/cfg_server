@@ -4,7 +4,8 @@ import org.springframework.boot.CommandLineRunner
 
 //@Service
 class ExampleCommandLineRunner(
-    private val ExampleProcedureRun: ExampleProcedureRun
+    private val ExampleProcedureRun: ExampleProcedureRun,
+
 ) : CommandLineRunner {
     override fun run(vararg args: String?) {
         try {

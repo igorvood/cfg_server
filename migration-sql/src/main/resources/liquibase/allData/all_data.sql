@@ -498,7 +498,6 @@ select '${RR_GF_IFWAYN_SSL_TRUSTSTORE_PASSWORD}', 'REAL_GF_IFWAYN_SSL_TRUSTSTORE
 select '${RR_GF_IFWAYN_TRUSTSTORE_LOCATION}', 'REAL_GF_IFWAYN_TRUSTSTORE_LOCATION', 'RR_GF_IFWAYN_TRUSTSTORE_LOCATION' from dual  union 
 select '${SERVICE_VERSION}', 'SERVICE_VERSION', 'SERVICE_VERSION' from dual  union 
 select '${TRUSTSTORE_LOCATION}', 'TRUSTSTORE_LOCATION', 'TRUSTSTORE_LOCATION' from dual  union 
-select '8', 'PARALLELISM', 'PARALLELISM' from dual  union 
 select '${CARD_NUMBER_SHA_256_SALT}', 'CARD_NUMBER_SHA_256_SALT', 'CARD_NUMBER_SHA_256_SALT' from dual  union 
 select '${P0_DATA_PLATFORM_BOOTSTRAP_SERVERS}', 'P0_DATA_PLATFORM_BOOTSTRAP_SERVERS', 'P0_DATA_PLATFORM_BOOTSTRAP_SERVERS' from dual  union 
 select '${DSO_CARDFL_BOOTSTRAP_SERVERS}', 'DSO_CARDFL_BOOTSTRAP_SERVERS', 'DSO_CARDFL_BOOTSTRAP_SERVERS' from dual  union 
@@ -508,7 +507,8 @@ select '${PORTFOLIO_REQUEST_SERVICE_URL}', 'PORTFOLIO_REQUEST_SERVICE_URL', 'POR
 select '${PORTFOLIO_CLIENT_ID}', 'PORTFOLIO_CLIENT_ID', 'PORTFOLIO_CLIENT_ID' from dual  union 
 select '${PORTFOLIO_SECURITY_SERVICE_URL}', 'PORTFOLIO_SECURITY_SERVICE_URL', 'PORTFOLIO_SECURITY_SERVICE_URL' from dual  union 
 select '${PORTFOLIO_CLIENT_SECRET}', 'PORTFOLIO_CLIENT_SECRET', 'PORTFOLIO_CLIENT_SECRET' from dual  union 
-select '${PORTFOLIO_X_TYK_API_KEY}', 'PORTFOLIO_X_TYK_API_KEY', 'PORTFOLIO_X_TYK_API_KEY' from dual ;
+select '${PORTFOLIO_X_TYK_API_KEY}', 'PORTFOLIO_X_TYK_API_KEY', 'PORTFOLIO_X_TYK_API_KEY' from dual  union 
+select '2', 'PARALLELISM', 'PARALLELISM' from dual ;
 
 insert into dict_service(id, main_class) 
 select 'bevents-streaming-aggregate-first-salary', 'ru.vtb.bevent.first.salary.aggregate.UaspStreamingAggregateFirstSalary' from dual  union 
@@ -2103,8 +2103,6 @@ select 'way4', 'enrichOne.GlobalIdEnrichProperty$.isDeletedFieldPath', 'is_delet
 select 'way4-card-agreement', 'enrichOne.CommonEnrichProperty$.isDeletedFieldPath', 'is_deleted', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.account.iban', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.card.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
-select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.card.Client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
-select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.аccount.Client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.processing.availableAmount.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.requestedAmount.cashback.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.requestedAmount.billing.amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
@@ -2113,12 +2111,12 @@ select 'input-convertor-ca-cardfl', 'dlq.JsMaskedPath$.data.card_expiration_dt',
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.CntrCd', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.InvstPrtfAmtNc', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.TtBlncAmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
-select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.account.Client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-ca-cardfl', 'dlq.JsMaskedPath$.data.credit_limit_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-ca-first-salary', 'dlq.JsMaskedPath$.data.trans_amount_ca', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cft', 'dlq.JsMaskedPath$.data.data.feeAmount.sum', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cft', 'dlq.JsMaskedPath$.data.data.operationAmount.sum', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cft', 'dlq.JsMaskedPath$.data.data.transactionAmount.sum', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
+select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.card.client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-prof-auth', 'dlq.JsMaskedPath$.data.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-prof-auth', 'dlq.JsMaskedPath$.data.transaction_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-prof-auth', 'dlq.JsMaskedPath$.data.replacement_original_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
@@ -2328,7 +2326,9 @@ select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedP
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-40' from dual  union 
-select 'uasp-streaming-rto-15', 'mask.SOURCE_ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.AccountMask', 'uasp-streaming-rto-15' from dual ;
+select 'uasp-streaming-rto-15', 'mask.SOURCE_ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.AccountMask', 'uasp-streaming-rto-15' from dual  union 
+select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.аccount.client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual  union 
+select 'input-convertor-w4-operation', 'dlq.JsMaskedPath$.data.account.client.externalId', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(3,4)', 'uasp-streaming-input-convertor' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
@@ -2512,47 +2512,47 @@ select 'earliest_DATA_PLATFORM', 'ssl.truststore.password', 'kafkauasppassword',
 select 'earliest_DATA_PLATFORM', 'ssl.keystore.location', '${DP_KAFKA_KEYSTORE_LOCATION}', 'REAL', 'cns' from dual ;
 
 insert into dict_place_holder_by_service(place_holder_id, profile_id, service_id, stand_id, value) 
-select 'PARALLELISM', 'test', 'uasp-kriaa-bevents-monitor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-56', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-55', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-2', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'aggregate-bevents-56-57', 'bevents-streaming-aggregate-first-salary', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'profile-tx-step1', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-cft', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-68', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'model-vector-bevents', 'uasp-streaming-model-vector', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-40', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'case-68', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-ca-depositfl', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-cardfl', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-withdraw', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'profile-tx-step2', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'case-68_agrement', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-profile', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-ca-cardfl', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'prof-tx-case-71', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'loyalty', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-mdm', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'way4', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'customer-profile-full', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'way4-card-agreement', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'prof-auth-packNM', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'aggregate-bevents', 'bevents-streaming-aggregate-first-salary', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-prof-auth', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-ca-first-salary', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'mdm-profile', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'customer-package', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-86', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-w4-operation', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'input-convertor-udds', 'uasp-streaming-input-convertor', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'prof-auth', 'uasp-streaming-mdm-enrichment', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-84', 'REAL', '1' from dual  union 
-select 'PARALLELISM', 'rateMutate', 'uasp-streaming-mutator', 'REAL', '2' from dual  union 
-select 'PARALLELISM', 'mainInput', 'uasp-streaming-mutator', 'REAL', '2' from dual  union 
-select 'PARALLELISM', 'case-48-concatenate', 'uasp-streaming-mutator', 'REAL', '2' from dual  union 
-select 'PARALLELISM', 'main-input-filter', 'uasp-streaming-filter', 'REAL', '2' from dual  union 
-select 'PARALLELISM', 'uddsRate', 'uasp-streaming-mutator', 'REAL', '2' from dual  union 
-select 'PARALLELISM', 'bevents-filter', 'uasp-streaming-filter', 'REAL', '2' from dual ;
+select 'PARALLELISM', 'aggregate-bevents', 'bevents-streaming-aggregate-first-salary', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'aggregate-bevents-56-57', 'bevents-streaming-aggregate-first-salary', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-2', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-40', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-55', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-56', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-68', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-84', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main', 'uasp-kriaa-bevents-case-86', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'test', 'uasp-kriaa-bevents-monitor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'bevents-filter', 'uasp-streaming-filter', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'main-input-filter', 'uasp-streaming-filter', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'customer-package', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'customer-profile-full', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-ca-cardfl', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-ca-depositfl', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-ca-first-salary', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-cardfl', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-cft', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-mdm', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-prof-auth', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-profile', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-udds', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-w4-operation', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'input-convertor-withdraw', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'loyalty', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'mdm-profile', 'uasp-streaming-input-convertor', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'case-68', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'case-68_agrement', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'prof-auth', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'prof-auth-packNM', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'profile-tx-step1', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'profile-tx-step2', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'prof-tx-case-71', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'way4', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'way4-card-agreement', 'uasp-streaming-mdm-enrichment', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'model-vector-bevents', 'uasp-streaming-model-vector', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'case-48-concatenate', 'uasp-streaming-mutator', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'mainInput', 'uasp-streaming-mutator', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'rateMutate', 'uasp-streaming-mutator', 'P0', '8' from dual  union 
+select 'PARALLELISM', 'uddsRate', 'uasp-streaming-mutator', 'P0', '8' from dual ;
 
 insert into dict_service_group(group_id, profile_id, service_id) 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'aggregate-bevents', 'bevents-streaming-aggregate-first-salary' from dual  union 

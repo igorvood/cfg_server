@@ -8,6 +8,8 @@ interface IGeneratedField {
 
     val element: Element
     fun name(): String
+
+    fun isNullable(): Boolean
     fun type(): String
     fun betterClass(): AbstractAnnotatedClass?
 }

@@ -12,16 +12,16 @@ import java.math.BigInteger;
 @GenerateJpa(tableComment = "Настройки топика в разрезе стенда", genRest = true)
 public class DictTopicParamsByStandEntity  {
     @Id
-    @Column(name = "node_id")
+    @Column(name = "node_id", nullable = false)
     private String nodeId;
     @Id
-    @Column(name = "stand_id")
+    @Column(name = "stand_id", nullable = false)
     private String standId;
     @Basic
-    @Column(name = "cnt_partition")
+    @Column(name = "cnt_partition", nullable = false)
     private BigInteger cntPartition;
     @Basic
-    @Column(name = "topic_name")
+    @Column(name = "topic_name", nullable = false)
     private String topicName;
     @ManyToOne
     @JoinColumn(name = "node_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)

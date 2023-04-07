@@ -12,10 +12,10 @@ import java.util.Collection;
 @GenerateJpa(tableComment = "Владелец топика", genRest = true)
 public class DictTopicOwnerEntity {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private String id;
     @Basic
-    @Column(name = "is_our")
+    @Column(name = "is_our", nullable = false)
     private BigInteger isOur;
     @Basic
     @Column(name = "description_for_report")

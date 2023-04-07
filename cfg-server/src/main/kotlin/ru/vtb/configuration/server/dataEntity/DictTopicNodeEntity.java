@@ -13,16 +13,16 @@ import java.util.Collection;
 @GenerateJpa(tableComment = "Топик", genRest = true)
 public class DictTopicNodeEntity {
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private String id;
     @Basic
     @Column(name = "node_type", updatable = false)
     private String nodeType;
     @Basic
-    @Column(name = "topic_owner_id")
+    @Column(name = "topic_owner_id", nullable = false)
     private String topicOwnerId;
     @Basic
-    @Column(name = "cleanup_policy")
+    @Column(name = "cleanup_policy", nullable = false)
     private String cleanupPolicy;
     @Basic
     @Column(name = "retention")

@@ -39,7 +39,9 @@ class KotlinImmutableDtoClassBuilder(
         .filter { it.element.annotation<Column>().isPresent }
 
     private val listFieldsConstructor = filteredFields
-        .joinToString(",\n") { f -> "val " + f.name() + " : " + f.type().mapKotlinType() }
+        .joinToString(",\n") { f -> val isNullable = if (f.isNullable()) "?" else ""
+            "val " + f.name() + " : " + f.type().mapKotlinType()+ isNullable
+        }
 
     private val listFieldsToMutableFun = filteredFields
         .joinToString("\n") { f -> "this@apply.${f.name()} = this@toMutable.${f.name()}" }

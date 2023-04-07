@@ -12,14 +12,6 @@ class AnnotatedGeneratedField(override val element: Element) : IGeneratedField {
     override fun type(): String {
         return element.asType().toString()
     }
-
-    //    override fun annotation(): MutableList<out AnnotationMirror> {
-//        element.getAnnotation()
-//
-//        val annotationMirrors = element.annotationMirrors
-//        val first = annotationMirrors.first().annotationType.asElement().asType().javaClass
-//        return Optional.ofNullable(annotationMirrors).orElse(mutableListOf())
-//    }
     override fun betterClass(): AbstractAnnotatedClass? {
         return if (element.asType().kind.isPrimitive) {
             null

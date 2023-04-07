@@ -1,10 +1,8 @@
 package ru.vtb.processor.abstraction.model
 
-import ru.vtb.processor.abstraction.model.abstraction.AbstractAnnotatedClass
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
-import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.abstraction.model.abstraction.annotationValue
+import ru.vtb.processor.abstraction.model.abstraction.*
 import java.lang.instrument.IllegalClassFormatException
+import java.util.*
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.Element
@@ -27,7 +25,8 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
         kotlin.runCatching {
             element.annotation<IdClass>()
                 .map { idAnnoTat ->
-                    element.annotationValue<IdClass>(processingEnv, "value").toString()
+                    val annotationValue = element.annotationValue<IdClass>(processingEnv, "value")
+                    annotationValue.toString()
                 }
                 .orElseGet {
                     val withIdFileds = fields()

@@ -1,27 +1,24 @@
 package ru.vtb.configuration.server.dataEntity;
 
+import ru.vtb.processor.annotation.GenerateJpa;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "dict_abstract_graph_node", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictAbstractGraphNodeEntityPK.class)
+@GenerateJpa(tableComment = "Нода графа", genRest = true)
 public class DictAbstractGraphNodeEntity {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "graph_id")
+    @Column(name = "graph_id", nullable = false)
     private String graphId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "node_type")
+    @Column(name = "node_type", nullable = false, updatable = false)
     private String nodeType;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "node_id")
+    @Column(name = "node_id", nullable = false)
     private String nodeId;
-    @Basic
-    @Column(name = "new_column")
-    private Integer newColumn;
 
     public String getGraphId() {
         return graphId;
@@ -47,24 +44,16 @@ public class DictAbstractGraphNodeEntity {
         this.nodeId = nodeId;
     }
 
-    public Integer getNewColumn() {
-        return newColumn;
-    }
-
-    public void setNewColumn(Integer newColumn) {
-        this.newColumn = newColumn;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DictAbstractGraphNodeEntity that = (DictAbstractGraphNodeEntity) o;
-        return Objects.equals(graphId, that.graphId) && Objects.equals(nodeType, that.nodeType) && Objects.equals(nodeId, that.nodeId) && Objects.equals(newColumn, that.newColumn);
+        return Objects.equals(graphId, that.graphId) && Objects.equals(nodeType, that.nodeType) && Objects.equals(nodeId, that.nodeId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(graphId, nodeType, nodeId, newColumn);
+        return this.getClass().getName().hashCode();
     }
 }

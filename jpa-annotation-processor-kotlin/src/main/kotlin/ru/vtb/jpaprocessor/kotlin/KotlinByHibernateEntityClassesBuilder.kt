@@ -46,7 +46,7 @@ class KotlinByHibernateEntityClassesBuilder(
         }
 
     private val listFieldsToMutableFun = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = this@toMutable.${f.name()}" }
+        .joinToString("\n") { f -> "this@apply.${f.name()} = this.${f.name()}" }
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
@@ -55,7 +55,7 @@ class KotlinByHibernateEntityClassesBuilder(
 
     private val mutableToImmutableFun =
         """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
-    private val immutableToMutableFun = """fun $immutableClassName.toMutable() = ${className}().apply { 
+    private val immutableToMutableFun = """override fun toMutable() = ${className}().apply { 
 $listFieldsToMutableFun
   }"""
 
@@ -73,14 +73,17 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.stereotype.Repository
-import ru.vtb.processor.intf.IRestHibernateEntity
+import ru.vtb.processor.intf.*
 
 
 
 data class $immutableClassName (
 $listFieldsConstructor
-)
+):IImmutableEntity<${className}>{
+
 $immutableToMutableFun
+
+}
 
 $mutableToImmutableFun
 

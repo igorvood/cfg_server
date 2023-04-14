@@ -73,7 +73,7 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.stereotype.Repository
-
+import ru.vtb.processor.intf.IRestHibernateEntity
 
 
 
@@ -120,38 +120,38 @@ override fun deleteAllByIdInBatch(pkS: Iterable<$primaryKeyType>)
 
 private val restConText = if (genRest) {
         """
-    @RestController
-    class ${className}GeneratedRestApi(
-        val $repositoryClassName: $repositoryClassName
-    ) {
+@RestController
+class ${className}GeneratedRestApi(
+    val $repositoryClassName: $repositoryClassName
+): IRestHibernateEntity<$immutableClassName, $primaryKeyType> {
+
+    @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
+    @GetMapping("/${className}/findAll")
+    override fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
+
+    @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
+    @PutMapping("/$className/save")
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    override fun save(@RequestBody data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
+
+    @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
+    @DeleteMapping("/$className/deleteById")
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    override fun deleteById(@RequestBody id: $primaryKeyType) = $repositoryClassName.deleteById(id)
     
-        @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
-        @GetMapping("/${className}/findAll")
-        fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
-    
-        @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
-        @PutMapping("/$className/save")
-        @Transactional(propagation = Propagation.REQUIRES_NEW)
-        fun save(@RequestBody data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
-    
-        @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
-        @DeleteMapping("/$className/deleteById")
-        @Transactional(propagation = Propagation.REQUIRES_NEW)
-        fun deleteById(@RequestBody id: $primaryKeyType) = $repositoryClassName.deleteById(id)
-        
-        @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
-        @PostMapping("/$className/editEntity")
-        @Transactional(propagation = Propagation.REQUIRES_NEW)
-        fun editEntity(
-            @RequestBody primaryKey: $primaryKeyType,
-            @RequestBody newData: $immutableClassName
-        ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
-            $repositoryClassName.save(
-                oldData.apply {
-                    $listFieldsForEdit
-                }).toImmutable()
-        }
+    @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
+    @PostMapping("/$className/editEntity")
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    override fun editEntity(
+        @RequestBody primaryKey: $primaryKeyType,
+        @RequestBody newData: $immutableClassName
+    ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
+        $repositoryClassName.save(
+            oldData.apply {
+                $listFieldsForEdit
+            }).toImmutable()
     }
+}
 """
     } else ""
 

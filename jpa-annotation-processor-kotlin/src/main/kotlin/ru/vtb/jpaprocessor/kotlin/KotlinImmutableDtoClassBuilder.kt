@@ -18,7 +18,7 @@ class KotlinImmutableDtoClassBuilder(
     packageName: String,
     generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
     roundEnvironment: ProcessingEnvironment
-) {
+) : IKotlinContentBuilder {
 
     private fun String.mapKotlinType(): String = if (this == "java.lang.String") {
         "String"
@@ -122,6 +122,6 @@ $mutableToImmutableFun
     """
     } else ""
 
-    fun getContent(): String = contentTemplate + restConText
+    override fun getContent(): String = contentTemplate + restConText
 
 }

@@ -10,7 +10,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "dict_topic_node", schema = "db_configuration_manager", catalog = "db_configuration_manager")
-@GenerateJpa(tableComment = "Топик", genRest = true)
+@GenerateJpa(tableComment = "Топик", genRest = true, readOnly = false)
 public class DictTopicNodeEntity {
     @Id
     @Column(name = "id", nullable = false)

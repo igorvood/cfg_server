@@ -9,8 +9,8 @@ import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-@SupportedAnnotationTypes("ru.vtb.processor.annotation.GenerateJpa")
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
+//@SupportedAnnotationTypes("ru.vtb.processor.annotation.GenerateJpa")
+//@SupportedSourceVersion(SourceVersion.RELEASE_8)
 class JpaGenerateAnnotationProcessor :
     AbstractGenerationProcessor<GeneratedJpaRepositoryClass>() {
 

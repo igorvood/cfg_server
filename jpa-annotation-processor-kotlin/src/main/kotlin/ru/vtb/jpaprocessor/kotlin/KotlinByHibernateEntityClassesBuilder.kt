@@ -65,7 +65,6 @@ package $packageName.genRest
 
 import $packageName.$className
 import io.swagger.v3.oas.annotations.Operation
-import ru.vtb.configuration.server.dataEntity.generated.$repositoryClassName
 import $packageName.genRest.toImmutable
 import org.springframework.web.bind.annotation.*
 import org.springframework.data.repository.*

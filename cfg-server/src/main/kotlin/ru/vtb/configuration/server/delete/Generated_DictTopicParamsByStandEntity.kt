@@ -6,7 +6,7 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.web.bind.annotation.*
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
-import ru.vtb.configuration.server.dataEntity.generated.DictTopicParamsByStandEntityGeneratedRepository
+import ru.vtb.configuration.server.dataEntity.genRest.DictTopicParamsByStandEntityGeneratedRepository
 
 data class DictTopicParamsByStandEntityImmutable(
     val nodeId: String,

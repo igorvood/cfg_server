@@ -13,6 +13,21 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     @Autowired
     lateinit var dictTopicOwnerEntityGeneratedRestApi: DictTopicOwnerEntityGeneratedRestApi
 
+
+
+    @Test
+    fun findById() {
+        val findAll = dictTopicOwnerEntityGeneratedRestApi.findById("DKO_COMMAND")
+        assertTrue(findAll.isPresent)
+    }
+
+    @Test
+    fun findByIdNotPresent() {
+        val findAll = dictTopicOwnerEntityGeneratedRestApi.findById("zxfgsdgsdfg")
+        assertTrue(!findAll.isPresent)
+    }
+
+
     @Test
     fun findAll() {
         val findAll = dictTopicOwnerEntityGeneratedRestApi.findAll()

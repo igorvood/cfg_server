@@ -1,9 +1,6 @@
 package ru.vtb.jpaprocessor.kotlin
 
-import ru.vtb.jpaprocessor.kotlin.builder.IKotlinContentBuilder
-import ru.vtb.jpaprocessor.kotlin.builder.RepositoryTextBuilder
-import ru.vtb.jpaprocessor.kotlin.builder.RestTextBuilder
-import ru.vtb.processor.abstraction.AbstractGenerationProcessor
+import ru.vtb.jpaprocessor.kotlin.builder.*
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.annotation
@@ -25,12 +22,6 @@ class KotlinByHibernateEntityClassesBuilder(
     roundEnvironment: ProcessingEnvironment
 ) : IKotlinContentBuilder {
 
-
-
-    private fun String.mapKotlinType(): String = if (this == "java.lang.String") {
-        "String"
-    } else this
-
     private val generateJpaValue = generatedJpaRepositoryClass.annotatedClass.element.annotation<GenerateJpa>().get()
 
     private val tableComment = generateJpaValue.tableComment
@@ -47,25 +38,7 @@ class KotlinByHibernateEntityClassesBuilder(
     private val filteredFields: List<IGeneratedField> = generatedJpaRepositoryClass.annotatedClass.fields()
         .filter { it.element.annotation<Column>().isPresent }
 
-    private val listFieldsConstructor = filteredFields
-        .joinToString(",\n") { f -> val isNullable = if (f.isNullable()) "?" else ""
-            "val " + f.name() + " : " + f.type().mapKotlinType()+ isNullable
-        }
-
-    private val listFieldsToMutableFun = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = this.${f.name()}" }
-
-    private val listFieldsToImmutable = filteredFields
-        .joinToString(",") { f -> "this.${f.name()}" }
-
-    private val mutableToImmutableFun =
-        """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
-    private val immutableToMutableFun = """override fun toMutable() = ${className}().apply { 
-$listFieldsToMutableFun
-  }"""
-
-
-    private val contentTemplate = """
+    private val importText = """
 package $packageName.genRest.${className.lowercase()}
 
 import $packageName.$className
@@ -81,30 +54,23 @@ import org.springframework.stereotype.Repository
 import ru.vtb.processor.intf.*
 import ru.vtb.processor.annotation.GenerateByGeneric
 
-
-
-data class $immutableClassName (
-$listFieldsConstructor
-):IImmutableEntity<${className}>{
-
-$immutableToMutableFun
-
-}
-
-$mutableToImmutableFun
-
-
 """
+
+
+
     private val primaryKeyType = generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
         .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
 
 
     private val generatedCodeBuilders = listOf(
+        DTOsTextBuilder(className,immutableClassName, filteredFields),
         RestTextBuilder(className,genRest,repositoryClassName,primaryKeyType,immutableClassName,tableComment, filteredFields),
         RepositoryTextBuilder(readOnlyEntity, className,primaryKeyType, repositoryClassName)
     )
 
 
-    override fun getContent(): String = contentTemplate + generatedCodeBuilders[0].getContent()+ generatedCodeBuilders[1].getContent()
+    override fun getContent(): String = importText +
+            generatedCodeBuilders.joinToString("\n\n") { it.getContent() }
+
 
 }

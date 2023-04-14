@@ -30,6 +30,8 @@ class KotlinByHibernateEntityClassesBuilder(
 
     private val genRest = generateJpaValue.genRest
 
+    private val readOnlyEntity = generateJpaValue.readOnly
+
 
     private val repositoryClassName = """${className}GeneratedRepository"""
 
@@ -69,6 +71,10 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.data.repository.*
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.jpa.repository.Modifying
+import org.springframework.stereotype.Repository
+
 
 
 
@@ -83,6 +89,34 @@ $mutableToImmutableFun
 """
     private val primaryKeyType = generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
         .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
+
+
+
+    private val repoText = if (!readOnlyEntity){
+        """
+@Repository
+interface $repositoryClassName : JpaRepository<${className}, $primaryKeyType> {
+
+@Modifying(flushAutomatically = true)
+@Transactional(propagation = Propagation.MANDATORY)
+override fun <S : ${className}> save(entity: S): S
+
+@Modifying(flushAutomatically = true)
+@Transactional(propagation = Propagation.MANDATORY)
+override fun <S : ${className}> saveAll(entities: Iterable<S>): List<S>
+
+@Modifying(flushAutomatically = true)
+@Transactional(propagation = Propagation.MANDATORY)
+override fun deleteById(pk: $primaryKeyType)
+
+@Modifying(flushAutomatically = true)
+@Transactional(propagation = Propagation.MANDATORY)
+override fun deleteAllByIdInBatch(pkS: Iterable<$primaryKeyType>)
+}
+"""
+    } else ""
+
+
 
     private val restConText = if (genRest) {
         """
@@ -122,6 +156,6 @@ $mutableToImmutableFun
     """
     } else ""
 
-    override fun getContent(): String = contentTemplate + restConText
+    override fun getContent(): String = contentTemplate + restConText+repoText
 
 }

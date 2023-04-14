@@ -19,9 +19,6 @@ val pathSeparator = "/"
 
 abstract class AbstractDatasourceTests : AbstractTests() {
 
-    @MockBean
-    lateinit var checkRunner: CheckRunner
-
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate
 

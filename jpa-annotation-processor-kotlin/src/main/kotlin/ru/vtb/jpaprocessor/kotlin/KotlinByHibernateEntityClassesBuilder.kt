@@ -13,7 +13,7 @@ import javax.persistence.Column
  * Use KotlinPoet for production app
  * KotlinPoet can be found at https://github.com/square/kotlinpoet
  */
-class KotlinImmutableDtoClassBuilder(
+class KotlinByHibernateEntityClassesBuilder(
     className: String,
     packageName: String,
     generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,

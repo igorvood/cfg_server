@@ -18,7 +18,7 @@ class DTOsTextBuilder(
 
 
     private val listFieldsToMutableFun = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = this.${f.name()}" }
+        .joinToString("\n") { f -> "this@apply.${f.name()} = this@$immutableClassName.${f.name()}" }
 
 
     private val immutableToMutableFun = """override fun toMutable() = ${className}().apply { 

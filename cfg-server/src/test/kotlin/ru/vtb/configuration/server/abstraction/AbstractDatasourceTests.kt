@@ -5,9 +5,11 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.annotation.Rollback
 import org.springframework.transaction.annotation.Transactional
+import ru.vtb.configuration.server.check.CheckRunner
 import java.io.File
 import java.util.*
 
@@ -16,6 +18,9 @@ val pathSeparator = "/"
 
 
 abstract class AbstractDatasourceTests : AbstractTests() {
+
+    @MockBean
+    lateinit var checkRunner: CheckRunner
 
     @Autowired
     lateinit var jdbcTemplate: JdbcTemplate

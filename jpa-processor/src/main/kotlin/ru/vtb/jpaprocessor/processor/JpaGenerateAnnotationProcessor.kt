@@ -25,6 +25,7 @@ class JpaGenerateAnnotationProcessor :
         //lang=java
         return """package ${generatedClassData.generatedPackageName()};
             
+import ru.vtb.processor.annotation.GenerateByGeneric;            
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
@@ -36,6 +37,7 @@ import java.util.List;
 
     
 @Repository
+@GenerateByGeneric
 public interface ${generatedClassData.generatedClassName()} extends 
 JpaRepository<${generatedClassData.annotatedClass.name()}, $calculatePkClass> 
 {

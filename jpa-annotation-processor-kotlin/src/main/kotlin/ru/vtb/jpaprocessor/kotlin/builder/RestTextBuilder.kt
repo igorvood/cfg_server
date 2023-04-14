@@ -26,6 +26,10 @@ class RestTextBuilder(
         private val $repositoryClassName: JpaRepository<${className}, $primaryKeyType>
         
         ): IRestHibernateEntity<$immutableClassName, $primaryKeyType> {
+
+            @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
+            @GetMapping("/${className}/findById")
+            override fun findById(@RequestBody id: $primaryKeyType): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
         
             @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findAll")
@@ -54,7 +58,7 @@ class RestTextBuilder(
                     }).toImmutable()
             }
         }
-        """
+        """.trimMargin()
         } else ""
     }
 

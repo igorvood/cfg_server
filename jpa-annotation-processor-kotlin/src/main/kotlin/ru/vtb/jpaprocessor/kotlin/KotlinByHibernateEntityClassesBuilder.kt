@@ -64,8 +64,9 @@ import ru.vtb.processor.annotation.GenerateByGeneric
 
     private val generatedCodeBuilders = listOf(
         DTOsTextBuilder(className,immutableClassName, filteredFields),
+        RepositoryTextBuilder(readOnlyEntity, className,primaryKeyType, repositoryClassName),
         RestTextBuilder(className,genRest,repositoryClassName,primaryKeyType,immutableClassName,tableComment, filteredFields),
-        RepositoryTextBuilder(readOnlyEntity, className,primaryKeyType, repositoryClassName)
+
     )
 
 

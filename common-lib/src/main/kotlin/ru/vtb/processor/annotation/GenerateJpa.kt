@@ -4,5 +4,6 @@ package ru.vtb.processor.annotation
 @Target(AnnotationTarget.TYPE)
 annotation class GenerateJpa (
     val tableComment: String,
-    val genRest: Boolean
+    val genRest: Boolean,
+    val readOnly: Boolean
 )

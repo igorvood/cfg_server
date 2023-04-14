@@ -19,12 +19,13 @@ class AnnotatedGeneratedField(override val element: Element) : IGeneratedField {
             .orElseGet { true }
 
 
-     return annotation
+        return annotation
     }
 
     override fun type(): String {
         return element.asType().toString()
     }
+
     override fun betterClass(): AbstractAnnotatedClass? {
         return if (element.asType().kind.isPrimitive) {
             null

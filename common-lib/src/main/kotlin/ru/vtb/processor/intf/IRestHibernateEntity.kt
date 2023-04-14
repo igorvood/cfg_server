@@ -7,5 +7,5 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
 
     fun deleteById(id: PK)
 
-    fun editEntity(primaryKey: PK,newData: IMMUTABLE): IMMUTABLE?
+    fun editEntity(primaryKey: PK, newData: IMMUTABLE): IMMUTABLE?
 }

@@ -1,10 +1,11 @@
 package ru.vtb.processor.abstraction.model
 
-import ru.vtb.processor.abstraction.model.abstraction.*
+import ru.vtb.processor.abstraction.model.abstraction.AbstractAnnotatedClass
+import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vtb.processor.abstraction.model.abstraction.annotation
+import ru.vtb.processor.abstraction.model.abstraction.annotationValue
 import java.lang.instrument.IllegalClassFormatException
-import java.util.*
 import javax.annotation.processing.ProcessingEnvironment
-import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.Element
 import javax.persistence.Id
 import javax.persistence.IdClass

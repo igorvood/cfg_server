@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
-import ru.vtb.configuration.server.dataEntity.genRest.DictTopicNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.DictTopicParamsByStandEntityGeneratedRepository
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityGeneratedRepository
 import java.math.BigInteger
 
 internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {

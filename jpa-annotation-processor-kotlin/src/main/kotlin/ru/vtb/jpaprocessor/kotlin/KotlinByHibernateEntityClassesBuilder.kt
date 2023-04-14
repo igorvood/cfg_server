@@ -1,6 +1,10 @@
 package ru.vtb.jpaprocessor.kotlin
 
+import ru.vtb.jpaprocessor.kotlin.builder.IKotlinContentBuilder
+import ru.vtb.jpaprocessor.kotlin.builder.RepositoryTextBuilder
+import ru.vtb.jpaprocessor.kotlin.builder.RestTextBuilder
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.annotation
 import ru.vtb.processor.annotation.GenerateJpa
 import javax.annotation.processing.ProcessingEnvironment
@@ -20,6 +24,8 @@ class KotlinByHibernateEntityClassesBuilder(
     roundEnvironment: ProcessingEnvironment
 ) : IKotlinContentBuilder {
 
+
+
     private fun String.mapKotlinType(): String = if (this == "java.lang.String") {
         "String"
     } else this
@@ -37,7 +43,7 @@ class KotlinByHibernateEntityClassesBuilder(
 
     private val immutableClassName = """${className}Immutable"""
 
-    private val filteredFields = generatedJpaRepositoryClass.annotatedClass.fields()
+    private val filteredFields: List<IGeneratedField> = generatedJpaRepositoryClass.annotatedClass.fields()
         .filter { it.element.annotation<Column>().isPresent }
 
     private val listFieldsConstructor = filteredFields
@@ -50,8 +56,6 @@ class KotlinByHibernateEntityClassesBuilder(
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
-    private val listFieldsForEdit = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = newData.${f.name()}" }
 
     private val mutableToImmutableFun =
         """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
@@ -61,11 +65,11 @@ $listFieldsToMutableFun
 
 
     private val contentTemplate = """
-package $packageName.genRest
+package $packageName.genRest.${className.lowercase()}
 
 import $packageName.$className
 import io.swagger.v3.oas.annotations.Operation
-import $packageName.genRest.toImmutable
+import $packageName.genRest.${className.lowercase()}.toImmutable
 import org.springframework.web.bind.annotation.*
 import org.springframework.data.repository.*
 import org.springframework.transaction.annotation.Propagation
@@ -94,72 +98,12 @@ $mutableToImmutableFun
         .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
 
 
-
-    private val repoText = generateRepoText(className, primaryKeyType)
-
-    private fun generateRepoText(className: String,
-                                 primaryKeyType: String): String =
-"""
-@Repository
-@GenerateByGeneric
-interface $repositoryClassName : JpaRepository<${className}, $primaryKeyType> {
-
-@Modifying(flushAutomatically = true)
-@Transactional(propagation = Propagation.MANDATORY)
-override fun <S : ${className}> save(entity: S): S
-
-@Modifying(flushAutomatically = true)
-@Transactional(propagation = Propagation.MANDATORY)
-override fun <S : ${className}> saveAll(entities: Iterable<S>): List<S>
-
-@Modifying(flushAutomatically = true)
-@Transactional(propagation = Propagation.MANDATORY)
-override fun deleteById(pk: $primaryKeyType)
-
-@Modifying(flushAutomatically = true)
-@Transactional(propagation = Propagation.MANDATORY)
-override fun deleteAllByIdInBatch(pkS: Iterable<$primaryKeyType>)
-}
-""".trimIndent()
+    private val generatedCodeBuilders = listOf(
+        RestTextBuilder(className,genRest,repositoryClassName,primaryKeyType,immutableClassName,tableComment, filteredFields),
+        RepositoryTextBuilder(readOnlyEntity, className,primaryKeyType, repositoryClassName)
+    )
 
 
-private val restConText = if (genRest) {
-        """
-@RestController
-class ${className}GeneratedRestApi(
-    val $repositoryClassName: $repositoryClassName
-): IRestHibernateEntity<$immutableClassName, $primaryKeyType> {
-
-    @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
-    @GetMapping("/${className}/findAll")
-    override fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
-
-    @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
-    @PutMapping("/$className/save")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    override fun save(@RequestBody data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
-
-    @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
-    @DeleteMapping("/$className/deleteById")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    override fun deleteById(@RequestBody id: $primaryKeyType) = $repositoryClassName.deleteById(id)
-    
-    @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
-    @PostMapping("/$className/editEntity")
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    override fun editEntity(
-        @RequestBody primaryKey: $primaryKeyType,
-        @RequestBody newData: $immutableClassName
-    ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
-        $repositoryClassName.save(
-            oldData.apply {
-                $listFieldsForEdit
-            }).toImmutable()
-    }
-}
-"""
-    } else ""
-
-    override fun getContent(): String = contentTemplate + restConText+repoText
+    override fun getContent(): String = contentTemplate + generatedCodeBuilders[0].getContent()+ generatedCodeBuilders[1].getContent()
 
 }

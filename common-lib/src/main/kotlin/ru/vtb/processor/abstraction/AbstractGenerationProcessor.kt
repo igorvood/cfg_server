@@ -8,15 +8,7 @@ import javax.annotation.processing.RoundEnvironment
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedClass<*>> : AbstractProcessor() {
-    @Synchronized
-    override fun init(processingEnv: ProcessingEnvironment) {
-        super.init(processingEnv)
-    }
-
-    protected fun log(kind: Diagnostic.Kind, msg: CharSequence?) {
-        processingEnv.messager.printMessage(kind, "${this.javaClass.canonicalName}: $msg")
-    }
+abstract class AbstractGenerationProcessor<GeneratedClass : AbstractGeneratedClass<*>> : AbstractCommonGenerationProcessor<GeneratedClass>() {
 
     abstract fun generatedClassInfo(typeElement: TypeElement): GeneratedClass
 

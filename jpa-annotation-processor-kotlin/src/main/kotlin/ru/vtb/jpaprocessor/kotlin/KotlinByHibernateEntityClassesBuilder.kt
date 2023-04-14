@@ -3,6 +3,7 @@ package ru.vtb.jpaprocessor.kotlin
 import ru.vtb.jpaprocessor.kotlin.builder.IKotlinContentBuilder
 import ru.vtb.jpaprocessor.kotlin.builder.RepositoryTextBuilder
 import ru.vtb.jpaprocessor.kotlin.builder.RestTextBuilder
+import ru.vtb.processor.abstraction.AbstractGenerationProcessor
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.annotation

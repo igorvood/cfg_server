@@ -1,5 +1,5 @@
 package ru.vtb.processor.annotation
 
 @Retention(AnnotationRetention.SOURCE)
-@Target(AnnotationTarget.TYPE)
+@Target(AnnotationTarget.TYPE, AnnotationTarget.CLASS)
 annotation class GenerateByGeneric

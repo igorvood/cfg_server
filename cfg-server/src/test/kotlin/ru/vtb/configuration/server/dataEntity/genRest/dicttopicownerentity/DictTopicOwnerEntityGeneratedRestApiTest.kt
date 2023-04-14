@@ -46,4 +46,12 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
         val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(id, newData)
         assertEquals(newData, editEntity)
     }
+
+    @Test
+    fun editNotExistingEntity() {
+        val id = "id_1"
+        val expected = DictTopicOwnerEntityImmutable(id, BigInteger.valueOf(1), "desc")
+        val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(id, expected)
+        assertEquals(null, editEntity)
+    }
 }

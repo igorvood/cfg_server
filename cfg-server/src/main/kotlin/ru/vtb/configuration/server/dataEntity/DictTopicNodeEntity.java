@@ -1,7 +1,6 @@
 package ru.vtb.configuration.server.dataEntity;
 
 
-
 import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;

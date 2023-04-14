@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner
 class ExampleCommandLineRunner(
     private val ExampleProcedureRun: ExampleProcedureRun,
 
-) : CommandLineRunner {
+    ) : CommandLineRunner {
     override fun run(vararg args: String?) {
         try {
             ExampleProcedureRun.rundict_service_ins_trg(

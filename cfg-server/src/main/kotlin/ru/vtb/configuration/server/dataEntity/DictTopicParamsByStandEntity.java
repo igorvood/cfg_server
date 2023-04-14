@@ -10,7 +10,7 @@ import java.math.BigInteger;
 @Table(name = "dict_topic_params_by_stand", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictTopicParamsByStandEntityPK.class)
 @GenerateJpa(tableComment = "Настройки топика в разрезе стенда", genRest = true, readOnly = false)
-public class DictTopicParamsByStandEntity  {
+public class DictTopicParamsByStandEntity {
     @Id
     @Column(name = "node_id", nullable = false)
     private String nodeId;

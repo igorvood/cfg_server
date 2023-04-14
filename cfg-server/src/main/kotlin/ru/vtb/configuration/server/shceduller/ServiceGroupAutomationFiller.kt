@@ -6,9 +6,10 @@ import ru.vtb.configuration.server.repo.DictServiceGroupRepository
 
 
 @Service
-class ServiceGroupAutomationFiller(private val dictServiceGroupRepository: DictServiceGroupRepository,
+class ServiceGroupAutomationFiller(
+    private val dictServiceGroupRepository: DictServiceGroupRepository,
 
-) {
+    ) {
 
     @Scheduled(fixedDelay = 300000)
     fun scheduleFixedDelayTask() {

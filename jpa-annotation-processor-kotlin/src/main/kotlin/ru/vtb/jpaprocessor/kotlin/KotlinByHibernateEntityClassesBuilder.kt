@@ -91,8 +91,11 @@ $mutableToImmutableFun
 
 
 
-    private val repoText = if (!readOnlyEntity){
-        """
+    private val repoText = generateRepoText(className, primaryKeyType)
+
+    private fun generateRepoText(className: String,
+                                 primaryKeyType: String): String =
+"""
 @Repository
 interface $repositoryClassName : JpaRepository<${className}, $primaryKeyType> {
 
@@ -112,12 +115,10 @@ override fun deleteById(pk: $primaryKeyType)
 @Transactional(propagation = Propagation.MANDATORY)
 override fun deleteAllByIdInBatch(pkS: Iterable<$primaryKeyType>)
 }
-"""
-    } else ""
+""".trimIndent()
 
 
-
-    private val restConText = if (genRest) {
+private val restConText = if (genRest) {
         """
     @RestController
     class ${className}GeneratedRestApi(
@@ -150,9 +151,8 @@ override fun deleteAllByIdInBatch(pkS: Iterable<$primaryKeyType>)
                     $listFieldsForEdit
                 }).toImmutable()
         }
-    
     }
-    """
+"""
     } else ""
 
     override fun getContent(): String = contentTemplate + restConText+repoText

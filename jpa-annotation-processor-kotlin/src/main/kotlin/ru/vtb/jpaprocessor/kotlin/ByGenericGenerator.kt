@@ -2,6 +2,7 @@ package ru.vtb.jpaprocessor.kotlin
 
 
 import com.google.auto.service.AutoService
+import ru.vtb.processor.abstraction.AbstractCommonGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.annotation.GenerateByGeneric
@@ -14,7 +15,7 @@ import javax.tools.Diagnostic
 @AutoService(Processor::class) // For registering the service
 @SupportedSourceVersion(SourceVersion.RELEASE_8) // to support Java 8
 @SupportedOptions(ByGenericGenerator.KAPT_KOTLIN_GENERATED_OPTION_NAME)
-class ByGenericGenerator : AbstractProcessor() {
+class ByGenericGenerator : AbstractCommonGenerationProcessor<GeneratedJpaRepositoryClass>() {
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
         return mutableSetOf(GenerateByGeneric::class.java.name)
@@ -26,14 +27,15 @@ class ByGenericGenerator : AbstractProcessor() {
 
     override fun process(set: MutableSet<out TypeElement>, roundEnvironment: RoundEnvironment): Boolean {
 
-        roundEnvironment.getElementsAnnotatedWith(GenerateByGeneric::class.java).forEach {
+        val elementsAnnotatedWith = roundEnvironment.getElementsAnnotatedWith(GenerateByGeneric::class.java)
+                elementsAnnotatedWith.forEach {
             val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(AnnotatedEntityClass(it))
 
             val className = it.simpleName.toString()
-            val pack = processingEnv.elementUtils.getPackageOf(it).toString()
+            val pack = elementUtils.getPackageOf(it).toString()
             generateClass(className, pack, generatedJpaRepositoryClass, processingEnv)
 
-            processingEnv.messager.printMessage(
+            messager.printMessage(
                 Diagnostic.Kind.WARNING,
                 "${this.javaClass.canonicalName}: лФОДЫРВАдлфыВРОАДЫВЛФОар"
             )
@@ -48,7 +50,7 @@ class ByGenericGenerator : AbstractProcessor() {
         processingEnv: ProcessingEnvironment
     ) {
         val fileName = "GeneratedByGeneric_$className"
-        val fileContent = "package  ru.vtb.configuration.server.dataEntity.genRest.generic\n" +
+        val fileContent = "package  ru.vtb.configuration.server.dataEntity.genRest.generic.$className\n" +
                 "fun asdasdsa() =\"dasdads\""
 //            KotlinImmutableDtoClassBuilder(className, pack, generatedJpaRepositoryClass, processingEnv).getContent()
 

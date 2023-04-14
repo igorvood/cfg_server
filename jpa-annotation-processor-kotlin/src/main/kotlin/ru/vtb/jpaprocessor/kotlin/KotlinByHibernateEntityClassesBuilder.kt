@@ -57,17 +57,24 @@ import ru.vtb.processor.annotation.GenerateByGeneric
 """
 
 
-
     private val primaryKeyType = generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
         .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
 
 
     private val generatedCodeBuilders = listOf(
-        DTOsTextBuilder(className,immutableClassName, filteredFields),
-        RepositoryTextBuilder(readOnlyEntity, className,primaryKeyType, repositoryClassName),
-        RestTextBuilder(className,genRest,repositoryClassName,primaryKeyType,immutableClassName,tableComment, filteredFields),
+        DTOsTextBuilder(className, immutableClassName, filteredFields),
+        RepositoryTextBuilder(className, primaryKeyType, repositoryClassName),
+        RestTextBuilder(
+            className,
+            genRest,
+            repositoryClassName,
+            primaryKeyType,
+            immutableClassName,
+            tableComment,
+            filteredFields
+        ),
 
-    )
+        )
 
 
     override fun getContent(): String = importText +

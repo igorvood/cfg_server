@@ -2,11 +2,12 @@ package ru.vtb.jpaprocessor.kotlin.builder
 
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 
-class DTOsTextBuilder(private val className: String,
-                      private val immutableClassName: String,
-                      private val filteredFields: List<IGeneratedField>,
+class DTOsTextBuilder(
+    private val className: String,
+    private val immutableClassName: String,
+    private val filteredFields: List<IGeneratedField>,
 
-                      ): IKotlinContentBuilder {
+    ) : IKotlinContentBuilder {
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
@@ -29,8 +30,9 @@ $listFieldsToMutableFun
 
 
     private val listFieldsConstructor = filteredFields
-        .joinToString(",\n") { f -> val isNullable = if (f.isNullable()) "?" else ""
-            "val " + f.name() + " : " + f.type().mapKotlinType()+ isNullable
+        .joinToString(",\n") { f ->
+            val isNullable = if (f.isNullable()) "?" else ""
+            "val " + f.name() + " : " + f.type().mapKotlinType() + isNullable
         }
 
     private fun getDtos(): String {

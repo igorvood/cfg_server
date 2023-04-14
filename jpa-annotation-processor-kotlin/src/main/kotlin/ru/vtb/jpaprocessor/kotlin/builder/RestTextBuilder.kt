@@ -2,15 +2,16 @@ package ru.vtb.jpaprocessor.kotlin.builder
 
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 
-class RestTextBuilder(private val className: String,
-                      private val genRest: Boolean,
-                      private val repositoryClassName: String,
-                      private val primaryKeyType: String,
-                      private val immutableClassName: String,
-                      private val tableComment: String,
-                      private val filteredFields: List<IGeneratedField>,
+class RestTextBuilder(
+    private val className: String,
+    private val genRest: Boolean,
+    private val repositoryClassName: String,
+    private val primaryKeyType: String,
+    private val immutableClassName: String,
+    private val tableComment: String,
+    private val filteredFields: List<IGeneratedField>,
 
-                      ): IKotlinContentBuilder {
+    ) : IKotlinContentBuilder {
 
     private val listFieldsForEdit = filteredFields
         .joinToString("\n") { f -> "this@apply.${f.name()} = newData.${f.name()}" }

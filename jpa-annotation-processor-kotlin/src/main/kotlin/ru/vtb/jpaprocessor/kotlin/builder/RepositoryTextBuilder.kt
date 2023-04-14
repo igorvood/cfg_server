@@ -1,12 +1,12 @@
 package ru.vtb.jpaprocessor.kotlin.builder
 
-class RepositoryTextBuilder(private val readOnlyEntity: Boolean,
-                            private val className: String,
-                            private val primaryKeyType: String,
-                            private val repositoryClassName: String,
+class RepositoryTextBuilder(
+    private val className: String,
+    private val primaryKeyType: String,
+    private val repositoryClassName: String,
 
 
-): IKotlinContentBuilder {
+    ) : IKotlinContentBuilder {
 
     private fun generateRepoText(): String =
         """

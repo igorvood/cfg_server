@@ -1,6 +1,7 @@
 package ru.vtb.jpaprocessor.kotlin.builder
 
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vtb.processor.abstraction.model.abstraction.mapKotlinType
 
 class DTOsTextBuilder(
     private val className: String,

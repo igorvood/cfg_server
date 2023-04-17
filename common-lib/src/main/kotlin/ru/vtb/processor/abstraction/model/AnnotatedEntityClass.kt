@@ -22,12 +22,14 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
 
     }
 
-    fun calculateIdClass(processingEnv: ProcessingEnvironment): Result<String> =
-        kotlin.runCatching {
+    fun calculateIdClass(processingEnv: ProcessingEnvironment): Result<PrimaryKetDataTypeDto> {
+        val runCatching = kotlin.runCatching {
             element.annotation<IdClass>()
                 .map { idAnnoTat ->
                     val annotationValue = element.annotationValue<IdClass>(processingEnv, "value")
-                    annotationValue.toString()
+                    val dataType = annotationValue.toString()
+                    PrimaryKetDataTypeDto(dataType, false)
+
                 }
                 .orElseGet {
                     val withIdFileds = fields()
@@ -38,9 +40,12 @@ class AnnotatedEntityClass(element: Element) : AbstractAnnotatedClass(element) {
                         .map { it.first }
 
                     if (withIdFileds.size == 1) {
-                        withIdFileds.first().type()
+                        PrimaryKetDataTypeDto(withIdFileds.first().type(), true)
+
                     } else throw IllegalClassFormatException("Unable to find identifier for class ${name()} . Entity must be annotated IdClass or have only one field annotated Id")
                 }
         }
+        return runCatching
+    }
 
 }

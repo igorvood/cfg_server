@@ -1,12 +1,13 @@
 package ru.vtb.jpaprocessor.kotlin.builder
 
+import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 
 class RestTextBuilder(
     private val className: String,
     private val genRest: Boolean,
     private val repositoryClassName: String,
-    private val primaryKeyType: String,
+    private val primaryKeyType: PrimaryKetDataTypeDto,
     private val immutableClassName: String,
     private val tableComment: String,
     private val filteredFields: List<IGeneratedField>,
@@ -23,13 +24,13 @@ class RestTextBuilder(
         @RestController
         class ${className}GeneratedRestApi(
         //    private val $repositoryClassName: $repositoryClassName
-        private val $repositoryClassName: JpaRepository<${className}, $primaryKeyType>
+        private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.kotlinDataType}>
         
-        ): IRestHibernateEntity<$immutableClassName, $primaryKeyType> {
+        ): IRestHibernateEntity<$immutableClassName, ${primaryKeyType.kotlinDataType}> {
 
             @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findById")
-            override fun findById(@RequestParam id: $primaryKeyType): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
+            override fun findById(@RequestParam id: ${primaryKeyType.kotlinDataType}): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
         
             @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findAll")
@@ -43,13 +44,13 @@ class RestTextBuilder(
             @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
             @DeleteMapping("/$className/deleteById")
             @Transactional(propagation = Propagation.REQUIRES_NEW)
-            override fun deleteById(@RequestBody id: $primaryKeyType) = $repositoryClassName.deleteById(id)
+            override fun deleteById(@RequestBody id: ${primaryKeyType.kotlinDataType}) = $repositoryClassName.deleteById(id)
             
             @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
             @PostMapping("/$className/editEntity")
             @Transactional(propagation = Propagation.REQUIRES_NEW)
             override fun editEntity(
-                @RequestBody primaryKey: $primaryKeyType,
+                @RequestBody primaryKey: ${primaryKeyType.kotlinDataType},
                 @RequestBody newData: $immutableClassName
             ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
                 $repositoryClassName.save(

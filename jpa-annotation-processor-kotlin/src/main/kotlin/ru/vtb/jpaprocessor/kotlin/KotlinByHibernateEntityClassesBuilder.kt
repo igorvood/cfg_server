@@ -59,7 +59,7 @@ import java.util.*
 
 
     private val primaryKeyType = generatedJpaRepositoryClass.annotatedClass.calculateIdClass(roundEnvironment)
-        .getOrElse { "Unable to calculate primary key" }.mapKotlinType()
+        .getOrElse { throw java.lang.IllegalStateException("Unable to calculate primary key ") }
 
 
     private val generatedCodeBuilders = listOf(

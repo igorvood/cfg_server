@@ -29,7 +29,7 @@ class RestTextBuilder(
 
             @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findById")
-            override fun findById(@RequestBody id: $primaryKeyType): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
+            override fun findById(@RequestParam id: $primaryKeyType): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
         
             @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findAll")

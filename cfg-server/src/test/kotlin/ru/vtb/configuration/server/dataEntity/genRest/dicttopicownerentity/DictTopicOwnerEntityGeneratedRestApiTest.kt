@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.ui.controler.EditableTableDataDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
+import ru.vtb.processor.wrapper.RestEditEntityDto
 import java.math.BigInteger
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
@@ -59,7 +61,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
         val actual = dictTopicOwnerEntityGeneratedRestApi.save(expected)
 
         val newData = actual.copy(descriptionForReport = "other_desc")
-        val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(PrimaryKeyWrapper(id), newData)
+        val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(RestEditEntityDto(PrimaryKeyWrapper(id), newData))
         assertEquals(newData, editEntity)
     }
 
@@ -67,7 +69,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     fun editNotExistingEntity() {
         val id = "id_1"
         val expected = DictTopicOwnerEntityImmutable(id, BigInteger.valueOf(1), "desc")
-        val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(PrimaryKeyWrapper(id), expected)
+        val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(RestEditEntityDto(PrimaryKeyWrapper(id), expected))
         assertEquals(null, editEntity)
     }
 }

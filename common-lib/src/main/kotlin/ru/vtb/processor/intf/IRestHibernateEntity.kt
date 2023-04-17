@@ -1,6 +1,7 @@
 package ru.vtb.processor.intf
 
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
+import ru.vtb.processor.wrapper.RestEditEntityDto
 import java.util.*
 
 interface IRestHibernateEntity<IMMUTABLE, PK> {
@@ -12,5 +13,5 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
 
     fun deleteById(id: PrimaryKeyWrapper<PK>)
 
-    fun editEntity(primaryKey: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?
+    fun editEntity(editData: RestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
 }

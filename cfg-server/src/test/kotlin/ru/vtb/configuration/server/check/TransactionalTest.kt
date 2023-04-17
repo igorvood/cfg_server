@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -16,6 +17,9 @@ import ru.vtb.configuration.server.controller.intf.DictKafkaGrpController
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class TransactionalTest {
+    @MockBean
+    lateinit var checkRunner: CheckRunner
+
 
     @Autowired
     lateinit var transactionTestBeanPostProcessor: TransactionTestBeanPostProcessor

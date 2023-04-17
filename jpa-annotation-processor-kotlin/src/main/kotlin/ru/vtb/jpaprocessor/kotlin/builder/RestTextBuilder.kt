@@ -30,7 +30,7 @@ class RestTextBuilder(
 
             @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findById")
-            override fun findById(@RequestParam id: ${primaryKeyType.kotlinDataType}): Optional<$immutableClassName> = $repositoryClassName.findById(id).map{it.toImmutable()}  
+            override fun findById(@RequestParam id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>): Optional<$immutableClassName> = $repositoryClassName.findById(id.primaryKey).map{it.toImmutable()}  
         
             @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
             @GetMapping("/${className}/findAll")
@@ -44,15 +44,15 @@ class RestTextBuilder(
             @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
             @DeleteMapping("/$className/deleteById")
             @Transactional(propagation = Propagation.REQUIRES_NEW)
-            override fun deleteById(@RequestBody id: ${primaryKeyType.kotlinDataType}) = $repositoryClassName.deleteById(id)
+            override fun deleteById(@RequestBody id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>) = $repositoryClassName.deleteById(id.primaryKey)
             
             @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
             @PostMapping("/$className/editEntity")
             @Transactional(propagation = Propagation.REQUIRES_NEW)
             override fun editEntity(
-                @RequestBody primaryKey: ${primaryKeyType.kotlinDataType},
+                @RequestBody primaryKey: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>,
                 @RequestBody newData: $immutableClassName
-            ) = $repositoryClassName.findByIdOrNull(primaryKey)?.let { oldData ->
+            ) = $repositoryClassName.findByIdOrNull(primaryKey.primaryKey)?.let { oldData ->
                 $repositoryClassName.save(
                     oldData.apply {
                         $listFieldsForEdit

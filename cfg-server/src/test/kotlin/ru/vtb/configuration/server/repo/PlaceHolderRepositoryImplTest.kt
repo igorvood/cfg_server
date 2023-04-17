@@ -15,7 +15,7 @@ internal class PlaceHolderRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun dbPlaceHolders() {
         val dbPlaceHolders = placeHolderRepositoryImpl.dbPlaceHolders()
-        assertContains(dbPlaceHolders, DataBasePlaceHolder("PARALLELISM", "PARALLELISM", "8"))
+        assertContains(dbPlaceHolders, DataBasePlaceHolder("PARALLELISM", "PARALLELISM", "2"))
     }
 
     @Test

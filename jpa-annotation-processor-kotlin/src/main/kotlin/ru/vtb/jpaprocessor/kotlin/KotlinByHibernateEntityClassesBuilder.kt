@@ -54,6 +54,7 @@ import org.springframework.stereotype.Repository
 import ru.vtb.processor.intf.*
 import ru.vtb.processor.annotation.GenerateByGeneric
 import java.util.*
+import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 
 """
 

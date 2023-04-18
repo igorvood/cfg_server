@@ -32,7 +32,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     abstract val pk: PK
 
-    fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper<PK>(pk)
+    fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper(pk)
 
     abstract fun getMockedRepo(): Repository
 

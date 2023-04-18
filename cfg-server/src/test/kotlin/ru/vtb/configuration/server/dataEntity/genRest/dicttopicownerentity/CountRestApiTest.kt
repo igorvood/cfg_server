@@ -9,11 +9,11 @@ import kotlin.test.assertEquals
 internal class CountRestApiTest : AbstractTests() {
 
     @Autowired
-    lateinit var dictTopicOwnerEntityGeneratedRestApi: List<IRestHibernateEntity<*, *>>
+    lateinit var dictTopicOwnerEntityGeneratedRestApi: List<IRestHibernateEntity<*, *, *>>
 
     @Test
     fun countBeans() {
-        assertEquals(4, dictTopicOwnerEntityGeneratedRestApi.size)
+        assertEquals(5, dictTopicOwnerEntityGeneratedRestApi.size)
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "dict_service_node", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictServiceNodeEntityPK.class)
-@GenerateJpa(tableComment = "Данные по сервису", genRest = true, readOnly = true)
+@GenerateJpa(tableComment = "Нода сервиса", genRest = true, readOnly = true)
 public class DictServiceNodeEntity {
     @Id
     @Column(name = "service_id", nullable = false)
@@ -76,6 +76,6 @@ public class DictServiceNodeEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(serviceId, profileId, nodeType, id, reportDescription);
+        return this.getClass().getName().hashCode();
     }
 }

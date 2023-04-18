@@ -29,6 +29,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
         PK : Any,
+
         > {
 
 
@@ -115,18 +116,17 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     @Disabled
     fun editEntity() {
 
-//        val restEditEntityDto = RestEditEntityDto(wrappedPk(), hibernateEntityImmutable)
+        val restEditEntityDto: IRestEditEntityDto<PK, HIBER_ENTITY_Immutable> = restEditEntityDto()
 
-        val restEditEntityDto = restEditEntityDto()
+        val newData: HIBER_ENTITY_Immutable = restEditEntityDto.newData
 
-        val newData = restEditEntityDto.newData
-
-        val writeValueAsString = mapper.writeValueAsString(restEditEntityDto)
+        val writeValueAsString: String = mapper.writeValueAsString(restEditEntityDto)
 
         val andDo = mockMvc.perform(
             MockMvcRequestBuilders.put("/${hibernateEntitySimpleName()}/editEntity")
                 .content(writeValueAsString)
                 .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
         )
             .andDo(MockMvcResultHandlers.print())
 

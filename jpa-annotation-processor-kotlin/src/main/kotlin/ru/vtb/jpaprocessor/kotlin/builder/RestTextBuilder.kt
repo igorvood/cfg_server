@@ -25,9 +25,10 @@ class RestTextBuilder(
 @RequestMapping(path = arrayOf("/${className}"))
 class ${className}GeneratedRestApi(
 //    private val $repositoryClassName: $repositoryClassName
-private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.kotlinDataType}>
+private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.kotlinDataType}>,
+private val orIsNullRepository: OrIsNullRepository<${className}Filter, ${className}>
 
-): IRestHibernateEntity<$immutableClassName, ${primaryKeyType.kotlinDataType}> {
+): IRestHibernateEntity<$immutableClassName, ${primaryKeyType.kotlinDataType}, ${className}Filter> {
 
     @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
     @PutMapping("/findById", produces = [MediaType.APPLICATION_JSON_VALUE])
@@ -48,14 +49,15 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun deleteById(@RequestBody id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>) = $repositoryClassName.deleteById(id.primaryKey)
     
+    @Operation(summary = "Выбобрка с фильтром.", tags = ["Генерированное API. $tableComment($className)"])
+    @PutMapping("/findByFilterOrIsNull", produces = [MediaType.APPLICATION_JSON_VALUE])
+    override fun findByFilterOrIsNull(filter: ${className}Filter): List<$immutableClassName> = orIsNullRepository.findByFilterOrIsNull(filter).map { it.toImmutable() }
+    
     @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
     @PutMapping("/editEntity", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun editEntity(
-//        @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,
-//@RequestBody primaryKeyWrapper: ${primaryKeyType.kotlinDataType}, 
-//@RequestBody newData: $immutableClassName,
-@RequestBody editData: ${className}RestEdit
+    @RequestBody editData: ${className}RestEdit
     ): $immutableClassName? { 
     val findByIdOrNull = $repositoryClassName.findByIdOrNull(editData.primaryKey)
     return findByIdOrNull?.let { oldData ->
@@ -66,17 +68,7 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
     }
     }
     
-//    : DictTopicOwnerEntityImmutable? {
-//        val findByIdOrNull = DictTopicOwnerEntityGeneratedRepository.findByIdOrNull(editData.primaryKey)
-//        return findByIdOrNull?.let { oldData ->
-//            DictTopicOwnerEntityGeneratedRepository.save(
-//                oldData.apply {
-//                    this@apply.id = editData.newData.id
-//                    this@apply.our = editData.newData.our
-//                    this@apply.descriptionForReport = editData.newData.descriptionForReport
-//                }).toImmutable()
-//        }
-//    }
+    
     
 }
 """.trimMargin()

@@ -5,7 +5,7 @@ import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 import ru.vtb.processor.wrapper.RestEditEntityDto
 import java.util.*
 
-interface IRestHibernateEntity<IMMUTABLE, PK> {
+interface IRestHibernateEntity<IMMUTABLE, PK, Filter> {
 
     fun findById(id: PrimaryKeyWrapper<PK>): Optional<IMMUTABLE>
     fun findAll(): List<IMMUTABLE>
@@ -13,6 +13,8 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
     fun save(data: IMMUTABLE): IMMUTABLE
 
     fun deleteById(id: PrimaryKeyWrapper<PK>)
+
+    fun findByFilterOrIsNull(filter: Filter): List<IMMUTABLE>
 
 //    fun editEntity(editData: RestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
 //    @RequestBody primaryKeyWrapper: PrimaryKeyWrapper<ru.vtb.configuration.server.dataEntity.DictAbstractGraphNodeEntityPK>,

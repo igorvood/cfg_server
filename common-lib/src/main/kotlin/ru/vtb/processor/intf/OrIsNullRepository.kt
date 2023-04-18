@@ -2,7 +2,7 @@ package ru.vtb.processor.intf
 
 import javax.persistence.EntityManagerFactory
 
-abstract class OrIsNullRepository<Filter:IFilterHibernateEntity, ENTITY>(
+abstract class OrIsNullRepository<Filter : IFilterHibernateEntity, ENTITY>(
     val emf: EntityManagerFactory,
     val javaClazz: Class<ENTITY>
 ) {

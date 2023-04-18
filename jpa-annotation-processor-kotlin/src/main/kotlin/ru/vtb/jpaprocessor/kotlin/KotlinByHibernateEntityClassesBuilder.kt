@@ -65,7 +65,7 @@ import org.springframework.http.MediaType
 
 
     private val generatedCodeBuilders = listOf(
-        DTOsTextBuilder(className, immutableClassName, filteredFields),
+        DTOsTextBuilder(className, immutableClassName, filteredFields, primaryKeyType),
         RepositoryTextBuilder(className, primaryKeyType, repositoryClassName),
         RestTextBuilder(
             className,

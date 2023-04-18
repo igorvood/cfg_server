@@ -17,5 +17,6 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
 //    @RequestBody primaryKeyWrapper: PrimaryKeyWrapper<ru.vtb.configuration.server.dataEntity.DictAbstractGraphNodeEntityPK>,
 //    @RequestBody newData: DictAbstractGraphNodeEntityImmutable,
 
-    fun editEntity(primaryKeyWrapper: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?
+//    fun editEntity(primaryKeyWrapper: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?
+fun editEntity(primaryKeyWrapper: PK, newData: IMMUTABLE): IMMUTABLE?
 }

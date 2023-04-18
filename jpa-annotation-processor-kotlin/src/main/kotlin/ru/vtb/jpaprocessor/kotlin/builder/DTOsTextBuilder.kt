@@ -1,5 +1,6 @@
 package ru.vtb.jpaprocessor.kotlin.builder
 
+import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.mapKotlinType
 
@@ -7,6 +8,7 @@ class DTOsTextBuilder(
     private val className: String,
     private val immutableClassName: String,
     private val filteredFields: List<IGeneratedField>,
+    private val primaryKeyType: PrimaryKetDataTypeDto,
 
     ) : IKotlinContentBuilder {
 
@@ -46,6 +48,11 @@ $listFieldsConstructor
 $immutableToMutableFun
 
 }
+
+data class ${className}RestEdit(
+    override val primaryKey: ${primaryKeyType.kotlinDataType},
+    override val newData: $immutableClassName
+): IRestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName> 
 
 $mutableToImmutableFun"""
     }

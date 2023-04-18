@@ -53,9 +53,9 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun editEntity(
 //        @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,
-@RequestBody primaryKeyWrapper: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>, 
+@RequestBody primaryKeyWrapper: ${primaryKeyType.kotlinDataType}, 
 @RequestBody newData: $immutableClassName,
-    ) = $repositoryClassName.findByIdOrNull(primaryKeyWrapper.primaryKey)?.let { oldData ->
+    ) = $repositoryClassName.findByIdOrNull(primaryKeyWrapper)?.let { oldData ->
         $repositoryClassName.save(
             oldData.apply {
                 $listFieldsForEdit

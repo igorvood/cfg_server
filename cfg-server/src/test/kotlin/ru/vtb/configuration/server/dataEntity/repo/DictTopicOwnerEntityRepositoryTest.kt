@@ -22,7 +22,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun findById() {
         withTransactional {
             val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
-            findById.our = 0
+            findById.isOur = false
             val save = dictTopicOwnerEntityRepository.save(findById)
         }
     }
@@ -33,7 +33,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun save() {
         val apply = DictTopicOwnerEntity().apply {
             id = "id1"
-            our = 1
+            isOur = true
             descriptionForReport = "id1"
         }
         val save = dictTopicOwnerEntityRepository.save(apply)

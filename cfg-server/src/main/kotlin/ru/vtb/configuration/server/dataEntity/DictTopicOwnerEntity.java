@@ -15,7 +15,7 @@ public class DictTopicOwnerEntity {
     private String id;
     @Basic
     @Column(name = "is_our", nullable = false)
-    private Integer our;
+    private boolean isOur;
     @Basic
     @Column(name = "description_for_report")
     private String descriptionForReport;
@@ -30,12 +30,12 @@ public class DictTopicOwnerEntity {
         this.id = id;
     }
 
-    public Integer getOur() {
-        return our;
+    public boolean getIsOur() {
+        return isOur;
     }
 
-    public void setOur(Integer isOur) {
-        this.our = isOur;
+    public void setIsOur(boolean isOur) {
+        this.isOur = isOur;
     }
 
     public String getDescriptionForReport() {
@@ -54,7 +54,7 @@ public class DictTopicOwnerEntity {
         DictTopicOwnerEntity that = (DictTopicOwnerEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (our != null ? !our.equals(that.our) : that.our != null) return false;
+//        if (isOur != null ? !isOur.equals(that.isOur) : that.isOur != null) return false;
         if (descriptionForReport != null ? !descriptionForReport.equals(that.descriptionForReport) : that.descriptionForReport != null)
             return false;
 

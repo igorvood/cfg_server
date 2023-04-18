@@ -56,6 +56,9 @@ import ru.vtb.processor.annotation.GenerateByGeneric
 import java.util.*
 import ru.vtb.processor.wrapper.*
 import org.springframework.http.MediaType
+import org.springframework.stereotype.*
+
+import javax.persistence.EntityManagerFactory
 
 """
 
@@ -66,6 +69,7 @@ import org.springframework.http.MediaType
 
     private val generatedCodeBuilders = listOf(
         DTOsTextBuilder(className, immutableClassName, filteredFields, primaryKeyType),
+        OrIsNullTextBuilder(className),
         RepositoryTextBuilder(className, primaryKeyType, repositoryClassName),
         RestTextBuilder(
             className,

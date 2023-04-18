@@ -1,4 +1,4 @@
-package kaptKotlin.compile
+package ru.vtb.configuration.server.dataEntity.filter
 
 import org.junit.jupiter.api.Test
 
@@ -9,13 +9,9 @@ internal class DictAbstractGraphNodeEntityFilterTest {
 
     @Test
     fun cleanAllNull() {
-
         val dictAbstractGraphNodeEntityFilter = DictAbstractGraphNodeEntityFilter(null, null, null)
-
         val clean = dictAbstractGraphNodeEntityFilter.clean()
-
-        assertEquals("asdsa", clean)
-
+        assertEquals("select d from DictAbstractGraphNodeEntity d where 1=1 and (d.graphId = :graphId or (1=1)) and (d.nodeType = :nodeType or (1=1)) and (d.nodeId = :nodeId or (1=1))", clean)
     }
 
     @Test
@@ -25,7 +21,7 @@ internal class DictAbstractGraphNodeEntityFilterTest {
 
         val clean = d.clean()
 
-        assertEquals("asdsa", clean)
+        assertEquals("select d from DictAbstractGraphNodeEntity d where 1=1 and (d.graphId = :graphId or (1!=1)) and (d.nodeType = :nodeType or (1!=1)) and (d.nodeId = :nodeId or (1!=1))", clean)
 
     }
 }

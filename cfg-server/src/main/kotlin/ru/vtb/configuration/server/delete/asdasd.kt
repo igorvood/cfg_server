@@ -8,20 +8,5 @@ import javax.persistence.EntityManagerFactory
 
 @Service
 class asdasd(
-    val emf: EntityManagerFactory
-) : OrIsNullRepository<DictAbstractGraphNodeEntityFilter, DictAbstractGraphNodeEntity> {
-
-    val java: Class<DictAbstractGraphNodeEntity> = DictAbstractGraphNodeEntity::class.java
-
-    override fun findByFilterOrIsNull(filter: DictAbstractGraphNodeEntityFilter): List<DictAbstractGraphNodeEntity> {
-
-        val query = emf.createEntityManager()
-            .createQuery(filter.clean(), java)
-
-        filter.params().forEach(query::setParameter)
-
-        val resultList = query.resultList;
-
-        return resultList
-    }
-}
+    emf: EntityManagerFactory
+) : OrIsNullRepository<DictAbstractGraphNodeEntityFilter, DictAbstractGraphNodeEntity>(emf, DictAbstractGraphNodeEntity::class.java)

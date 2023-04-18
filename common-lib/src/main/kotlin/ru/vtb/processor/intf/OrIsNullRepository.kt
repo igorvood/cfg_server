@@ -1,6 +1,17 @@
 package ru.vtb.processor.intf
 
-interface OrIsNullRepository<Filter:IFilterHibernateEntity, ENTITY> {
+import javax.persistence.EntityManagerFactory
 
-    fun findByFilterOrIsNull(filter: Filter): List<ENTITY>
+abstract class OrIsNullRepository<Filter:IFilterHibernateEntity, ENTITY>(
+    val emf: EntityManagerFactory,
+    val javaClazz: Class<ENTITY>
+) {
+    fun findByFilterOrIsNull(filter: Filter): List<ENTITY> {
+        val query = emf.createEntityManager()
+            .createQuery(filter.clean(), javaClazz)
+        filter.params().forEach(query::setParameter)
+        val resultList = query.resultList;
+        return resultList
+    }
+//    abstract fun findByFilterOrIsNull(filter: Filter): List<ENTITY>
 }

@@ -1,5 +1,6 @@
 package ru.vtb.processor.intf
 
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 import ru.vtb.processor.wrapper.RestEditEntityDto
 import java.util.*
@@ -18,5 +19,6 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
 //    @RequestBody newData: DictAbstractGraphNodeEntityImmutable,
 
 //    fun editEntity(primaryKeyWrapper: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?
-fun editEntity(primaryKeyWrapper: PK, newData: IMMUTABLE): IMMUTABLE?
+//fun editEntity(primaryKeyWrapper: PK, newData: IMMUTABLE): IMMUTABLE?
+//fun editEntity(editData: IRestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
 }

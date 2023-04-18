@@ -2,15 +2,24 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
+import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityRestEdit
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityImmutable
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityRestEdit
 
 class DictTopicNodeEntityGeneratedRestApiRESTController :
-    AbstractEntityGeneratedRestApiRESTController<DictTopicNodeEntity, DictTopicNodeEntityImmutable, String, DictTopicNodeEntityGeneratedRepository>() {
+    AbstractEntityGeneratedRestApiRESTController<
+            DictTopicNodeEntity,
+            DictTopicNodeEntityImmutable,
+            String,
+            DictTopicNodeEntityGeneratedRepository,
+            DictTopicNodeEntityRestEdit,
+            >() {
 
     @MockkBean(relaxed = true)
     lateinit var repository: DictTopicNodeEntityGeneratedRepository
 
+    override fun restEditEntityDto(): DictTopicNodeEntityRestEdit = DictTopicNodeEntityRestEdit(pk, hibernateEntityImmutable)
 
     override val hibernateEntityImmutable: DictTopicNodeEntityImmutable
         get() = DictTopicNodeEntityImmutable("sad", "sad", "sad", "ASd", 1)

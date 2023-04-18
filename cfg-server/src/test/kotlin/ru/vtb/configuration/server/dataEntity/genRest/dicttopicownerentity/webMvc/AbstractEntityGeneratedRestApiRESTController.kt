@@ -13,20 +13,18 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityImmutable
 import ru.vtb.processor.intf.IImmutableEntity
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 import ru.vtb.processor.wrapper.RestEditEntityDto
 import kotlin.test.assertEquals
 
-@SpringBootTest//(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest
 @AutoConfigureMockMvc
 abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
-        HIBER_ENTITY_Immutable: IImmutableEntity<HIBER_ENTITY>,
+        HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
         PK,
-        Repository: JpaRepository<HIBER_ENTITY, PK>
+        Repository : JpaRepository<HIBER_ENTITY, PK>
         > {
 
 
@@ -36,22 +34,14 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper<PK>(pk)
 
-    abstract fun getMockedRepo():Repository
+    abstract fun getMockedRepo(): Repository
 
 
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
 
-   protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
+    protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
     protected fun hibernateEntitySimpleName(): String = getHibernateEntity()::class.java.simpleName
-
-//    IImmutableEntity<DictTopicOwnerEntity>
-
-//    abstract var repository: REPO
-//
-//    @MockkBean(relaxed = true)
-//    fun setRepository(repository: REPO)  {this.repository = repository}
-
 
     @Autowired
     lateinit var mockMvc: MockMvc
@@ -96,7 +86,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         val andExpect = andDo
             .andExpect(MockMvcResultMatchers.status().isOk)
         println(andExpect.andReturn().response.contentAsString)
-        assertEquals(writeValueAsString,  andExpect.andReturn().response.contentAsString)
+        assertEquals(writeValueAsString, andExpect.andReturn().response.contentAsString)
 
     }
 
@@ -117,13 +107,6 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         val restEditEntityDto = RestEditEntityDto(wrappedPk(), hibernateEntityImmutable)
 
         val writeValueAsString = mapper.writeValueAsString(restEditEntityDto)
-
-        val canSerialize = mapper.canSerialize(RestEditEntityDto::class.java)
-
-//        val readValue = mapper.readValue<RestEditEntityDto<String, DictTopicOwnerEntityImmutable>>(writeValueAsString, RestEditEntityDto::class.java)
-//        val readValue: RestEditEntityDto<*, *> = mapper.readValue(writeValueAsString, RestEditEntityDto::class.java)
-//        val restEditEntityDto1 = readValue as RestEditEntityDto<String, DictTopicOwnerEntityImmutable>
-
 
         val andDo = mockMvc.perform(
             MockMvcRequestBuilders.post("/${hibernateEntitySimpleName()}/editEntity")

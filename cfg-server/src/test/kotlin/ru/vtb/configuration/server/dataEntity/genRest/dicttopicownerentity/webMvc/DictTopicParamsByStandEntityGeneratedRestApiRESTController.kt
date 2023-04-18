@@ -1,11 +1,8 @@
 package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webMvc
 
 import com.ninjasquad.springmockk.MockkBean
-import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityImmutable
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityImmutable
 

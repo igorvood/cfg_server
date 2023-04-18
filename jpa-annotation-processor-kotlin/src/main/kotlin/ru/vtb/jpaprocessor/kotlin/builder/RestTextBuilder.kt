@@ -15,7 +15,7 @@ class RestTextBuilder(
     ) : IKotlinContentBuilder {
 
     private val listFieldsForEdit = filteredFields
-        .joinToString("\n") { f -> "this@apply.${f.name()} = editData.newData.${f.name()}" }
+        .joinToString("\n") { f -> "this@apply.${f.name()} = newData.${f.name()}" }
 
     private fun genRestFun(): String {
 
@@ -52,8 +52,10 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
     @PostMapping("/editEntity", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun editEntity(
-        @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,
-    ) = $repositoryClassName.findByIdOrNull(editData.primaryKeyWrapper.primaryKey)?.let { oldData ->
+//        @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,
+@RequestBody primaryKeyWrapper: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>, 
+@RequestBody newData: $immutableClassName,
+    ) = $repositoryClassName.findByIdOrNull(primaryKeyWrapper.primaryKey)?.let { oldData ->
         $repositoryClassName.save(
             oldData.apply {
                 $listFieldsForEdit

@@ -112,6 +112,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
                 .contentType(MediaType.APPLICATION_JSON)
         )
             .andDo(MockMvcResultHandlers.print())
+
         andDo
             .andExpect(MockMvcResultMatchers.status().isOk)
 

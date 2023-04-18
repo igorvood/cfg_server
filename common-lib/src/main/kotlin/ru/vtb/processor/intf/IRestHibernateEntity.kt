@@ -13,5 +13,9 @@ interface IRestHibernateEntity<IMMUTABLE, PK> {
 
     fun deleteById(id: PrimaryKeyWrapper<PK>)
 
-    fun editEntity(editData: RestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
+//    fun editEntity(editData: RestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
+//    @RequestBody primaryKeyWrapper: PrimaryKeyWrapper<ru.vtb.configuration.server.dataEntity.DictAbstractGraphNodeEntityPK>,
+//    @RequestBody newData: DictAbstractGraphNodeEntityImmutable,
+
+    fun editEntity(primaryKeyWrapper: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?
 }

@@ -57,8 +57,9 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
         val actual = dictTopicOwnerEntityGeneratedRestApi.save(expected)
 
         val newData = actual.copy(descriptionForReport = "other_desc")
+        val primaryKeyWrapper = RestEditEntityDto(PrimaryKeyWrapper(id), newData)
         val editEntity =
-            dictTopicOwnerEntityGeneratedRestApi.editEntity(RestEditEntityDto(PrimaryKeyWrapper(id), newData))
+            dictTopicOwnerEntityGeneratedRestApi.editEntity(primaryKeyWrapper.primaryKeyWrapper, primaryKeyWrapper.newData)
         assertEquals(newData, editEntity)
     }
 
@@ -66,8 +67,9 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     fun editNotExistingEntity() {
         val id = "id_1"
         val expected = DictTopicOwnerEntityImmutable(id, 1, "desc")
+        val primaryKeyWrapper = RestEditEntityDto(PrimaryKeyWrapper(id), expected)
         val editEntity =
-            dictTopicOwnerEntityGeneratedRestApi.editEntity(RestEditEntityDto(PrimaryKeyWrapper(id), expected))
+            dictTopicOwnerEntityGeneratedRestApi.editEntity(primaryKeyWrapper.primaryKeyWrapper, primaryKeyWrapper.newData)
         assertEquals(null, editEntity)
     }
 }

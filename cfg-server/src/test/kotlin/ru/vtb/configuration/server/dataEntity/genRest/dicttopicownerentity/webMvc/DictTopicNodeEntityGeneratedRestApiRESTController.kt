@@ -19,3 +19,13 @@ class DictTopicNodeEntityGeneratedRestApiRESTController :
 
     override fun getMockedRepo(): DictTopicNodeEntityGeneratedRepository = repository
 }
+
+//{"primaryKeyWrapper":{"primaryKey":{"graphId":"sad","nodeType":"sad","nodeId":"sad"}},"newData":{"graphId":"sad","nodeType":"sad","nodeId":"sad"}}
+//{"primaryKeyWrapper":{"primaryKey": "string"
+//  },
+//  "newData": {
+//    "id": "string",
+//    "our": 0,
+//    "descriptionForReport": "string"
+//  }
+//}

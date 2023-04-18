@@ -38,6 +38,11 @@ $listFieldsToMutableFun
             "val " + f.name() + " : " + f.type().mapKotlinType() + isNullable
         }
 
+    private val listFieldsConstructorNullable = filteredFields
+        .joinToString(",\n") { f ->
+            "val ${f.name()} : ${f.type().mapKotlinType()}?"
+        }
+
     private fun getDtos(): String {
         return """
 @kotlinx.serialization.Serializable
@@ -49,6 +54,13 @@ $immutableToMutableFun
 
 }
 
+@kotlinx.serialization.Serializable
+data class ${className}Filter (
+$listFieldsConstructorNullable
+)
+
+
+//@kotlinx.serialization.Serializable
 data class ${className}RestEdit(
     override val primaryKey: ${primaryKeyType.kotlinDataType},
     override val newData: $immutableClassName

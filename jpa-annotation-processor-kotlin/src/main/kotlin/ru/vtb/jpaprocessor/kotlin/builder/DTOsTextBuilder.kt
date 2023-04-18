@@ -37,15 +37,17 @@ $listFieldsToMutableFun
         }
 
     private fun getDtos(): String {
-        return """data class $immutableClassName (
-        $listFieldsConstructor
-        ):IImmutableEntity<${className}>{
-        
-        $immutableToMutableFun
-        
-        }
-        
-        $mutableToImmutableFun"""
+        return """
+@kotlinx.serialization.Serializable
+data class $immutableClassName (
+$listFieldsConstructor
+):IImmutableEntity<${className}>{
+
+$immutableToMutableFun
+
+}
+
+$mutableToImmutableFun"""
     }
 
     override fun getContent(): String = getDtos()

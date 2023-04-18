@@ -43,6 +43,25 @@ $listFieldsToMutableFun
             "val ${f.name()} : ${f.type().mapKotlinType()}?"
         }
 
+    private val listFilterIsEmpty = filteredFields
+        .joinToString("&&\n") { f ->
+            "${f.name()} == null "
+        }
+
+    private val listSqlFilterIsEmpty = filteredFields
+        .joinToString(" and ") { f ->
+            "(d.${f.name()} = :${f.name()} or :${f.name()} is null)"
+        }
+
+    private val listSqlFilterMapParams = filteredFields
+        .joinToString(",\n") { f ->
+            """ "${f.name()}" to ${f.name()} """
+        }
+
+
+//    "graphId" to this.graphId
+//    (b.author = :author   or :author is null)
+
     private fun getDtos(): String {
         return """
 @kotlinx.serialization.Serializable
@@ -57,7 +76,23 @@ $immutableToMutableFun
 @kotlinx.serialization.Serializable
 data class ${className}Filter (
 $listFieldsConstructorNullable
-)
+): IFilterHibernateEntity{
+  
+  override fun params(): Map<String, Any?> = mapOf(
+$listSqlFilterMapParams
+        )
+  
+  override fun queryString(): String = queryStringConst
+
+  override fun isEmpty(): Boolean {
+        return $listFilterIsEmpty
+    }
+    
+    companion object{
+        private val queryStringConst: String = "select d from ${className} d where 1=1 and ${listSqlFilterIsEmpty}"      
+    }
+    
+}
 
 
 //@kotlinx.serialization.Serializable

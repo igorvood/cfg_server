@@ -120,10 +120,14 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
 //        val restEditEntityDto = RestEditEntityDto(wrappedPk(), hibernateEntityImmutable)
 
-        val writeValueAsString = mapper.writeValueAsString(restEditEntityDto())
+        val restEditEntityDto = restEditEntityDto()
+
+        val newData = restEditEntityDto.newData
+
+        val writeValueAsString = mapper.writeValueAsString(restEditEntityDto)
 
         val andDo = mockMvc.perform(
-            MockMvcRequestBuilders.post("/${hibernateEntitySimpleName()}/editEntity")
+            MockMvcRequestBuilders.put("/${hibernateEntitySimpleName()}/editEntity")
                 .content(writeValueAsString)
                 .contentType(MediaType.APPLICATION_JSON)
         )

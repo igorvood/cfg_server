@@ -49,7 +49,7 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
     override fun deleteById(@RequestBody id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>) = $repositoryClassName.deleteById(id.primaryKey)
     
     @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
-    @PostMapping("/editEntity", produces = [MediaType.APPLICATION_JSON_VALUE])
+    @PutMapping("/editEntity", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun editEntity(
 //        @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,

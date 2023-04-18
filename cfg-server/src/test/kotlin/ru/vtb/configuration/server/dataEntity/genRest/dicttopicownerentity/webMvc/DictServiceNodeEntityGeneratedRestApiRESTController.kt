@@ -8,6 +8,7 @@ import ru.vtb.configuration.server.dataEntity.DictServiceNodeEntityPK
 import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityImmutable
 import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityFilter
 import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityImmutable
 import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityRestEdit
@@ -17,10 +18,14 @@ class DictServiceNodeEntityGeneratedRestApiRESTController :
             DictServiceNodeEntity,
             DictServiceNodeEntityImmutable,
             DictServiceNodeEntityPK,
+            DictServiceNodeEntityFilter
             >() {
 
     @MockkBean(relaxed = true)
     lateinit var repository: DictServiceNodeEntityGeneratedRepository
+
+    override val filterDto: DictServiceNodeEntityFilter
+        get() = DictServiceNodeEntityFilter.nullConst
 
     override fun restEditEntityDto(): DictServiceNodeEntityRestEdit = DictServiceNodeEntityRestEdit(pk, hibernateEntityImmutable)
     override val hibernateEntityImmutable: DictServiceNodeEntityImmutable

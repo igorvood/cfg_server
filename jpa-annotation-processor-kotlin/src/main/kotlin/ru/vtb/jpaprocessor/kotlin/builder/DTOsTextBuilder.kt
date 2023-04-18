@@ -53,6 +53,11 @@ $listFieldsToMutableFun
             "(d.${f.name()} = :${f.name()} or :${f.name()} is null)"
         }
 
+    private val listSqlFilterNull = filteredFields
+        .joinToString(", ") { f ->
+            "null"
+        }
+
     private val listSqlFilterMapParams = filteredFields
         .joinToString(",\n") { f ->
             """ "${f.name()}" to ${f.name()} """
@@ -89,7 +94,10 @@ $listSqlFilterMapParams
     }
     
     companion object{
-        private val queryStringConst: String = "select d from ${className} d where 1=1 and ${listSqlFilterIsEmpty}"      
+        private val queryStringConst: String = "select d from ${className} d where 1=1 and ${listSqlFilterIsEmpty}"
+        
+        val nullConst = ${className}Filter($listSqlFilterNull)
+              
     }
     
 }

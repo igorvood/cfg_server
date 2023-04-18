@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import ru.vtb.processor.intf.IFilterHibernateEntity
 import ru.vtb.processor.intf.IImmutableEntity
 import ru.vtb.processor.wrapper.IRestEditEntityDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
@@ -29,7 +30,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
         PK : Any,
-
+        FILTER_DTO: IFilterHibernateEntity
         > {
 
 
@@ -37,18 +38,12 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     abstract val pk: PK
 
+
+    abstract val filterDto: FILTER_DTO
     fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper(pk)
 
     abstract fun getMockedRepo(): JpaRepository<HIBER_ENTITY, PK>
-
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
-
-//    val restEditEntityDto = object : IRestEditEntityDto<PK, HIBER_ENTITY_Immutable> {
-//        override val primaryKey: PK
-//            get() = pk
-//        override val newData: HIBER_ENTITY_Immutable
-//            get() = hibernateEntityImmutable
-//    }
 
     abstract fun restEditEntityDto(): IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
 
@@ -58,6 +53,17 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     @Autowired
     lateinit var mockMvc: MockMvc
+
+    @Test
+    fun findByFilterOrIsNull() {
+        val andExpect = mockMvc.perform(
+            MockMvcRequestBuilders.put("/${hibernateEntitySimpleName()}/findByFilterOrIsNull")
+                .content(mapper.writeValueAsString(filterDto))
+                .contentType(MediaType.APPLICATION_JSON)
+        )
+            .andDo(MockMvcResultHandlers.print())
+            .andExpect(MockMvcResultMatchers.status().isOk)
+    }
 
     @Test
     fun findAll() {

@@ -13,5 +13,5 @@ abstract class OrIsNullRepository<Filter : IFilterHibernateEntity, ENTITY>(
         val resultList = query.resultList;
         return resultList
     }
-//    abstract fun findByFilterOrIsNull(filter: Filter): List<ENTITY>
+
 }

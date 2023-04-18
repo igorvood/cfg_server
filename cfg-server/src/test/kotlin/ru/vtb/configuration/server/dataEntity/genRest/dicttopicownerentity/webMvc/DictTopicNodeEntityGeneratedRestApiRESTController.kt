@@ -13,7 +13,7 @@ class DictTopicNodeEntityGeneratedRestApiRESTController :
             DictTopicNodeEntityImmutable,
             String,
             DictTopicNodeEntityGeneratedRepository,
-            DictTopicNodeEntityRestEdit,
+
             >() {
 
     @MockkBean(relaxed = true)

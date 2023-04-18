@@ -30,7 +30,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
         PK : Any,
         Repository : JpaRepository<HIBER_ENTITY, PK>,
-        EDIT : IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
+//        EDIT : IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
         > {
 
 
@@ -51,7 +51,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 //            get() = hibernateEntityImmutable
 //    }
 
-    abstract fun restEditEntityDto(): EDIT
+    abstract fun restEditEntityDto(): IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
 
     protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 

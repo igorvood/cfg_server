@@ -14,7 +14,6 @@ class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
             DictTopicParamsByStandEntityImmutable,
             DictTopicParamsByStandEntityPK,
             DictTopicParamsByStandEntityGeneratedRepository,
-            DictTopicParamsByStandEntityRestEdit,
             >() {
 
     @MockkBean(relaxed = true)

@@ -30,11 +30,11 @@ internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
 
 //            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
-            dictTopicNodeEntity.retention=BigInteger.valueOf(19)
+            dictTopicNodeEntity.retention=19
             val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity().apply {
                 nodeId = dictTopicNodeEntity.id
                 standId = "DSO"
-                cntPartition = BigInteger.valueOf(18)
+                cntPartition = 18
                 topicName = dictTopicNodeEntity.id
 //                dictTopicNodeByNodeId = null
             }

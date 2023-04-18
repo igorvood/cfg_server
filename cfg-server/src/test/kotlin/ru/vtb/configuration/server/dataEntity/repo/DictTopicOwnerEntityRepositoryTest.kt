@@ -24,7 +24,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun findById() {
         withTransactional {
             val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
-            findById.isOur = BigInteger.valueOf(0)
+            findById.isOur = 0
             val save = dictTopicOwnerEntityRepository.save(findById)
         }
     }
@@ -35,7 +35,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun save() {
         val apply = DictTopicOwnerEntity().apply {
             id = "id1"
-            isOur = BigInteger.valueOf(1)
+            isOur = 1
             descriptionForReport = "id1"
         }
         val save = dictTopicOwnerEntityRepository.save(apply)

@@ -55,6 +55,7 @@ import ru.vtb.processor.intf.*
 import ru.vtb.processor.annotation.GenerateByGeneric
 import java.util.*
 import ru.vtb.processor.wrapper.*
+import org.springframework.http.MediaType
 
 """
 

@@ -25,7 +25,7 @@ public class DictTopicNodeEntity {
     private String cleanupPolicy;
     @Basic
     @Column(name = "retention")
-    private BigInteger retention;
+    private Integer retention;
     @ManyToOne
     @JoinColumn(name = "topic_owner_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     private DictTopicOwnerEntity dictTopicOwnerByTopicOwnerId;
@@ -66,11 +66,11 @@ public class DictTopicNodeEntity {
         this.cleanupPolicy = cleanupPolicy;
     }
 
-    public BigInteger getRetention() {
+    public Integer getRetention() {
         return retention;
     }
 
-    public void setRetention(BigInteger retention) {
+    public void setRetention(Integer retention) {
         this.retention = retention;
     }
 

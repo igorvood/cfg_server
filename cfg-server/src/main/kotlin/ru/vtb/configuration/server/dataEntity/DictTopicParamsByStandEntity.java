@@ -19,7 +19,7 @@ public class DictTopicParamsByStandEntity {
     private String standId;
     @Basic
     @Column(name = "cnt_partition", nullable = false)
-    private BigInteger cntPartition;
+    private Integer cntPartition;
     @Basic
     @Column(name = "topic_name", nullable = false)
     private String topicName;
@@ -43,11 +43,11 @@ public class DictTopicParamsByStandEntity {
         this.standId = standId;
     }
 
-    public BigInteger getCntPartition() {
+    public Integer getCntPartition() {
         return cntPartition;
     }
 
-    public void setCntPartition(BigInteger cntPartition) {
+    public void setCntPartition(Integer cntPartition) {
         this.cntPartition = cntPartition;
     }
 

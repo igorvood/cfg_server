@@ -16,6 +16,8 @@ inline fun <reified ANNO : Annotation, TYPE_VAL> Element.proxyAnnotationValue(
     return map
 }
 
-fun String.mapKotlinType(): String = if (this == "java.lang.String") {
-    "String"
-} else this
+fun String.mapKotlinType(): String =
+    if (this == "java.lang.String") "String"
+    else if (this == "java.math.BigInteger") "Int"
+    else if (this == "java.lang.Integer") "Int"
+    else this

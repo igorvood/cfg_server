@@ -91,6 +91,12 @@
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>org.jetbrains.kotlinx</groupId>-->
+<!--            <artifactId>kotlinx-serialization-json</artifactId>-->
+<!--            <version>1.5.0</version>-->
+<!--        </dependency>-->
+
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>

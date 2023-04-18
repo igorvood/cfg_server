@@ -30,25 +30,26 @@ private val $repositoryClassName: JpaRepository<${className}, ${primaryKeyType.k
 ): IRestHibernateEntity<$immutableClassName, ${primaryKeyType.kotlinDataType}> {
 
     @Operation(summary = "Найти по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
-    @GetMapping("/findById")
-    override fun findById(@RequestParam id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>): Optional<$immutableClassName> = $repositoryClassName.findById(id.primaryKey).map{it.toImmutable()}  
+    @PutMapping("/findById", produces = [MediaType.APPLICATION_JSON_VALUE])
+    override fun findById(@RequestBody id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>): Optional<$immutableClassName> = $repositoryClassName.findById(id.primaryKey).map{it.toImmutable()}
+//    override fun findById(@RequestParam id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>): Optional<$immutableClassName> = $repositoryClassName.findById(id.primaryKey).map{it.toImmutable()}
 
     @Operation(summary = "Найти все.", tags = ["Генерированное API. $tableComment($className)"])
-    @GetMapping("/findAll")
+    @GetMapping("/findAll", produces = [MediaType.APPLICATION_JSON_VALUE])
     override fun findAll() = $repositoryClassName.findAll().map { it.toImmutable() }
 
     @Operation(summary = "Сохранить.", tags = ["Генерированное API. $tableComment($className)"])
-    @PutMapping("/save")
+    @PutMapping("/save", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun save(@RequestBody data: $immutableClassName) = $repositoryClassName.save(data.toMutable()).toImmutable()
 
     @Operation(summary = "Удалить по идентификатору.", tags = ["Генерированное API. $tableComment($className)"])
-    @DeleteMapping("/deleteById")
+    @DeleteMapping("/deleteById", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun deleteById(@RequestBody id: PrimaryKeyWrapper<${primaryKeyType.kotlinDataType}>) = $repositoryClassName.deleteById(id.primaryKey)
     
     @Operation(summary = "Редактировать значение.", tags = ["Генерированное API. $tableComment($className)"])
-    @PostMapping("/editEntity")
+    @PostMapping("/editEntity", produces = [MediaType.APPLICATION_JSON_VALUE])
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     override fun editEntity(
         @RequestBody editData: RestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName>,

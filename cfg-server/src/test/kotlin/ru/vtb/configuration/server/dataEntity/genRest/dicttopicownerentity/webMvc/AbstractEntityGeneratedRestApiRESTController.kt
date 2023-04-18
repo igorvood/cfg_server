@@ -48,8 +48,6 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     @Test
     fun findAll() {
-
-
         mockMvc.perform(MockMvcRequestBuilders.get("/${hibernateEntitySimpleName()}/findAll"))
             .andDo(MockMvcResultHandlers.print())
             .andExpect(MockMvcResultMatchers.status().isOk)

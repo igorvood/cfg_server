@@ -39,7 +39,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
 
     @Test
     fun save() {
-        val expected = DictTopicOwnerEntityImmutable("id_1", true, "desc")
+        val expected = DictTopicOwnerEntityImmutable("id_1", 1, "desc")
         val actual = dictTopicOwnerEntityGeneratedRestApi.save(expected)
         assertEquals(expected, actual)
     }
@@ -47,7 +47,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     @Test
     fun deleteById() {
         val id = "id_1"
-        val expected = DictTopicOwnerEntityImmutable(id, true, "desc")
+        val expected = DictTopicOwnerEntityImmutable(id, 1, "desc")
         val actual = dictTopicOwnerEntityGeneratedRestApi.save(expected)
         dictTopicOwnerEntityGeneratedRestApi.deleteById(PrimaryKeyWrapper(id))
         val findAll = dictTopicOwnerEntityGeneratedRestApi.findAll()
@@ -57,7 +57,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     @Test
     fun editEntity() {
         val id = "id_1"
-        val expected = DictTopicOwnerEntityImmutable(id, true, "desc")
+        val expected = DictTopicOwnerEntityImmutable(id, 1, "desc")
         val actual = dictTopicOwnerEntityGeneratedRestApi.save(expected)
 
         val newData = actual.copy(descriptionForReport = "other_desc")
@@ -68,7 +68,7 @@ internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTest
     @Test
     fun editNotExistingEntity() {
         val id = "id_1"
-        val expected = DictTopicOwnerEntityImmutable(id, true, "desc")
+        val expected = DictTopicOwnerEntityImmutable(id, 1, "desc")
         val editEntity = dictTopicOwnerEntityGeneratedRestApi.editEntity(RestEditEntityDto(PrimaryKeyWrapper(id), expected))
         assertEquals(null, editEntity)
     }

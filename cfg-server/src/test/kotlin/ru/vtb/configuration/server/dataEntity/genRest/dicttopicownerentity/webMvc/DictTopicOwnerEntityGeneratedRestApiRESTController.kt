@@ -62,7 +62,7 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController {
     @Test
     fun save() {
 
-        val dictTopicOwnerEntityImmutable = DictTopicOwnerEntityImmutable("asdasd", true, "sd")
+        val dictTopicOwnerEntityImmutable = DictTopicOwnerEntityImmutable("asdasd", 1, "sd")
 
         val entity = dictTopicOwnerEntityImmutable.toMutable()
         every { repository.save(entity) } returns entity

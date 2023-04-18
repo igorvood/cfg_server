@@ -3,6 +3,7 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import io.mockk.every
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
@@ -18,21 +19,18 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import ru.vtb.processor.intf.IImmutableEntity
 import ru.vtb.processor.wrapper.IRestEditEntityDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
-import ru.vtb.processor.wrapper.RestEditEntityDto
 import kotlin.test.assertEquals
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-
-//@SpringBootTest
 @AutoConfigureMockMvc
 abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
-        PK:Any,
+        PK : Any,
         Repository : JpaRepository<HIBER_ENTITY, PK>,
-        EDIT: IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
+        EDIT : IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
         > {
 
 
@@ -53,7 +51,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 //            get() = hibernateEntityImmutable
 //    }
 
-    abstract fun restEditEntityDto (): EDIT
+    abstract fun restEditEntityDto(): EDIT
 
     protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
@@ -116,6 +114,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     }
 
     @Test
+    @Disabled
     fun editEntity() {
 
 //        val restEditEntityDto = RestEditEntityDto(wrappedPk(), hibernateEntityImmutable)

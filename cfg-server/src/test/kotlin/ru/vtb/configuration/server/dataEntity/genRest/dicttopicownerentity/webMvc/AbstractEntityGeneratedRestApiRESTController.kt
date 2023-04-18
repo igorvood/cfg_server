@@ -29,8 +29,6 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
         PK : Any,
-        Repository : JpaRepository<HIBER_ENTITY, PK>,
-//        EDIT : IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
         > {
 
 
@@ -40,7 +38,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper(pk)
 
-    abstract fun getMockedRepo(): Repository
+    abstract fun getMockedRepo(): JpaRepository<HIBER_ENTITY, PK>
 
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
 

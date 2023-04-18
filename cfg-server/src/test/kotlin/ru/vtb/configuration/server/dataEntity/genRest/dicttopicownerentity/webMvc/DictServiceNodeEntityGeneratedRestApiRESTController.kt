@@ -17,8 +17,6 @@ class DictServiceNodeEntityGeneratedRestApiRESTController :
             DictServiceNodeEntity,
             DictServiceNodeEntityImmutable,
             DictServiceNodeEntityPK,
-            DictServiceNodeEntityGeneratedRepository,
-
             >() {
 
     @MockkBean(relaxed = true)

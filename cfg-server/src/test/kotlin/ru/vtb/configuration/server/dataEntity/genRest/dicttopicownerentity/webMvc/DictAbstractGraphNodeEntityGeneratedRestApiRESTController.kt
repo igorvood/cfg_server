@@ -12,7 +12,6 @@ class DictAbstractGraphNodeEntityGeneratedRestApiRESTController :
             DictAbstractGraphNodeEntity,
             DictAbstractGraphNodeEntityImmutable,
             DictAbstractGraphNodeEntityPK,
-            DictAbstractGraphNodeEntityGeneratedRepository,
             >() {
 
     @MockkBean(relaxed = true)

@@ -1,6 +1,5 @@
 package ru.vtb.configuration.server.dataEntity.repo
 
-import jdk.nashorn.internal.ir.annotations.Ignore
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.test.annotation.Rollback
@@ -10,7 +9,6 @@ import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityGeneratedRepository
 //import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.toImmutable
-import java.math.BigInteger
 import kotlin.test.assertEquals
 
 
@@ -24,7 +22,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun findById() {
         withTransactional {
             val findById = dictTopicOwnerEntityRepository.findById("qwerty").get()
-            findById.isOur = 0
+            findById.our = 0
             val save = dictTopicOwnerEntityRepository.save(findById)
         }
     }
@@ -35,7 +33,7 @@ internal class DictTopicOwnerEntityRepositoryTest : AbstractDatasourceTests() {
     fun save() {
         val apply = DictTopicOwnerEntity().apply {
             id = "id1"
-            isOur = 1
+            our = 1
             descriptionForReport = "id1"
         }
         val save = dictTopicOwnerEntityRepository.save(apply)

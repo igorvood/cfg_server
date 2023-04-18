@@ -69,7 +69,6 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController {
 
 
         val writeValueAsString = mapper.writeValueAsString(dictTopicOwnerEntityImmutable)
-        val s = """{"id":"asdasd","is_our": 1 ,"descriptionForReport":"sd"}"""
 
         val andDo = mockMvc.perform(
             put("/DictTopicOwnerEntity/save")

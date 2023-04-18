@@ -4,7 +4,6 @@ package ru.vtb.configuration.server.dataEntity;
 import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.Collection;
 
 @Entity
@@ -16,7 +15,7 @@ public class DictTopicOwnerEntity {
     private String id;
     @Basic
     @Column(name = "is_our", nullable = false)
-    private Integer isOur;
+    private Integer our;
     @Basic
     @Column(name = "description_for_report")
     private String descriptionForReport;
@@ -31,12 +30,12 @@ public class DictTopicOwnerEntity {
         this.id = id;
     }
 
-    public Integer getIsOur() {
-        return isOur;
+    public Integer getOur() {
+        return our;
     }
 
-    public void setIsOur(Integer isOur) {
-        this.isOur = isOur;
+    public void setOur(Integer isOur) {
+        this.our = isOur;
     }
 
     public String getDescriptionForReport() {
@@ -55,7 +54,7 @@ public class DictTopicOwnerEntity {
         DictTopicOwnerEntity that = (DictTopicOwnerEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (isOur != null ? !isOur.equals(that.isOur) : that.isOur != null) return false;
+        if (our != null ? !our.equals(that.our) : that.our != null) return false;
         if (descriptionForReport != null ? !descriptionForReport.equals(that.descriptionForReport) : that.descriptionForReport != null)
             return false;
 

@@ -14,8 +14,8 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController :
 
     override fun getMockedRepo(): DictTopicOwnerEntityGeneratedRepository = repository
 
-    override val pk: PrimaryKeyWrapper<String>
-        get() = PrimaryKeyWrapper("asdasd")
+    override val pk: String
+        get() = "asdasd"
     override val hibernateEntityImmutable: DictTopicOwnerEntityImmutable
         get() = DictTopicOwnerEntityImmutable("asdasd", 1, "sd")
 }

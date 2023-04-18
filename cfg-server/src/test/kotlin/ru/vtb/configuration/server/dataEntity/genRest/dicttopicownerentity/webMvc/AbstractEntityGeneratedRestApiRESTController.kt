@@ -32,7 +32,9 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
 
     abstract val hibernateEntityImmutable: HIBER_ENTITY_Immutable
 
-    abstract val pk: PrimaryKeyWrapper<PK>
+    abstract val pk: PK
+
+    fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper<PK>(pk)
 
     abstract fun getMockedRepo():Repository
 
@@ -68,7 +70,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     fun findById() {
         mockMvc.perform(
             MockMvcRequestBuilders.put("/${hibernateEntitySimpleName()}/findById")
-                .content(mapper.writeValueAsString(pk))
+                .content(mapper.writeValueAsString(wrappedPk()))
                 .contentType(MediaType.APPLICATION_JSON)
         )
             .andDo(MockMvcResultHandlers.print())
@@ -102,7 +104,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     fun deleteById() {
         mockMvc.perform(
             MockMvcRequestBuilders.delete("/${hibernateEntitySimpleName()}/deleteById")
-                .content(mapper.writeValueAsString(pk))
+                .content(mapper.writeValueAsString(wrappedPk()))
                 .contentType(MediaType.APPLICATION_JSON)
         )
             .andDo(MockMvcResultHandlers.print())
@@ -112,7 +114,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     @Test
     fun editEntity() {
 
-        val restEditEntityDto = RestEditEntityDto(pk, hibernateEntityImmutable)
+        val restEditEntityDto = RestEditEntityDto(wrappedPk(), hibernateEntityImmutable)
 
         val writeValueAsString = mapper.writeValueAsString(restEditEntityDto)
 

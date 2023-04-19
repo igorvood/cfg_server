@@ -1,4 +1,11 @@
 insert into dict_abstract_graph_node(graph_id, node_id, node_type) 
+select 'close_acc_graph', 'dev___account-provider__ acc__ close', 'topic' from dual  union 
+select 'close_acc_graph', 'dev__account-provider__ acc__ close', 'topic' from dual  union 
+select 'close_acc_graph', 'dev__account-provider__ acc__ close_unp', 'topic' from dual  union 
+select 'close_acc_graph', 'dev__uasp_usst__account-provider__ acc__ close-topic-003', 'topic' from dual  union 
+select 'close_acc_graph', 'dev__uasp_usst__account-provider__ acc__ close-topic-003_dlq', 'topic' from dual  union 
+select 'close_acc_graph', 'uasp-streaming-input-convertor~close_account', 'flink_srv' from dual  union 
+select 'close_acc_graph', 'uasp-streaming-unp-convertor~close_account', 'flink_srv' from dual  union 
 select 'ofvs', 'dev__rto_uasp__ofvs', 'topic' from dual  union 
 select 'ofvs', 'dev__rto_uasp__ofvs__dlq', 'topic' from dual  union 
 select 'ofvs', 'dev__tbcr_uasp__ofvs', 'topic' from dual  union 
@@ -7,6 +14,9 @@ select 'rto_graph', 'APRF_STATIC_PUB', 'topic' from dual  union
 select 'rto_graph', 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv' from dual  union 
 select 'rto_graph', 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv' from dual  union 
 select 'rto_graph', 'CFT2RS_CD_OUT', 'topic' from dual  union 
+select 'rto_graph', 'dev_accr_uasp_acc_close', 'topic' from dual  union 
+select 'rto_graph', 'dev_accr_uasp_acc_close_ack', 'topic' from dual  union 
+select 'rto_graph', 'dev_accr_uasp_acc_close_valid', 'topic' from dual  union 
 select 'rto_graph', 'dev_bevent__batch__ca_regulatory_client_id_of_profile__json_dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev_bevents_68_after_rate_enrich', 'topic' from dual  union 
 select 'rto_graph', 'dev_bevents__batch__ca_first_salary_transactions_dlq', 'topic' from dual  union 
@@ -189,19 +199,30 @@ select 'rto_graph', 'dev_uasp_ccpp_card_block_dlq', 'topic' from dual  union
 select 'rto_graph', 'dev_uasp_ccpp_card_pin_change', 'topic' from dual  union 
 select 'rto_graph', 'dev_uasp_ccpp_card_pin_change_dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp__enrichment__zoc', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ins_add_vns', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ins_add_vns_dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ins_change_vns', 'topic' from dual  union 
+select 'rto_graph', 'dev_uasp_ins_change_vns_dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp__rto__zoc', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp__rto__zoc__dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp_usst__wayNew_account_trmon', 'topic' from dual  union 
+select 'rto_graph', 'dev__uasp_usst__wayNew_account_uop', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp_usst__wayNew_operation_trmon', 'topic' from dual  union 
+select 'rto_graph', 'dev__uasp_usst__wayNew_operation_uop', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp_usst__wayOld_account_trmon', 'topic' from dual  union 
-select 'rto_graph', 'dev__uasp_usst__wayOld_operation_trmo', 'topic' from dual  union 
-select 'rto_graph', 'dev__uasp_usst__way_operation_trmon__dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev__uasp_usst__wayOld_operation_trmon', 'topic' from dual  union 
+select 'rto_graph', 'dev__uasp_usst__wayOld_operation_uop', 'topic' from dual  union 
 select 'rto_graph', 'dev__uasp_usst__way_trmon__dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev__uasp_usst__way_uop__dlq', 'topic' from dual  union 
+select 'rto_graph', 'dev__udds_uasp__up', 'topic' from dual  union 
 select 'rto_graph', 'dev__udds_uasp__up_dlq', 'topic' from dual  union 
 select 'rto_graph', 'dev__udds_uasp__up_unp', 'topic' from dual  union 
+select 'rto_graph', 'dev__wayn_wvtb__issuing_account', 'topic' from dual  union 
+select 'rto_graph', 'dev__wayn_wvtb__issuing_operation', 'topic' from dual  union 
 select 'rto_graph', 'dev__wpr_profile-uasp__auth', 'topic' from dual  union 
 select 'rto_graph', 'dev__wpr_profile-uasp__tran', 'topic' from dual  union 
 select 'rto_graph', 'ift__udds_uasp__up_dlq', 'topic' from dual  union 
+select 'rto_graph', 'issuing-account', 'topic' from dual  union 
 select 'rto_graph', 'issuing-account-balance', 'topic' from dual  union 
 select 'rto_graph', 'issuing-card', 'topic' from dual  union 
 select 'rto_graph', 'issuing-operation', 'topic' from dual  union 
@@ -212,6 +233,7 @@ select 'rto_graph', 'p0_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic
 select 'rto_graph', 'p0__rto_uasp__case_70', 'topic' from dual  union 
 select 'rto_graph', 'prod__dlq__ipo_uasp__od', 'topic' from dual  union 
 select 'rto_graph', 'prod__ipo_uasp__od', 'topic' from dual  union 
+select 'rto_graph', 'PROD.OUTER.CBR.RATES.ACK', 'topic' from dual  union 
 select 'rto_graph', 'prod__rto_uasp_ipood', 'topic' from dual  union 
 select 'rto_graph', 'prod_rto_uasp_ov', 'topic' from dual  union 
 select 'rto_graph', 'prod_rto_uasp_ov__dlq', 'topic' from dual  union 
@@ -224,8 +246,11 @@ select 'rto_graph', 'prod_ss_uasp_pzv', 'topic' from dual  union
 select 'rto_graph', 'prod_ss_uasp_usapns', 'topic' from dual  union 
 select 'rto_graph', 'profile_tx_out', 'topic' from dual  union 
 select 'rto_graph', 'streaming.smart_replication_change_request_tbcvsofk_default', 'topic' from dual  union 
-select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv' from dual  union 
-select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich_2150~way4_old_stream', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-dko-rds-63902-accr-reciver~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-2~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-40~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-55~main', 'flink_srv' from dual  union 
@@ -235,6 +260,8 @@ select 'rto_graph', 'uasp-kriaa-bevents-case-68~main', 'flink_srv' from dual  un
 select 'rto_graph', 'uasp-kriaa-bevents-case-70~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-84~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-case-86~main', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-kriaa-bevents-insurence-cft~main', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-kriaa-bevents-insurence-kn~main', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-kriaa-bevents-monitor~test', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-beg-card-block~credit-card', 'flink_srv' from dual  union 
@@ -296,9 +323,12 @@ select 'rto_graph', 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv'
 select 'rto_graph', 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~cardfl', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~case68', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-unp-convertor~cbr-rate', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-unp-convertor~outer-cbr-rate', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~profile-transactions', 'flink_srv' from dual  union 
+select 'rto_graph', 'uasp-streaming-unp-convertor~udds-3to8', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~unp_w4_issuing_card', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv' from dual  union 
 select 'rto_graph', 'uasp-streaming-unp-convertor~way4-main', 'flink_srv' from dual  union 
@@ -311,9 +341,16 @@ insert into dict_group(description, id)
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents', 'bevents-streaming-aggregate-first-salary_aggregate-bevents' from dual  union 
 select 'bevents-streaming-aggregate-first-salary_aggregate-bevents-56-57', 'bevents-streaming-aggregate-first-salary_aggregate-bevents-56-57' from dual  union 
 select 'rto_graph', 'rto_graph' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150_way4_new_stream', 'uasp_dko_83088_way4_mdm_enrich_2150_way4_new_stream' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150_way4_old_stream', 'uasp_dko_83088_way4_mdm_enrich_2150_way4_old_stream' from dual  union 
 select 'uasp_dko_83088_way4_mdm_enrich_83088_way4_mdm_enrich_new', 'uasp_dko_83088_way4_mdm_enrich_83088_way4_mdm_enrich_new' from dual  union 
 select 'uasp_dko_83088_way4_mdm_enrich_83088_way4_mdm_enrich_old', 'uasp_dko_83088_way4_mdm_enrich_83088_way4_mdm_enrich_old' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_83088_way4_new', 'uasp_dko_83088_way4_mdm_enrich_83088_way4_new' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_83088_way4_old', 'uasp_dko_83088_way4_mdm_enrich_83088_way4_old' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_way4_new', 'uasp_dko_83088_way4_mdm_enrich_way4_new' from dual  union 
 select 'uasp_dko_83088_way4_mdm_enrich_way4_old', 'uasp_dko_83088_way4_mdm_enrich_way4_old' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_way4_old_stream', 'uasp_dko_83088_way4_mdm_enrich_way4_old_stream' from dual  union 
+select 'uasp-dko-rds-63902-accr-reciver_main', 'uasp-dko-rds-63902-accr-reciver_main' from dual  union 
 select 'uasp-kriaa-bevents-case-2_main', 'uasp-kriaa-bevents-case-2_main' from dual  union 
 select 'uasp-kriaa-bevents-case-40_main', 'uasp-kriaa-bevents-case-40_main' from dual  union 
 select 'uasp-kriaa-bevents-case-55_main', 'uasp-kriaa-bevents-case-55_main' from dual  union 
@@ -323,6 +360,8 @@ select 'uasp-kriaa-bevents-case-68_main', 'uasp-kriaa-bevents-case-68_main' from
 select 'uasp-kriaa-bevents-case-70_main', 'uasp-kriaa-bevents-case-70_main' from dual  union 
 select 'uasp-kriaa-bevents-case-84_main', 'uasp-kriaa-bevents-case-84_main' from dual  union 
 select 'uasp-kriaa-bevents-case-86_main', 'uasp-kriaa-bevents-case-86_main' from dual  union 
+select 'uasp-kriaa-bevents-insurence-cft_main', 'uasp-kriaa-bevents-insurence-cft_main' from dual  union 
+select 'uasp-kriaa-bevents-insurence-kn_main', 'uasp-kriaa-bevents-insurence-kn_main' from dual  union 
 select 'uasp-kriaa-bevents-monitor_test', 'uasp-kriaa-bevents-monitor_test' from dual  union 
 select 'uasp-streaming-aggregate_aggregate-dko', 'uasp-streaming-aggregate_aggregate-dko' from dual  union 
 select 'uasp-streaming-beg-card-block_credit-card', 'uasp-streaming-beg-card-block_credit-card' from dual  union 
@@ -332,6 +371,7 @@ select 'uasp-streaming-currency-enrichment_case68', 'uasp-streaming-currency-enr
 select 'uasp-streaming-currency-enrichment_first-salary', 'uasp-streaming-currency-enrichment_first-salary' from dual  union 
 select 'uasp-streaming-filter_bevents-filter', 'uasp-streaming-filter_bevents-filter' from dual  union 
 select 'uasp-streaming-filter_main-input-filter', 'uasp-streaming-filter_main-input-filter' from dual  union 
+select 'uasp-streaming-input-convertor_close_account', 'uasp-streaming-input-convertor_close_account' from dual  union 
 select 'uasp-streaming-input-convertor_customer-package', 'uasp-streaming-input-convertor_customer-package' from dual  union 
 select 'uasp-streaming-input-convertor_customer-profile-full', 'uasp-streaming-input-convertor_customer-profile-full' from dual  union 
 select 'uasp-streaming-input-convertor_input-convertor-ca-cardfl', 'uasp-streaming-input-convertor_input-convertor-ca-cardfl' from dual  union 
@@ -386,9 +426,13 @@ select 'uasp-streaming-rto-zoc_uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc_
 select 'uasp-streaming-unp-convertor_aggregate-ca', 'uasp-streaming-unp-convertor_aggregate-ca' from dual  union 
 select 'uasp-streaming-unp-convertor_cardfl', 'uasp-streaming-unp-convertor_cardfl' from dual  union 
 select 'uasp-streaming-unp-convertor_case68', 'uasp-streaming-unp-convertor_case68' from dual  union 
+select 'uasp-streaming-unp-convertor_cbr-rate', 'uasp-streaming-unp-convertor_cbr-rate' from dual  union 
 select 'uasp-streaming-unp-convertor_cft-transactions', 'uasp-streaming-unp-convertor_cft-transactions' from dual  union 
+select 'uasp-streaming-unp-convertor_close_account', 'uasp-streaming-unp-convertor_close_account' from dual  union 
+select 'uasp-streaming-unp-convertor_outer-cbr-rate', 'uasp-streaming-unp-convertor_outer-cbr-rate' from dual  union 
 select 'uasp-streaming-unp-convertor_profile-auth', 'uasp-streaming-unp-convertor_profile-auth' from dual  union 
 select 'uasp-streaming-unp-convertor_profile-transactions', 'uasp-streaming-unp-convertor_profile-transactions' from dual  union 
+select 'uasp-streaming-unp-convertor_udds-3to8', 'uasp-streaming-unp-convertor_udds-3to8' from dual  union 
 select 'uasp-streaming-unp-convertor_unp_w4_issuing_card', 'uasp-streaming-unp-convertor_unp_w4_issuing_card' from dual  union 
 select 'uasp-streaming-unp-convertor_w4-account-balance', 'uasp-streaming-unp-convertor_w4-account-balance' from dual  union 
 select 'uasp-streaming-unp-convertor_way4-main', 'uasp-streaming-unp-convertor_way4-main' from dual  union 
@@ -438,6 +482,7 @@ select 'value.serializer', 'prd' from dual ;
 insert into dict_kafka_property_grp(description, id, type_read) 
 select 'загрузка сообщений начиная с офсета, который запомнила кафка', 'latest', 'cns' from dual  union 
 select 'Самый идемпотентный продюсер', 'producer_idempotence', 'prd' from dual  union 
+select 'Producer to CbrRateKafka', 'producer_CBR_RATE', 'prd' from dual  union 
 select 'Загрузка всех сообщений топика с самого начала', 'earliest_DATA_PLATFORM', 'cns' from dual  union 
 select 'Загрузка всех сообщений топика с самого начала', 'earliest_CARDFL_BOOTSTRAP_SERVERS', 'cns' from dual  union 
 select 'Внешняя кафка GF для UNP convertor, загрузка сообщений начиная с офсета, который запомнила кафка', 'gf_latest', 'cns' from dual  union 
@@ -514,6 +559,8 @@ select '2', 'PARALLELISM', 'PARALLELISM' from dual ;
 insert into dict_service(id, main_class) 
 select 'bevents-streaming-aggregate-first-salary', 'ru.vtb.bevent.first.salary.aggregate.UaspStreamingAggregateFirstSalary' from dual  union 
 select 'uasp_dko_83088_way4_mdm_enrich', 'ru.vtb.uasp.way4mdmenrich.Way4MdmEnrichJob' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150', 'ru.vtb.uasp.way4mdmenrich2150.Way4MdmEnrichJob' from dual  union 
+select 'uasp-dko-rds-63902-accr-reciver', 'ru.vtb.uasp.closingaccount.ClosingAccountJob' from dual  union 
 select 'uasp-kriaa-bevents-case-2', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-case-40', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-case-55', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
@@ -523,6 +570,8 @@ select 'uasp-kriaa-bevents-case-68', 'ru.vtb.bevent.UaspStreamingCase68' from du
 select 'uasp-kriaa-bevents-case-70', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-case-84', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-case-86', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
+select 'uasp-kriaa-bevents-insurence-cft', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
+select 'uasp-kriaa-bevents-insurence-kn', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-kriaa-bevents-monitor', 'ru.vtb.uasp.packacge.PackageServiceJob' from dual  union 
 select 'uasp-streaming-aggregate', 'ru.vtb.uasp.aggregate.UaspStreamingAggregate' from dual  union 
 select 'uasp-streaming-beg-card-block', 'ru.vtb.uasp.beg.card.block.App' from dual  union 
@@ -574,6 +623,9 @@ select 'bevents-streaming-aggregate-first-salary~aggregate-bevents', 'flink_srv'
 select 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'Не задан', 'dev__bevents__realtime__aggregate_first_salary__dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'bevents-streaming-aggregate-first-salary~aggregate-bevents-56-57', 'flink_srv', 'Не задан', 'dev_bevents__realtime__aggregate_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'output.toTopic' from dual  union 
 select 'CFT2RS_CD_OUT', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-cft', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
+select 'dev__account-provider__ acc__ close', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~close_account', 'flink_srv', 'close_acc_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'dev__account-provider__ acc__ close_unp', 'topic', 'Не задан', 'uasp-streaming-input-convertor~close_account', 'flink_srv', 'close_acc_graph', 'latest', 'input.fromTopic' from dual  union 
+select 'dev_accr_uasp_acc_close', 'topic', 'Не задан', 'uasp-dko-rds-63902-accr-reciver~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainProperty$.fromTopic' from dual  union 
 select 'dev_bevents_68_after_rate_enrich', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents_68_after_rate_enrich', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-68~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_bevents__batch__ca_first_salary_transactions__json', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-56~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.PackageFlEnrichProperty$.fromTopic' from dual  union 
@@ -607,6 +659,7 @@ select 'dev_bevents_streaming_input_convertor_profile_auth_uaspdto', 'topic', '�
 select 'dev_bevents_udds_mdm_rate_case68_uaspdto', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'rto_graph', 'latest', 'uasp.fromTopic' from dual  union 
 select 'dev__boop_uasp__uss__loyalty_profile_changes', 'topic', 'Не задан', 'uasp-streaming-input-convertor~loyalty', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev_cft2rl_uasp_loan_details', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
+select 'dev_cft2rl_uasp_loan_details', 'topic', 'Не задан', 'uasp-kriaa-bevents-insurence-cft~main', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev__cft2rs_uasp__chvsns', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-ca-cardfl', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev__dko_uasp__card_agreement', 'topic', 'Не задан', 'uasp-streaming-rto-dko-4_62~uasp-streaming-rto-dko-4_62', 'flink_srv', 'rto_graph', 'latest', 'card-agreement.fromTopic' from dual  union 
@@ -624,8 +677,9 @@ select 'dev_input_converter_cardfl_refill_uasp', 'topic', 'Не задан', 'ua
 select 'dev_ivr__uasp_realtime__business_rules__uaspdto', 'topic', 'Не задан', 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__ca_ha_aggregate__ca__uaspdto', 'topic', 'Не задан', 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv', 'rto_graph', 'earliest', 'consumer.ca.topic.name' from dual  union 
 select 'dev_ivr__uasp_realtime__case_48_concatenate__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~way4-card-agreement', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
-select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'rto_graph', 'earliest', 'enrichMdm.MdmEnrichProperty$.fromTopic' from dual  union 
-select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'rto_graph', 'earliest', 'enrichMdm.MdmEnrichProperty$.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'rto_graph', 'earliest', 'enrichMdm.MdmEnrichProperty$.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'rto_graph', 'earliest', 'enrichMdm.MdmEnrichProperty$.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'rto_graph', 'earliest', 'enrichMdm.MdmEnrichProperty$.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-mdm', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~mdm-profile', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__input_converter__mdm_cross_link__json', 'topic', 'Не задан', 'uasp-streaming-rto-card-activation-way4~uasp-streaming-rto-card-activation-way4', 'flink_srv', 'rto_graph', 'latest', 'mdm.fromTopic' from dual  union 
@@ -639,6 +693,8 @@ select 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 
 select 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__json', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~way4-main', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__input_converter__way4_issuing_operation__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mdm-enrichment~way4', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv', 'rto_graph', 'earliest', 'consumer.ha.topic.name' from dual  union 
+select 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~cbr-rate', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
+select 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~outer-cbr-rate', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~case68', 'flink_srv', 'rto_graph', 'latest', 'currency.fromTopic' from dual  union 
 select 'dev_ivr__uasp_realtime__outer_cbr_rates__json', 'topic', 'Не задан', 'uasp-streaming-currency-enrichment~first-salary', 'flink_srv', 'rto_graph', 'latest', 'currency.fromTopic' from dual  union 
 select 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-w4-operation', 'flink_srv', 'rto_graph', 'earliest', 'input.fromTopic' from dual  union 
@@ -646,6 +702,7 @@ select 'dev_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic', 'Не з�
 select 'dev_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 'topic', 'Не задан', 'uasp-streaming-mutator~mainInput', 'flink_srv', 'rto_graph', 'latest', 'kafka.consumer.fromTopic' from dual  union 
 select 'dev__model_orkestrator__uasp__zoc', 'topic', 'Не задан', 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev__mscl_uasp_applic', 'topic', 'Не задан', 'uasp-streaming-json-validator~kn', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'dev__mscl_uasp_applic_valid', 'topic', 'Не задан', 'uasp-kriaa-bevents-insurence-kn~main', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev__mssa_uasp_applic', 'topic', 'Не задан', 'uasp-streaming-json-validator~uz', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev_multibonus_partners_program', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'rto_graph', 'earliest', 'multiBonus.fromTopic' from dual  union 
 select 'dev__pp_fl_uasp__opyp', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'latest', 'enrichOne.MainEnrichProperty$.fromTopic' from dual  union 
@@ -667,30 +724,37 @@ select 'dev_uasp_bcps_csc', 'topic', 'Не задан', 'uasp-streaming-rto-bcps
 select 'dev_uasp_ccpp_card_activate', 'topic', 'Не задан', 'uasp-streaming-cc-activation~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev_uasp_ccpp_card_block', 'topic', 'Не задан', 'uasp-streaming-beg-card-block~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'dev_uasp_ccpp_card_pin_change', 'topic', 'Не задан', 'uasp-streaming-beg-pincode-change~credit-card', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
+select 'dev__udds_uasp__up', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~udds-3to8', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
 select 'dev__udds_uasp__up_unp', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-udds', 'flink_srv', 'rto_graph', 'earliest', 'input.fromTopic' from dual  union 
+select 'dev__wayn_wvtb__issuing_account', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainAccountProperty$.fromTopic' from dual  union 
+select 'dev__wayn_wvtb__issuing_account', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainAccountProperty$.fromTopic' from dual  union 
+select 'dev__wayn_wvtb__issuing_operation', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainOperationProperty$.fromTopic' from dual  union 
+select 'dev__wayn_wvtb__issuing_operation', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainOperationProperty$.fromTopic' from dual  union 
 select 'dev__wpr_profile-uasp__auth', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-prof-auth', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev__wpr_profile-uasp__auth', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
 select 'dev__wpr_profile-uasp__tran', 'topic', 'Не задан', 'uasp-streaming-input-convertor~input-convertor-profile', 'flink_srv', 'rto_graph', 'latest', 'input.fromTopic' from dual  union 
 select 'dev__wpr_profile-uasp__tran', 'topic', 'Не задан', 'uasp-streaming-rto-dko-4_62~uasp-streaming-rto-dko-4_62', 'flink_srv', 'rto_graph', 'latest', 'profile.fromTopic' from dual  union 
 select 'dev__wpr_profile-uasp__tran', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~profile-transactions', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
-select 'issuing-account-balance', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainOperationProperty$.fromTopic' from dual  union 
-select 'issuing-account-balance', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainAccountProperty$.fromTopic' from dual  union 
+select 'issuing-account', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainAccountProperty$.fromTopic' from dual  union 
 select 'issuing-account-balance', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv', 'rto_graph', 'latest', 'consumer.fromTopic' from dual  union 
-select 'issuing-operation', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainAccountProperty$.fromTopic' from dual  union 
-select 'issuing-operation', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainOperationProperty$.fromTopic' from dual  union 
+select 'issuing-card', 'topic', 'Не задан', 'uasp-streaming-unp-convertor~unp_w4_issuing_card', 'flink_srv', 'rto_graph', 'gf_latest', 'consumer.fromTopic' from dual  union 
+select 'issuing-operation', 'topic', 'Не задан', 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'rto_graph', 'latest', 'enrichMdm.MainOperationProperty$.fromTopic' from dual  union 
 select 'prod__ipo_uasp__od', 'topic', 'Не задан', 'uasp-streaming-rto-mortgage-approval~uasp-streaming-rto-mortgage-approval-prod', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'prod_ss_uasp_ov', 'topic', 'Не задан', 'uasp-streaming-rto-open-deposit~uasp-streaming-rto-open-deposit', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'prod_ss_uasp_pzv', 'topic', 'Не задан', 'uasp-streaming-rto-closing-deposit~uasp-streaming-rto-closing-deposit', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'prod_ss_uasp_usapns', 'topic', 'Не задан', 'uasp-streaming-rto-15~uasp-streaming-rto-15', 'flink_srv', 'rto_graph', 'latest', 'fromTopic' from dual  union 
 select 'streaming.smart_replication_change_request_tbcvsofk_default', 'topic', 'Не задан', 'uasp-kriaa-bevents-case-55~main', 'flink_srv', 'rto_graph', 'earliest_DATA_PLATFORM', 'enrichOne.ChangeRecordEnrichProperty$.fromTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_account_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_operation_trmo', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_operation_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~83088_way4_mdm_enrich_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_account_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_operation_trmo', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_operation_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich~way4_old', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayNew_account_uop', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayNew_operation_uop', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150~way4_new_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_uop__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayNew_account_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayNew_operation_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_new', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_account_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainAccountProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__wayOld_operation_trmon', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich~way4_old_stream', 'flink_srv', 'Не задан', 'dev__uasp_usst__way_trmon__dlq', 'topic', 'rto_graph', 'producer_default', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-dko-rds-63902-accr-reciver~main', 'flink_srv', 'Не задан', 'dev_accr_uasp_acc_close_ack', 'topic', 'rto_graph', 'producer_default', 'enrichOne.AskProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-dko-rds-63902-accr-reciver~main', 'flink_srv', 'Не задан', 'dev_accr_uasp_acc_close_valid', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-2~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_2_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-40~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_40', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
@@ -709,6 +773,10 @@ select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__
 select 'uasp-kriaa-bevents-case-84~main', 'flink_srv', 'Не задан', 'dev__rto_uasp__case_84_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-86~main', 'flink_srv', 'Не задан', 'dev_rto_uasp_piods', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.out.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-kriaa-bevents-case-86~main', 'flink_srv', 'Не задан', 'dev_rto_uasp_piods_dlq', 'topic', 'rto_graph', 'producer_default', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-insurence-cft~main', 'flink_srv', 'Не задан', 'dev_uasp_ins_change_vns', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-insurence-cft~main', 'flink_srv', 'Не задан', 'dev_uasp_ins_change_vns_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-insurence-kn~main', 'flink_srv', 'Не задан', 'dev_uasp_ins_add_vns', 'topic', 'rto_graph', 'producer_default', 'out.toTopic' from dual  union 
+select 'uasp-kriaa-bevents-insurence-kn~main', 'flink_srv', 'Не задан', 'dev_uasp_ins_add_vns_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__aggregate__dlq', 'topic', 'rto_graph', 'producer_default', 'producer.ha.dlq.topic.name' from dual  union 
 select 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__aggregate__filter', 'topic', 'rto_graph', 'producer_default', 'producer.ha.filter.status.topic.name' from dual  union 
 select 'uasp-streaming-aggregate~aggregate-dko', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__aggregate__uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.ha.topic.name' from dual  union 
@@ -728,6 +796,8 @@ select 'uasp-streaming-filter~bevents-filter', 'flink_srv', 'Не задан', '
 select 'uasp-streaming-filter~bevents-filter', 'flink_srv', 'Не задан', 'dev_bevents__realtime__filter_first_salary__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producer.filterTag-success.toTopic' from dual  union 
 select 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__filter__uaspdto__filter', 'topic', 'rto_graph', 'producer_default', 'kafka.producer.filterTag-error.FlinkSinkProperties$.toTopic' from dual  union 
 select 'uasp-streaming-filter~main-input-filter', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__mdm_enrichment__uaspdto', 'topic', 'rto_graph', 'producer_default', 'kafka.producer.filterTag-success.toTopic' from dual  union 
+select 'uasp-streaming-input-convertor~close_account', 'flink_srv', 'Не задан', 'dev__uasp_usst__account-provider__ acc__ close-topic-003', 'topic', 'close_acc_graph', 'producer_default', 'output.toTopic' from dual  union 
+select 'uasp-streaming-input-convertor~close_account', 'flink_srv', 'Не задан', 'dev__uasp_usst__account-provider__ acc__ close-topic-003_dlq', 'topic', 'close_acc_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~customer-package', 'flink_srv', 'Не задан', 'dev__dko_uasp__pension_converted', 'topic', 'rto_graph', 'producer_default', 'output.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~customer-package', 'flink_srv', 'Не задан', 'dev__dko_uasp__pension_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
 select 'uasp-streaming-input-convertor~customer-profile-full', 'flink_srv', 'Не задан', 'dev_bevent__batch__ca_regulatory_client_id_of_profile__json_dlq', 'topic', 'rto_graph', 'producer_default', 'dlq.toTopic' from dual  union 
@@ -854,8 +924,13 @@ select 'uasp-streaming-rto-zoc~uasp-streaming-rto-zoc', 'flink_srv', 'Не за�
 select 'uasp-streaming-unp-convertor~aggregate-ca', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment_first_salary_transactions__uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~cardfl', 'flink_srv', 'Не задан', 'dev__uasp_aprf__pks', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~case68', 'flink_srv', 'Не задан', 'dev_bevents_cft_way4_profile_udds_before_mdm_rate_case68_uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~cbr-rate', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__outer_cbr_rate__ask', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~cft-transactions', 'flink_srv', 'Не задан', 'CFT2RS_CD_OUT', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~close_account', 'flink_srv', 'Не задан', 'dev__account-provider__ acc__ close_unp', 'topic', 'close_acc_graph', 'producer_default', 'producer.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~outer-cbr-rate', 'flink_srv', 'Не задан', 'PROD.OUTER.CBR.RATES.ACK', 'topic', 'rto_graph', 'producer_CBR_RATE', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~profile-auth', 'flink_srv', 'Не задан', 'dev_bevents_streaming_input_convertor_profile_auth_json', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~udds-3to8', 'flink_srv', 'Не задан', 'dev__udds_uasp__up_unp', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
+select 'uasp-streaming-unp-convertor~unp_w4_issuing_card', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_card__json', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~w4-account-balance', 'flink_srv', 'Не задан', 'dev_ivr__uasp_realtime__input_converter__way4_issuing_account_balance__json', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~way4-main', 'flink_srv', 'Не задан', 'dev_ivr_uasp_realtime_way4_main_input_issuing_operation__json', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
 select 'uasp-streaming-unp-convertor~way4-transactions', 'flink_srv', 'Не задан', 'dev_bevents__realtime__enrichment__prof__transactions_first__uaspdto', 'topic', 'rto_graph', 'producer_default', 'producer.toTopic' from dual  union 
@@ -943,6 +1018,17 @@ select 'latest_DATA_PLATFORM', 'ssl.keystore.type', 'PKCS12', 'cns' from dual  u
 select 'latest_DATA_PLATFORM', 'ssl.truststore.location', '${TRUSTSTORE_LOCATION}', 'cns' from dual  union 
 select 'latest_DATA_PLATFORM', 'ssl.truststore.password', '${DSO_KAFKA_SSL_TRUSTSTORE_PASSWORD}', 'cns' from dual  union 
 select 'latest_DATA_PLATFORM', 'ssl.truststore.type', 'PKCS12', 'cns' from dual  union 
+select 'producer_CBR_RATE', 'bootstrap.servers', '${P0_CBR_RATES_IFFXRT_BOOTSTRAP_SERVERS}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'security.protocol', 'SSL', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.key.password', '${P0_CBR_RATES_IFFXRT_SSL_KEY_PASSWORD}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.keystore.location', '${P0_CBR_RATES_IFFXRT_KEYSTORE_LOCATION}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.keystore.password', '${P0_CBR_RATES_IFFXRT_SSL_KEYSTORE_PASSWORD}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.keystore.type', 'PKCS12', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.truststore.location', '${P0_CBR_RATES_IFFXRT_TRUSTSTORE_LOCATION}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.truststore.password', '${P0_CBR_RATES_IFFXRT_SSL_TRUSTSTORE_PASSWORD}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'ssl.truststore.type', 'PKCS12', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'transactional.id', '${PROFILE}', 'prd' from dual  union 
+select 'producer_CBR_RATE', 'transaction.timeout.ms', '30000', 'prd' from dual  union 
 select 'producer_default', 'bootstrap.servers', '${BOOTSTRAP_SERVERS}', 'prd' from dual  union 
 select 'producer_default', 'security.protocol', 'SSL', 'prd' from dual  union 
 select 'producer_default', 'ssl.key.password', '${DSO_KAFKA_SSL_KEY_PASSWORD}', 'prd' from dual  union 
@@ -973,7 +1059,6 @@ select 'producer_idempotence', 'transaction.timeout.ms', '1800000', 'prd' from d
 select 'producer_idempotence', 'value.serializer', 'org.apache.kafka.common.serialization.ByteArraySerializer', 'prd' from dual ;
 
 insert into dict_service_node(profile_id, report_description, service_id) 
-select '83088_way4_mdm_enrich_old', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
 select 'aggregate-bevents', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents-56-57', 'Описание не заполнено.', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-ca', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
@@ -985,7 +1070,10 @@ select 'case-68', 'Описание не заполнено.', 'uasp-streaming-m
 select 'case68', 'Описание не заполнено.', 'uasp-streaming-currency-enrichment' from dual  union 
 select 'case68', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'case-68_agrement', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'cbr-rate', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-beg-card-block' from dual  union 
 select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-beg-pincode-change' from dual  union 
 select 'credit-card', 'Описание не заполнено.', 'uasp-streaming-cc-activation' from dual  union 
@@ -1006,6 +1094,7 @@ select 'input-convertor-withdraw', 'Описание не заполнено.', 
 select 'insurance', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'kn', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
 select 'loyalty', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-55' from dual  union 
@@ -1015,11 +1104,14 @@ select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-case-86' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'main', 'Описание не заполнено.', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'main', 'Описание не заполнено.', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 'mainInput', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'main-input-filter', 'Описание не заполнено.', 'uasp-streaming-filter' from dual  union 
 select 'mdm-profile', 'Описание не заполнено.', 'uasp-streaming-input-convertor' from dual  union 
 select 'model-vector-bevents', 'Описание не заполнено.', 'uasp-streaming-model-vector' from dual  union 
+select 'outer-cbr-rate', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'prof-auth', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth-packNM', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'profile-auth', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
@@ -1045,6 +1137,7 @@ select 'uasp-streaming-rto-ofvs', 'Описание не заполнено.', '
 select 'uasp-streaming-rto-open-deposit', 'Описание не заполнено.', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'Описание не заполнено.', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-zoc', 'Описание не заполнено.', 'uasp-streaming-rto-zoc' from dual  union 
+select 'udds-3to8', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uddsRate', 'Описание не заполнено.', 'uasp-streaming-mutator' from dual  union 
 select 'unp_w4_issuing_card', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uz', 'Описание не заполнено.', 'uasp-streaming-json-validator' from dual  union 
@@ -1052,13 +1145,22 @@ select 'w4-account-balance', 'Описание не заполнено.', 'uasp-
 select 'way4', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'way4-card-agreement', 'Описание не заполнено.', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'way4-main', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
-select 'way4_old', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new_stream', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'Описание не заполнено.', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
 select 'way4-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual  union 
 select 'withdraw-transactions', 'Описание не заполнено.', 'uasp-streaming-unp-convertor' from dual ;
 
 insert into dict_topic_node(cleanup_policy, id, retention, topic_owner_id) 
 select 'delete', 'APRF_STATIC_PUB', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'CFT2RS_CD_OUT', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev___account-provider__ acc__ close', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__account-provider__ acc__ close', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__account-provider__ acc__ close_unp', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_accr_uasp_acc_close', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_accr_uasp_acc_close_ack', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_accr_uasp_acc_close_valid', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_bevent__batch__ca_regulatory_client_id_of_profile__json_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_bevents_68_after_rate_enrich', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_bevents__batch__ca_first_salary_transactions_dlq', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1244,19 +1346,32 @@ select 'delete', 'dev_uasp_ccpp_card_block_dlq', 14400000, 'DKO_COMMAND' from du
 select 'delete', 'dev_uasp_ccpp_card_pin_change', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev_uasp_ccpp_card_pin_change_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp__enrichment__zoc', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ins_add_vns', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ins_add_vns_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ins_change_vns', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev_uasp_ins_change_vns_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp__rto__zoc', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp__rto__zoc__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__account-provider__ acc__ close-topic-003', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__account-provider__ acc__ close-topic-003_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp_usst__wayNew_account_trmon', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__wayNew_account_uop', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp_usst__wayNew_operation_trmon', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__wayNew_operation_uop', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp_usst__wayOld_account_trmon', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev__uasp_usst__wayOld_operation_trmo', 14400000, 'DKO_COMMAND' from dual  union 
-select 'delete', 'dev__uasp_usst__way_operation_trmon__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__wayOld_operation_trmon', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__wayOld_operation_uop', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__uasp_usst__way_trmon__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__uasp_usst__way_uop__dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__udds_uasp__up', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__udds_uasp__up_dlq', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__udds_uasp__up_unp', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__wayn_wvtb__issuing_account', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'dev__wayn_wvtb__issuing_operation', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__wpr_profile-uasp__auth', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'dev__wpr_profile-uasp__tran', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'ift__udds_uasp__up_dlq', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'issuing-account', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'issuing-account-balance', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'issuing-card', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'issuing-operation', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1267,6 +1382,7 @@ select 'delete', 'p0_ivr__uasp_realtime_way4_mdm_enrichment__uaspdto', 14400000,
 select 'delete', 'p0__rto_uasp__case_70', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'prod__dlq__ipo_uasp__od', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'prod__ipo_uasp__od', 14400000, 'DKO_COMMAND' from dual  union 
+select 'delete', 'PROD.OUTER.CBR.RATES.ACK', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'prod__rto_uasp_ipood', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'prod_rto_uasp_ov', 14400000, 'DKO_COMMAND' from dual  union 
 select 'delete', 'prod_rto_uasp_ov__dlq', 14400000, 'DKO_COMMAND' from dual  union 
@@ -1283,10 +1399,17 @@ select 'delete', 'UNP_PROFILE_AUTH', 14400000, 'DKO_COMMAND' from dual  union
 select 'delete', 'withdraw_tx_out', 14400000, 'DKO_COMMAND' from dual ;
 
 insert into dict_flink_prop_value(profile_id, prop_id, prop_value, service_id) 
-select '83088_way4_mdm_enrich_old', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select '83088_way4_mdm_enrich_old', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select '83088_way4_mdm_enrich_old', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select '83088_way4_mdm_enrich_old', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.data_operationName', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents', 'dlq.JsMaskedPath$.data.dataString.tso', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents', 'list.of.business.rule', 'case_48.drl,case_71.drl,case_8.drl,case_29.drl,case_38.drl,case_39.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents', 'list.of.business.rule.level0', 'source_account.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents', 'list.of.business.rule.level1', 'level1.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -1299,6 +1422,17 @@ select 'aggregate-bevents', 'service.serviceVersion', '${SERVICE_VERSION}', 'bev
 select 'aggregate-bevents', 'state.checkpoints.num-retained', '1', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents', 'stream.checkpoint.time.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents', 'stream.checkpoint.timeout.milliseconds', '600000', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.data_operationName', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
+select 'aggregate-bevents-56-57', 'dlq.JsMaskedPath$.data.dataString.tso', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents-56-57', 'list.of.business.rule', 'case_44.drl,case_56.drl,case_57.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents-56-57', 'list.of.business.rule.level0', 'source_account.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
 select 'aggregate-bevents-56-57', 'list.of.business.rule.level1', 'level1.drl', 'bevents-streaming-aggregate-first-salary' from dual  union 
@@ -1337,7 +1471,6 @@ select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.Js
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-filter' from dual  union 
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.data_operationName', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
-select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
 select 'bevents-filter', 'kafka.producer.filterTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-filter' from dual  union 
@@ -1388,12 +1521,12 @@ select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMask
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.operationAmount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount_sum', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.balanceBeforeOperation', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1463,6 +1596,8 @@ select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkPropertie
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount_sum', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'customer-package', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
+select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.balanceBeforeOperation', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1478,12 +1613,31 @@ select 'case-68_agrement', 'service.serviceName', '${SERVICE_NAME}', 'uasp-strea
 select 'case-68_agrement', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'case-68_agrement', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'cbr-rate', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cbr-rate', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cbr-rate', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cbr-rate', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cbr-rate', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 'cbr-rate', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'cft-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'max.parallelism', '${PARALLELISM}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'sink.parallelism', '${PARALLELISM}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'source.parallelism', '${PARALLELISM}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'close_account', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
+select 'close_account', 'uaspdto.type', 'close_account', 'uasp-streaming-input-convertor' from dual  union 
 select 'credit-card', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-beg-card-block' from dual  union 
 select 'credit-card', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-beg-pincode-change' from dual  union 
 select 'credit-card', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-cc-activation' from dual  union 
@@ -1503,7 +1657,6 @@ select 'customer-package', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SAL
 select 'customer-package', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-package', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-package', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
-select 'customer-package', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-package', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-package', 'uaspdto.type', 'customer-package', 'uasp-streaming-input-convertor' from dual  union 
 select 'customer-profile-full', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1569,6 +1722,7 @@ select 'input-convertor-ca-first-salary', 'uaspdto.type', 'ca-first-salary', 'ua
 select 'input-convertor-cardfl', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.CntrCd', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.InvstPrtfAmtNc', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
+select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.PfmManSapId', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.TtBlncAmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'read.source.topic.frombeginning', 'true', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-cardfl', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1621,6 +1775,7 @@ select 'input-convertor-profile', 'service.serviceVersion', '${SERVICE_VERSION}'
 select 'input-convertor-profile', 'sync.parallelism', '${PARALLELISM}', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-profile', 'uaspdto.type', 'profile', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-udds', 'card.number.sha256.salt', '${CARD_NUMBER_SHA_256_SALT}', 'uasp-streaming-input-convertor' from dual  union 
+select 'input-convertor-udds', 'dlq.JsMaskedPath$.data.BALANCE_BEFORE_OPERATION', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-udds', 'dlq.JsMaskedPath$.data.OPERATION_AMOUNT', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-udds', 'read.source.topic.frombeginning', 'false', 'uasp-streaming-input-convertor' from dual  union 
 select 'input-convertor-udds', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-input-convertor' from dual  union 
@@ -1686,6 +1841,7 @@ select 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-beven
 select 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'appStreamCheckpointTimeMilliseconds', '10000', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 'main', 'appSyncParallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-55' from dual  union 
+select 'main', 'appSyncParallelism', '1', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'main', 'dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-70' from dual  union 
@@ -1714,7 +1870,6 @@ select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedP
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.amount_sum_cft', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-68' from dual  union 
-select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-56' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-57' from dual  union 
@@ -1722,6 +1877,7 @@ select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedP
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.employee_full_nm', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-55' from dual  union 
+select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-56' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-56' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-68' from dual  union 
@@ -1760,6 +1916,7 @@ select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedP
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-56' from dual  union 
+select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 'main', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-kriaa-bevents-case-68' from dual  union 
@@ -1781,6 +1938,7 @@ select 'main', 'savepoint.pref', 'case-56', 'uasp-kriaa-bevents-case-56' from du
 select 'main', 'savepoint.pref', 'case-57', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'savepoint.pref', 'case-68', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'savepoint.pref', 'uasp-streaming-refunds-event-notifier', 'uasp-streaming-refunds-event-notifier' from dual  union 
+select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-56' from dual  union 
@@ -1788,8 +1946,11 @@ select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-cas
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'main', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 'main', 'service.serviceName', 'uasp-kriaa-bevents-case-55', 'uasp-kriaa-bevents-case-55' from dual  union 
+select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-56' from dual  union 
@@ -1797,8 +1958,11 @@ select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 'main', 'service.serviceProfile', 'main', 'uasp-kriaa-bevents-case-55' from dual  union 
+select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-55' from dual  union 
@@ -1807,15 +1971,18 @@ select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-beven
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-56' from dual  union 
 select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-68' from dual  union 
+select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-70' from dual  union 
+select 'main', 'stateCheckpointsNumRetained', '8', 'uasp-kriaa-bevents-case-84' from dual  union 
+select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-40' from dual  union 
-select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-56' from dual  union 
-select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-57' from dual  union 
 select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-68' from dual  union 
 select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'main', 'streamCheckpointTimeoutMilliseconds', '600000', 'uasp-kriaa-bevents-case-84' from dual  union 
@@ -1827,10 +1994,12 @@ select 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-68
 select 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 'main', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-case-86' from dual  union 
 select 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-case-57' from dual  union 
+select 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'main', 'sync.parallelism', '8', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'main', 'sync.parallelism', '8', 'uasp-streaming-refunds-event-notifier' from dual  union 
 select 'main', 'timeZoneOffset', '3', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 'main', 'windows.size.time.minutes', '2', 'uasp-kriaa-bevents-case-70' from dual  union 
-select 'main', 'windowsSizeTimeMinutes', '1', 'uasp-kriaa-bevents-case-55' from dual  union 
+select 'main', 'windowsSizeTimeMinutes', '${WINDOWS_SIZE_TIME_MINUTES}', 'uasp-kriaa-bevents-case-55' from dual  union 
 select 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.fee_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'mainInput', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
@@ -1868,12 +2037,28 @@ select 'mdm-profile', 'uaspdto.type', 'mdm-profile', 'uasp-streaming-input-conve
 select 'model-vector-bevents', 'mv.max.parallelism', '${PARALLELISM}', 'uasp-streaming-model-vector' from dual  union 
 select 'model-vector-bevents', 'mv.state.checkpoints.num-retained', '4', 'uasp-streaming-model-vector' from dual  union 
 select 'model-vector-bevents', 'mv.stream.checkpoint.time.seconds', '120000', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.card_expiration_dt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.data_operationName', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
+select 'model-vector-bevents', 'producer.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tso', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-model-vector' from dual  union 
 select 'model-vector-bevents', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 'model-vector-bevents', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-model-vector' from dual  union 
 select 'model-vector-bevents', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-model-vector' from dual  union 
+select 'outer-cbr-rate', 'max.parallelism', '4', 'uasp-streaming-unp-convertor' from dual  union 
+select 'outer-cbr-rate', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'outer-cbr-rate', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'outer-cbr-rate', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'outer-cbr-rate', 'sink.parallelism', '1', 'uasp-streaming-unp-convertor' from dual  union 
+select 'outer-cbr-rate', 'source.parallelism', '3', 'uasp-streaming-unp-convertor' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.fromFieldName', 'mask_card_number', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 'uasp-streaming-rto-15', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-15' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a01.toFieldName', 'MASK_CARD_NUMBER', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a02.fromFieldName', 'customer_id', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1910,6 +2095,7 @@ select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a09.isOptional
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a09.toFieldName', 'card_type_cd', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a10.fromFieldName', 'salary_serv_pack_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a10.fromFieldType', 'String', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'unp_w4_issuing_card', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a10.isOptionalEnrichValue', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a10.toFieldName', 'salary_serv_pack_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth', 'enrichOne.GlobalIdEnrichProperty$.fieldsList.a11.fromFieldName', 'salary_project_flg', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -1964,6 +2150,7 @@ select 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.inputDataFormat', 'U
 select 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorEnrich.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth-packNM', 'enrichOne.CommonEnrichProperty$.keySelectorMain.isId', 'true', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.amount_sum_cft', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'unp_w4_issuing_card', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.base_amount_w4', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.bseamt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-auth-packNM', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -2054,6 +2241,7 @@ select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperti
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.transaction_amount_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
+select 'uz', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tcmt_account_num', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.tso', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'prof-tx-case-71', 'enrichOne.CommonEnrichProperty$.fieldsList.a1.fromFieldName', 'product_nm', 'uasp-streaming-mdm-enrichment' from dual  union 
@@ -2098,6 +2286,7 @@ select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card_expire_w4', 'ru.vtb.uasp.common.mask.fun.CenterMaskService(1,0)', 'uasp-streaming-mutator' from dual  union 
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.contract_num', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
+select 'uz', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.data_operationName', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.replacement_amt', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'rateMutate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataString.source_account_w4', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp-streaming-mutator' from dual  union 
@@ -2119,6 +2308,7 @@ select 'test', 'sync.parallelism', '${PARALLELISM}', 'uasp-kriaa-bevents-monitor
 select 'uasp-streaming-rto-15', 'disable.validation', 'false', 'uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-15', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-15', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-15' from dual  union 
+select 'uasp-streaming-rto-15', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-15', 'mask.DESTINATION_ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.AccountMask', 'uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-15', 'mask.SOURCE_ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.AccountMask', 'uasp-streaming-rto-15' from dual  union 
 select 'uasp-streaming-rto-15', 'restart.attempts', '50', 'uasp-streaming-rto-15' from dual  union 
@@ -2126,13 +2316,14 @@ select 'uasp-streaming-rto-15', 'restart.delay', '5000', 'uasp-streaming-rto-15'
 select 'uasp-streaming-rto-37', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-37', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-37', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-37' from dual  union 
-select 'uasp-streaming-rto-37', 'mask.ACCOUNT_AMOUNT', 'ru.vtb.uasp.common.java.mask.service.fun.FloatLengthCommonMaskService', 'uasp-streaming-rto-37' from dual  union 
+select 'uasp-streaming-rto-37', 'mask.ACCOUNT_AMOUNT', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-37', 'mask.ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.FloatLengthCommonMaskService', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-37', 'restart.attempts', '50', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-37', 'restart.delay', '5000', 'uasp-streaming-rto-37' from dual  union 
 select 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-attempt-close-part2', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
+select 'uasp-streaming-rto-attempt-close-part2', 'mask.ACCOUNT_AMOUNT', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-attempt-close-part2' from dual  union 
 select 'uasp-streaming-rto-bcps-card-emission-digital', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 'uasp-streaming-rto-bcps-card-emission-digital', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
 select 'uasp-streaming-rto-bcps-card-emission-digital', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-bcps-card-emission-digital' from dual  union 
@@ -2210,27 +2401,40 @@ select 'uasp-streaming-rto-card-activation-way4-mock-test', 'test.run', 'true', 
 select 'uasp-streaming-rto-closing-deposit', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-closing-deposit' from dual  union 
 select 'uasp-streaming-rto-closing-deposit', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-closing-deposit' from dual  union 
 select 'uasp-streaming-rto-closing-deposit', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-closing-deposit' from dual  union 
+select 'uasp-streaming-rto-closing-deposit', 'mask.balance.amount', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-closing-deposit' from dual  union 
 select 'uasp-streaming-rto-dko-4_62', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-dko-4_62' from dual  union 
 select 'uasp-streaming-rto-dko-4_62', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-dko-4_62' from dual  union 
 select 'uasp-streaming-rto-dko-4_62', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-dko-4_62' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval-prod', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval-prod', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
 select 'uasp-streaming-rto-mortgage-approval-prod', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-mortgage-approval' from dual  union 
+select 'uasp-streaming-rto-mortgage-approval-prod', 'mask.initialPaymentAmount', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-mortgage-approval' from dual  union 
+select 'uasp-streaming-rto-mortgage-approval-prod', 'mask.mortgageAmount', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-mortgage-approval' from dual  union 
 select 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-ofvs' from dual  union 
 select 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-ofvs' from dual  union 
 select 'uasp-streaming-rto-ofvs', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-ofvs' from dual  union 
 select 'uasp-streaming-rto-open-deposit', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-open-deposit', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-open-deposit', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-open-deposit' from dual  union 
+select 'uasp-streaming-rto-open-deposit', 'mask.balance', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-open-deposit' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-rto-status-execution-goal', 'mask.GOAL_ACCOUNT_AMOUNT', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-rto-status-execution-goal', 'mask.GOAL_ACCOUNT_NUMBER', 'ru.vtb.uasp.common.java.mask.service.fun.FloatLengthCommonMaskService', 'uasp-streaming-rto-status-execution-goal' from dual  union 
+select 'uasp-streaming-rto-status-execution-goal', 'mask.GOAL_AMOUNT', 'ru.vtb.uasp.common.java.mask.service.fun.AmountMaskingMethod', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'restart.attempts', '50', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-status-execution-goal', 'restart.delay', '5000', 'uasp-streaming-rto-status-execution-goal' from dual  union 
 select 'uasp-streaming-rto-zoc', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-rto-zoc', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-rto-zoc', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-rto-zoc' from dual  union 
 select 'uasp-streaming-rto-zoc', 'mask.sub', 'ru.vtb.uasp.common.java.mask.service.fun.EmployeeLoginService', 'uasp-streaming-rto-zoc' from dual  union 
+select 'udds-3to8', 'max.parallelism', '4', 'uasp-streaming-unp-convertor' from dual  union 
+select 'udds-3to8', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'udds-3to8', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'udds-3to8', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'udds-3to8', 'sink.parallelism', '1', 'uasp-streaming-unp-convertor' from dual  union 
+select 'udds-3to8', 'source.parallelism', '3', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uddsRate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.endbal_prf', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'kafka.producers.filterErrorTag-error.FlinkSinkProperties$.JsMaskedPath$.data.dataDecimal.operationAmount', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'rulles.drools.list', 'currency-rate-for-uddt.drl', 'uasp-streaming-mutator' from dual  union 
@@ -2241,8 +2445,10 @@ select 'uddsRate', 'rulles.flink.job.checkpoint.service.serviceName', '${SERVICE
 select 'uddsRate', 'rulles.flink.job.checkpoint.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'rulles.flink.job.checkpoint.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-mutator' from dual  union 
 select 'uddsRate', 'rulles.flink.job.checkpoint.sync.parallelism', '${PARALLELISM}', 'uasp-streaming-mutator' from dual  union 
-select 'uz', 'flink.job.service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-json-validator' from dual  union 
-select 'uz', 'flink.job.service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-json-validator' from dual  union 
+select 'unp_w4_issuing_card', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
+select 'unp_w4_issuing_card', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'unp_w4_issuing_card', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
+select 'unp_w4_issuing_card', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uz', 'flink.job.service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-json-validator' from dual  union 
 select 'uz', 'validation.schema.name', 'uz-schema.json', 'uasp-streaming-json-validator' from dual  union 
 select 'w4-account-balance', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
@@ -2362,10 +2568,38 @@ select 'way4-main', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming
 select 'way4-main', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'way4-main', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'way4-main', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
-select 'way4_old', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select 'way4_old', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select 'way4_old', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select 'way4_old', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card.externalId', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_new_stream', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card.externalId', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_new_stream', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'appSyncParallelism', '1', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.account.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.accountNumber', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card.externalId', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.card.externalId', 'ru.vtb.uasp.common.mask.fun.AccountMask', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'enrichMdm.MainOperationProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.comment', 'ru.vtb.uasp.common.mask.fun.StringMaskAll', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'service.serviceName', '${SERVICE_NAME}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'way4_old_stream', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'way4_old_stream', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
 select 'way4-transactions', 'max.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'way4-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'way4-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
@@ -2377,11 +2611,7 @@ select 'withdraw-transactions', 'service.serviceName', '${SERVICE_NAME}', 'uasp-
 select 'withdraw-transactions', 'service.serviceProfile', '${PROFILE_NAME}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'withdraw-transactions', 'service.serviceVersion', '${SERVICE_VERSION}', 'uasp-streaming-unp-convertor' from dual  union 
 select 'withdraw-transactions', 'sink.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
-select 'withdraw-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual  union 
-select 'input-convertor-udds', 'dlq.JsMaskedPath$.data.BALANCE_BEFORE_OPERATION', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual  union 
-select 'case-68_agrement', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.balanceBeforeOperation', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 'case-68', 'enrichOne.MainEnrichProperty$.dlq.FlinkSinkProperties$.JsMaskedPath$.data.dataString.balanceBeforeOperation', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 'input-convertor-cardfl', 'dlq.JsMaskedPath$.data.PfmManSapId', 'ru.vtb.uasp.common.mask.fun.FloatLengthCommonMaskService', 'uasp-streaming-input-convertor' from dual ;
+select 'withdraw-transactions', 'source.parallelism', '8', 'uasp-streaming-unp-convertor' from dual ;
 
 insert into dict_kafka_prop_value_by_stand(grp_id, prop_id, prop_value, stand_id, type_prop) 
 select 'earliest', 'bootstrap.servers', 'kafka-1:29092,kafka-2:39092,kafka-3:49092', 'NOTEBOOK', 'cns' from dual  union 
@@ -2637,8 +2867,11 @@ select 'rto_graph', 'profile-tx-step2', 'uasp-streaming-mdm-enrichment' from dua
 select 'rto_graph', 'prof-tx-case-71', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'rto_graph', 'way4', 'uasp-streaming-mdm-enrichment' from dual  union 
 select 'rto_graph', 'way4-card-agreement', 'uasp-streaming-mdm-enrichment' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich_83088_way4_mdm_enrich_old', '83088_way4_mdm_enrich_old', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
-select 'uasp_dko_83088_way4_mdm_enrich_way4_old', 'way4_old', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150_way4_new_stream', 'way4_new_stream', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_2150_way4_old_stream', 'way4_old_stream', 'uasp_dko_83088_way4_mdm_enrich_2150' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_way4_new', 'way4_new', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'uasp_dko_83088_way4_mdm_enrich_way4_old_stream', 'way4_old_stream', 'uasp_dko_83088_way4_mdm_enrich' from dual  union 
+select 'uasp-dko-rds-63902-accr-reciver_main', 'main', 'uasp-dko-rds-63902-accr-reciver' from dual  union 
 select 'uasp-kriaa-bevents-case-2_main', 'main', 'uasp-kriaa-bevents-case-2' from dual  union 
 select 'uasp-kriaa-bevents-case-40_main', 'main', 'uasp-kriaa-bevents-case-40' from dual  union 
 select 'uasp-kriaa-bevents-case-55_main', 'main', 'uasp-kriaa-bevents-case-55' from dual  union 
@@ -2648,6 +2881,8 @@ select 'uasp-kriaa-bevents-case-68_main', 'main', 'uasp-kriaa-bevents-case-68' f
 select 'uasp-kriaa-bevents-case-70_main', 'main', 'uasp-kriaa-bevents-case-70' from dual  union 
 select 'uasp-kriaa-bevents-case-84_main', 'main', 'uasp-kriaa-bevents-case-84' from dual  union 
 select 'uasp-kriaa-bevents-case-86_main', 'main', 'uasp-kriaa-bevents-case-86' from dual  union 
+select 'uasp-kriaa-bevents-insurence-cft_main', 'main', 'uasp-kriaa-bevents-insurence-cft' from dual  union 
+select 'uasp-kriaa-bevents-insurence-kn_main', 'main', 'uasp-kriaa-bevents-insurence-kn' from dual  union 
 select 'uasp-kriaa-bevents-monitor_test', 'test', 'uasp-kriaa-bevents-monitor' from dual  union 
 select 'uasp-streaming-aggregate_aggregate-dko', 'aggregate-dko', 'uasp-streaming-aggregate' from dual  union 
 select 'uasp-streaming-beg-card-block_credit-card', 'credit-card', 'uasp-streaming-beg-card-block' from dual  union 
@@ -2657,6 +2892,7 @@ select 'uasp-streaming-currency-enrichment_case68', 'case68', 'uasp-streaming-cu
 select 'uasp-streaming-currency-enrichment_first-salary', 'first-salary', 'uasp-streaming-currency-enrichment' from dual  union 
 select 'uasp-streaming-filter_bevents-filter', 'bevents-filter', 'uasp-streaming-filter' from dual  union 
 select 'uasp-streaming-filter_main-input-filter', 'main-input-filter', 'uasp-streaming-filter' from dual  union 
+select 'uasp-streaming-input-convertor_close_account', 'close_account', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-input-convertor_customer-package', 'customer-package', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-input-convertor_customer-profile-full', 'customer-profile-full', 'uasp-streaming-input-convertor' from dual  union 
 select 'uasp-streaming-input-convertor_input-convertor-ca-cardfl', 'input-convertor-ca-cardfl', 'uasp-streaming-input-convertor' from dual  union 
@@ -2709,11 +2945,16 @@ select 'uasp-streaming-rto-zoc_uasp-streaming-rto-zoc', 'uasp-streaming-rto-zoc'
 select 'uasp-streaming-unp-convertor_aggregate-ca', 'aggregate-ca', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_cardfl', 'cardfl', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_case68', 'case68', 'uasp-streaming-unp-convertor' from dual  union 
+select 'uasp-streaming-unp-convertor_cbr-rate', 'cbr-rate', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_cft-transactions', 'cft-transactions', 'uasp-streaming-unp-convertor' from dual  union 
+select 'uasp-streaming-unp-convertor_close_account', 'close_account', 'uasp-streaming-unp-convertor' from dual  union 
+select 'uasp-streaming-unp-convertor_outer-cbr-rate', 'outer-cbr-rate', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_profile-auth', 'profile-auth', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_profile-transactions', 'profile-transactions', 'uasp-streaming-unp-convertor' from dual  union 
+select 'uasp-streaming-unp-convertor_udds-3to8', 'udds-3to8', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_unp_w4_issuing_card', 'unp_w4_issuing_card', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_w4-account-balance', 'w4-account-balance', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_way4-main', 'way4-main', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_way4-transactions', 'way4-transactions', 'uasp-streaming-unp-convertor' from dual  union 
 select 'uasp-streaming-unp-convertor_withdraw-transactions', 'withdraw-transactions', 'uasp-streaming-unp-convertor' from dual ;
+

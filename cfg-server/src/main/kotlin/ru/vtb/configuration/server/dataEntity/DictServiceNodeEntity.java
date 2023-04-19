@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "dict_service_node", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictServiceNodeEntityPK.class)
-@GenerateJpa(tableComment = "Нода сервиса", genRest = true, readOnly = true)
+@GenerateJpa(tableComment = "Нода графа сервис", genRest = true, readOnly = true)
 public class DictServiceNodeEntity {
     @Id
     @Column(name = "service_id", nullable = false)

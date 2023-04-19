@@ -1,7 +1,6 @@
 package ru.vtb.configuration.server.delete
 
 import io.swagger.v3.oas.annotations.Operation
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.MediaType
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -15,11 +14,12 @@ import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandenti
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityRestEdit
 
 
-fun DictTopicParamsByStandEntity.toImmutable() : DictTopicParamsByStandEntityImmutable =  DictTopicParamsByStandEntityImmutable(this.nodeId,this.standId,this.cntPartition,this.topicName)
+fun DictTopicParamsByStandEntity.toImmutable(): DictTopicParamsByStandEntityImmutable =
+    DictTopicParamsByStandEntityImmutable(this.nodeId, this.standId, this.cntPartition, this.topicName)
 
 @RestController
 @RequestMapping(path = ["/AAAAAAA"])
-
+@Deprecated("")
 class asdsadasd(val dictTopicParamsByStandEntityGeneratedRepository: DictTopicParamsByStandEntityGeneratedRepository) {
 
 
@@ -47,21 +47,9 @@ class asdsadasd(val dictTopicParamsByStandEntityGeneratedRepository: DictTopicPa
                     this@apply.cntPartition = editData.newData.cntPartition
                     this@apply.topicName = editData.newData.topicName
                 }).toImmutable()
-        }.orElseGet {null}
+        }.orElseGet { null }
 
-return map
-//        val findByIdOrNull = dictTopicParamsByStandEntityGeneratedRepository.findByIdOrNull(editData.primaryKey)
-
-//        TODO()
-//        return findByIdOrNull?.let { oldData ->
-//            dictTopicParamsByStandEntityGeneratedRepository.save(
-//                oldData.apply {
-//                    this@apply.nodeId = editData.newData.nodeId
-//                    this@apply.standId = editData.newData.standId
-//                    this@apply.cntPartition = editData.newData.cntPartition
-//                    this@apply.topicName = editData.newData.topicName
-//                }).toImmutable()
-//        }
+        return map
     }
 
 

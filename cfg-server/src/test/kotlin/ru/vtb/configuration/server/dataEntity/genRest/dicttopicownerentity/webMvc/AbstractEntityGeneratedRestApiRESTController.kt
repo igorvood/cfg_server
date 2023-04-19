@@ -2,6 +2,7 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.ninjasquad.springmockk.MockkBean
 import io.mockk.every
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -16,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import ru.vtb.configuration.server.check.CheckRunner
 import ru.vtb.processor.intf.IFilterHibernateEntity
 import ru.vtb.processor.intf.IImmutableEntity
 import ru.vtb.processor.wrapper.IRestEditEntityDto
@@ -33,6 +35,9 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
         FILTER_DTO: IFilterHibernateEntity
         > {
 
+
+    @MockkBean(relaxed = true)
+    private lateinit var checkRunner: CheckRunner
 
     abstract val hibernateEntityImmutable: HIBER_ENTITY_Immutable
 

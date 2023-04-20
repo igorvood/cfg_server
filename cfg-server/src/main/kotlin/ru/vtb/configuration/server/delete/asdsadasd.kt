@@ -22,7 +22,6 @@ fun DictTopicParamsByStandEntity.toImmutable(): DictTopicParamsByStandEntityImmu
 @Deprecated("")
 class asdsadasd(val dictTopicParamsByStandEntityGeneratedRepository: DictTopicParamsByStandEntityGeneratedRepository) {
 
-
     @Operation(
         summary = "Редактировать значение.",
         tags = ["TEST"]
@@ -51,7 +50,6 @@ class asdsadasd(val dictTopicParamsByStandEntityGeneratedRepository: DictTopicPa
 
         return map
     }
-
 
     @Operation(
         summary = "aaaaРaaедактировать значение.",

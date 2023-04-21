@@ -3,8 +3,8 @@ package ru.vtb.processor.intf
 import javax.persistence.EntityManagerFactory
 
 abstract class OrIsNullRepository<Filter : IFilterHibernateEntity, ENTITY>(
-    val emf: EntityManagerFactory,
-    val javaClazz: Class<ENTITY>
+    private val emf: EntityManagerFactory,
+    private val javaClazz: Class<ENTITY>
 ) {
     fun findByFilterOrIsNull(filter: Filter): List<ENTITY> {
         val query = emf.createEntityManager()

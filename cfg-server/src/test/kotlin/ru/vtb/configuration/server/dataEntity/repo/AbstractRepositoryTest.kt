@@ -9,7 +9,7 @@ import ru.vtb.processor.intf.OrIsNullRepository
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
 
-abstract class AbstractRepositoryTest<ENTITY, PK, FILTER_DTO : IFilterHibernateEntity> : AbstractDatasourceTests() {
+abstract class AbstractRepositoryTest<ENTITY : Any, PK : Any, FILTER_DTO : IFilterHibernateEntity> : AbstractDatasourceTests() {
 
     abstract val entityVal: ENTITY
 

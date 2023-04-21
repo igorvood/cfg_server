@@ -5,11 +5,16 @@ import com.google.auto.service.AutoService
 import ru.vtb.processor.abstraction.AbstractCommonGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vtb.processor.abstraction.model.abstraction.getAllInterfaces
+import ru.vtb.processor.abstraction.model.abstraction.getDirectlyImplementsInterface
 import ru.vtb.processor.annotation.GenerateByGeneric
+import ru.vtb.processor.annotation.MyTwoGeneric
 import java.io.File
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
+import javax.lang.model.element.Element
 import javax.lang.model.element.TypeElement
+import javax.lang.model.type.DeclaredType
 import javax.tools.Diagnostic
 
 @AutoService(Processor::class) // For registering the service
@@ -28,12 +33,16 @@ class ByGenericGenerator : AbstractCommonGenerationProcessor<GeneratedJpaReposit
     override fun process(set: MutableSet<out TypeElement>, roundEnvironment: RoundEnvironment): Boolean {
 
         val elementsAnnotatedWith = roundEnvironment.getElementsAnnotatedWith(GenerateByGeneric::class.java)
-                elementsAnnotatedWith.forEach {
+        elementsAnnotatedWith.forEach {
+
+
+            val modifiers = it.modifiers
+
             val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(AnnotatedEntityClass(it))
 
             val className = it.simpleName.toString()
             val pack = elementUtils.getPackageOf(it).toString()
-            generateClass(className, pack, generatedJpaRepositoryClass, processingEnv)
+            generateClass(it, className, pack, generatedJpaRepositoryClass, processingEnv)
 
             messager.printMessage(
                 Diagnostic.Kind.WARNING,
@@ -44,14 +53,36 @@ class ByGenericGenerator : AbstractCommonGenerationProcessor<GeneratedJpaReposit
     }
 
     private fun generateClass(
+        elem: Element,
         className: String,
         pack: String,
         generatedJpaRepositoryClass: GeneratedJpaRepositoryClass,
         processingEnv: ProcessingEnvironment
     ) {
+
+        val myTwoGenericMeta = elem.getDirectlyImplementsInterface(MyTwoGeneric::class.java)
+
+        val typeMirror = if (myTwoGenericMeta.size == 1)
+            myTwoGenericMeta.toList()[0] as                        DeclaredType
+        else {
+            val err =
+                "${this.javaClass.canonicalName}: $className must directly implements interface ${MyTwoGeneric::class.java.canonicalName}"
+            messager.printMessage(
+                Diagnostic.Kind.ERROR,
+                err
+            )
+            throw java.lang.IllegalArgumentException(err)
+        }
+
         val fileName = "GeneratedByGeneric_$className"
-        val fileContent = "package  ru.vtb.configuration.server.dataEntity.genRest.generic.$className\n" +
-                "fun asdasdsa() =\"dasdads\""
+        val fileContent = """package  ru.vtb.configuration.server.dataEntity.genRest.generic.$className
+fun asdasdsa() ="dasdads"
+fun f1(): ${((typeMirror.typeArguments[0] as DeclaredType).asElement() as TypeElement).qualifiedName.toString()}?  = null
+fun f2(): ${((typeMirror.typeArguments[1] as DeclaredType).asElement() as TypeElement).qualifiedName.toString()}?  = null
+
+"""
+
+
 //            KotlinImmutableDtoClassBuilder(className, pack, generatedJpaRepositoryClass, processingEnv).getContent()
 
         val kaptKotlinGeneratedDir = processingEnv.options[KAPT_KOTLIN_GENERATED_OPTION_NAME]

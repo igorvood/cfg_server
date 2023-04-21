@@ -35,6 +35,21 @@
             <scope>compile</scope>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.squareup</groupId>-->
+<!--            <artifactId>javapoet</artifactId>-->
+<!--            <version>1.13.0</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/com.squareup/kotlinpoet &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.squareup</groupId>-->
+<!--            <artifactId>kotlinpoet</artifactId>-->
+<!--            <version>1.13.0</version>-->
+<!--            <scope>runtime</scope>-->
+<!--        </dependency>-->
+
+
     </dependencies>
 
 

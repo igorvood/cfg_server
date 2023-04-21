@@ -39,5 +39,5 @@ class DictArrowEntityGeneratedRestApiRESTController :
             endNodeId = "endNodeId"
         }
 
-    override fun getMockedRepo(): DictArrowEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 }

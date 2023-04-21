@@ -32,5 +32,5 @@ class DictServiceEntityGeneratedRestApiRESTController :
     override val pk: String
         get() = "serviceId"
 
-    override fun getMockedRepo(): DictServiceEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 }

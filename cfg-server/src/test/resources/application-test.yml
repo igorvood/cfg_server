@@ -4,10 +4,13 @@ spring:
     url: jdbc:postgresql://localhost:5432/db_configuration_manager
     username: ${DB_USERNAME:db_configuration_manager_admin}
     password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+    hikari:
+      maximum-pool-size: 10
   jpa:
     properties:
       hibernate:
         format_sql: true
+    database: postgresql
 
 logging:
   level:

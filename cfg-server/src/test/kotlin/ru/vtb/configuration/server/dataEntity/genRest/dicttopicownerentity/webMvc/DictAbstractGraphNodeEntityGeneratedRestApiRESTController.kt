@@ -34,5 +34,5 @@ class DictAbstractGraphNodeEntityGeneratedRestApiRESTController :
             nodeId = "sad"
         }
 
-    override fun getMockedRepo(): DictAbstractGraphNodeEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 }

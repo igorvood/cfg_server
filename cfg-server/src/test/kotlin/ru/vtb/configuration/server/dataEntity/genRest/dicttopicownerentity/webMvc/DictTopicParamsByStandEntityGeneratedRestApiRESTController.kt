@@ -33,5 +33,5 @@ class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
             standId = "sad"
         }
 
-    override fun getMockedRepo(): DictTopicParamsByStandEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 }

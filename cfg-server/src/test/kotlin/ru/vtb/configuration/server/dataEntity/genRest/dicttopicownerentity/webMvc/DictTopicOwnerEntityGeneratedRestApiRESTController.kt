@@ -24,7 +24,7 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController :
 
     override fun restEditEntityDto(): DictTopicOwnerEntityRestEdit = DictTopicOwnerEntityRestEdit(pk, hibernateEntityImmutable)
 
-    override fun getMockedRepo(): DictTopicOwnerEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 
     override val pk: String
         get() = "asdasd"

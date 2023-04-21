@@ -36,5 +36,5 @@ class DictServiceNodeEntityGeneratedRestApiRESTController :
             profileId = "profileId"
         }
 
-    override fun getMockedRepo(): DictServiceNodeEntityGeneratedRepository = repository
+    override fun getMockedRepo() = repository
 }

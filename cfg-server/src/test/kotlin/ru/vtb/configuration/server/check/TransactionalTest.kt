@@ -39,7 +39,6 @@ class TransactionalTest {
             .flatMap { it.value.toList() }
             .map { it.name }
         println(transactionalMethods)
-//        println(transactionalMethods.map { it.value. })
     }
 
 

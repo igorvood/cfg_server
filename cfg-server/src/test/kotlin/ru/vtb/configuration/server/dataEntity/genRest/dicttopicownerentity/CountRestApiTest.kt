@@ -13,7 +13,7 @@ internal class CountRestApiTest : AbstractTests() {
 
     @Test
     fun countBeans() {
-        assertEquals(6, dictTopicOwnerEntityGeneratedRestApi.size)
+        assertEquals(7, dictTopicOwnerEntityGeneratedRestApi.size)
     }
 
 }

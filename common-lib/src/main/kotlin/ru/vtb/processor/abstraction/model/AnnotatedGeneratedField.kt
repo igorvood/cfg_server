@@ -17,8 +17,15 @@ class AnnotatedGeneratedField(override val element: Element) : IGeneratedField {
         val annotation = annotation1
             .map { it.nullable }
             .orElseGet { true }
+        return annotation
+    }
 
+    override fun isUpdateble(): Boolean {
 
+        val annotation1 = element.annotation<Column>()
+        val annotation = annotation1
+            .map { it.updatable }
+            .orElseGet { true }
         return annotation
     }
 

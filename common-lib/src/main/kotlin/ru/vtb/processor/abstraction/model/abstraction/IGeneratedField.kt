@@ -12,6 +12,7 @@ interface IGeneratedField {
     fun isNullable(): Boolean
     fun type(): String
     fun betterClass(): AbstractAnnotatedClass?
+    fun isUpdateble(): Boolean
 }
 
 inline fun <reified ANNO : Annotation> IGeneratedField.annotation(): Optional<ANNO> =

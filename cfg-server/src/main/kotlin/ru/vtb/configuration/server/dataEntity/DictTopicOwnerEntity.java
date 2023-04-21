@@ -5,6 +5,7 @@ import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
@@ -53,12 +54,9 @@ public class DictTopicOwnerEntity {
 
         DictTopicOwnerEntity that = (DictTopicOwnerEntity) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-//        if (isOur != null ? !isOur.equals(that.isOur) : that.isOur != null) return false;
-        if (descriptionForReport != null ? !descriptionForReport.equals(that.descriptionForReport) : that.descriptionForReport != null)
-            return false;
-
-        return true;
+        if (our != that.our) return false;
+        if (!id.equals(that.id)) return false;
+        return descriptionForReport.equals(that.descriptionForReport);
     }
 
     @Override

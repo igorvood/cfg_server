@@ -32,7 +32,7 @@ import kotlin.test.assertEquals
 abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
-        HIBER_ENTITY_Updateble : ru.vtb.processor.intf.IUpdatebleEntity<HIBER_ENTITY>,
+        HIBER_ENTITY_Updateble : IUpdatebleEntity<HIBER_ENTITY>,
         PK : Any,
         FILTER_DTO: IFilterHibernateEntity
         > {

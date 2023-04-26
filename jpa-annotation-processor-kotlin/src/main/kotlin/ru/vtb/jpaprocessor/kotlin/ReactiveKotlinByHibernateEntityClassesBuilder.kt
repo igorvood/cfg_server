@@ -40,11 +40,11 @@ class ReactiveKotlinByHibernateEntityClassesBuilder(
         .filter { it.element.annotation<Column>().isPresent }
 
     private val importText = """
-package $packageName.genRest.${className.lowercase()}
+package $packageName.reactive.genRest.${className.lowercase()}
 
 import $packageName.$className
 import io.swagger.v3.oas.annotations.Operation
-import $packageName.genRest.${className.lowercase()}.toImmutable
+import $packageName.reactive.genRest.${className.lowercase()}.toImmutable
 import org.springframework.web.bind.annotation.*
 import org.springframework.data.repository.*
 import org.springframework.transaction.annotation.Propagation
@@ -59,7 +59,7 @@ import ru.vtb.processor.wrapper.*
 import org.springframework.http.MediaType
 import org.springframework.stereotype.*
 
-//import javax.persistence.EntityManagerFactory
+import javax.persistence.EntityManagerFactory
 
 """
 

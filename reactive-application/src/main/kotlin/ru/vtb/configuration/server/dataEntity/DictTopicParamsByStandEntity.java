@@ -2,13 +2,14 @@ package ru.vtb.configuration.server.dataEntity;
 
 
 import ru.vtb.processor.annotation.GenerateJpa;
+import ru.vtb.processor.annotation.GenerateReactiveJpa;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "dict_topic_params_by_stand", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @IdClass(DictTopicParamsByStandEntityPK.class)
-@GenerateJpa(tableComment = "Настройки топика в разрезе стенда", genRest = true, readOnly = false)
+@GenerateReactiveJpa(tableComment = "Настройки топика в разрезе стенда", genRest = true)
 public class DictTopicParamsByStandEntity {
     @Id
     @Column(name = "node_id", nullable = false)

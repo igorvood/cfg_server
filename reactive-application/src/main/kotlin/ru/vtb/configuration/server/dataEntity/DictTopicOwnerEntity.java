@@ -2,13 +2,14 @@ package ru.vtb.configuration.server.dataEntity;
 
 
 import ru.vtb.processor.annotation.GenerateJpa;
+import ru.vtb.processor.annotation.GenerateReactiveJpa;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
-@GenerateJpa(tableComment = "Владелец топика", genRest = true, readOnly = false)
+@GenerateReactiveJpa(tableComment = "Владелец топика", genRest = true)
 public class DictTopicOwnerEntity {
     @Id
     @Column(name = "id", nullable = false)

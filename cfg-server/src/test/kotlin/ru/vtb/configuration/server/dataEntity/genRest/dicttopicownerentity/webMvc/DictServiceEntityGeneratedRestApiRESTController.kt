@@ -10,7 +10,6 @@ class DictServiceEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictServiceEntity,
             DictServiceEntityImmutable,
-            DictServiceEntityUpdateble,
             String,
             DictServiceEntityFilter
             >() {
@@ -20,10 +19,6 @@ class DictServiceEntityGeneratedRestApiRESTController :
 
     override val filterDto: DictServiceEntityFilter
         get() = DictServiceEntityFilter.nullConst
-
-    override fun restEditEntityDto(): IRestEditEntityDto<String, IUpdatebleEntity<DictServiceEntity>> = DictServiceEntityRestEdit(pk, hibernateEntityUpdateble())
-
-    override fun hibernateEntityUpdateble(): DictServiceEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictServiceEntityImmutable
         get() = DictServiceEntityImmutable("sad", "sad")

@@ -32,7 +32,6 @@ import kotlin.test.assertEquals
 abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
-        HIBER_ENTITY_Updateble : IUpdatebleEntity<HIBER_ENTITY>,
         PK : Any,
         FILTER_DTO: IFilterHibernateEntity
         > {
@@ -50,12 +49,17 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper(pk)
 
 
-    abstract fun hibernateEntityUpdateble(): HIBER_ENTITY_Updateble
+    fun hibernateEntityUpdateble() = hibernateEntityImmutable.toUpdateble()
 
     abstract fun getMockedRepo(): JpaRepository<HIBER_ENTITY, PK>
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
 
-    abstract fun restEditEntityDto(): IRestEditEntityDto<PK, IUpdatebleEntity<HIBER_ENTITY>>
+    fun restEditEntityDto(): IRestEditEntityDto<PK,HIBER_ENTITY> = object :IRestEditEntityDto<PK, HIBER_ENTITY>{
+        override val primaryKey: PK
+            get() = pk
+        override val newData: IUpdatebleEntity<HIBER_ENTITY>
+            get() = hibernateEntityUpdateble()
+    }
 
     protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
@@ -132,7 +136,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     @Disabled
     fun editEntity() {
 
-        val restEditEntityDto: IRestEditEntityDto<PK, IUpdatebleEntity<HIBER_ENTITY>> = restEditEntityDto()
+        val restEditEntityDto = restEditEntityDto()
 
 //        val newData = restEditEntityDto.newData
 

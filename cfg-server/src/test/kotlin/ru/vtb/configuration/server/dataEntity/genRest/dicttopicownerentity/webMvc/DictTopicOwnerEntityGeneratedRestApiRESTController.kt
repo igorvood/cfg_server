@@ -10,7 +10,6 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictTopicOwnerEntity,
             DictTopicOwnerEntityImmutable,
-            DictTopicOwnerEntityUpdateble,
             String,
             DictTopicOwnerEntityFilter
             >() {
@@ -21,14 +20,10 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController :
     override val filterDto: DictTopicOwnerEntityFilter
         get() = DictTopicOwnerEntityFilter.nullConst
 
-    override fun restEditEntityDto(): IRestEditEntityDto<String, IUpdatebleEntity<DictTopicOwnerEntity>> = DictTopicOwnerEntityRestEdit(pk, hibernateEntityUpdateble())
-
     override fun getMockedRepo() = repository
 
     override val pk: String
         get() = "asdasd"
-
-    override fun hibernateEntityUpdateble(): DictTopicOwnerEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictTopicOwnerEntityImmutable
         get() = DictTopicOwnerEntityImmutable("asdasd", 1, "sd")

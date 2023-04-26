@@ -11,7 +11,6 @@ class DictAbstractGraphNodeEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictAbstractGraphNodeEntity,
             DictAbstractGraphNodeEntityImmutable,
-            DictAbstractGraphNodeEntityUpdateble,
             DictAbstractGraphNodeEntityPK,
             DictAbstractGraphNodeEntityFilter
             >() {
@@ -19,14 +18,8 @@ class DictAbstractGraphNodeEntityGeneratedRestApiRESTController :
     @MockkBean(relaxed = true)
     lateinit var repository: DictAbstractGraphNodeEntityGeneratedRepository
 
-    override fun hibernateEntityUpdateble(): DictAbstractGraphNodeEntityUpdateble = hibernateEntityImmutable.toUpdateble()
-
     override val filterDto: DictAbstractGraphNodeEntityFilter
         get() = DictAbstractGraphNodeEntityFilter.nullConst
-
-    override fun restEditEntityDto(): DictAbstractGraphNodeEntityRestEdit {
-        return DictAbstractGraphNodeEntityRestEdit(pk, hibernateEntityUpdateble())
-    }
 
     override val hibernateEntityImmutable: DictAbstractGraphNodeEntityImmutable
         get() = DictAbstractGraphNodeEntityImmutable("sad", "sad", "sad")

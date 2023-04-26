@@ -11,7 +11,6 @@ class DictArrowEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictArrowEntity,
             DictArrowEntityImmutable,
-            DictArrowEntityUpdateble,
             DictArrowEntityPK,
             DictArrowEntityFilter
             >() {
@@ -21,10 +20,6 @@ class DictArrowEntityGeneratedRestApiRESTController :
 
     override val filterDto: DictArrowEntityFilter
         get() = DictArrowEntityFilter.nullConst
-
-    override fun restEditEntityDto(): IRestEditEntityDto<DictArrowEntityPK, IUpdatebleEntity<DictArrowEntity>> = DictArrowEntityRestEdit(pk, hibernateEntityUpdateble())
-
-    override fun hibernateEntityUpdateble(): DictArrowEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictArrowEntityImmutable
         get() = DictArrowEntityImmutable("graphId", "begNodeType", "begNodeId", "endNodeType", "endNodeId", "propKey", "asdsa", "asdasas", "asdsadas", "asdasdasd")

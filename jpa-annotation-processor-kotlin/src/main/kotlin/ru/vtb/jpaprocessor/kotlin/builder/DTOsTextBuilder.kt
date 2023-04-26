@@ -147,7 +147,7 @@ $listSqlFilterMapParams
 data class ${className}RestEdit(
     override val primaryKey: ${primaryKeyType.kotlinDataType},
     override val newData: $updatebleClassName
-): IRestEditEntityDto<${primaryKeyType.kotlinDataType}, $updatebleClassName> 
+): IRestEditEntityDto<${primaryKeyType.kotlinDataType}, $className> 
 
 $mutableToImmutableFun"""
     }

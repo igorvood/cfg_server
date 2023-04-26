@@ -11,7 +11,6 @@ class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictTopicParamsByStandEntity,
             DictTopicParamsByStandEntityImmutable,
-            DictTopicParamsByStandEntityUpdateble,
             DictTopicParamsByStandEntityPK,
             DictTopicParamsByStandEntityFilter
             >() {
@@ -21,10 +20,6 @@ class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
 
     override val filterDto: DictTopicParamsByStandEntityFilter
         get() = DictTopicParamsByStandEntityFilter.nullConst
-
-    override fun restEditEntityDto(): IRestEditEntityDto<DictTopicParamsByStandEntityPK, IUpdatebleEntity<DictTopicParamsByStandEntity>> = DictTopicParamsByStandEntityRestEdit(pk, hibernateEntityUpdateble())
-
-    override fun hibernateEntityUpdateble(): DictTopicParamsByStandEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictTopicParamsByStandEntityImmutable
         get() = DictTopicParamsByStandEntityImmutable("sad", "sad", 1, "ASd")

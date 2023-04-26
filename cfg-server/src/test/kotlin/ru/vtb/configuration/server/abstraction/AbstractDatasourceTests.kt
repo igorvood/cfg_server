@@ -32,23 +32,23 @@ abstract class AbstractDatasourceTests : AbstractTests() {
     private val fullPathToScripts = javaClass.name.replace(".", pathSeparator)
 
     @BeforeAll
-    private fun beforeAll() = run {
+    fun beforeAll() = run {
         afterAll()
         runScriptsFromFile(setupClass)
     }
 
     @AfterAll
-    private fun afterAll() = runScriptsFromFile(teardownClass)
+    fun afterAll() = runScriptsFromFile(teardownClass)
 
 
     @BeforeEach
-    private fun beforeEach() = run {
+    fun beforeEach() = run {
         afterEach()
         runScriptsFromFile(setupTest)
     }
 
     @AfterEach
-    private fun afterEach() = runScriptsFromFile(teardownTest)
+    fun afterEach() = runScriptsFromFile(teardownTest)
 
     private fun runScriptsFromFile(fileName: String) {
         val fullFilename = fullPathToScripts + pathSeparator + fileName

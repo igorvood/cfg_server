@@ -24,8 +24,8 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>11</java.version>
-        <kotlin.version>1.6.10</kotlin.version>
+        <java.version>17</java.version>
+        <kotlin.version>1.8.10</kotlin.version>
         <springdoc.openapi>1.6.15</springdoc.openapi>
     </properties>
 

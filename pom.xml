@@ -8,6 +8,7 @@
         <module>jpa-processor</module>
         <module>jpa-annotation-processor-kotlin</module>
         <module>common-lib</module>
+        <module>reactive-application</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import ru.vtb.configuration.server.check.CheckRunner
 import ru.vtb.processor.intf.IFilterHibernateEntity
 import ru.vtb.processor.intf.IImmutableEntity
+import ru.vtb.processor.intf.IUpdatebleEntity
 import ru.vtb.processor.wrapper.IRestEditEntityDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 import kotlin.test.assertEquals
@@ -31,6 +32,7 @@ import kotlin.test.assertEquals
 abstract class AbstractEntityGeneratedRestApiRESTController<
         HIBER_ENTITY : Any,
         HIBER_ENTITY_Immutable : IImmutableEntity<HIBER_ENTITY>,
+        HIBER_ENTITY_Updateble : ru.vtb.processor.intf.IUpdatebleEntity<HIBER_ENTITY>,
         PK : Any,
         FILTER_DTO: IFilterHibernateEntity
         > {
@@ -47,10 +49,13 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     abstract val filterDto: FILTER_DTO
     fun wrappedPk(): PrimaryKeyWrapper<PK> = PrimaryKeyWrapper(pk)
 
+
+    abstract fun hibernateEntityUpdateble(): HIBER_ENTITY_Updateble
+
     abstract fun getMockedRepo(): JpaRepository<HIBER_ENTITY, PK>
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
 
-    abstract fun restEditEntityDto(): IRestEditEntityDto<PK, HIBER_ENTITY_Immutable>
+    abstract fun restEditEntityDto(): IRestEditEntityDto<PK, IUpdatebleEntity<HIBER_ENTITY>>
 
     protected val mapper: ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
@@ -127,9 +132,9 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     @Disabled
     fun editEntity() {
 
-        val restEditEntityDto: IRestEditEntityDto<PK, HIBER_ENTITY_Immutable> = restEditEntityDto()
+        val restEditEntityDto: IRestEditEntityDto<PK, IUpdatebleEntity<HIBER_ENTITY>> = restEditEntityDto()
 
-        val newData: HIBER_ENTITY_Immutable = restEditEntityDto.newData
+//        val newData = restEditEntityDto.newData
 
         val writeValueAsString: String = mapper.writeValueAsString(restEditEntityDto)
 

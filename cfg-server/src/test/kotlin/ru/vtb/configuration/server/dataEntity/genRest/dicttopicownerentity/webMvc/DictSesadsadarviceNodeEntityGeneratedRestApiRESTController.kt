@@ -2,22 +2,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.*
-import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicegroupentity.DictServiceGroupEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicegroupentity.DictServiceGroupEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicegroupentity.DictServiceGroupEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicegroupentity.DictServiceGroupEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dictservicegroupentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictSesadsadarviceNodeEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictServiceGroupEntity,
             DictServiceGroupEntityImmutable,
+            DictServiceGroupEntityUpdateble,
             DictServiceGroupEntityPK,
             DictServiceGroupEntityFilter
             >() {
@@ -28,7 +21,10 @@ class DictSesadsadarviceNodeEntityGeneratedRestApiRESTController :
     override val filterDto: DictServiceGroupEntityFilter
         get() = DictServiceGroupEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictServiceGroupEntityRestEdit = DictServiceGroupEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<DictServiceGroupEntityPK, IUpdatebleEntity<DictServiceGroupEntity>> = DictServiceGroupEntityRestEdit(pk, hibernateEntityUpdateble())
+
+    override fun hibernateEntityUpdateble(): DictServiceGroupEntityUpdateble = hibernateEntityImmutable.toUpdateble()
+
     override val hibernateEntityImmutable: DictServiceGroupEntityImmutable
         get() = DictServiceGroupEntityImmutable("sad", "sad", "sad")
     override val pk: DictServiceGroupEntityPK

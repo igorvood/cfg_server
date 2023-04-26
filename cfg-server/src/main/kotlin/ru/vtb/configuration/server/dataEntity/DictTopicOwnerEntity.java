@@ -16,7 +16,7 @@ public class DictTopicOwnerEntity {
     private String id;
     @Basic
     @Column(name = "is_our", nullable = false)
-    private int our;
+    private Integer our;
     @Basic
     @Column(name = "description_for_report")
     private String descriptionForReport;
@@ -31,11 +31,11 @@ public class DictTopicOwnerEntity {
         this.id = id;
     }
 
-    public int getOur() {
+    public Integer getOur() {
         return our;
     }
 
-    public void setOur(int isOur) {
+    public void setOur(Integer isOur) {
         this.our = isOur;
     }
 

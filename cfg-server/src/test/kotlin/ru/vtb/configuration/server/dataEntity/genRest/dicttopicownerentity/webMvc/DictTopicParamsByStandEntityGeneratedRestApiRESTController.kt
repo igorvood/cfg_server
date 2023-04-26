@@ -3,16 +3,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictTopicParamsByStandEntity,
             DictTopicParamsByStandEntityImmutable,
+            DictTopicParamsByStandEntityUpdateble,
             DictTopicParamsByStandEntityPK,
             DictTopicParamsByStandEntityFilter
             >() {
@@ -23,7 +22,9 @@ class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
     override val filterDto: DictTopicParamsByStandEntityFilter
         get() = DictTopicParamsByStandEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictTopicParamsByStandEntityRestEdit = DictTopicParamsByStandEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<DictTopicParamsByStandEntityPK, IUpdatebleEntity<DictTopicParamsByStandEntity>> = DictTopicParamsByStandEntityRestEdit(pk, hibernateEntityUpdateble())
+
+    override fun hibernateEntityUpdateble(): DictTopicParamsByStandEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictTopicParamsByStandEntityImmutable
         get() = DictTopicParamsByStandEntityImmutable("sad", "sad", 1, "ASd")

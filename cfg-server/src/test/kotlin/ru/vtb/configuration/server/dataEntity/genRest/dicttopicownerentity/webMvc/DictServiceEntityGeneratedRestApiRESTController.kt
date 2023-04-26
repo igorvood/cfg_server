@@ -2,20 +2,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictServiceEntity
-import ru.vtb.configuration.server.dataEntity.DictServiceNodeEntityPK
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictservicenodeentity.DictServiceNodeEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictServiceEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictServiceEntity,
             DictServiceEntityImmutable,
+            DictServiceEntityUpdateble,
             String,
             DictServiceEntityFilter
             >() {
@@ -26,7 +21,10 @@ class DictServiceEntityGeneratedRestApiRESTController :
     override val filterDto: DictServiceEntityFilter
         get() = DictServiceEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictServiceEntityRestEdit = DictServiceEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<String, IUpdatebleEntity<DictServiceEntity>> = DictServiceEntityRestEdit(pk, hibernateEntityUpdateble())
+
+    override fun hibernateEntityUpdateble(): DictServiceEntityUpdateble = hibernateEntityImmutable.toUpdateble()
+
     override val hibernateEntityImmutable: DictServiceEntityImmutable
         get() = DictServiceEntityImmutable("sad", "sad")
     override val pk: String

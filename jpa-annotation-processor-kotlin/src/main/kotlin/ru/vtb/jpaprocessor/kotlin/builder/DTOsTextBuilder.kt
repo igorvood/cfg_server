@@ -4,6 +4,8 @@ import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.mapKotlinType
 
+
+
 class DTOsTextBuilder(
     private val className: String,
     private val immutableClassName: String,
@@ -11,6 +13,8 @@ class DTOsTextBuilder(
     private val primaryKeyType: PrimaryKetDataTypeDto,
 
     ) : IKotlinContentBuilder {
+
+    private val updatebleClassName = "${className}Updateble"
 
     private val listFieldsToImmutable = filteredFields
         .joinToString(",") { f -> "this.${f.name()}" }
@@ -28,6 +32,24 @@ class DTOsTextBuilder(
 $listFieldsToMutableFun
   }"""
 
+    private val listFieldsToUpdatebleFun = filteredFields
+        .filter { it.isUpdateble() }
+        .joinToString(",\n") { f -> "${f.name()}" }
+
+
+    private val immutableToUpdatebleFun = """override fun toUpdateble() = ${updatebleClassName}(
+        | $listFieldsToUpdatebleFun
+        |)""".trimMargin()
+
+
+    val listFieldsToMutableUpdatebleFun =  filteredFields
+    .filter { it.isUpdateble() }
+       .joinToString("\n") { f -> "this@apply.${f.name()} = this@$updatebleClassName.${f.name()}" }
+
+    private val immutableToMutableForUpdatebleFun = """override fun toMutable() = ${className}().apply { 
+$listFieldsToMutableUpdatebleFun
+  }"""
+
     private val mutableToImmutableFun =
         """fun ${className}.toImmutable() : $immutableClassName =  ${immutableClassName}($listFieldsToImmutable)"""
 
@@ -42,6 +64,14 @@ $listFieldsToMutableFun
         .joinToString(",\n") { f ->
             "val ${f.name()} : ${f.type().mapKotlinType()}?"
         }
+
+    private val listFieldsConstructorUpdateble = filteredFields
+        .filter { it.isUpdateble() }
+        .joinToString(",\n") { f ->
+            val isNullable = if (f.isNullable()) "?" else ""
+            "val ${f.name()} : ${f.type().mapKotlinType()}$isNullable"
+        }
+
 
     private val listFilterIsEmpty = filteredFields
         .joinToString("&&\n") { f ->
@@ -76,6 +106,16 @@ $listFieldsConstructor
 
 $immutableToMutableFun
 
+$immutableToUpdatebleFun
+}
+
+@kotlinx.serialization.Serializable
+data class $updatebleClassName (
+$listFieldsConstructorUpdateble
+): IUpdatebleEntity<${className}>{
+
+$immutableToMutableForUpdatebleFun
+
 }
 
 @kotlinx.serialization.Serializable
@@ -106,8 +146,8 @@ $listSqlFilterMapParams
 //@kotlinx.serialization.Serializable
 data class ${className}RestEdit(
     override val primaryKey: ${primaryKeyType.kotlinDataType},
-    override val newData: $immutableClassName
-): IRestEditEntityDto<${primaryKeyType.kotlinDataType}, $immutableClassName> 
+    override val newData: $updatebleClassName
+): IRestEditEntityDto<${primaryKeyType.kotlinDataType}, $updatebleClassName> 
 
 $mutableToImmutableFun"""
     }

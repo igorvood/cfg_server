@@ -15,6 +15,7 @@ class RestTextBuilder(
     ) : IKotlinContentBuilder {
 
     private val listFieldsForEdit = filteredFields
+        .filter { it.isUpdateble() }
         .joinToString("\n") { f -> "this@apply.${f.name()} = editData.newData.${f.name()}" }
 
     private fun genRestFun(): String {

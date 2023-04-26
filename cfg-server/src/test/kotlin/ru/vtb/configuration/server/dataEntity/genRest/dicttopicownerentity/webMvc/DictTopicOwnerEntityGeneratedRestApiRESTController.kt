@@ -2,16 +2,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictTopicOwnerEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictTopicOwnerEntity,
             DictTopicOwnerEntityImmutable,
+            DictTopicOwnerEntityUpdateble,
             String,
             DictTopicOwnerEntityFilter
             >() {
@@ -22,12 +21,15 @@ class DictTopicOwnerEntityGeneratedRestApiRESTController :
     override val filterDto: DictTopicOwnerEntityFilter
         get() = DictTopicOwnerEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictTopicOwnerEntityRestEdit = DictTopicOwnerEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<String, IUpdatebleEntity<DictTopicOwnerEntity>> = DictTopicOwnerEntityRestEdit(pk, hibernateEntityUpdateble())
 
     override fun getMockedRepo() = repository
 
     override val pk: String
         get() = "asdasd"
+
+    override fun hibernateEntityUpdateble(): DictTopicOwnerEntityUpdateble = hibernateEntityImmutable.toUpdateble()
+
     override val hibernateEntityImmutable: DictTopicOwnerEntityImmutable
         get() = DictTopicOwnerEntityImmutable("asdasd", 1, "sd")
 }

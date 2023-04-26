@@ -2,16 +2,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
-import ru.vtb.configuration.server.dataEntity.genRest.dictabstractgraphnodeentity.DictAbstractGraphNodeEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictTopicNodeEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictTopicNodeEntity,
             DictTopicNodeEntityImmutable,
+            DictTopicNodeEntityUpdateble,
             String,
             DictTopicNodeEntityFilter
             >() {
@@ -22,7 +21,9 @@ class DictTopicNodeEntityGeneratedRestApiRESTController :
     override val filterDto: DictTopicNodeEntityFilter
         get() = DictTopicNodeEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictTopicNodeEntityRestEdit = DictTopicNodeEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<String, IUpdatebleEntity<DictTopicNodeEntity>> = DictTopicNodeEntityRestEdit(pk, hibernateEntityUpdateble())
+
+    override fun hibernateEntityUpdateble(): DictTopicNodeEntityUpdateble = hibernateEntityImmutable.toUpdateble()
 
     override val hibernateEntityImmutable: DictTopicNodeEntityImmutable
         get() = DictTopicNodeEntityImmutable("sad", "sad", "sad", "ASd", 1)

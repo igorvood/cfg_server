@@ -3,20 +3,15 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictArrowEntity
 import ru.vtb.configuration.server.dataEntity.DictArrowEntityPK
-import ru.vtb.configuration.server.dataEntity.DictServiceEntity
-import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.DictArrowEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.DictArrowEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.DictArrowEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.DictArrowEntityRestEdit
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityFilter
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityGeneratedRepository
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityImmutable
-import ru.vtb.configuration.server.dataEntity.genRest.dictserviceentity.DictServiceEntityRestEdit
+import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.*
+import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vtb.processor.wrapper.IRestEditEntityDto
 
 class DictArrowEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<
             DictArrowEntity,
             DictArrowEntityImmutable,
+            DictArrowEntityUpdateble,
             DictArrowEntityPK,
             DictArrowEntityFilter
             >() {
@@ -27,7 +22,10 @@ class DictArrowEntityGeneratedRestApiRESTController :
     override val filterDto: DictArrowEntityFilter
         get() = DictArrowEntityFilter.nullConst
 
-    override fun restEditEntityDto(): DictArrowEntityRestEdit = DictArrowEntityRestEdit(pk, hibernateEntityImmutable)
+    override fun restEditEntityDto(): IRestEditEntityDto<DictArrowEntityPK, IUpdatebleEntity<DictArrowEntity>> = DictArrowEntityRestEdit(pk, hibernateEntityUpdateble())
+
+    override fun hibernateEntityUpdateble(): DictArrowEntityUpdateble = hibernateEntityImmutable.toUpdateble()
+
     override val hibernateEntityImmutable: DictArrowEntityImmutable
         get() = DictArrowEntityImmutable("graphId", "begNodeType", "begNodeId", "endNodeType", "endNodeId", "propKey", "asdsa", "asdasas", "asdsadas", "asdasdasd")
     override val pk: DictArrowEntityPK

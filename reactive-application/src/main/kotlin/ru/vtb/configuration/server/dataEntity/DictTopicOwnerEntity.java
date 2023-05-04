@@ -1,30 +1,26 @@
 package ru.vtb.configuration.server.dataEntity;
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
+import ru.vtb.processor.annotation.GenerateJpa;
 import ru.vtb.processor.annotation.GenerateReactiveJpa;
 
-//import javax.persistence.*;
+import javax.persistence.*;
 import java.util.Collection;
 
-//@Entity
-//@Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
-@org.springframework.data.relational.core.mapping.Table("db_configuration_manager.dict_topic_owner")
+@Entity(name = "dict_topic_owner")
+@Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @GenerateReactiveJpa(tableComment = "Владелец топика", genRest = true)
 public class DictTopicOwnerEntity {
     @Id
-//    @Column(name = "id", nullable = false)
-    @org.springframework.data.relational.core.mapping.Column( "id")
+    @Column(name = "id", nullable = false)
     private String id;
-//    @Basic
-//    @Column(name = "is_our", nullable = false)
-    @org.springframework.data.relational.core.mapping.Column( "is_our")
+    @Basic
+    @Column(name = "is_our", nullable = false)
     private Integer our;
-//    @Basic
-    @org.springframework.data.relational.core.mapping.Column( "description_for_report")
-//    @Column(name = "description_for_report")
+    @Basic
+    @Column(name = "description_for_report")
     private String descriptionForReport;
+
 //    @OneToMany(mappedBy = "dictTopicOwnerByTopicOwnerId")
 //    private Collection<DictTopicNodeEntity> dictTopicNodesById;
 
@@ -72,7 +68,7 @@ public class DictTopicOwnerEntity {
 //    public Collection<DictTopicNodeEntity> getDictTopicNodesById() {
 //        return dictTopicNodesById;
 //    }
-
+//
 //    public void setDictTopicNodesById(Collection<DictTopicNodeEntity> dictTopicNodesById) {
 //        this.dictTopicNodesById = dictTopicNodesById;
 //    }

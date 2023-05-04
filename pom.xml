@@ -9,6 +9,7 @@
         <module>jpa-annotation-processor-kotlin</module>
         <module>common-lib</module>
         <module>reactive-application</module>
+        <module>test-load-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

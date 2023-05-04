@@ -11,7 +11,7 @@ import ru.vtb.processor.annotation.GenerateReactiveJpa;
 //@Entity
 //@Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @org.springframework.data.relational.core.mapping.Table("db_configuration_manager.dict_topic_owner")
-@GenerateReactiveJpa(tableComment = "Владелец топика", genRest = true)
+//@GenerateReactiveJpa(tableComment = "Владелец топика", genRest = true)
 public class DictTopicOwnerEntityReactive {
     @Id
 //    @Column(name = "id", nullable = false)

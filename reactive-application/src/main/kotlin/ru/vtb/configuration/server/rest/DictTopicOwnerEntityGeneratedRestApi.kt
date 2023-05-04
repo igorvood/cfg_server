@@ -14,13 +14,13 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntityReactive
-import ru.vtb.configuration.server.dataEntity.reactive.genRest.dicttopicownerentity.DictTopicOwnerEntityImmutable
-import ru.vtb.configuration.server.dataEntity.reactive.genRest.dicttopicownerentity.DictTopicOwnerEntityRestEdit
+//import ru.vtb.configuration.server.dataEntity.reactive.genRest.dicttopicownerentity.DictTopicOwnerEntityImmutable
+//import ru.vtb.configuration.server.dataEntity.reactive.genRest.dicttopicownerentity.DictTopicOwnerEntityRestEdit
 
 
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
 
-fun DictTopicOwnerEntity.toImmutable() : DictTopicOwnerEntityImmutable =  DictTopicOwnerEntityImmutable(this.id,this.our,this.descriptionForReport)
+//fun DictTopicOwnerEntity.toImmutable() : DictTopicOwnerEntityImmutable =  DictTopicOwnerEntityImmutable(this.id,this.our,this.descriptionForReport)
 @RestController
 @RequestMapping(path = ["/DictTopicOwnerEntity"])
 class DictTopicOwnerEntityGeneratedRestApi(

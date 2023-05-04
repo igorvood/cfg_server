@@ -10,9 +10,10 @@ import org.springframework.transaction.annotation.Transactional
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
+import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntityReactive
 
 @Repository
-interface DictTopicOwnerEntityGeneratedRepository : CoroutineCrudRepository<DictTopicOwnerEntity, String> {
+interface DictTopicOwnerEntityGeneratedRepository : CoroutineCrudRepository<DictTopicOwnerEntityReactive, String> {
 
     @Modifying
     @Transactional(propagation = Propagation.MANDATORY)
@@ -24,9 +25,9 @@ interface DictTopicOwnerEntityGeneratedRepository : CoroutineCrudRepository<Dict
 
     @Modifying
     @Transactional(propagation = Propagation.MANDATORY)
-    override suspend fun <S : DictTopicOwnerEntity> save(entity: S): DictTopicOwnerEntity
+    override suspend fun <S : DictTopicOwnerEntityReactive> save(entity: S): DictTopicOwnerEntityReactive
 
     @Modifying
     @Transactional(propagation = Propagation.MANDATORY)
-    override fun <S : DictTopicOwnerEntity> saveAll(entities: Iterable<S>): Flow<S>
+    override fun <S : DictTopicOwnerEntityReactive> saveAll(entities: Iterable<S>): Flow<S>
 }

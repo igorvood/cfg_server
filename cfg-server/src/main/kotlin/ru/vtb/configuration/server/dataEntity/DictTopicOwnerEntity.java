@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
+@Entity(name = "dict_topic_owner")
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @GenerateJpa(tableComment = "Владелец топика", genRest = true, readOnly = false)
 public class DictTopicOwnerEntity {

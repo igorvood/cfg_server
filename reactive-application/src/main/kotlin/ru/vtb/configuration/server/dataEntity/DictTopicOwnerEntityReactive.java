@@ -6,23 +6,23 @@ import org.springframework.data.relational.core.mapping.Column;
 import ru.vtb.processor.annotation.GenerateReactiveJpa;
 
 //import javax.persistence.*;
-import java.util.Collection;
+
 
 //@Entity
 //@Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")
 @org.springframework.data.relational.core.mapping.Table("db_configuration_manager.dict_topic_owner")
 @GenerateReactiveJpa(tableComment = "Владелец топика", genRest = true)
-public class DictTopicOwnerEntity {
+public class DictTopicOwnerEntityReactive {
     @Id
 //    @Column(name = "id", nullable = false)
-    @org.springframework.data.relational.core.mapping.Column( "id")
+    @Column( "id")
     private String id;
 //    @Basic
 //    @Column(name = "is_our", nullable = false)
-    @org.springframework.data.relational.core.mapping.Column( "is_our")
+    @Column( "is_our")
     private Integer our;
 //    @Basic
-    @org.springframework.data.relational.core.mapping.Column( "description_for_report")
+    @Column( "description_for_report")
 //    @Column(name = "description_for_report")
     private String descriptionForReport;
 //    @OneToMany(mappedBy = "dictTopicOwnerByTopicOwnerId")
@@ -57,7 +57,7 @@ public class DictTopicOwnerEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DictTopicOwnerEntity that = (DictTopicOwnerEntity) o;
+        DictTopicOwnerEntityReactive that = (DictTopicOwnerEntityReactive) o;
 
         if (our != that.our) return false;
         if (!id.equals(that.id)) return false;

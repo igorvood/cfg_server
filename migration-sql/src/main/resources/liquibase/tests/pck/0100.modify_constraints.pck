@@ -7,10 +7,10 @@ begin
 
     for r in (
         select 'alter table ' || relname || ' ' || in_option || ' trigger all ' as cmd
-        from pdd_all_tables
+        from pdd_constrant
         where
 --             nspname = 'db_configuration_manager'          and
-              relname = ANY ( in_table_list)
+              conname = ANY ( in_table_list)
     )
         loop
             perform exec_immediate(r.cmd);

@@ -1,8 +1,8 @@
 spring:
   profiles:
 #    active: drop
-    active: migration
-#    active: test
+#    active: migration
+    active: test
 #    active: reinst
 #    active: insert-data
 #    active: import-data

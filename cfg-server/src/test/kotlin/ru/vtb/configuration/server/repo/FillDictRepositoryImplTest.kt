@@ -58,6 +58,7 @@ internal class FillDictRepositoryImplTest : AbstractDatasourceTests() {
                 graphFlinkServiceProfile
             )
         }
+        println(1)
     }
 
     @Test

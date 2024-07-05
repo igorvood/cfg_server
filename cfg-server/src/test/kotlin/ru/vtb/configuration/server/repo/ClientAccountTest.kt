@@ -23,6 +23,7 @@ class ClientAccountTest: AbstractDatasourceTests() {
         )
         // test
         accInsert()
+        // какие-то проверки
     }
 
     @ParameterizedTest
@@ -47,6 +48,7 @@ class ClientAccountTest: AbstractDatasourceTests() {
             }
             else -> {
                 accInsert()
+                //както проверки
             }
 
         }

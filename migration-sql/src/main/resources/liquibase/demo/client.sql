@@ -6,7 +6,7 @@ create table client
     fio varchar(256) not null,
     client_type varchar(32) not null,
     constraint client_client_type_fk foreign key (client_type) references dict_type_client(id) on delete cascade,
-    constraint client_pk primary key (id)  ,
+    constraint client_pk primary key (id),
     constraint client_uk unique (passport_num, passport_ser)
 )
 /

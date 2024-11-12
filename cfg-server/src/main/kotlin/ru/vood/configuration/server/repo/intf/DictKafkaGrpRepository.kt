@@ -1,7 +1,7 @@
 package ru.vood.configuration.server.repo.intf
 
-import ru.vtb.configuration.server.controller.dto.Direction
-import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
+import ru.vood.configuration.server.controller.dto.Direction
+import ru.vood.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vood.configuration.server.repo.dto.PropertyDto
 
 interface DictKafkaGrpRepository {

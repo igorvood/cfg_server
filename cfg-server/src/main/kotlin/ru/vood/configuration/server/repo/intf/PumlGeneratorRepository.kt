@@ -1,7 +1,7 @@
 package ru.vood.configuration.server.repo.intf
 
-import ru.vtb.configuration.server.controller.dto.Arrow
-import ru.vtb.configuration.server.controller.dto.GraphNode
+import ru.vood.configuration.server.controller.dto.Arrow
+import ru.vood.configuration.server.controller.dto.GraphNode
 
 interface PumlGeneratorRepository {
 

@@ -2,8 +2,8 @@ package ru.vood.configuration.server.check
 
 import org.slf4j.LoggerFactory
 import org.springframework.jdbc.core.JdbcOperations
-import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
-import ru.vtb.configuration.server.controller.placeholder.intf.HolderResolver
+import ru.vood.configuration.server.controller.intf.extractNamesPlaceholder
+import ru.vood.configuration.server.controller.placeholder.intf.HolderResolver
 
 //@Service
 class PlaceHolderChecker(

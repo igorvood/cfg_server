@@ -1,6 +1,6 @@
 package ru.vood.configuration.server.rest.intf
 
-import ru.vtb.configuration.server.controller.dto.EnvironmentService
+import ru.vood.configuration.server.controller.dto.EnvironmentService
 import ru.vood.configuration.server.repo.dto.StandEnum
 
 interface ConfigurationGeneratorRest {

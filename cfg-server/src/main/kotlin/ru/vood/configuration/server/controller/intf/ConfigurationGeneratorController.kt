@@ -1,0 +1,21 @@
+package ru.vood.configuration.server.controller.intf
+
+import ru.vood.configuration.server.controller.dto.EnvironmentService
+import ru.vood.configuration.server.repo.dto.StandEnum
+
+interface ConfigurationGeneratorController {
+
+    fun generateEnvBody(
+        serviceId: String,
+        profileId: String,
+        stand: StandEnum
+    ): String
+
+
+    fun generateAllServiceProfile(
+        serviceId: String,
+        stand: StandEnum
+    ): List<EnvironmentService>
+
+    fun environmentZip(serviceId: String, nonLocalStandOnly: Boolean): ByteArray
+}

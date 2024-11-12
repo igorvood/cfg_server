@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
-import ru.vtb.configuration.server.controller.dto.EnvironmentService
-import ru.vtb.configuration.server.controller.intf.ConfigurationGeneratorController
-import ru.vtb.configuration.server.controller.intf.ReportTopicController
+import ru.vood.configuration.server.controller.dto.EnvironmentService
+import ru.vood.configuration.server.controller.intf.ConfigurationGeneratorController
+import ru.vood.configuration.server.controller.intf.ReportTopicController
 import ru.vood.configuration.server.repo.dto.StandEnum
 import ru.vood.configuration.server.rest.intf.ConfigurationGeneratorRest
 

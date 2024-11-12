@@ -3,7 +3,7 @@ package ru.vood.configuration.server.rest
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.vtb.configuration.server.controller.intf.ReportTopicController
+import ru.vood.configuration.server.controller.intf.ReportTopicController
 import ru.vood.configuration.server.repo.dto.StandEnum
 import ru.vood.configuration.server.rest.intf.ReportTopicRest
 

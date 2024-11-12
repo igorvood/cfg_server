@@ -1,0 +1,13 @@
+package ru.vood.configuration.server.controller.intf
+
+import ru.vood.configuration.server.repo.dto.StandEnum
+
+interface ReportTopicController {
+    fun topicsByStand(standEnum: StandEnum): List<String>
+
+    fun usedTopics(): Set<String>
+
+    fun unUsedTopics(): Set<String>
+
+    fun repTopics(groupId: String, stand: StandEnum): ByteArray
+}

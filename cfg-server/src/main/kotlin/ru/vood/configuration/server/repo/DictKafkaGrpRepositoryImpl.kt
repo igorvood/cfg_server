@@ -4,8 +4,8 @@ import org.springframework.jdbc.core.JdbcOperations
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.controller.dto.Direction
-import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
+import ru.vood.configuration.server.controller.dto.Direction
+import ru.vood.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vood.configuration.server.repo.dto.PropertyDto
 import ru.vood.configuration.server.repo.intf.DictKafkaGrpRepository
 

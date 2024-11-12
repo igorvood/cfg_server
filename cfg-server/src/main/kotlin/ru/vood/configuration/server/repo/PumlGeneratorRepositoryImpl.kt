@@ -3,10 +3,10 @@ package ru.vood.configuration.server.repo
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 
-import ru.vtb.configuration.server.controller.dto.Arrow
-import ru.vtb.configuration.server.controller.dto.FlinkSrvPuml
-import ru.vtb.configuration.server.controller.dto.GraphNode
-import ru.vtb.configuration.server.controller.dto.TopicPuml
+import ru.vood.configuration.server.controller.dto.Arrow
+import ru.vood.configuration.server.controller.dto.FlinkSrvPuml
+import ru.vood.configuration.server.controller.dto.GraphNode
+import ru.vood.configuration.server.controller.dto.TopicPuml
 import ru.vood.configuration.server.repo.dto.NodeType
 import ru.vood.configuration.server.repo.intf.PumlGeneratorRepository
 import java.sql.ResultSet

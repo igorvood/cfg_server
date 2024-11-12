@@ -1,0 +1,34 @@
+package ru.vood.configuration.server.controller
+
+import org.springframework.stereotype.Service
+import ru.vood.configuration.server.controller.intf.ReportTopicController
+import ru.vood.configuration.server.controller.xls.XlsService
+import ru.vood.configuration.server.repo.dto.StandEnum
+import ru.vood.configuration.server.repo.dto.TopicForReport
+import ru.vood.configuration.server.repo.intf.ReportTopicRepository
+
+@Service
+class ReportTopicControllerImpl(
+    val reportTopicRepository: ReportTopicRepository,
+    val xls: XlsService<TopicForReport>
+) : ReportTopicController {
+    override fun topicsByStand(standEnum: StandEnum): List<String> {
+        return reportTopicRepository.topicsByStand(standEnum)
+
+    }
+
+    override fun usedTopics(): Set<String> {
+        return reportTopicRepository.usedTopics()
+    }
+
+    override fun unUsedTopics(): Set<String> {
+        return reportTopicRepository.unUsedTopics()
+    }
+
+    override fun repTopics(groupId: String, stand: StandEnum): ByteArray {
+        val repTopics = reportTopicRepository.repTopics(groupId, stand)
+        return xls.repTopics(repTopics)
+    }
+
+
+}

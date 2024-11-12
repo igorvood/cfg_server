@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RestController
-import ru.vtb.configuration.server.controller.dto.tracer.JsonArrow
-import ru.vtb.configuration.server.controller.intf.tracer.ArrowController
+import ru.vood.configuration.server.controller.dto.tracer.JsonArrow
+import ru.vood.configuration.server.controller.intf.tracer.ArrowController
 import ru.vood.configuration.server.rest.intf.tracer.ArrowRest
 
 @RestController

@@ -9,7 +9,7 @@ import org.springframework.core.io.Resource
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
-import ru.vtb.configuration.server.controller.intf.PumlGeneratorController
+import ru.vood.configuration.server.controller.intf.PumlGeneratorController
 import ru.vood.configuration.server.ui.controler.TableMetaController
 import ru.vood.configuration.server.ui.dto.SvgDto
 import java.io.ByteArrayOutputStream

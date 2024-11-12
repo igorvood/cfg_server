@@ -1,11 +1,10 @@
-package ru.vood.configuration.server.rest.intf
+package ru.vood.configuration.server.controller.intf
 
 import ru.vood.configuration.server.controller.dto.Direction
 import ru.vood.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vood.configuration.server.repo.dto.PropertyDto
 
-interface DictKafkaGrp {
-
+interface DictKafkaGrpController {
     fun kafkaPropertyGrpList(): Set<KafkaPropertyGrp>
 
     fun kafkaPropertyGrp(grpId: String, direction: Direction): Set<PropertyDto>
@@ -15,6 +14,5 @@ interface DictKafkaGrp {
     fun kafkaPropertyEdit(grpId: String, direction: Direction, propertyRestDto: PropertyDto)
 
     fun kafkaPropertyGrpAdd(grpId: String, direction: Direction, description: String)
-
     fun kafkaPropertyAdd(grpId: String, direction: Direction, propertyRestDto: PropertyDto)
 }

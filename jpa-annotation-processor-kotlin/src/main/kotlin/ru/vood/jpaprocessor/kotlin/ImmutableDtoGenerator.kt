@@ -1,14 +1,14 @@
-package ru.vtb.jpaprocessor.kotlin
+package ru.vood.jpaprocessor.kotlin
 
 
-//import io.navendra.annotation.GreetingGenerator
-//import ru.vtb.jpaprocessor.kotlin.KotlinClassBuilder
 import com.google.auto.service.AutoService
 import ru.vtb.processor.abstraction.AbstractCommonGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.annotation.GenerateReactiveJpa
+import ru.vtb.processor.annotation.GenerateJpa
+//import io.navendra.annotation.GreetingGenerator
+//import ru.vtb.jpaprocessor.kotlin.KotlinClassBuilder
 import java.io.File
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion
@@ -18,10 +18,10 @@ import javax.tools.Diagnostic
 @AutoService(Processor::class) // For registering the service
 @SupportedSourceVersion(SourceVersion.RELEASE_8) // to support Java 8
 @SupportedOptions(ImmutableDtoGenerator.KAPT_KOTLIN_GENERATED_OPTION_NAME)
-class ReactiveDtoGenerator : AbstractCommonGenerationProcessor<GeneratedJpaRepositoryClass>() {
+class ImmutableDtoGenerator : AbstractCommonGenerationProcessor<GeneratedJpaRepositoryClass>() {
 
     override fun getSupportedAnnotationTypes(): MutableSet<String> {
-        return mutableSetOf(GenerateReactiveJpa::class.java.name)
+        return mutableSetOf(GenerateJpa::class.java.name)
     }
 
     override fun getSupportedSourceVersion(): SourceVersion {
@@ -30,9 +30,9 @@ class ReactiveDtoGenerator : AbstractCommonGenerationProcessor<GeneratedJpaRepos
 
     override fun process(set: MutableSet<out TypeElement>, roundEnvironment: RoundEnvironment): Boolean {
 
-        roundEnvironment.getElementsAnnotatedWith(GenerateReactiveJpa::class.java).forEach {
+        roundEnvironment.getElementsAnnotatedWith(GenerateJpa::class.java).forEach {
             val generatedJpaRepositoryClass = GeneratedJpaRepositoryClass(AnnotatedEntityClass(it))
-            val annotation = it.annotation<GenerateReactiveJpa>()
+            val annotation = it.annotation<GenerateJpa>()
             val className = it.simpleName.toString()
             val pack = processingEnv.elementUtils.getPackageOf(it).toString()
             generateClass(className, pack, generatedJpaRepositoryClass, processingEnv)
@@ -51,7 +51,7 @@ class ReactiveDtoGenerator : AbstractCommonGenerationProcessor<GeneratedJpaRepos
         processingEnv: ProcessingEnvironment
     ) {
         val fileName = "Generated_$className"
-        val fileContent = ReactiveKotlinByHibernateEntityClassesBuilder(
+        val fileContent = KotlinByHibernateEntityClassesBuilder(
             className,
             pack,
             generatedJpaRepositoryClass,

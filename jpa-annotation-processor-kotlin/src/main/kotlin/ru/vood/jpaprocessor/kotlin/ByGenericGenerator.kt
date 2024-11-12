@@ -1,4 +1,4 @@
-package ru.vtb.jpaprocessor.kotlin
+package ru.vood.jpaprocessor.kotlin
 
 
 import com.google.auto.service.AutoService

@@ -1,6 +1,6 @@
-package ru.vtb.jpaprocessor.kotlin
+package ru.vood.jpaprocessor.kotlin
 
-import ru.vtb.jpaprocessor.kotlin.builder.*
+import ru.vood.jpaprocessor.kotlin.builder.*
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.annotation

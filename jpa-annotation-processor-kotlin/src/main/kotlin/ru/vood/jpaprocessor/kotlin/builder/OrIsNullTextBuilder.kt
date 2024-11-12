@@ -1,4 +1,4 @@
-package ru.vtb.jpaprocessor.kotlin.builder
+package ru.vood.jpaprocessor.kotlin.builder
 
 class OrIsNullTextBuilder(
     private val className: String,

@@ -11,6 +11,7 @@ data class JsonArrow(
                 is FlinkSrvJson -> true
                 is TopicJson -> false
             }
+
             is FlinkSrvJson -> when (to) {
                 is TopicJson -> true
                 is FlinkSrvJson -> false

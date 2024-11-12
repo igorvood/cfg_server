@@ -5,7 +5,6 @@ import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity(name = "dict_topic_owner")
 @Table(name = "dict_topic_owner", schema = "db_configuration_manager", catalog = "db_configuration_manager")

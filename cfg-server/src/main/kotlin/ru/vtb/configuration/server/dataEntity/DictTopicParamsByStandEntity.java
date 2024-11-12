@@ -4,7 +4,6 @@ package ru.vtb.configuration.server.dataEntity;
 import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "dict_topic_params_by_stand", schema = "db_configuration_manager", catalog = "db_configuration_manager")

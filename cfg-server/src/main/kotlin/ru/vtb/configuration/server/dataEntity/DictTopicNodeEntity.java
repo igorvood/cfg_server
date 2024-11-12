@@ -4,7 +4,6 @@ package ru.vtb.configuration.server.dataEntity;
 import ru.vtb.processor.annotation.GenerateJpa;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.Collection;
 
 @Entity

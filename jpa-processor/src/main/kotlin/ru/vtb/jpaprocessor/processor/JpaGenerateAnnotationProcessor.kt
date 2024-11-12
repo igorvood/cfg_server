@@ -1,11 +1,8 @@
 package ru.vtb.jpaprocessor.processor
 
+import ru.vtb.processor.abstraction.AbstractGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
-import ru.vtb.processor.abstraction.AbstractGenerationProcessor
-
-import javax.annotation.processing.*
-import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 

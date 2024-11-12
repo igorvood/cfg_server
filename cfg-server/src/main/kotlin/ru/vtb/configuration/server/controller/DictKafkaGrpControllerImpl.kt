@@ -3,7 +3,7 @@ package ru.vtb.configuration.server.controller
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.check.CheckRunner
+import ru.vood.configuration.server.check.CheckRunner
 import ru.vtb.configuration.server.controller.dto.Direction
 import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vtb.configuration.server.controller.intf.DictKafkaGrpController

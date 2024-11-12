@@ -1,4 +1,4 @@
-package ru.vtb.configuration.server.check
+package ru.vood.configuration.server.check
 
 interface CheckService {
 

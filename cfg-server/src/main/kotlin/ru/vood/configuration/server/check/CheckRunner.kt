@@ -1,4 +1,4 @@
-package ru.vtb.configuration.server.check
+package ru.vood.configuration.server.check
 
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Service

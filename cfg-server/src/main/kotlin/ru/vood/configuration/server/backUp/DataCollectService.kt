@@ -1,9 +1,9 @@
-package ru.vtb.configuration.server.backUp
+package ru.vood.configuration.server.backUp
 
 import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.backUp.dto.ColumnMeta
+import ru.vood.configuration.server.backUp.dto.ColumnMeta
 import java.math.BigDecimal
 
 @Repository

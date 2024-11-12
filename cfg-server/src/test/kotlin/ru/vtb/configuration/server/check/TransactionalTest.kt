@@ -8,6 +8,7 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
+import ru.vood.configuration.server.check.CheckRunner
 import ru.vtb.configuration.server.controller.intf.DictKafkaGrpController
 
 @SpringBootTest(

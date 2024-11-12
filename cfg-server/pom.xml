@@ -160,7 +160,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ru.vtb.configuration.server.ConfigurationServerApplication</mainClass>
+                    <mainClass>ru.vood.configuration.server.ConfigurationServerApplication</mainClass>
                 </configuration>
             </plugin>
             <plugin>

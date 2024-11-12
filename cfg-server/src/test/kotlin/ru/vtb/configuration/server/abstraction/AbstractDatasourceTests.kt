@@ -9,7 +9,7 @@ import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.test.annotation.Rollback
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.check.CheckRunner
+import ru.vood.configuration.server.check.CheckRunner
 import java.io.File
 import java.util.*
 

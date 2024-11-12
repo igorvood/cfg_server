@@ -1,7 +1,7 @@
 package ru.vood.configuration.server.ui.controler
 
 import org.springframework.stereotype.Component
-import ru.vtb.configuration.server.backUp.IDataBackUpRepository
+import ru.vood.configuration.server.backUp.IDataBackUpRepository
 
 @Component
 class TableMetaController(private val dataBackUpRepository: IDataBackUpRepository) {

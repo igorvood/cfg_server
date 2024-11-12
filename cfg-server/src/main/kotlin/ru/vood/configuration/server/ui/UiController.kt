@@ -1,8 +1,8 @@
 package ru.vood.configuration.server.ui
 
 import org.springframework.stereotype.Controller
-import ru.vtb.configuration.server.backUp.DataBackUpRepository
-import ru.vtb.configuration.server.backUp.dto.TableMeta
+import ru.vood.configuration.server.backUp.DataBackUpRepository
+import ru.vood.configuration.server.backUp.dto.TableMeta
 
 
 @Controller

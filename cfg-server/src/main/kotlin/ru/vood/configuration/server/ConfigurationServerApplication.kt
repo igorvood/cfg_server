@@ -1,4 +1,4 @@
-package ru.vtb.configuration.server
+package ru.vood.configuration.server
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

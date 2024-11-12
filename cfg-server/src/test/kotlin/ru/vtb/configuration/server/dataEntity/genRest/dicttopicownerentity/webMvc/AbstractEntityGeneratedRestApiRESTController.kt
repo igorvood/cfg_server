@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
-import ru.vtb.configuration.server.check.CheckRunner
+import ru.vood.configuration.server.check.CheckRunner
 import ru.vood.processor.intf.IFilterHibernateEntity
 import ru.vood.processor.intf.IImmutableEntity
 import ru.vood.processor.intf.IUpdatebleEntity

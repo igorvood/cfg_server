@@ -1,6 +1,6 @@
 package ru.vood.configuration.server.ui.controler
 
-import ru.vtb.configuration.server.backUp.dto.ColumnMeta
+import ru.vood.configuration.server.backUp.dto.ColumnMeta
 
 data class EditableTableDataDto(
     val tableId: String,

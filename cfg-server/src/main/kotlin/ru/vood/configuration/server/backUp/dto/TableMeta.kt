@@ -1,4 +1,4 @@
-package ru.vtb.configuration.server.backUp.dto
+package ru.vood.configuration.server.backUp.dto
 
 data class TableMeta(
     val lvl: Int,

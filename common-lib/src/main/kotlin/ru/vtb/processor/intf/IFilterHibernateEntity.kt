@@ -10,7 +10,7 @@ interface IFilterHibernateEntity {
 
     fun isEmpty(): Boolean
 
-    fun clean( ): String? {
+    fun clean(): String? {
         val paramNames = params().keys
         var transformedQuery = queryString()
         for (paramName in paramNames) {

@@ -1,8 +1,6 @@
 package ru.vtb.processor.intf
 
-import ru.vtb.processor.wrapper.IRestEditEntityDto
 import ru.vtb.processor.wrapper.PrimaryKeyWrapper
-import ru.vtb.processor.wrapper.RestEditEntityDto
 import java.util.*
 
 interface IRestHibernateEntity<IMMUTABLE, PK, Filter> {

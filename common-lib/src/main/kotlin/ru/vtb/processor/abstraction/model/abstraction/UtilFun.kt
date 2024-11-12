@@ -25,7 +25,6 @@ fun String.mapKotlinType(): String =
     else if (this == "java.lang.Integer") "Int"
     else if (this == "boolean") "Boolean"
     else if (this == "int") "Int"
-
     else this
 
 
@@ -63,7 +62,7 @@ private fun getParentInterfaces(interfaces: Set<TypeMirror>): Set<TypeMirror> {
 }
 
 @Deprecated("Требует отладки")
-fun  <T> Element.getInterface(cl: Class<T>): TypeElement? {
+fun <T> Element.getInterface(cl: Class<T>): TypeElement? {
     val allInterfaces = this.getAllInterfaces()
 
 
@@ -72,7 +71,7 @@ fun  <T> Element.getInterface(cl: Class<T>): TypeElement? {
             .filterIsInstance<DeclaredType>()
             .map { it.asElement() }
             .filterIsInstance<TypeElement>()
-            .firstOrNull { it.qualifiedName.toString() ==  cl.canonicalName}
+            .firstOrNull { it.qualifiedName.toString() == cl.canonicalName }
 
     return firstOrNull
 }

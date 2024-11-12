@@ -177,7 +177,7 @@
                     <annotationProcessors>
 <!--                        <annotationProcessor>ru.vtb.jpaprocessor.kotlin.FileGenerator</annotationProcessor>-->
                         <annotationProcessor>
-                            ru.vtb.jpaprocessor.processor.JpaGenerateAnnotationProcessor
+                            ru.vood.jpaprocessor.processor.JpaGenerateAnnotationProcessor
                         </annotationProcessor>
                     </annotationProcessors>
                 </configuration>

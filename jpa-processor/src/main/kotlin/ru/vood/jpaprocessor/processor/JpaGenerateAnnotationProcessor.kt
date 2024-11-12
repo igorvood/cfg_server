@@ -1,4 +1,4 @@
-package ru.vtb.jpaprocessor.processor
+package ru.vood.jpaprocessor.processor
 
 import ru.vtb.processor.abstraction.AbstractGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass

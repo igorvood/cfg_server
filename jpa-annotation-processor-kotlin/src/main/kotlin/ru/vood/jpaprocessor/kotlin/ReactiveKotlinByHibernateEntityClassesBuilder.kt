@@ -53,10 +53,10 @@ import org.springframework.transaction.annotation.Transactional
 //import org.springframework.data.jpa.repository.JpaRepository
 //import org.springframework.data.jpa.repository.Modifying
 import org.springframework.stereotype.Repository
-import ru.vtb.processor.intf.*
-import ru.vtb.processor.annotation.GenerateByGeneric
+import ru.vood.processor.intf.*
+import ru.vood.processor.annotation.GenerateByGeneric
 import java.util.*
-import ru.vtb.processor.wrapper.*
+import ru.vood.processor.wrapper.*
 import org.springframework.http.MediaType
 import org.springframework.stereotype.*
 

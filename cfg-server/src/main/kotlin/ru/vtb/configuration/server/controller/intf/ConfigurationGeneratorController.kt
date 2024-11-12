@@ -1,7 +1,7 @@
 package ru.vtb.configuration.server.controller.intf
 
 import ru.vtb.configuration.server.controller.dto.EnvironmentService
-import ru.vtb.configuration.server.repo.dto.StandEnum
+import ru.vood.configuration.server.repo.dto.StandEnum
 
 interface ConfigurationGeneratorController {
 

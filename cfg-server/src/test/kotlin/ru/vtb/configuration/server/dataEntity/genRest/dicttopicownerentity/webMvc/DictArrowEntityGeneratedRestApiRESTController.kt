@@ -1,8 +1,8 @@
 package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webMvc
 
 import com.ninjasquad.springmockk.MockkBean
-import ru.vtb.configuration.server.dataEntity.DictArrowEntity
-import ru.vtb.configuration.server.dataEntity.DictArrowEntityPK
+import ru.vood.configuration.server.dataEntity.DictArrowEntity
+import ru.vood.configuration.server.dataEntity.DictArrowEntityPK
 import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.*
 import ru.vood.processor.intf.IUpdatebleEntity
 import ru.vood.processor.wrapper.IRestEditEntityDto

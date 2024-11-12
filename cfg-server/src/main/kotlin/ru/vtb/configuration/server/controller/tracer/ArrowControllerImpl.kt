@@ -9,7 +9,7 @@ import ru.vtb.configuration.server.controller.dto.tracer.GraphNodeJson
 import ru.vtb.configuration.server.controller.dto.tracer.JsonArrow
 import ru.vtb.configuration.server.controller.dto.tracer.TopicJson
 import ru.vtb.configuration.server.controller.intf.tracer.ArrowController
-import ru.vtb.configuration.server.repo.intf.PumlGeneratorRepository
+import ru.vood.configuration.server.repo.intf.PumlGeneratorRepository
 
 @Service
 class ArrowControllerImpl(val pumlGeneratorRepository: PumlGeneratorRepository) : ArrowController {

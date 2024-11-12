@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service
 
 import ru.vtb.configuration.server.controller.dto.PlaceHolder
 import ru.vtb.configuration.server.controller.intf.replaceDifficultPlaceHolders
-import ru.vtb.configuration.server.repo.dto.EnvProperty
-import ru.vtb.configuration.server.repo.dto.FlinkService
+import ru.vood.configuration.server.repo.dto.EnvProperty
+import ru.vood.configuration.server.repo.dto.FlinkService
 
 @Service
 class PropertyFileGenerator {

@@ -3,7 +3,7 @@ package ru.vtb.configuration.server.controller.move
 import org.springframework.stereotype.Controller
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import ru.vtb.configuration.server.repo.move.IMoveDictServiceRepo
+import ru.vood.configuration.server.repo.move.IMoveDictServiceRepo
 
 interface IMoveDictServiceController {
     fun renameProfile(

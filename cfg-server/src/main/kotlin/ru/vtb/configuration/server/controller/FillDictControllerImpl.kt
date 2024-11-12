@@ -3,11 +3,12 @@ package ru.vtb.configuration.server.controller
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
+import ru.vood.configuration.server.repo.dto.*
 import ru.vtb.configuration.server.check.CheckRunner
 import ru.vtb.configuration.server.controller.dto.TopicPut
 import ru.vtb.configuration.server.controller.intf.FillDictController
 import ru.vtb.configuration.server.repo.dto.*
-import ru.vtb.configuration.server.repo.intf.FillDictRepository
+import ru.vood.configuration.server.repo.intf.FillDictRepository
 import java.util.*
 
 @Service

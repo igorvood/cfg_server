@@ -2,7 +2,7 @@ package ru.vtb.configuration.server.check
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
-import ru.vtb.configuration.server.repo.intf.ReportTopicRepository
+import ru.vood.configuration.server.repo.intf.ReportTopicRepository
 
 @Service
 class NotUsedTopicChecker(

@@ -7,7 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.setCellValueDefaultStyle
 import ru.vtb.configuration.server.controller.style
-import ru.vtb.configuration.server.repo.dto.TopicForReport
+import ru.vood.configuration.server.repo.dto.TopicForReport
 import java.io.ByteArrayOutputStream
 
 @Service

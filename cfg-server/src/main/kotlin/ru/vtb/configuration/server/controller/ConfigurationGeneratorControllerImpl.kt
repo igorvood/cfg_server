@@ -6,11 +6,11 @@ import ru.vtb.configuration.server.controller.dto.PlaceHolder
 import ru.vtb.configuration.server.controller.intf.ConfigurationGeneratorController
 import ru.vtb.configuration.server.controller.intf.extractNamesPlaceholder
 import ru.vtb.configuration.server.controller.placeholder.intf.PlaceHoldersResolver
-import ru.vtb.configuration.server.repo.dto.EnvProperty
-import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
-import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.repo.intf.ConfigurationGeneratorRepository
-import ru.vtb.configuration.server.repo.intf.DictRepository
+import ru.vood.configuration.server.repo.dto.EnvProperty
+import ru.vood.configuration.server.repo.dto.FlinkServiceProfile
+import ru.vood.configuration.server.repo.dto.StandEnum
+import ru.vood.configuration.server.repo.intf.ConfigurationGeneratorRepository
+import ru.vood.configuration.server.repo.intf.DictRepository
 import java.io.File
 import java.io.FileOutputStream
 import java.nio.file.Files

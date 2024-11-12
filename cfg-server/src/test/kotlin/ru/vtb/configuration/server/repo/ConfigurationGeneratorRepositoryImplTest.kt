@@ -11,7 +11,7 @@ internal class ConfigurationGeneratorRepositoryImplTest : AbstractDatasourceTest
 
 
     @Autowired
-    lateinit var configurationGeneratorRepositoryImpl: ConfigurationGeneratorRepositoryImpl
+    lateinit var configurationGeneratorRepositoryImpl: ru.vood.configuration.server.repo.ConfigurationGeneratorRepositoryImpl
 
     @Test
     fun propertyByServiceNoService() {

@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.EnvProperty
 import ru.vtb.configuration.server.repo.dto.StandEnum
 import ru.vtb.configuration.server.repo.intf.ConfigurationGeneratorRepository
-import ru.vtb.configuration.server.rest.update.IUpdateDictServiceRest
+import ru.vood.configuration.server.rest.update.IUpdateDictServiceRest
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 
 internal class MoveDictServiceControllerTest : AbstractDatasourceTests() {

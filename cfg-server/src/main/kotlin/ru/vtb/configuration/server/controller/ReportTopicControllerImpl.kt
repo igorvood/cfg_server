@@ -3,9 +3,9 @@ package ru.vtb.configuration.server.controller
 import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.intf.ReportTopicController
 import ru.vtb.configuration.server.controller.xls.XlsService
-import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.repo.dto.TopicForReport
-import ru.vtb.configuration.server.repo.intf.ReportTopicRepository
+import ru.vood.configuration.server.repo.dto.StandEnum
+import ru.vood.configuration.server.repo.dto.TopicForReport
+import ru.vood.configuration.server.repo.intf.ReportTopicRepository
 
 @Service
 class ReportTopicControllerImpl(

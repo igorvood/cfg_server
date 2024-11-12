@@ -4,8 +4,8 @@ import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.dto.Arrow
 import ru.vtb.configuration.server.controller.dto.GraphNode
 import ru.vtb.configuration.server.controller.intf.PumlGeneratorController
-import ru.vtb.configuration.server.repo.dto.DirectionEnum
-import ru.vtb.configuration.server.repo.intf.PumlGeneratorRepository
+import ru.vood.configuration.server.repo.dto.DirectionEnum
+import ru.vood.configuration.server.repo.intf.PumlGeneratorRepository
 import java.util.*
 
 @Service

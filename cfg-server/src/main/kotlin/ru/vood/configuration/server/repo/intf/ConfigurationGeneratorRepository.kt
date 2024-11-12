@@ -1,0 +1,14 @@
+package ru.vood.configuration.server.repo.intf
+
+import ru.vood.configuration.server.repo.dto.EnvProperty
+import ru.vood.configuration.server.repo.dto.StandEnum
+
+interface ConfigurationGeneratorRepository {
+
+    fun propertyByService(
+        serviceId: String,
+        profileId: String,
+        stand: StandEnum,
+    ): List<EnvProperty>
+
+}

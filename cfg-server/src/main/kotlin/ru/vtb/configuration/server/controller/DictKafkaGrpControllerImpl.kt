@@ -7,8 +7,8 @@ import ru.vtb.configuration.server.check.CheckRunner
 import ru.vtb.configuration.server.controller.dto.Direction
 import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vtb.configuration.server.controller.intf.DictKafkaGrpController
-import ru.vtb.configuration.server.repo.dto.PropertyDto
-import ru.vtb.configuration.server.repo.intf.DictKafkaGrpRepository
+import ru.vood.configuration.server.repo.dto.PropertyDto
+import ru.vood.configuration.server.repo.intf.DictKafkaGrpRepository
 
 @Service
 class DictKafkaGrpControllerImpl(

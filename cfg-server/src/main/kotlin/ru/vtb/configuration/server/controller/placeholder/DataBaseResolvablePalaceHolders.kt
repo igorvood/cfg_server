@@ -2,9 +2,9 @@ package ru.vtb.configuration.server.controller.placeholder
 
 import org.springframework.stereotype.Service
 import ru.vtb.configuration.server.controller.placeholder.intf.HolderResolver
-import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
-import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.repo.intf.PlaceHolderRepository
+import ru.vood.configuration.server.repo.dto.FlinkServiceProfile
+import ru.vood.configuration.server.repo.dto.StandEnum
+import ru.vood.configuration.server.repo.intf.PlaceHolderRepository
 
 @Service
 class DataBaseResolvablePalaceHolders(

@@ -3,8 +3,8 @@ package ru.vtb.configuration.server.dataEntity.repo
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
-import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
-import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
+import ru.vood.configuration.server.dataEntity.DictTopicNodeEntity
+import ru.vood.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityGeneratedRepository
 import java.math.BigInteger
@@ -31,7 +31,8 @@ internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
 
 //            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
             dictTopicNodeEntity.retention=19
-            val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity().apply {
+            val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity()
+                .apply {
                 nodeId = dictTopicNodeEntity.id
                 standId = "DSO"
                 cntPartition = 18

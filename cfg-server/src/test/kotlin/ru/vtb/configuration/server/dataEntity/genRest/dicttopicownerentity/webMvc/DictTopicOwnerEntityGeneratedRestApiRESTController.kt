@@ -1,7 +1,7 @@
 package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webMvc
 
 import com.ninjasquad.springmockk.MockkBean
-import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
+import ru.vood.configuration.server.dataEntity.DictTopicOwnerEntity
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.*
 import ru.vood.processor.intf.IUpdatebleEntity
 import ru.vood.processor.wrapper.IRestEditEntityDto

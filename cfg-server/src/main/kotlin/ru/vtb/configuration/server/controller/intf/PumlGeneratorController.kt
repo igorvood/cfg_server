@@ -1,6 +1,6 @@
 package ru.vtb.configuration.server.controller.intf
 
-import ru.vtb.configuration.server.repo.dto.DirectionEnum
+import ru.vood.configuration.server.repo.dto.DirectionEnum
 
 interface PumlGeneratorController {
 

@@ -1,8 +1,8 @@
 package ru.vtb.configuration.server.controller.intf
 
 import ru.vtb.configuration.server.controller.dto.TopicPut
-import ru.vtb.configuration.server.repo.dto.DirectionEnum
-import ru.vtb.configuration.server.repo.dto.PropertyDto
+import ru.vood.configuration.server.repo.dto.DirectionEnum
+import ru.vood.configuration.server.repo.dto.PropertyDto
 
 interface FillDictController {
 

@@ -48,6 +48,12 @@
         <sqlFile path="liquibase/release_002/0110.constraint.sql" endDelimiter="${sqlBatchDelimiter}"/>
     </changeSet>
 
+    <changeSet id="liquibase/release_002/0200.dict_currency.sql" author="vood"  runAlways="false">
+        <sqlFile path="liquibase/release_002/0200.dict_currency.sql" endDelimiter="${sqlBatchDelimiter}"/>
+    </changeSet>
+
+
+
 
 
 </databaseChangeLog>

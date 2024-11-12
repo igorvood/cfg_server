@@ -16,7 +16,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>ru.vtb.dko</groupId>
+    <groupId>ru.vood.dko</groupId>
     <artifactId>configuration-server-dko</artifactId>
     <version>1.0.2</version>
     <name>configuration-server-dko</name>

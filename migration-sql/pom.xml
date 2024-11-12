@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>configuration-server-dko</artifactId>
-        <groupId>ru.vtb.dko</groupId>
+        <groupId>ru.vood.dko</groupId>
         <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -59,7 +59,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>ru.vtb.cfg.server.migration.MigrationApplicationKt</mainClass>
+                    <mainClass>ru.vood.cfg.server.migration.MigrationApplicationKt</mainClass>
                 </configuration>
             </plugin>
             <plugin>

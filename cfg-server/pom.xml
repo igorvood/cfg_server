@@ -4,7 +4,7 @@
 
     <parent>
         <artifactId>configuration-server-dko</artifactId>
-        <groupId>ru.vtb.dko</groupId>
+        <groupId>ru.vood.dko</groupId>
         <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -118,20 +118,20 @@
         </dependency>
 
         <dependency>
-            <groupId>ru.vtb.dko</groupId>
+            <groupId>ru.vood.dko</groupId>
             <artifactId>jpa-processor</artifactId>
             <version>1.0.2</version>
 <!--            <scope>compile</scope>-->
         </dependency>
         <dependency>
-            <groupId>ru.vtb.dko</groupId>
+            <groupId>ru.vood.dko</groupId>
             <artifactId>jpa-annotation-processor-kotlin</artifactId>
             <version>1.0.2</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
-            <groupId>ru.vtb.dko</groupId>
+            <groupId>ru.vood.dko</groupId>
             <artifactId>common-lib</artifactId>
             <version>1.0.2</version>
         </dependency>
@@ -213,7 +213,7 @@
                             </sourceDirs>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
-                                    <groupId>ru.vtb.dko</groupId>
+                                    <groupId>ru.vood.dko</groupId>
                                     <artifactId>jpa-annotation-processor-kotlin</artifactId>
                                     <version>1.0.2</version>
 

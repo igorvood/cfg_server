@@ -1,8 +1,6 @@
 package ru.vood.jpaprocessor.kotlin
 
 
-//import io.navendra.annotation.GreetingGenerator
-//import ru.vtb.jpaprocessor.kotlin.KotlinClassBuilder
 import com.google.auto.service.AutoService
 import ru.vood.processor.abstraction.AbstractCommonGenerationProcessor
 import ru.vood.processor.abstraction.model.AnnotatedEntityClass

@@ -1,0 +1,56 @@
+package ru.vood.configuration.server.dataEntity.repo
+
+import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
+import ru.vood.configuration.server.abstraction.AbstractDatasourceTests
+import ru.vood.configuration.server.dataEntity.DictTopicNodeEntity
+import ru.vood.configuration.server.dataEntity.DictTopicParamsByStandEntity
+import ru.vood.configuration.server.dataEntity.genRest.dicttopicnodeentity.DictTopicNodeEntityGeneratedRepository
+import ru.vood.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.DictTopicParamsByStandEntityGeneratedRepository
+import java.math.BigInteger
+
+internal class DictTopicNodeEntityRepositoryTest : AbstractDatasourceTests() {
+
+    @Autowired
+    lateinit var dictTopicNodeEntityRepository: DictTopicNodeEntityGeneratedRepository
+
+    @Autowired
+    lateinit var dictTopicParamsByStandEntityGeneratedRepository: DictTopicParamsByStandEntityGeneratedRepository
+
+    @Test
+    fun findById() {
+        withTransactional {
+            val findById = dictTopicNodeEntityRepository.findById("APRF_STATIC_PUB")
+
+            assert(findById.isPresent)
+
+            println(findById)
+
+            val dictTopicNodeEntity: DictTopicNodeEntity = findById.get()
+
+
+//            dictTopicNodeEntity.dictTopicOwnerByTopicOwnerId.descriptionForReport = "asdasdasdas"
+            dictTopicNodeEntity.retention=19
+            val dictTopicParamsByStandEntity = DictTopicParamsByStandEntity()
+                .apply {
+                nodeId = dictTopicNodeEntity.id
+                standId = "DSO"
+                cntPartition = 18
+                topicName = dictTopicNodeEntity.id
+//                dictTopicNodeByNodeId = null
+            }
+//            dictTopicNodeEntity.dictTopicParamsByStandsById.add(dictTopicParamsByStandEntity)
+            dictTopicNodeEntityRepository.save(dictTopicNodeEntity)
+
+            dictTopicParamsByStandEntityGeneratedRepository.save(dictTopicParamsByStandEntity)
+        }
+        println(1)
+//        withTransactional {
+//            val findById = dictTopicParamsByStandEntityRepository.findById("qwerty").get()
+//            findById.isOur = BigInteger.valueOf(0)
+//            val save = dictTopicOwnerEntityRepository.save(findById)
+//        }
+    }
+
+
+}

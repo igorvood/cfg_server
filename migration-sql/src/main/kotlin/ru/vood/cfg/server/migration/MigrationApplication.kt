@@ -1,4 +1,4 @@
-package ru.vtb.cfg.server.migration
+package ru.vood.cfg.server.migration
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

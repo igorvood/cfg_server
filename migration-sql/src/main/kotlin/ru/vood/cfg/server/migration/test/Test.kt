@@ -1,4 +1,4 @@
-package ru.vtb.cfg.server.migration.test
+package ru.vood.cfg.server.migration.test
 
 import org.springframework.boot.CommandLineRunner
 import org.springframework.jdbc.core.JdbcTemplate

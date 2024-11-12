@@ -1,10 +1,10 @@
 package ru.vtb.jpaprocessor.kotlin
 
-import ru.vtb.jpaprocessor.kotlin.builder.*
+import ru.vtb.jpaprocessor.kotlin.builder.DTOsTextBuilder
+import ru.vtb.jpaprocessor.kotlin.builder.IKotlinContentBuilder
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
 import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.annotation.GenerateJpa
 import ru.vtb.processor.annotation.GenerateReactiveJpa
 import javax.annotation.processing.ProcessingEnvironment
 import javax.persistence.Column
@@ -23,7 +23,8 @@ class ReactiveKotlinByHibernateEntityClassesBuilder(
     roundEnvironment: ProcessingEnvironment
 ) : IKotlinContentBuilder {
 
-    private val GenerateReactiveJpaValue = generatedJpaRepositoryClass.annotatedClass.element.annotation<GenerateReactiveJpa>().get()
+    private val GenerateReactiveJpaValue =
+        generatedJpaRepositoryClass.annotatedClass.element.annotation<GenerateReactiveJpa>().get()
 
     private val tableComment = GenerateReactiveJpaValue.tableComment
 
@@ -82,7 +83,7 @@ import javax.persistence.EntityManagerFactory
 //            filteredFields
 //        ),
 
-        )
+    )
 
 
     override fun getContent(): String = importText +

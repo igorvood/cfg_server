@@ -5,7 +5,6 @@ import com.google.auto.service.AutoService
 import ru.vtb.processor.abstraction.AbstractCommonGenerationProcessor
 import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
 import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
-import ru.vtb.processor.abstraction.model.abstraction.getAllInterfaces
 import ru.vtb.processor.abstraction.model.abstraction.getDirectlyImplementsInterface
 import ru.vtb.processor.annotation.GenerateByGeneric
 import ru.vtb.processor.annotation.MyTwoGeneric
@@ -63,7 +62,7 @@ class ByGenericGenerator : AbstractCommonGenerationProcessor<GeneratedJpaReposit
         val myTwoGenericMeta = elem.getDirectlyImplementsInterface(MyTwoGeneric::class.java)
 
         val typeMirror = if (myTwoGenericMeta.size == 1)
-            myTwoGenericMeta.toList()[0] as                        DeclaredType
+            myTwoGenericMeta.toList()[0] as DeclaredType
         else {
             val err =
                 "${this.javaClass.canonicalName}: $className must directly implements interface ${MyTwoGeneric::class.java.canonicalName}"

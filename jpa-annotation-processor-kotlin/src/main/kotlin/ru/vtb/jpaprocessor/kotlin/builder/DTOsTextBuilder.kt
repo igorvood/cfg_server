@@ -5,7 +5,6 @@ import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
 import ru.vtb.processor.abstraction.model.abstraction.mapKotlinType
 
 
-
 class DTOsTextBuilder(
     private val className: String,
     private val immutableClassName: String,
@@ -42,9 +41,9 @@ $listFieldsToMutableFun
         |)""".trimMargin()
 
 
-    val listFieldsToMutableUpdatebleFun =  filteredFields
-    .filter { it.isUpdateble() }
-       .joinToString("\n") { f -> "this@apply.${f.name()} = this@$updatebleClassName.${f.name()}" }
+    val listFieldsToMutableUpdatebleFun = filteredFields
+        .filter { it.isUpdateble() }
+        .joinToString("\n") { f -> "this@apply.${f.name()} = this@$updatebleClassName.${f.name()}" }
 
     private val immutableToMutableForUpdatebleFun = """override fun toMutable() = ${className}().apply { 
 $listFieldsToMutableUpdatebleFun

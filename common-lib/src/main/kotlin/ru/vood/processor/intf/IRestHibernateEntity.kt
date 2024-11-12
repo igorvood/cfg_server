@@ -15,7 +15,6 @@ interface IRestHibernateEntity<IMMUTABLE, PK, Filter> {
     fun findByFilterOrIsNull(filter: Filter): List<IMMUTABLE>
 
 //    fun editEntity(editData: RestEditEntityDto<PK, IMMUTABLE>): IMMUTABLE?
-//    @RequestBody primaryKeyWrapper: PrimaryKeyWrapper<ru.vtb.configuration.server.dataEntity.DictAbstractGraphNodeEntityPK>,
 //    @RequestBody newData: DictAbstractGraphNodeEntityImmutable,
 
 //    fun editEntity(primaryKeyWrapper: PrimaryKeyWrapper<PK>, newData: IMMUTABLE): IMMUTABLE?

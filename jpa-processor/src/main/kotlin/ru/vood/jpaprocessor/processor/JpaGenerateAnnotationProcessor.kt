@@ -6,7 +6,6 @@ import ru.vood.processor.abstraction.model.GeneratedJpaRepositoryClass
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 
-//@SupportedAnnotationTypes("ru.vtb.processor.annotation.GenerateJpa")
 //@SupportedSourceVersion(SourceVersion.RELEASE_8)
 class JpaGenerateAnnotationProcessor :
     AbstractGenerationProcessor<GeneratedJpaRepositoryClass>() {
@@ -22,7 +21,6 @@ class JpaGenerateAnnotationProcessor :
         //lang=java
         return """package ${generatedClassData.generatedPackageName()};
             
-import ru.vtb.processor.annotation.GenerateByGeneric;            
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.Modifying;

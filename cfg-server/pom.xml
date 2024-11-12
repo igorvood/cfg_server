@@ -175,7 +175,6 @@
                     <generatedSourcesDirectory>${project.build.directory}/generated-sources/
                     </generatedSourcesDirectory>
                     <annotationProcessors>
-<!--                        <annotationProcessor>ru.vtb.jpaprocessor.kotlin.FileGenerator</annotationProcessor>-->
                         <annotationProcessor>
                             ru.vood.jpaprocessor.processor.JpaGenerateAnnotationProcessor
                         </annotationProcessor>

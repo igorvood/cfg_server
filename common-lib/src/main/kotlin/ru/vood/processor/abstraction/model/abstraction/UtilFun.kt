@@ -1,4 +1,4 @@
-package ru.vtb.processor.abstraction.model.abstraction
+package ru.vood.processor.abstraction.model.abstraction
 
 import java.util.*
 import javax.annotation.processing.ProcessingEnvironment

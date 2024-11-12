@@ -4,11 +4,11 @@ package ru.vood.jpaprocessor.kotlin
 //import io.navendra.annotation.GreetingGenerator
 //import ru.vtb.jpaprocessor.kotlin.KotlinClassBuilder
 import com.google.auto.service.AutoService
-import ru.vtb.processor.abstraction.AbstractCommonGenerationProcessor
-import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
-import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
-import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.annotation.GenerateReactiveJpa
+import ru.vood.processor.abstraction.AbstractCommonGenerationProcessor
+import ru.vood.processor.abstraction.model.AnnotatedEntityClass
+import ru.vood.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vood.processor.abstraction.model.abstraction.annotation
+import ru.vood.processor.annotation.GenerateReactiveJpa
 import java.io.File
 import javax.annotation.processing.*
 import javax.lang.model.SourceVersion

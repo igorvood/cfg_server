@@ -1,4 +1,4 @@
-package ru.vtb.processor.annotation
+package ru.vood.processor.annotation
 
 
 interface F1

@@ -18,11 +18,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import ru.vtb.configuration.server.check.CheckRunner
-import ru.vtb.processor.intf.IFilterHibernateEntity
-import ru.vtb.processor.intf.IImmutableEntity
-import ru.vtb.processor.intf.IUpdatebleEntity
-import ru.vtb.processor.wrapper.IRestEditEntityDto
-import ru.vtb.processor.wrapper.PrimaryKeyWrapper
+import ru.vood.processor.intf.IFilterHibernateEntity
+import ru.vood.processor.intf.IImmutableEntity
+import ru.vood.processor.intf.IUpdatebleEntity
+import ru.vood.processor.wrapper.IRestEditEntityDto
+import ru.vood.processor.wrapper.PrimaryKeyWrapper
 import kotlin.test.assertEquals
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -54,7 +54,7 @@ abstract class AbstractEntityGeneratedRestApiRESTController<
     abstract fun getMockedRepo(): JpaRepository<HIBER_ENTITY, PK>
     fun getHibernateEntity(): HIBER_ENTITY = hibernateEntityImmutable.toMutable()
 
-    fun restEditEntityDto(): IRestEditEntityDto<PK,HIBER_ENTITY> = object :IRestEditEntityDto<PK, HIBER_ENTITY>{
+    fun restEditEntityDto(): IRestEditEntityDto<PK, HIBER_ENTITY> = object : IRestEditEntityDto<PK, HIBER_ENTITY> {
         override val primaryKey: PK
             get() = pk
         override val newData: IUpdatebleEntity<HIBER_ENTITY>

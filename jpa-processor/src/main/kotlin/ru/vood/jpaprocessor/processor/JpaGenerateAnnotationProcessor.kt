@@ -1,8 +1,8 @@
 package ru.vood.jpaprocessor.processor
 
-import ru.vtb.processor.abstraction.AbstractGenerationProcessor
-import ru.vtb.processor.abstraction.model.AnnotatedEntityClass
-import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vood.processor.abstraction.AbstractGenerationProcessor
+import ru.vood.processor.abstraction.model.AnnotatedEntityClass
+import ru.vood.processor.abstraction.model.GeneratedJpaRepositoryClass
 import javax.lang.model.element.TypeElement
 import javax.tools.Diagnostic
 

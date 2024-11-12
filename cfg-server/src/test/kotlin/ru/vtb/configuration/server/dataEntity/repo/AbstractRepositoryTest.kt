@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.data.jpa.repository.JpaRepository
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
-import ru.vtb.processor.intf.IFilterHibernateEntity
-import ru.vtb.processor.intf.OrIsNullRepository
+import ru.vood.processor.intf.IFilterHibernateEntity
+import ru.vood.processor.intf.OrIsNullRepository
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
 

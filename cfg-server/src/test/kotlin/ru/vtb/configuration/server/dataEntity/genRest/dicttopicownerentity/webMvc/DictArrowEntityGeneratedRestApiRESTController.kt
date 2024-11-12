@@ -4,8 +4,8 @@ import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictArrowEntity
 import ru.vtb.configuration.server.dataEntity.DictArrowEntityPK
 import ru.vtb.configuration.server.dataEntity.genRest.dictarrowentity.*
-import ru.vtb.processor.intf.IUpdatebleEntity
-import ru.vtb.processor.wrapper.IRestEditEntityDto
+import ru.vood.processor.intf.IUpdatebleEntity
+import ru.vood.processor.wrapper.IRestEditEntityDto
 
 class DictArrowEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<

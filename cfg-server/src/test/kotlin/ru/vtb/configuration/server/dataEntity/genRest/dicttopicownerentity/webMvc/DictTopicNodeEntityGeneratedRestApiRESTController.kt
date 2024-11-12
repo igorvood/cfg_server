@@ -3,8 +3,8 @@ package ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.webM
 import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicNodeEntity
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicnodeentity.*
-import ru.vtb.processor.intf.IUpdatebleEntity
-import ru.vtb.processor.wrapper.IRestEditEntityDto
+import ru.vood.processor.intf.IUpdatebleEntity
+import ru.vood.processor.wrapper.IRestEditEntityDto
 
 class DictTopicNodeEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<

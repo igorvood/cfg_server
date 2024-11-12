@@ -1,10 +1,10 @@
 package ru.vood.jpaprocessor.kotlin
 
 import ru.vood.jpaprocessor.kotlin.builder.*
-import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
-import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.annotation.GenerateJpa
+import ru.vood.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vood.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vood.processor.abstraction.model.abstraction.annotation
+import ru.vood.processor.annotation.GenerateJpa
 import javax.annotation.processing.ProcessingEnvironment
 import javax.persistence.Column
 
@@ -51,10 +51,10 @@ import org.springframework.transaction.annotation.Transactional
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Modifying
 import org.springframework.stereotype.Repository
-import ru.vtb.processor.intf.*
-import ru.vtb.processor.annotation.GenerateByGeneric
+import ru.vood.processor.intf.*
+import ru.vood.processor.annotation.GenerateByGeneric
 import java.util.*
-import ru.vtb.processor.wrapper.*
+import ru.vood.processor.wrapper.*
 import org.springframework.http.MediaType
 import org.springframework.stereotype.*
 

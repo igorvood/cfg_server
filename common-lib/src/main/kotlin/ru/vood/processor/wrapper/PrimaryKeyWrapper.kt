@@ -1,3 +1,3 @@
-package ru.vtb.processor.wrapper
+package ru.vood.processor.wrapper
 
 data class PrimaryKeyWrapper<T>(val primaryKey: T)

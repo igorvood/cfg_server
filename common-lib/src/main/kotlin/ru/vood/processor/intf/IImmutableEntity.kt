@@ -1,4 +1,4 @@
-package ru.vtb.processor.intf
+package ru.vood.processor.intf
 
 interface IImmutableEntity<MUTABLE> {
 

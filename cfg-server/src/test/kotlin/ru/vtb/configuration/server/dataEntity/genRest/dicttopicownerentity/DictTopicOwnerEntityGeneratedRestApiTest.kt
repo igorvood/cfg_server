@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
-import ru.vtb.processor.wrapper.PrimaryKeyWrapper
-import ru.vtb.processor.wrapper.RestEditEntityDto
+import ru.vood.processor.wrapper.PrimaryKeyWrapper
+import ru.vood.processor.wrapper.RestEditEntityDto
 import kotlin.test.assertEquals
 
 internal class DictTopicOwnerEntityGeneratedRestApiTest : AbstractDatasourceTests() {

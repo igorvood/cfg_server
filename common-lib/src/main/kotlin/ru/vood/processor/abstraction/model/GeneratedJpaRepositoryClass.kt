@@ -1,6 +1,6 @@
-package ru.vtb.processor.abstraction.model
+package ru.vood.processor.abstraction.model
 
-import ru.vtb.processor.abstraction.model.abstraction.AbstractGeneratedClass
+import ru.vood.processor.abstraction.model.abstraction.AbstractGeneratedClass
 
 class GeneratedJpaRepositoryClass(annotatedEntityClass: AnnotatedEntityClass) :
     AbstractGeneratedClass<AnnotatedEntityClass>(annotatedEntityClass) {

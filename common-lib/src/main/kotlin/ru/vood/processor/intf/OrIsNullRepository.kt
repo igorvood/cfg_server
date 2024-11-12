@@ -1,4 +1,4 @@
-package ru.vtb.processor.intf
+package ru.vood.processor.intf
 
 import javax.persistence.EntityManagerFactory
 

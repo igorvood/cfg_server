@@ -10,7 +10,7 @@ import ru.vtb.configuration.server.dataEntity.DictTopicOwnerEntity
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityFilter
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityGeneratedRepository
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.DictTopicOwnerEntityOrIsNullRepository
-import ru.vtb.processor.intf.OrIsNullRepository
+import ru.vood.processor.intf.OrIsNullRepository
 //import ru.vtb.configuration.server.dataEntity.genRest.dicttopicownerentity.toImmutable
 import kotlin.test.assertEquals
 

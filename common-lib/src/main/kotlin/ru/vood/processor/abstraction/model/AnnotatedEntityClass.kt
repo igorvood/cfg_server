@@ -1,9 +1,9 @@
-package ru.vtb.processor.abstraction.model
+package ru.vood.processor.abstraction.model
 
-import ru.vtb.processor.abstraction.model.abstraction.AbstractAnnotatedClass
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
-import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.abstraction.model.abstraction.annotationValue
+import ru.vood.processor.abstraction.model.abstraction.AbstractAnnotatedClass
+import ru.vood.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vood.processor.abstraction.model.abstraction.annotation
+import ru.vood.processor.abstraction.model.abstraction.annotationValue
 import java.lang.instrument.IllegalClassFormatException
 import javax.annotation.processing.ProcessingEnvironment
 import javax.lang.model.element.Element

@@ -4,8 +4,8 @@ import com.ninjasquad.springmockk.MockkBean
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntity
 import ru.vtb.configuration.server.dataEntity.DictTopicParamsByStandEntityPK
 import ru.vtb.configuration.server.dataEntity.genRest.dicttopicparamsbystandentity.*
-import ru.vtb.processor.intf.IUpdatebleEntity
-import ru.vtb.processor.wrapper.IRestEditEntityDto
+import ru.vood.processor.intf.IUpdatebleEntity
+import ru.vood.processor.wrapper.IRestEditEntityDto
 
 class DictTopicParamsByStandEntityGeneratedRestApiRESTController :
     AbstractEntityGeneratedRestApiRESTController<

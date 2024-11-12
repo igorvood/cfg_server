@@ -1,4 +1,4 @@
-package ru.vtb.processor.annotation
+package ru.vood.processor.annotation
 
 /**
  * Specifies the mapped column for a persistent property or field.

@@ -1,6 +1,6 @@
-package ru.vtb.processor.wrapper
+package ru.vood.processor.wrapper
 
-import ru.vtb.processor.intf.IUpdatebleEntity
+import ru.vood.processor.intf.IUpdatebleEntity
 
 data class RestEditEntityDto<PK, DTO>(
     val primaryKeyWrapper: PrimaryKeyWrapper<PK>,

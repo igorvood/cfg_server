@@ -1,6 +1,7 @@
-package ru.vtb.processor.abstraction
+package ru.vood.processor.abstraction
 
-import ru.vtb.processor.abstraction.model.abstraction.AbstractGeneratedClass
+
+import ru.vood.processor.abstraction.model.abstraction.AbstractGeneratedClass
 import javax.annotation.processing.AbstractProcessor
 import javax.annotation.processing.Filer
 import javax.annotation.processing.Messager

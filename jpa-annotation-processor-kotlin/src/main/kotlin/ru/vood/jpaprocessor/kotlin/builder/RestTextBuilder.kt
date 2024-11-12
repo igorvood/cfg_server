@@ -1,7 +1,7 @@
 package ru.vood.jpaprocessor.kotlin.builder
 
-import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vood.processor.abstraction.model.PrimaryKetDataTypeDto
+import ru.vood.processor.abstraction.model.abstraction.IGeneratedField
 
 class RestTextBuilder(
     private val className: String,

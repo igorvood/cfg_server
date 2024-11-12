@@ -2,10 +2,10 @@ package ru.vood.jpaprocessor.kotlin
 
 import ru.vood.jpaprocessor.kotlin.builder.DTOsTextBuilder
 import ru.vood.jpaprocessor.kotlin.builder.IKotlinContentBuilder
-import ru.vtb.processor.abstraction.model.GeneratedJpaRepositoryClass
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
-import ru.vtb.processor.abstraction.model.abstraction.annotation
-import ru.vtb.processor.annotation.GenerateReactiveJpa
+import ru.vood.processor.abstraction.model.GeneratedJpaRepositoryClass
+import ru.vood.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vood.processor.abstraction.model.abstraction.annotation
+import ru.vood.processor.annotation.GenerateReactiveJpa
 import javax.annotation.processing.ProcessingEnvironment
 import javax.persistence.Column
 

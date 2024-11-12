@@ -1,6 +1,6 @@
 package ru.vood.jpaprocessor.kotlin.builder
 
-import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
+import ru.vood.processor.abstraction.model.PrimaryKetDataTypeDto
 
 class RepositoryTextBuilder(
     private val className: String,

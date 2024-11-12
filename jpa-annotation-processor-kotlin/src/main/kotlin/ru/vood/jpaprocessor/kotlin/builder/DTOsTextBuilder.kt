@@ -1,8 +1,8 @@
 package ru.vood.jpaprocessor.kotlin.builder
 
-import ru.vtb.processor.abstraction.model.PrimaryKetDataTypeDto
-import ru.vtb.processor.abstraction.model.abstraction.IGeneratedField
-import ru.vtb.processor.abstraction.model.abstraction.mapKotlinType
+import ru.vood.processor.abstraction.model.PrimaryKetDataTypeDto
+import ru.vood.processor.abstraction.model.abstraction.IGeneratedField
+import ru.vood.processor.abstraction.model.abstraction.mapKotlinType
 
 
 class DTOsTextBuilder(

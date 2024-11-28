@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional
 import ru.vtb.configuration.server.controller.dto.Direction
 import ru.vtb.configuration.server.controller.dto.KafkaPropertyGrp
 import ru.vtb.configuration.server.repo.dto.PropertyDto
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.test.util.assertTransaction
 
 internal class DictKafkaGrpRepositoryImplTest : AbstractDatasourceTests() {

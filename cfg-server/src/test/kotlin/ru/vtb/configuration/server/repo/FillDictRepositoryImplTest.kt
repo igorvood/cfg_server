@@ -7,7 +7,7 @@ import ru.vtb.configuration.server.controller.dto.Arrow
 import ru.vtb.configuration.server.controller.dto.FlinkSrvPuml
 import ru.vtb.configuration.server.controller.dto.TopicPuml
 import ru.vtb.configuration.server.repo.dto.*
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import ru.vtb.configuration.server.test.util.assertTransaction
 import kotlin.test.assertContains
 import kotlin.test.assertEquals

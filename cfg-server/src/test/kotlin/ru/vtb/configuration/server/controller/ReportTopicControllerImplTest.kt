@@ -3,7 +3,7 @@ package ru.vtb.configuration.server.controller
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.test.abstraction.AbstractTests
+import ru.vtb.configuration.server.abstraction.AbstractTests
 
 internal class ReportTopicControllerImplTest : AbstractTests() {
 

@@ -34,6 +34,7 @@ class PumlGeneratorRepositoryImpl(
             arrowsFunction, graphId
         ).toSet()
 
+    @Deprecated("Не используется, Удалить")
     override fun findByTopic(topicId: String): Set<Arrow<out GraphNode, out GraphNode>> {
         return jdbcTemplate.query(
             """

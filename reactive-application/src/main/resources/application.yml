@@ -1,0 +1,66 @@
+database:
+  url: postgresql://localhost:5432/db_configuration_manager
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/db_configuration_manager
+    username: ${DB_USERNAME:db_configuration_manager_admin}
+    password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+    pool:
+      enabled: true
+
+  #  datasource:
+#
+#    driver-class-name: org.postgresql.Driver
+#    url: r2dbc:postgresql://localhost:5432/db_configuration_manager
+#    username: ${DB_USERNAME:db_configuration_manager_admin}
+#    password: ${DB_PASSWORD:SNgCjskqMY8LqSvNZ_Y}
+
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+##    show-sql: true
+#    properties:
+#      hibernate:
+#        jdbc:
+#          batch_size: 50
+#          fetch_size: 50
+#        order_updates: true
+#        order_inserts: true
+#  spring.jpa.properties.hibernate.jdbc.batch_size=4
+#  spring.jpa.properties.hibernate.order_inserts=true
+#  spring.jpa.properties.hibernate.order_updates=true
+
+server:
+  port: ${APPLICATION_PORT:9092}
+
+
+#management:
+#  health:
+#    db:
+#      enabled: true
+#    readinessstate:
+#      enabled: true
+#    livenessstate:
+#      enabled: true
+#    defaults:
+#      enabled: true
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#  server:
+#    port: ${MANAGMENT_APPLICATION_PORT:9092}
+
+logging:
+  level:
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.type: TRACE
+    ru: info
+
+springdoc:
+  show-actuator: true
+  swagger-ui:
+    config-url: qwerty
+    url: c
+
+

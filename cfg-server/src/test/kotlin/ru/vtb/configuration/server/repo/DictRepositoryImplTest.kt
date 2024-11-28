@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.FlinkService
 import ru.vtb.configuration.server.repo.dto.FlinkServiceProfile
 import ru.vtb.configuration.server.repo.dto.Graph
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import kotlin.test.assertContains
 import kotlin.test.assertEquals
 

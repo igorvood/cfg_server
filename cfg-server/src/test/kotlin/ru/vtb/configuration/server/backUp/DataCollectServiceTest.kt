@@ -2,8 +2,8 @@ package ru.vtb.configuration.server.backUp
 
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
-import ru.vtb.configuration.server.test.abstraction.compareTablesWithAsserts
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.compareTablesWithAsserts
 import kotlin.test.assertEquals
 
 internal class DataCollectServiceTest : AbstractDatasourceTests() {

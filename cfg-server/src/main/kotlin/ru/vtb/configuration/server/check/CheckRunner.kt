@@ -8,11 +8,9 @@ import org.springframework.stereotype.Service
 class CheckRunner(
     val checks: List<CheckService>
 ) : CommandLineRunner {
-
     override fun run(vararg args: String?) {
 
         checkAll()
-
 
     }
 

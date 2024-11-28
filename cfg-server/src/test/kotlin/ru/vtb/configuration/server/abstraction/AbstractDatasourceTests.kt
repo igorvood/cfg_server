@@ -1,11 +1,15 @@
-package ru.vtb.configuration.server.test.abstraction
+package ru.vtb.configuration.server.abstraction
 
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.test.annotation.Rollback
+import org.springframework.transaction.annotation.Transactional
+import ru.vtb.configuration.server.check.CheckRunner
 import java.io.File
 import java.util.*
 
@@ -28,23 +32,23 @@ abstract class AbstractDatasourceTests : AbstractTests() {
     private val fullPathToScripts = javaClass.name.replace(".", pathSeparator)
 
     @BeforeAll
-    private fun beforeAll() = run {
+    fun beforeAll() = run {
         afterAll()
         runScriptsFromFile(setupClass)
     }
 
     @AfterAll
-    private fun afterAll() = runScriptsFromFile(teardownClass)
+    fun afterAll() = runScriptsFromFile(teardownClass)
 
 
     @BeforeEach
-    private fun beforeEach() = run {
+    fun beforeEach() = run {
         afterEach()
         runScriptsFromFile(setupTest)
     }
 
     @AfterEach
-    private fun afterEach() = runScriptsFromFile(teardownTest)
+    fun afterEach() = runScriptsFromFile(teardownTest)
 
     private fun runScriptsFromFile(fileName: String) {
         val fullFilename = fullPathToScripts + pathSeparator + fileName
@@ -55,6 +59,5 @@ abstract class AbstractDatasourceTests : AbstractTests() {
         file.bufferedReader().readLines().joinToString("\n").split(delimiterScripts)
             .forEach { sql -> jdbcTemplate.execute(sql) }
     }
-
 
 }

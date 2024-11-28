@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import ru.vtb.configuration.server.repo.dto.DataBasePlaceHolder
 import ru.vtb.configuration.server.repo.dto.StandEnum
-import ru.vtb.configuration.server.test.abstraction.AbstractDatasourceTests
+import ru.vtb.configuration.server.abstraction.AbstractDatasourceTests
 import kotlin.test.assertContains
 
 internal class PlaceHolderRepositoryImplTest : AbstractDatasourceTests() {
@@ -15,7 +15,7 @@ internal class PlaceHolderRepositoryImplTest : AbstractDatasourceTests() {
     @Test
     fun dbPlaceHolders() {
         val dbPlaceHolders = placeHolderRepositoryImpl.dbPlaceHolders()
-        assertContains(dbPlaceHolders, DataBasePlaceHolder("PARALLELISM", "PARALLELISM", "8"))
+        assertContains(dbPlaceHolders, DataBasePlaceHolder("PARALLELISM", "PARALLELISM", "2"))
     }
 
     @Test
